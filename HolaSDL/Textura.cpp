@@ -1,0 +1,51 @@
+#include "Textura.h"
+#include "Juego.h"
+#include "SDL_image.h"
+
+Textura::Textura()
+{	
+	pTextura = nullptr;
+
+	rectori.w = 0;
+	rectori.h = 0;
+}
+
+Textura::~Textura()
+{
+	SDL_DestroyTexture(pTextura);
+}
+
+
+bool Textura::load(SDL_Renderer* pRenderer, std::string const& nombArch) {
+	 
+	SDL_Surface* pTempSurface = nullptr;
+	bool error = false;  //Loading success flag
+	
+						  //Load image
+	pTempSurface = IMG_Load(nombArch.c_str());  //Cargamos la imagen 
+	if (pTempSurface == nullptr) {
+		std::cout << "Unable to load image " << nombArch.c_str() << "! \nSDL Error: " << IMG_GetError() << '\n';
+		error = true;
+	}
+	else {
+		delete pTextura;
+		pTextura = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+		rectori.h = pTempSurface->h;
+		rectori.w = pTempSurface->w;
+		SDL_FreeSurface(pTempSurface);
+		if (pTextura == nullptr)
+			error = true;
+	}
+
+	return error;
+}
+
+
+void Textura::draw(SDL_Renderer* pRenderer, SDL_Rect const& rect) {
+	SDL_RenderCopy(pRenderer, pTextura, &rectori, &rect); // (render, textura, rect de lo que quieres dibujar, rect destino)
+}
+
+void Textura::drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect const& rectaux) {
+	SDL_RenderCopy(pRenderer, pTextura, &rectaux, &rect); // (render, textura, rect de lo que quieres dibujar, rect destino)
+}
+

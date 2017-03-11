@@ -1,0 +1,9 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (HolaSDL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Juego.cpp
+c:\users\skullatt\desktop\beta_0.3_p2\holasdl\juego.cpp(186): warning C4018: '<': signed/unsigned mismatch
+  Estado.cpp
+c:\users\skullatt\desktop\beta_0.3_p2\holasdl\estado.cpp(41): warning C4018: '<': signed/unsigned mismatch
+c:\users\skullatt\desktop\beta_0.3_p2\holasdl\estado.cpp(51): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  HolaSDL.vcxproj -> C:\Users\Skullatt\Desktop\BETA_0.3_P2\bin\Practica1Debug.exe
+  HolaSDL.vcxproj -> C:\Users\Skullatt\Desktop\BETA_0.3_P2\bin\Practica1Debug.pdb (Full PDB)
