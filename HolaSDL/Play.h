@@ -13,6 +13,8 @@ public:
 	void update();
 
 	void newDisparo(ObjetoJuego*po, int posX, int posY);
+	void newDisparoEnemigo(int posX, int posY, int targetX, int targetY, int velDis);
+	void posPlayer(int& x, int& y);
 private:
 
 	bool gameOver;

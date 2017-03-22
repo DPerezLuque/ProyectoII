@@ -56,7 +56,7 @@ Juego::~Juego()
 
 void Juego::run()
 {
-	Uint32 MSxUpdate = 50;
+	Uint32 MSxUpdate = 25;
 	cout << "PLAY \n";
 	Uint32 lastUpdate = SDL_GetTicks();
 
@@ -180,7 +180,9 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\menu_play.png");
 	texturas.push_back("..\\bmps\\menu_menu.png");
 	texturas.push_back("..\\bmps\\menu_resume.png");
-	
+	texturas.push_back("..\\bmps\\enemy.png");
+	texturas.push_back("..\\bmps\\balaEnemigo.png");
+
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {

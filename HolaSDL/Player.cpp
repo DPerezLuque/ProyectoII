@@ -28,6 +28,11 @@ void Player::update() {
 
 bool Player::onClick() {
 	
-	static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x, rect.y);
+	static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
 	return true;
+}
+
+void Player::getPos(int& x, int& y) {
+	x = rect.x;
+	y = rect.y;
 }
