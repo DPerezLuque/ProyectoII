@@ -33,8 +33,8 @@ Juego::Juego()
 	changeState(new Play(this));
 	estado = topEstado(); //primer estado: MENU
 	dashX = dashY = 0;
-	
 
+	
 }
 
 Juego::~Juego()
@@ -103,237 +103,8 @@ void Juego::handle_events()
 	//Consiste en un switch que comprueba qué tecla se ha pulsado, y en funcion de la tecla se mueve a una dirección u otra.
 	//Cuando se pulsa el espacio, se efectua el dash 
 void Juego::updateDirection() {
-
-	int d = 30;						//Variable que se añade o resta a la velocidad del jugador para el dash
-
-	//Cuando el jugador pulse una tecla...
-	if (e.type == SDL_KEYDOWN && e.key.repeat == 0)
-	{
-
-		//Ajustamos la velocidad en función de la tecla pulsada, a excepcion del espacio que hace un dash
-		switch (e.key.keysym.sym)
-		{
-		//Arriba
-		case SDLK_i: //Teclado zurdos
-
-			mVelY -= VPLAYER;
-
-			break;
-		case SDLK_w:
-
-			mVelY -= VPLAYER;
-
-			break;
-
-		//Abajo
-		case SDLK_k: //Teclado zurdos
-
-			mVelY += VPLAYER;
-
-			break;
-		case SDLK_s:
-
-			mVelY += VPLAYER;
-
-			break;
-
-		//Izquierda
-		case SDLK_j: //Teclado zurdos
-
-			mVelX -= VPLAYER;
-
-			break;
-
-		case SDLK_a:
-
-			mVelX -= VPLAYER;
-
-			break;
-
-		//Derecha
-		case SDLK_l: //Teclado zurdos
-
-			mVelX += VPLAYER;
-
-			break;
-
-		case SDLK_d:
-
-			mVelX += VPLAYER;
-
-			break;
-
-		//Espacio
-		case SDLK_SPACE:	// ACTUA COMO MODIFICADOR DEL MOVIMIENTO
-
-			if (dashDisponible) {					//La variable se modifica cuando se SUELTA el botón		(Debería ser false??)
-
-				if (mVelX > 0 && mVelX <= d ) {					// Cuando vas a la derecha (Right o D) Y SUELTAS EL BOTÓN DE ESPACIO
-					dashDisponible = false;			
-					if (mVelY != 0) {				//Regulamos las direcciones en diagonal
-						if (mVelY > 0 && mVelY <= d) {
-
-							mVelY += (d / 2);
-						}
-						else if (mVelY < 0 && mVelY >= -d)
-							mVelY -= (d / 2);
-						// Cantidad fija a la X
-						mVelX += (d / 2);
-					}
-					else
-					{
-						mVelX += d;						//Cuando no vas en diagonal
-					}	
-				}
-
-				else if (mVelX < 0 && mVelX >= -d) {				// Cuando vas a la izquierda (Left o A)
-					dashDisponible = false;
-					if (mVelY != 0) {				//Regulamos las direcciones en diagonal
-						if (mVelY > 0 && mVelY <= d) {
-
-							mVelY += (d / 2);
-						}
-						else if (mVelY < 0 && mVelY >= -d)
-							mVelY -= (d / 2);
-						// Cantidad fija a la X
-						mVelX -= (d / 2);					//Cuando no vas en diagonal
-					}
-					else
-					{
-						mVelX -= d;
-					}
-				}
-
-				else if (mVelY > 0 && mVelY <= d) {					// Cuando vas abajo (Down o S) Y SUELTAS EL PUTO BOTON
-					dashDisponible = false;
-					mVelY += d;
-				}
-
-
-
-				else if (mVelY < 0 && mVelY >= -d) {				// Cuando vas arriba (Up o W)
-					dashDisponible = false;
-					mVelY -= d;
-
-				}
-				break;
-				
-			}
-
-			else
-			{
-				break;    //Si el jugador ya se ha desplazado con dash, no puede volver a hacerlo y se le expulsará hasta que suelte el espacio.			(Esto aún no funciona pero esa es la idea)
-			}
-
-
-
-		} // Switch ()
-	}
-
-
-	//If a key was released
-	else if (e.type == SDL_KEYUP && e.key.repeat == 0)
-	{
 	
-		//Adjust the velocity
-		switch (e.key.keysym.sym)
-		{
-			//Arriba
-			case SDLK_i: //Teclado zurdos
-				mVelY += VPLAYER;
-			
-				break;
 
-			case SDLK_w:
-				mVelY += VPLAYER;
-			
-				break;
-
-			//Abajo
-			case SDLK_k: //Teclado zurdos
-				mVelY -= VPLAYER;
-		
-				break;
-			case SDLK_s:
-				mVelY -= VPLAYER;
-			
-				break;
-
-			//Izquierda
-			case SDLK_j: //Teclado zurdos
-				mVelX += VPLAYER;
-			
-				break;
-			case SDLK_a:
-				mVelX += VPLAYER;
-		
-				break;
-
-			//Derecha
-			case SDLK_l: //Teclado zurdos
-				mVelX -= VPLAYER;
-		
-				break;
-			case SDLK_d:
-				mVelX -= VPLAYER;
-		
-				break;
-
-				//Espacio
-			case SDLK_SPACE:
-
-				if (mVelX > 0 && mVelX <= d) {						// Cuando vas a la derecha (Right o D) Y SUELTAS EL BOTÓN DE ESPACIO
-					dashDisponible = true;
-					if (mVelY != 0) {		//Regulamos las direcciones en diagonal
-						if (mVelY > 0 && mVelY <= d) {
-						
-							mVelY -= (d / 2);
-						}
-						else if (mVelY < 0 && mVelY >= -d)
-							mVelY += (d / 2);
-						// Cantidad fija a la X
-						mVelX -= (d / 2);
-					}
-					else
-					{
-						mVelX -= d;
-					}
-				}
-
-				else if (mVelX < 0) {				// Cuando vas a la izquierda (Left o A)
-					dashDisponible = true;
-					if (mVelY != 0) {		//Regulamos las direcciones en diagonal
-						if (mVelY > 0 && mVelY <= d) {
-
-							mVelY -= (d / 2);
-						}
-						else if (mVelY < 0 && mVelY >= -d)
-							mVelY += (d / 2);
-						// Cantidad fija a la X
-						mVelX += (d / 2);
-					}
-					else
-					{
-						mVelX += d;
-					}
-				}
-
-				else if (mVelY > 0 && mVelY <= d) {					// Cuando vas abajo (Down o S) Y SUELTAS EL PUTO BOTON
-					dashDisponible = true;
-					mVelY -= d;
-				}
-			
-			
-
-				else if (mVelY < 0 && mVelY >= -d) {				// Cuando vas arriba (Up o W)
-					dashDisponible = true;
-					mVelY += d;
-		
-				}
-				break;
-			}
-		
-	}
 }
 
 //Método que comprueba si en la dirección en la que apuntamos el dash tiene colisiones
@@ -351,9 +122,9 @@ void Juego::initSDL()
 	}
 	else {
 		//Create window: SDL_CreateWindow("SDL Hello World", posX, posY, width, height, SDL_WINDOW_SHOWN);
-		pWindow = SDL_CreateWindow("Pincha Globos", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		pWindow = SDL_CreateWindow("EL PUTO DASH", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 		if (pWindow == nullptr) {
-			throw Error("La ventana no se ha podido crear");
+			throw Error("La ventana no se ha podido crear. Te jodes.");
 			cout << "Window could not be created! \nSDL_Error: " << SDL_GetError() << '\n';
 		}
 		else {

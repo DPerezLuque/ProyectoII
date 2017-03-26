@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "MovimientoJugador.h"
 
 
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
@@ -20,10 +20,7 @@ Player::~Player()
 
 void Player::update() {
 	
-	//Move the dot left or right
-	rect.x += juego->getVelX();
-	//Move the dot up or down
-	rect.y += juego->getVelY();
+	//movJugador->getMovimientoJugador(velX, velY);
 } 
 
 bool Player::onClick() {

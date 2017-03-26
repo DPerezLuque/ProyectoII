@@ -4,6 +4,7 @@
 class Player : public Objeto 
 {
 public:
+	Player() {};
 	Player(Juego* ptr, int px, int py);
 	~Player();
 
@@ -11,8 +12,8 @@ public:
 	//void move();
 	bool onClick();
 	void dash();
-
-private:
+	
+protected:
 	int velX, velY;
 };
 

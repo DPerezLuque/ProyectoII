@@ -20,6 +20,7 @@
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuPrincipal.cpp" />
+    <ClCompile Include="MovimientoJugador.cpp" />
     <ClCompile Include="Objeto.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="MenuPrincipal.h" />
+    <ClInclude Include="MovimientoJugador.h" />
     <ClInclude Include="ObjetoJuego.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="Pausa.h" />
@@ -53,7 +55,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

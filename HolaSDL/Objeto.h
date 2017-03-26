@@ -7,6 +7,7 @@
 class Objeto : public ObjetoJuego
 {
 public:
+	Objeto() {};
 	Objeto(Juego* ptr, int px, int py);
 	virtual ~Objeto();
 

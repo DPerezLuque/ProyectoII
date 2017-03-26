@@ -7,9 +7,14 @@
 #include "Textura.h"
 #include "EstadoJuego.h"
 
+
+
+
 class Juego
 {
 private:
+
+	//// PUNTEROS NECESARIOS
 
 	SDL_Renderer* pRenderer;
 	SDL_Window* pWindow;
@@ -32,8 +37,12 @@ private:
 
 	SDL_Event e;
 
+	
 	EstadoJuego* estado;
 	std::stack<EstadoJuego*> states;
+
+
+
 public:
 
 	Juego();
@@ -67,5 +76,7 @@ public:
 	void pushState(EstadoJuego* newState);
 	void popState();
 	EstadoJuego* topEstado();
+
+
 };
 
