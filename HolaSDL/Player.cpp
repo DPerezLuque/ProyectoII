@@ -31,3 +31,5 @@ bool Player::onClick() {
 	static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x, rect.y);
 	return true;
 }
+
+void Player::dash(){}

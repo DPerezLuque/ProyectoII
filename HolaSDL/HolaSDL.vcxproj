@@ -35,7 +35,6 @@
     <ClInclude Include="Estado.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Juego.h" />
-    <ClInclude Include="MapEditor.h" />
     <ClInclude Include="MenuPrincipal.h" />
     <ClInclude Include="ObjetoJuego.h" />
     <ClInclude Include="Objeto.h" />

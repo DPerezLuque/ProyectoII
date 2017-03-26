@@ -22,11 +22,11 @@ Estado::~Estado()
 	pRenderer = nullptr;
 }
 
-void Estado::draw()
+void Estado::draw() 
 {
 	//Limpia el buffer
-	//SDL_RenderClear(pRenderer);
-	SDL_SetRenderDrawColor(pRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	SDL_RenderClear(pRenderer);
+
 	//Dibuja el fondo (tendremos que cambiarlo cuando empecemos con los fondos y los niveles)
 	/*SDL_Rect rect;
 	rect.h = height;

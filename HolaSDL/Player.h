@@ -10,6 +10,8 @@ public:
 	void update();
 	//void move();
 	bool onClick();
+	void dash();
+
 private:
 	int velX, velY;
 };

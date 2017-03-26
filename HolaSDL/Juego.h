@@ -7,11 +7,9 @@
 #include "Textura.h"
 #include "EstadoJuego.h"
 
-
 class Juego
 {
-public:
-	
+private:
 
 	SDL_Renderer* pRenderer;
 	SDL_Window* pWindow;
@@ -20,17 +18,21 @@ public:
 	std::vector<std::string> texturas;
 	std::vector<Textura*> arrayTex;
 
-	int const SCREEN_WIDTH = 640;// 860;
+	int const SCREEN_WIDTH = 860;
 	int const SCREEN_HEIGHT = 480;
 	int x, y;
 	bool exit;
-	static const int VPLAYER = 10;
+	int VPLAYER = 10;
 	int mVelX, mVelY;
+	//TRUE = SE PUEDE HACER; FALSE = DASH NO DISPONIBLE
+	bool dashDisponible = true;
+	//Dash
+	//bool hazDash;
+	int dashX, dashY;
 
 	SDL_Event e;
 
 	EstadoJuego* estado;
-	
 	std::stack<EstadoJuego*> states;
 public:
 
@@ -43,8 +45,9 @@ public:
 
 	void handle_events();
 	void updateDirection();
-	bool initSDL();
-	bool initMedia(); //carga las texturas en el vector de texturas (fuente y música)
+	bool compruebaDash();
+	void initSDL();
+	void initMedia(); //carga las texturas en el vector de texturas (fuente y música)
 	
 	void setSalir();
 	void freeMedia();
