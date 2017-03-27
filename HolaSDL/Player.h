@@ -1,6 +1,8 @@
 #pragma once
 #include "Objeto.h"
-#include "MovimientoJugador.h"
+
+const int DASH = 30;
+const int VPLAYER = 10;
 
 class Player : public Objeto 
 {
@@ -12,12 +14,12 @@ public:
 	void update();
 	//void move();
 	bool onClick();
-	void dash();
+	void movimientoYDash(SDL_Event evento);
 	
 protected:
 	int velX, velY;
 
-	MovimientoJugador* movJugador;
+
 	SDL_Event evento;
 };
 

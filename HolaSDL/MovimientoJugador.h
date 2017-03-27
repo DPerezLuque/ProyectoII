@@ -14,7 +14,7 @@ public:
 	~MovimientoJugador();
 	void setMovimientoJugador (SDL_Event e);
 	void getMovimientoJugador(int & newVelX, int & newVelY);
-	MovimientoJugador * setPunteroMovimiento(MovimientoJugador*) {
+	MovimientoJugador * setPunteroMovimiento() {
 		
 	}
 private:

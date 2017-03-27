@@ -120,7 +120,7 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="MovimientoJugador.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Estados</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

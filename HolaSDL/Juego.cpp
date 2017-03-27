@@ -76,7 +76,9 @@ void Juego::run()
 
 void Juego::handle_events()
 {
+	
 	if (SDL_PollEvent(&e)) {
+		setEvent(e);
 		if (e.type == SDL_QUIT) setSalir();
 		else if (e.type == SDL_MOUSEBUTTONUP) {
 			if (e.button.button == SDL_BUTTON_LEFT) {
@@ -90,18 +92,18 @@ void Juego::handle_events()
 		}
 		
 		if (e.type == SDL_KEYDOWN) {
-			setEvent();
+			
 			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
 					pushState(new Pausa(this));
 			}
-		}i
+		}
 
 	}
 }
 //Toda la lógica de control de movimiento DEL JUGADOR está en este método. 
 	//Consiste en un switch que comprueba qué tecla se ha pulsado, y en funcion de la tecla se mueve a una dirección u otra.
 	//Cuando se pulsa el espacio, se efectua el dash 
-void Juego::setEvent(){
+void Juego::setEvent(SDL_Event e){
 	newE = e;
 }
 //Método que comprueba si en la dirección en la que apuntamos el dash tiene colisiones

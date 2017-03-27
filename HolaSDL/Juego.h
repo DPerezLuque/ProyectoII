@@ -62,7 +62,7 @@ public:
 	void freeMedia();
 	void closeSDL();
 
-	///////Getters
+	///////Getters	y setters
 	SDL_Renderer* getRender() const { return pRenderer; }
 	Textura* getTextura(Texturas_t et) const { return arrayTex[et]; }
 	void getMousePos(int & mpx, int & mpy) const;
@@ -70,8 +70,8 @@ public:
 	int getWidth() const;
 	int getVelX();
 	int getVelY();
-	void setEvent();
-	SDL_Event getEvent() const { return newE; }
+	void setEvent(SDL_Event e);							//Set evento
+	SDL_Event getEvent() const { return newE; }			//Get evento
 
 	///////Pila
 	void changeState(EstadoJuego* newSt);
