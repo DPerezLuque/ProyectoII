@@ -11,7 +11,7 @@ public:
 	void follow(int x, int y);
 	void shoot(int x, int y);
 
-private:
+protected:
 	int vX, vY;
 	int vel; //velocidad del monimiento
 	int contDis = 0;
