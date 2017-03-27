@@ -7,7 +7,7 @@
 #include "Textura.h"
 #include "EstadoJuego.h"
 
-
+#include "MovimientoJugador.h"
 
 
 class Juego
@@ -23,6 +23,8 @@ private:
 	std::vector<std::string> texturas;
 	std::vector<Textura*> arrayTex;
 
+	MovimientoJugador* movjugador;
+
 	int const SCREEN_WIDTH = 860;
 	int const SCREEN_HEIGHT = 480;
 	int x, y;
@@ -35,7 +37,7 @@ private:
 	//bool hazDash;
 	int dashX, dashY;
 
-	SDL_Event e, newE;
+	SDL_Event e;
 
 	
 	EstadoJuego* estado;
@@ -70,8 +72,7 @@ public:
 	int getWidth() const;
 	int getVelX();
 	int getVelY();
-	void setEvent(SDL_Event e);							//Set evento
-	SDL_Event getEvent() const { return newE; }			//Get evento
+	//void  getVelPlayer(int &velX, int &velY);			//Get evento
 
 	///////Pila
 	void changeState(EstadoJuego* newSt);

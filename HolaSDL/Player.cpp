@@ -12,6 +12,7 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	velX = 0;
 	velY = 0;
 
+
 }
 
 
@@ -21,10 +22,10 @@ Player::~Player()
 
 void Player::update() {
 
-	evento = juego->getEvent();
+	//movimientoYDash(evento);
 
-	movimientoYDash(evento);
-
+	rect.x += velX;
+	rect.y += velY;
 } 
 
 bool Player::onClick() {

@@ -17,8 +17,6 @@ public:
 	void movimientoYDash(SDL_Event evento);
 	
 protected:
-	int velX, velY;
-
 
 	SDL_Event evento;
 };
