@@ -1,9 +1,9 @@
 #include "MovimientoJugador.h"
 
-MovimientoJugador::MovimientoJugador(Juego * game)
+MovimientoJugador::MovimientoJugador()
 {
 	velX = velY = 0;
-	juego = game;
+	
 	
 }
 MovimientoJugador::~MovimientoJugador() 

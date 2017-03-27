@@ -89,24 +89,21 @@ void Juego::handle_events()
 			 
 		}
 		
-		
-		updateDirection();
 		if (e.type == SDL_KEYDOWN) {
+			setEvent();
 			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
 					pushState(new Pausa(this));
 			}
-		}
+		}i
 
 	}
 }
 //Toda la lógica de control de movimiento DEL JUGADOR está en este método. 
 	//Consiste en un switch que comprueba qué tecla se ha pulsado, y en funcion de la tecla se mueve a una dirección u otra.
 	//Cuando se pulsa el espacio, se efectua el dash 
-void Juego::updateDirection() {
-	
-
+void Juego::setEvent(){
+	newE = e;
 }
-
 //Método que comprueba si en la dirección en la que apuntamos el dash tiene colisiones
 bool Juego::compruebaDash(){
 

@@ -35,7 +35,7 @@ private:
 	//bool hazDash;
 	int dashX, dashY;
 
-	SDL_Event e;
+	SDL_Event e, newE;
 
 	
 	EstadoJuego* estado;
@@ -70,6 +70,8 @@ public:
 	int getWidth() const;
 	int getVelX();
 	int getVelY();
+	void setEvent();
+	SDL_Event getEvent() const { return newE; }
 
 	///////Pila
 	void changeState(EstadoJuego* newSt);

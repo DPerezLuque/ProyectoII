@@ -1,15 +1,16 @@
 #pragma once
 #include "SDL.h"
+//#include "Player.h"
 
 const int DASH = 30;
 const int VPLAYER = 10;
-class Juego;
 
 
-class MovimientoJugador 
+
+class MovimientoJugador //: public Player
 {
 public:
-	MovimientoJugador(Juego * game);
+	MovimientoJugador();
 	~MovimientoJugador();
 	void setMovimientoJugador (SDL_Event e);
 	void getMovimientoJugador(int & newVelX, int & newVelY);
@@ -18,6 +19,6 @@ public:
 	}
 private:
 	int velX, velY;
-	Juego * juego;
+	
 };
 

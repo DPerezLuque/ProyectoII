@@ -1,5 +1,6 @@
 #pragma once
 #include "Objeto.h"
+#include "MovimientoJugador.h"
 
 class Player : public Objeto 
 {
@@ -15,5 +16,8 @@ public:
 	
 protected:
 	int velX, velY;
+
+	MovimientoJugador* movJugador;
+	SDL_Event evento;
 };
 
