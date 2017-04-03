@@ -1,4 +1,5 @@
 #pragma once
+#include "SDL.h"
 
 class EstadoJuego
 {
@@ -12,5 +13,7 @@ public:
 	virtual void update() = 0;
 
 	virtual void onClick() = 0;
+
+	virtual void handleEvent(SDL_Event e) = 0;
 };
 

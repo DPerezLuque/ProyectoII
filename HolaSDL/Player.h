@@ -1,8 +1,7 @@
 #pragma once
 #include "Objeto.h"
 
-const int DASH = 30;
-const int VPLAYER = 10;
+enum PlayerMovement {QUIETO, ANDANDO, DASHEANDO};
 
 class Player : public Objeto 
 {

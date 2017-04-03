@@ -18,6 +18,7 @@ public:
 protected:
 
 	Juego* juego;
+	Play* play;
 	Textura* textura;
 	SDL_Renderer* pRenderer;
 

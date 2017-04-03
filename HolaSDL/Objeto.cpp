@@ -34,7 +34,8 @@ bool Objeto::dentro(int x, int y)const
 bool Objeto::onClick() //Devuelve true lo han pinchado, false si no lo han pinchado
 {
 	int x, y;
-	juego->getMousePos(x, y);
+	play->getMousePos(x, y);
+
 	if (dentro(x, y)) {
 		return true;
 	}

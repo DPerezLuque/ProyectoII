@@ -11,9 +11,12 @@ public:
 	Estado(Juego* ptr);
 	virtual ~Estado();
 
-	void draw();
-	void update();
-	void onClick();
+	virtual void draw();
+	virtual void update();
+	virtual void onClick();
+	virtual void handleEvent(SDL_Event e);
+
+	void getMousePos(int & mpx, int & mpy) const;
 
 protected:
 
@@ -23,6 +26,6 @@ protected:
 
 	std::vector<ObjetoJuego*> arrayObjetos;
 
-	int height, width;
+	int height, width, mouseX, mouseY;
 };
 

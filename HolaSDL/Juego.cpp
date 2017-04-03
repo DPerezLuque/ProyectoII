@@ -32,7 +32,7 @@ Juego::Juego()
 
 	changeState(new Play(this));
 	estado = topEstado(); //primer estado: MENU
-	dashX = dashY = 0;
+	//dashX = dashY = 0;
 
 	
 }
@@ -80,13 +80,15 @@ void Juego::handle_events()
 	if (SDL_PollEvent(&e)) {
 		
 		if (e.type == SDL_QUIT) setSalir();
-		else if (e.type == SDL_MOUSEBUTTONUP) {
+
+		else estado->handleEvent(e);
+			/*(e.type == SDL_MOUSEBUTTONUP) {
 			if (e.button.button == SDL_BUTTON_LEFT) {
 				//std::cout << "CLICK";
 				x = e.button.x;
 				y = e.button.y;
 				estado->onClick();
-				dashDisponible = false;
+				//dashDisponible = false;
 			}
 			 
 		}
@@ -104,7 +106,7 @@ void Juego::handle_events()
 		//lA BIBLIA DE CLEON V2
 		//topEstado().handleEvent(e);
 		*/
-		else if (e.type == SDL_KEYDOWN) {
+		/*else if (e.type == SDL_KEYDOWN) {
 			
 			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
 					pushState(new Pausa(this));
@@ -112,7 +114,7 @@ void Juego::handle_events()
 	
 		}
 		movjugador->setMovimientoJugador(e);
-	
+	*/
 	}
 }
 //Toda la lógica de control de movimiento DEL JUGADOR está en este método. 
@@ -122,10 +124,10 @@ void Juego::handle_events()
 
 
 //Método que comprueba si en la dirección en la que apuntamos el dash tiene colisiones
-bool Juego::compruebaDash(){
+/*bool Juego::compruebaDash(){
 
 	return true;
-}
+}*/
 
 void Juego::initSDL()
 {
@@ -136,7 +138,7 @@ void Juego::initSDL()
 	}
 	else {
 		//Create window: SDL_CreateWindow("SDL Hello World", posX, posY, width, height, SDL_WINDOW_SHOWN);
-		pWindow = SDL_CreateWindow("EL PUTO DASH", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		pWindow = SDL_CreateWindow("GS-14", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 		if (pWindow == nullptr) {
 			throw Error("La ventana no se ha podido crear. Te jodes.");
 			cout << "Window could not be created! \nSDL_Error: " << SDL_GetError() << '\n';
@@ -202,11 +204,11 @@ void Juego::closeSDL()
 }
 
 //////////////////// GETTERS /////////////////////
-void Juego::getMousePos(int & mpx, int & mpy) const
+/*void Juego::getMousePos(int & mpx, int & mpy) const
 {
 	mpx = x;
 	mpy = y;
-}
+}*/
 
 int Juego::getHeight() const
 {

@@ -29,13 +29,13 @@ private:
 	int const SCREEN_HEIGHT = 480;
 	int x, y;
 	bool exit;
-	int VPLAYER = 10;
+	//int VPLAYER = 10;
 	int mVelX, mVelY;
 	//TRUE = SE PUEDE HACER; FALSE = DASH NO DISPONIBLE
-	bool dashDisponible = true;
+	//bool dashDisponible = true;
 	//Dash
 	//bool hazDash;
-	int dashX, dashY;
+	//int dashX, dashY;
 
 	SDL_Event e;
 
@@ -56,7 +56,7 @@ public:
 
 	void handle_events();
 	void updateDirection();
-	bool compruebaDash();
+	//bool compruebaDash();
 	void initSDL();
 	void initMedia(); //carga las texturas en el vector de texturas (fuente y música)
 	
@@ -67,7 +67,7 @@ public:
 	///////Getters	y setters
 	SDL_Renderer* getRender() const { return pRenderer; }
 	Textura* getTextura(Texturas_t et) const { return arrayTex[et]; }
-	void getMousePos(int & mpx, int & mpy) const;
+	//void getMousePos(int & mpx, int & mpy) const;
 	int getHeight() const;
 	int getWidth() const;
 	int getVelX();

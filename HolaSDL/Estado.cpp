@@ -55,7 +55,7 @@ void Estado::update()
 
 
 void Estado::onClick() //VAMOS A CAMBIARLO O ELIMINARLO 
-{	
+{
 	int aux = arrayObjetos.size() - 1;
 	bool flag = false;
 	while (aux >= 0 && !flag) {
@@ -64,5 +64,23 @@ void Estado::onClick() //VAMOS A CAMBIARLO O ELIMINARLO
 		}
 		--aux;
 	}
-};
+}
+
+void Estado::handleEvent(SDL_Event e){
+
+	if (e.type == SDL_MOUSEBUTTONUP) {
+		if (e.button.button == SDL_BUTTON_LEFT) {
+
+			mouseX = e.button.x;
+			mouseY = e.button.y;
+			onClick();
+		}
+	}
+}
+
+void Estado::getMousePos(int & mpx, int & mpy) const
+{
+	mpx = mouseX;
+	mpy = mouseY;
+}
 

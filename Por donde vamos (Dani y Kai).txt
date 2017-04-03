@@ -1,0 +1,8 @@
+SEGUIMOS TENIENDO QUE ARREGLAR TODO ESTO PARA QUE FUNCIONE EL DASH
+
+- Definir los estados del jugador.
+- Comprobar cada estado del jugador mediante el enum en el handleEvent de Play.
+- Comprobar teclado según el estado en el que esté el jugador.
+- Definir que se mueve, hace dash o lo que sea (hecho ya pero hay que unirlo).
+
+- Una vez terminado unir con gestión de vida y colisiones para continuar esa parte.
