@@ -4,14 +4,20 @@
 #include <stack>
 
 #include "SDL.h"
+
 #include "Textura.h"
 #include "EstadoJuego.h"
 
+#include "Musica.h"
+#include "Efecto.h"
+
+#include "Texto.h"
+
+using namespace std;
 
 class Juego
 {
 public:
-	
 
 	SDL_Renderer* pRenderer;
 	SDL_Window* pWindow;
@@ -32,12 +38,12 @@ public:
 	EstadoJuego* estado;
 	
 	std::stack<EstadoJuego*> states;
-public:
+///////
 
 	Juego();
 	~Juego();
 
-	enum Texturas_t { TPlayer = 0, TBulletPlayer =  1, TBExit = 2, TBPlay = 3, TBMenu = 4, TBResume = 5 };
+	enum Texturas_t { TPlayer = 0, TBulletPlayer = 1, TBExit = 2, TBPlay = 3, TBMenu = 4, TBResume = 5, TEnemy = 6, TBulletEnemy = 7 };
 
 	void run();
 
@@ -52,6 +58,7 @@ public:
 
 	///////Getters
 	SDL_Renderer* getRender() const { return pRenderer; }
+	SDL_Rect getCamera(){ return camera; }
 	Textura* getTextura(Texturas_t et) const { return arrayTex[et]; }
 	void getMousePos(int & mpx, int & mpy) const;
 	int getHeight() const;
@@ -64,5 +71,24 @@ public:
 	void pushState(EstadoJuego* newState);
 	void popState();
 	EstadoJuego* topEstado();
+
+private:
+	//Level camera
+	SDL_Rect camera;
+	//Musica
+	enum MusicIds {	Come,};
+	vector <string> musicNames;//Vector para almacenar direcciones de canciones
+	Musica* cancion; //Auxiliar para llenar el vector de musica
+	vector <Musica*> musicFiles;
+
+	////
+	Efecto* effectFile;
+
+	Texto textoDePrueba;
+	Textura* cosaDePrueba;
+	SDL_Color Black;
+	SDL_Rect rectamgulon;
+	
+
 };
 

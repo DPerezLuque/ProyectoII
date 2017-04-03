@@ -3,7 +3,8 @@
 #include "GameOver.h"
 #include "Player.h"
 #include "BalaPlayer.h"
-
+#include "BalaEnemigo.h"
+#include "enemy.h"
 using namespace std;
 
 
@@ -21,7 +22,7 @@ Play::~Play() {}
 void Play::init() 
 {
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
-	
+	arrayObjetos.push_back(new enemy(juego, 0, 0));
 }
 
 void Play::update() {
@@ -55,4 +56,20 @@ void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 
 	//Disparo
 	arrayObjetos.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
+}
+
+void Play::posPlayer(int& x, int& y) {
+	static_cast <Player*>(arrayObjetos[0])->getPos(x, y);
+}
+
+void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int velDis) {
+							//desde donde dispara //hacia donde dispara     //velocidad disparo
+
+	int distance = sqrt((targetX - posEx)*(targetX - posEx) + (targetY - posEy)*(targetY - posEy));
+
+	float vX = velDis * (targetX - posEx) / distance + 0.01; //Arreglad esto para que no se haga 0
+	float vY = velDis * (targetY - posEy) / distance + 0.01;
+
+	//Disparo
+	arrayObjetos.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));
 }

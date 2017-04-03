@@ -1,4 +1,5 @@
 #include "Estado.h"
+#include "Interfaz.h"
 
 Estado::Estado(Juego* ptr)
 {
@@ -7,6 +8,7 @@ Estado::Estado(Juego* ptr)
 	pRenderer = juego->getRender();
 	height = juego->getHeight();
 	width = juego->getWidth();
+	camera_ = juego->getCamera();
 }
 
 
@@ -43,6 +45,13 @@ void Estado::draw()
 		//Muestra la ventana
 	}
 
+	//Dibuja interfaz, por encima de los objetos
+	
+	for (int i = 0; i < elemInterfaz.size(); i++) {
+		elemInterfaz[i] = dynamic_cast<Interfaz*>(elemInterfaz[i]);		
+		elemInterfaz[i]->draw();
+	}
+	
 	SDL_RenderPresent(pRenderer);
 };
 
@@ -51,8 +60,13 @@ void Estado::update()
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
 		arrayObjetos[aux]->update();
 	}
+		
+	for (int i = 0; i < elemInterfaz.size(); i++) {
+		elemInterfaz[i] = dynamic_cast<Interfaz*>(elemInterfaz[i]);
+		//elemInterfaz[i]->update(camera_, 8); //AIUDA CON ESTO
+	}
+	
 }
-
 
 void Estado::onClick() //VAMOS A CAMBIARLO O ELIMINARLO 
 {	

@@ -9,7 +9,6 @@ Objeto::Objeto(Juego* ptr, int px, int py)
 	//Position
 	rect.x = px;
 	rect.y = py;
-
 }
 
 

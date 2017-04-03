@@ -49,3 +49,16 @@ void Textura::drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_R
 	SDL_RenderCopy(pRenderer, pTextura, &rectaux, &rect); // (render, textura, rect de lo que quieres dibujar, rect destino)
 }
 
+bool Textura::loadFromText(SDL_Renderer* renderer, std::string text,
+	const Texto& font, const SDL_Color color) {
+	SDL_Surface* textSurface = font.renderText(text, color);
+	if (textSurface != nullptr) {	
+		pTextura = SDL_CreateTextureFromSurface(renderer, textSurface);
+		if (pTextura != nullptr) {
+			ancho = textSurface->w;
+			alto = textSurface->h;
+		}
+		SDL_FreeSurface(textSurface);
+	}
+	return pTextura != nullptr;
+}

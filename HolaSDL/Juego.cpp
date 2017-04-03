@@ -14,15 +14,24 @@
 #include "Error.h"
 #include "MapEditor.h"
 
+#include <SDL_mixer.h>
+#include <SDL_ttf.h>
+
 using namespace std;
 
 //The level tiles
 Tilemap::Tile* tileSet[TOTAL_TILES];
-//Level camera
-SDL_Rect camera = { 0, 0, 860, 480 };
+
 
 Juego::Juego()
 {
+	//Música
+	Mix_Init(27);
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	Mix_Volume(1, MIX_MAX_VOLUME / 2);
+	//Texto
+	TTF_Init();
+
 	srand(SDL_GetTicks());
 
 	pWindow = nullptr;
@@ -41,6 +50,7 @@ Juego::Juego()
 	}
 	else 
 	{
+		camera = { 0, 0, 860, 480 };
 		changeState(new Play(this));
 		estado = topEstado(); //primer estado: MENU
 	}
@@ -50,13 +60,15 @@ Juego::~Juego()
 {
 	estado = nullptr;
 	freeMedia();
+	Mix_Quit(); //Musica
+	TTF_Quit(); //Texto
 	closeSDL();
 }
 
 
 void Juego::run()
 {
-	Uint32 MSxUpdate = 50;
+	Uint32 MSxUpdate = 25;
 	cout << "PLAY \n";
 	Uint32 lastUpdate = SDL_GetTicks();
 
@@ -172,15 +184,43 @@ bool Juego::initSDL()
 
 bool Juego::initMedia()
 {
-	bool success = true;
+	bool success = true;	
+
+	//musicFiles[0] = new Musica("..\\Sonidos\\Musica\\Come.ogg");
+	//musicFiles[0]->load("..\\Sonidos\\Musica\\Come.Mp3");
+	//musicFiles[0]->play();
+
+	//effectFile = new Efecto("..\\Sonidos\\Efectos\\Come.wav");
+	//effectFile->play();
+
+	musicNames.push_back("..\\Sonidos\\Musica\\Come.mp3");
+	//musicNames.push_back("..\\Sonidos\\Efectos\\Come.wav");
+
+	for (int j = 0; j < musicNames.size(); ++j) {
+		cancion = new Musica;
+		cancion->load(musicNames[j]);		
+		musicFiles.push_back(cancion);		
+	}
+
+	musicFiles[Come]->play();
+
+	textoDePrueba.load("..\\Fuentes\\ARIAL.ttf", 20);
+	cosaDePrueba = new Textura();
+	Black = { 0, 0, 0 };
+	cosaDePrueba->loadFromText(pRenderer, "Hola que tal", textoDePrueba,Black);
+	rectamgulon = {15, 15, 300, 300};
+	cosaDePrueba->draw(pRenderer, rectamgulon);
 
 	texturas.push_back("..\\bmps\\personaje.png");
 	texturas.push_back("..\\bmps\\bala.png");
 	texturas.push_back("..\\bmps\\menu_salir.png");
 	texturas.push_back("..\\bmps\\menu_play.png");
+
 	texturas.push_back("..\\bmps\\menu_menu.png");
 	texturas.push_back("..\\bmps\\menu_resume.png");
-	
+	texturas.push_back("..\\bmps\\enemy.png");
+	texturas.push_back("..\\bmps\\balaEnemigo.png");
+
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
