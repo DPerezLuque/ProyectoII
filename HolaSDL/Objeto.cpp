@@ -43,7 +43,7 @@ bool Objeto::onClick()
 }
 
 SDL_Rect Objeto::getRect(){
-	return rect;
+	return rectCollision;
 }
 /*
 void Objeto::onCollision(){

@@ -42,8 +42,10 @@ void Play::update() {
 
 	for (int j = 0; j < arrayObjetos.size(); ++j){
 	}
+	
 	//COLISIONES CON ENTORNO
 	//***********
+	//EN PLAYER.CPP
 
 	//UPDATE
 	for (int i = 0; i < arrayObjetos.size(); ++i) {

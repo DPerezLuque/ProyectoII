@@ -12,6 +12,11 @@ Bala::Bala(Juego* ptr, int px, int py, int vX, int vY) : Objeto(ptr, px, py)
 	rect.x = px;
 	rect.y = py;
 
+	rectCollision.w = 32;
+	rectCollision.h = 32;
+	rectCollision.x = rect.x + rect.w / 4;
+	rectCollision.y = rect.y + rect.h / 4;
+
 	velX = vX;
 	velY = vY;
 

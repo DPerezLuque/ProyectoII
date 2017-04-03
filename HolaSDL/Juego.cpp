@@ -1,3 +1,5 @@
+#pragma once
+
 #include "SDL.h"
 #include "Juego.h"
 
@@ -12,8 +14,8 @@
 
 #include <exception>
 #include "Error.h"
-#include "MapEditor.h"
 
+#include "MapEditor.h"
 using namespace std;
 
 //The level tiles
@@ -259,6 +261,7 @@ void Juego::handle_events()
 			// else if(...)    
 		}
 		updateDirection();
+		
 		if (e.type == SDL_KEYUP) {
 			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
 				pushState(new Pausa(this));
@@ -413,7 +416,76 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		return false;
 	}
 
-	printf("Touch!\n");
+	printf("Enemy touched!\n");
+
+	//If none of the sides from A are outside B
+	return true;
+}
+
+bool Juego::touchesWall(ObjetoJuego * a)
+{
+	//Go through the tiles
+	for (int i = 0; i < TOTAL_TILES; ++i)
+	{
+		//If the tile is a wall type tile
+		//(tileSet[i]->getType() >= TILE_CENTER) && (tileSet[i]->getType() <= TILE_TOPLEFT)) <<-- EXTRAÍDO DE LAZYFOO
+		if (tileSet[i]->getType() == TILE_TOPLEFT || tileSet[i]->getType() == TILE_TOP ||
+			tileSet[i]->getType() == TILE_LEFT || tileSet[i]->getType() == TILE_DOWN ||
+			tileSet[i]->getType() == TILE_RIGHT || tileSet[i]->getType() == TILE_DOWNRIGHT ||
+			tileSet[i]->getType() == TILE_DOWNLEFT)
+		{
+			//If the collision box touches the wall tile
+			if (checkWallCollisions(a, tileSet[i]->getBox()))
+			{
+				return true;
+			}
+		}
+	}
+
+	//If no wall tiles were touched
+	return false;
+}
+
+bool Juego::checkWallCollisions(ObjetoJuego * a, SDL_Rect b)
+{
+	//The sides of the rectangles
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+
+	//Calculate the sides of rect A
+	leftA = a->getRect().x;
+	rightA = a->getRect().x + a->getRect().w;
+	topA = a->getRect().y;
+	bottomA = a->getRect().y + a->getRect().h;
+
+	//Calculate the sides of rect B
+	leftB = b.x;
+	rightB = b.x + b.w;
+	topB = b.y;
+	bottomB = b.y + b.h;
+
+	//If any of the sides from A are outside of B
+	if (bottomA <= topB)
+	{
+		return false;
+	}
+
+	if (topA >= bottomB)
+	{
+		return false;
+	}
+
+	if (rightA <= leftB)
+	{
+		return false;
+	}
+
+	if (leftA >= rightB)
+	{
+		return false;
+	}
 
 	//If none of the sides from A are outside B
 	return true;
