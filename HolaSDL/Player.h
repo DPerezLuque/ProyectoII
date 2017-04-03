@@ -10,6 +10,9 @@ public:
 	void update();
 	//void move();
 	bool onClick();
+
+	void onCollision();
+
 private:
 	int velX, velY;
 };

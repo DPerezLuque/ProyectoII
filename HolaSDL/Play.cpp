@@ -3,15 +3,14 @@
 #include "GameOver.h"
 #include "Player.h"
 #include "BalaPlayer.h"
+#include <iostream>
 
 using namespace std;
 
 
 Play::Play(Juego* ptr) : Estado(ptr)
 {
-	//arrayObjetos.resize(1);
 	init();
-
 }
 
 Play::~Play() {}
@@ -21,22 +20,43 @@ Play::~Play() {}
 void Play::init() 
 {
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
-	
+	arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 }
 
 void Play::update() {
 	
+	//El update de cada objeto debe comprobar las colisiones con el entorno
+	
+	//COLISIONES CON OBJETOS
+	//PERSONAJE
+	for (int i = 1; i < arrayObjetos.size(); ++i){
+		if (!arrayObjetos[0]->isDead() && juego->checkCollision(arrayObjetos[0], arrayObjetos[i])){
+			arrayObjetos[0]->onCollision();
+		}
+	}
+	//LIMPIEZA DE VECTOR DE OBJETOS
+	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
+		if (arrayObjetos[aux]->isDead())
+			arrayObjetos.erase(arrayObjetos.begin() + aux);
+	}
+
+	for (int j = 0; j < arrayObjetos.size(); ++j){
+	}
+	//COLISIONES CON ENTORNO
+	//***********
+
+	//UPDATE
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
-		arrayObjetos[i]->update();
+		if (!arrayObjetos[i]->isDead())
+			arrayObjetos[i]->update();
 	}
 }
 
 void Play::onClick() {
 
-	//int i = arrayObjetos.size() - 1;
-
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
-		arrayObjetos[i]->onClick();
+		if (!arrayObjetos[i]->isDead())
+			arrayObjetos[i]->onClick();
 	}
 
 }

@@ -1,9 +1,30 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (HolaSDL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Textura.cpp
+c:\users\skullatt\desktop\proyectoii\holasdl\textura.cpp(31): warning C4150: deletion of pointer to incomplete type 'SDL_Texture'; no destructor called
+  c:\users\skullatt\desktop\proyectoii\sdl2-2.0.4\include\sdl_render.h(128): note: see declaration of 'SDL_Texture'
+  Play.cpp
+c:\users\skullatt\desktop\proyectoii\holasdl\play.cpp(32): warning C4018: '<': signed/unsigned mismatch
+c:\users\skullatt\desktop\proyectoii\holasdl\play.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\skullatt\desktop\proyectoii\holasdl\play.cpp(43): warning C4018: '<': signed/unsigned mismatch
+c:\users\skullatt\desktop\proyectoii\holasdl\play.cpp(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\skullatt\desktop\proyectoii\holasdl\play.cpp(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\skullatt\desktop\proyectoii\holasdl\play.cpp(71): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Player.cpp
+  Pausa.cpp
+  Objeto.cpp
+  MenuPrincipal.cpp
+  main.cpp
   Juego.cpp
-c:\users\skullatt\desktop\beta_0.3_p2\holasdl\juego.cpp(186): warning C4018: '<': signed/unsigned mismatch
+c:\users\skullatt\desktop\proyectoii\holasdl\juego.cpp(188): warning C4018: '<': signed/unsigned mismatch
+  GameOver.cpp
   Estado.cpp
-c:\users\skullatt\desktop\beta_0.3_p2\holasdl\estado.cpp(41): warning C4018: '<': signed/unsigned mismatch
-c:\users\skullatt\desktop\beta_0.3_p2\holasdl\estado.cpp(51): warning C4018: '<': signed/unsigned mismatch
+c:\users\skullatt\desktop\proyectoii\holasdl\estado.cpp(41): warning C4018: '<': signed/unsigned mismatch
+c:\users\skullatt\desktop\proyectoii\holasdl\estado.cpp(52): warning C4018: '<': signed/unsigned mismatch
+  Error.cpp
+  Boton.cpp
+  BalaPlayer.cpp
+  Bala.cpp
   Generating Code...
-  HolaSDL.vcxproj -> C:\Users\Skullatt\Desktop\BETA_0.3_P2\bin\Practica1Debug.exe
-  HolaSDL.vcxproj -> C:\Users\Skullatt\Desktop\BETA_0.3_P2\bin\Practica1Debug.pdb (Full PDB)
+  LINK : C:\Users\Skullatt\Desktop\ProyectoII\bin\Practica1Debug.exe not found or not built by the last incremental link; performing full link
+  HolaSDL.vcxproj -> C:\Users\Skullatt\Desktop\ProyectoII\bin\Practica1Debug.exe
+  HolaSDL.vcxproj -> C:\Users\Skullatt\Desktop\ProyectoII\bin\Practica1Debug.pdb (Full PDB)

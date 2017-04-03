@@ -14,7 +14,7 @@ GameOver::~GameOver() {}
 
 void GameOver::init()
 {
-	arrayObjetos[0] = new Boton(juego, width / 2 - 80, 300, menu, Juego::TBMenu);
+	//arrayObjetos[0] = new Boton(juego, width / 2 - 80, 300, menu, Juego::TBMenu);
 }
 
 void GameOver::menu(Juego * juego)

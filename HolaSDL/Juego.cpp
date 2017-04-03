@@ -21,6 +21,7 @@ Tilemap::Tile* tileSet[TOTAL_TILES];
 //Level camera
 SDL_Rect camera = { 0, 0, 860, 480 };
 
+
 Juego::Juego()
 {
 	srand(SDL_GetTicks());
@@ -113,6 +114,7 @@ tileSet[i]->render(camera);
 
 //Update screen
 SDL_RenderPresent(pRenderer);
+
 */
 
 bool Juego::initSDL()
@@ -348,3 +350,71 @@ void Juego::popState()
 }
 
 EstadoJuego* Juego::topEstado() { return states.top();  }
+
+
+////////////////// COLISIONES ///////////////////////////
+bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
+{
+	//The sides of the rectangles
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+	
+	bool goodToGo = true;
+
+	switch (a->getType()) {
+	case PJ:
+		if (b->getType() == PJ)
+			goodToGo = false;
+		break;
+	case ENEMY:
+		if (b->getType() == PJ)
+			goodToGo = true;
+		break;
+	default:
+		goodToGo = true;
+		break;
+	}
+
+	if (!goodToGo)
+		return false;
+
+	//Calculate the sides of rect A
+	leftA = a->getRect().x;
+	rightA = a->getRect().x + a->getRect().w;
+	topA = a->getRect().y;
+	bottomA = a->getRect().y + a->getRect().h;
+
+	//Calculate the sides of rect B
+	leftB = b->getRect().x;
+	rightB = b->getRect().x + b->getRect().w;
+	topB = b->getRect().y;
+	bottomB = b->getRect().y + b->getRect().h;
+
+	//If any of the sides from A are outside of B
+	if (bottomA <= topB)
+	{
+		return false;
+	}
+
+	if (topA >= bottomB)
+	{
+		return false;
+	}
+
+	if (rightA <= leftB)
+	{
+		return false;
+	}
+
+	if (leftA >= rightB)
+	{
+		return false;
+	}
+
+	printf("Touch!\n");
+
+	//If none of the sides from A are outside B
+	return true;
+}

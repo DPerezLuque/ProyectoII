@@ -6,7 +6,7 @@
 #include "SDL.h"
 #include "Textura.h"
 #include "EstadoJuego.h"
-
+#include "ObjetoJuego.h"
 
 class Juego
 {
@@ -30,6 +30,8 @@ public:
 	SDL_Event e;
 
 	EstadoJuego* estado;
+	//***
+	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	
 	std::stack<EstadoJuego*> states;
 public:

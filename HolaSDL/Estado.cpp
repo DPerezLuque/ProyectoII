@@ -39,7 +39,8 @@ void Estado::draw()
 
 	//Dibuja los objetos
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
-		arrayObjetos[aux]->draw();
+		if (!arrayObjetos[aux]->isDead())
+			arrayObjetos[aux]->draw();
 		//Muestra la ventana
 	}
 
@@ -49,20 +50,21 @@ void Estado::draw()
 void Estado::update()
 {
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
-		arrayObjetos[aux]->update();
+		if (!arrayObjetos[aux]->isDead())
+			arrayObjetos[aux]->update();
 	}
 }
 
 
 void Estado::onClick() //VAMOS A CAMBIARLO O ELIMINARLO 
 {	
-	int aux = arrayObjetos.size() - 1;
+	/*int aux = arrayObjetos.size() - 1;
 	bool flag = false;
 	while (aux >= 0 && !flag) {
 		if (arrayObjetos[aux]->onClick()) {
 			flag = true;
 		}
 		--aux;
-	}
+	}*/
 };
 
