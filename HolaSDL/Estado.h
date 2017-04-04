@@ -15,13 +15,13 @@ public:
 	void update();
 	void onClick();
 
+	std::vector<ObjetoJuego*> arrayObjetos;
 protected:
 
 	Juego* juego;
 	SDL_Renderer* pRenderer;
 	Textura* textura;
 
-	std::vector<ObjetoJuego*> arrayObjetos;
 
 	int height, width;
 };

@@ -7,4 +7,5 @@ public:
 	~BalaPlayer();
 
 	void update();
+
 };

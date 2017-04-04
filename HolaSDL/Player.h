@@ -9,7 +9,12 @@ public:
 
 	void update();
 	bool onClick();
+<<<<<<< HEAD
 	void getPos(int& x, int& y);
+=======
+
+	void onCollision();
+>>>>>>> origin/collisions
 
 private:
 	int velX, velY;

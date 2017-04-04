@@ -6,13 +6,12 @@
 #include "SDL.h"
 #include "Textura.h"
 #include "EstadoJuego.h"
-
+#include "ObjetoJuego.h"
 
 class Juego
 {
 public:
 	
-
 	SDL_Renderer* pRenderer;
 	SDL_Window* pWindow;
 	SDL_Color pcolor;
@@ -30,6 +29,10 @@ public:
 	SDL_Event e;
 
 	EstadoJuego* estado;
+
+	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
+	bool touchesWall(ObjetoJuego * a);
+	bool checkWallCollisions(ObjetoJuego * a, SDL_Rect b);
 	
 	std::stack<EstadoJuego*> states;
 public:

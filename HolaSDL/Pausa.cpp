@@ -14,8 +14,8 @@ Pausa::~Pausa()
 }
 
 void Pausa::init() {
-	arrayObjetos[0] = new Boton(juego, width / 2 - 80, 200, resume, Juego::TBResume);
-	arrayObjetos[1] = new Boton(juego, width / 2 - 80, 300, menu, Juego::TBMenu);
+	//arrayObjetos[0] = new Boton(juego, width / 2 - 80, 200, resume, Juego::TBResume);
+	//arrayObjetos[1] = new Boton(juego, width / 2 - 80, 300, menu, Juego::TBMenu);
 
 }
 
