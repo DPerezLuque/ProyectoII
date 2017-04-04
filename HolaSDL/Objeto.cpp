@@ -45,7 +45,7 @@ bool Objeto::onClick()
 SDL_Rect Objeto::getRect(){
 	return rectCollision;
 }
-/*
+
 void Objeto::onCollision(){
 //	printf("lalal");
-}*/
+}

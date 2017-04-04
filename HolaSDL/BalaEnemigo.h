@@ -1,5 +1,7 @@
 #pragma once
 #include "Bala.h"
+
+
 class BalaEnemigo : public Bala
 {
 public:

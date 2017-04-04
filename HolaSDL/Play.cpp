@@ -3,14 +3,11 @@
 #include "GameOver.h"
 #include "Player.h"
 #include "BalaPlayer.h"
-<<<<<<< HEAD
 #include "BalaEnemigo.h"
 #include "enemy.h"
 #include "BossRino.h"
-=======
 #include <iostream>
 
->>>>>>> origin/collisions
 using namespace std;
 
 
@@ -26,11 +23,9 @@ Play::~Play() {}
 void Play::init() 
 {
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
-<<<<<<< HEAD
 	arrayObjetos.push_back(new BossRino(juego, 0, 0));
-=======
 	arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
->>>>>>> origin/collisions
+
 }
 
 void Play::update() {

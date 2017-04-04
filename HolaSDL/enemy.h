@@ -10,7 +10,7 @@ public:
 	void update();
 	void follow(int x, int y);
 	void shoot(int x, int y);
-
+	void onCollision() {};
 protected:
 	int vX, vY;
 	int vel; //velocidad del monimiento
