@@ -14,43 +14,67 @@ and may not be redistributed without written permission.*/
 //const int SCREEN_HEIGHT = 480;
 
 //The dimensions of the level
-const int LEVEL_WIDTH = 640; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT
-const int LEVEL_HEIGHT = 480; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT
+const int LEVEL_WIDTH = 1536; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT  24*10
+const int LEVEL_HEIGHT = 640; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT
 
 
-							  //Tile constants (INDIVIDUAL)
-const int TILE_WIDTH = 32;
-const int TILE_HEIGHT = 32;
-const int TOTAL_TILES = 300;	// FILAS * COLUMNAS DEL TXT
-const int TOTAL_TILE_SPRITES = 9; //TIPOS DISTINTOS DE SPRITES
-
+//Tile constants (INDIVIDUAL)
+const int TILE_WIDTH = 64;
+const int TILE_HEIGHT = 64;
+const int TOTAL_TILES = 240;       // FILAS * COLUMNAS DEL TXT
+const int TOTAL_TILE_SPRITES = 50; //TIPOS DISTINTOS DE SPRITES
+//DECLARACION DE TILES
 const int TILE_TOPLEFT = 0;
-const int TILE_TOP = 1;
+const int TILE_TOPMIDDLE = 1;
 const int TILE_TOPRIGHT = 2;
 const int TILE_LEFT = 3;
-const int TILE_CENTER = 4;
-const int TILE_RIGHT = 5;
-const int TILE_DOWNLEFT = 6;
-const int TILE_DOWN = 7;
-const int TILE_DOWNRIGHT = 8;
+const int TILE_RIGHT = 4;
+const int TILE_DOWNLEFT = 5;
+const int TILE_DOWNMIDDLE = 6;
+const int TILE_DOWNRIGHT = 7;
+const int TILE_LEFTMIDDLE = 8;
+const int TILE_RIGHTMIDDLE = 9;
+const int TILE_DOORIGHT = 10;
+const int TILE_DOORLEFT = 11;
+const int TILE_DOORTOP = 12;
+const int TILE_LEFTDOWN = 13;
+const int TILE_RIGHTDOWN = 14;
+const int TILE_DOORDOWN = 15;
+const int TILE_FRAGTOP = 16;
+const int TILE_FRAGRIGHT = 17;
+const int TILE_FRAGDOWN = 18;
+const int TILE_FRAGLEFT = 19;
+const int TILE_FLOORCRACKED0 = 20;
+const int TILE_FLOORWSHADOW = 21;
+const int TILE_BLOCKTOP = 22;
+const int TILE_BLOCKRIGHT = 23;
+const int TILE_BLOCKDOWN = 24;
+const int TILE_BLOCKALTRIGHT = 25;
+const int TILE_GIROTOPLEFT = 26;
+const int TILE_GIROTOPRIGHT = 27;
+const int TILE_FLOORCRACKED1 = 28;
+const int TILE_FLOORCRACKED2 = 29;
+const int TILE_BLOCKLEFT = 30;
+const int TILE_BLOCKALTTOP = 31;
+const int TILE_BLOCKALTLEFT = 32;
+const int TILE_BLOCKALTDOWN = 33;
+const int TILE_GIRODOWNLEFT = 34;
+const int TILE_GIRODOWNRIGHT = 35;
+const int TILE_FLOORCRACKED3 = 36;
+const int TILE_FLOOR = 37;
+const int TILE_CORNERFRAGTOPLEFT = 38;
+const int TILE_CORNERFRAGTOPRIGHT = 39;
+const int TILE_CORNERTOPLEFT = 40;
+const int TILE_CORNERTOPRIGHT = 41;
+const int TILE_GIROFRAGTOPLEFT = 42;
+const int TILE_GIROFRAGTOPRIGHT = 43;
+const int TILE_CORNERFRAGDOWNLEFT = 44;
+const int TILE_CORNERFRAGDOWNRIGHT = 45;
+const int TILE_CORNERDOWNLEFT = 46;
+const int TILE_CORNERDOWNRIGHT = 47;
+const int TILE_GIROFRAGDOWNLEFT = 48;
+const int TILE_GIROFRAGDOWNRIGHT = 49;
 
-/*
-const int TILE_RED = 0;
-const int TILE_GREEN = 1;
-const int TILE_BLUE = 2;
-const int TILE_CENTER = 3;
-const int TILE_TOP = 4;
-const int TILE_TOPRIGHT = 5;
-const int TILE_RIGHT = 6;
-const int TILE_BOTTOMRIGHT = 7;
-const int TILE_BOTTOM = 8;
-const int TILE_BOTTOMLEFT = 9;
-const int TILE_LEFT = 10;
-const int TILE_TOPLEFT = 11;
-//const int TILE_BLANK1 = 12;
-//const int TILE_BLANK2 = 13;
-//const int TILE_BLANK3 = 14;
-*/
 class Tilemap {
 public:
 
@@ -459,7 +483,7 @@ bool setTiles(Tilemap::Tile* tiles[])
 	int x = 0, y = 0;
 
 	//Open the map
-	std::ifstream map("..\\bmps\\lazy.map");
+	std::ifstream map("..\\bmps\\lazy2.map");
 
 	//If the map couldn't be loaded
 	if (false) //map == NULL )
@@ -518,17 +542,116 @@ bool setTiles(Tilemap::Tile* tiles[])
 		//Clip the sprite sheet
 		if (tilesLoaded)
 		{
+			gTileClips[TILE_FRAGTOP].x = 128;
+			gTileClips[TILE_FRAGTOP].y = 192;
+			gTileClips[TILE_FRAGTOP].w = TILE_WIDTH;
+			gTileClips[TILE_FRAGTOP].h = TILE_HEIGHT;
+
+			gTileClips[TILE_FRAGRIGHT].x = 128;
+			gTileClips[TILE_FRAGRIGHT].y = 192;
+			gTileClips[TILE_FRAGRIGHT].w = TILE_WIDTH;
+			gTileClips[TILE_FRAGRIGHT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_FRAGDOWN].x = 192;
+			gTileClips[TILE_FRAGDOWN].y = 192;
+			gTileClips[TILE_FRAGDOWN].w = TILE_WIDTH;
+			gTileClips[TILE_FRAGDOWN].h = TILE_HEIGHT;
+			
+			gTileClips[TILE_FRAGLEFT].x = 256;
+			gTileClips[TILE_FRAGLEFT].y = 192;
+			gTileClips[TILE_FRAGLEFT].w = TILE_WIDTH;
+			gTileClips[TILE_FRAGLEFT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_FLOORCRACKED0].x = 0;
+			gTileClips[TILE_FLOORCRACKED0].y = 192;
+			gTileClips[TILE_FLOORCRACKED0].w = TILE_WIDTH;
+			gTileClips[TILE_FLOORCRACKED0].h = TILE_HEIGHT;
+
+			gTileClips[TILE_FLOORWSHADOW].x = 64;
+			gTileClips[TILE_FLOORWSHADOW].y = 256;
+			gTileClips[TILE_FLOORWSHADOW].w = TILE_WIDTH;
+			gTileClips[TILE_FLOORWSHADOW].h = TILE_HEIGHT;
+
+			gTileClips[TILE_FLOORCRACKED1].x = 0;
+			gTileClips[TILE_FLOORCRACKED1].y = 320;
+			gTileClips[TILE_FLOORCRACKED1].w = TILE_WIDTH;
+			gTileClips[TILE_FLOORCRACKED1].h = TILE_HEIGHT;
+
+			gTileClips[TILE_FLOORCRACKED2].x = 64;
+			gTileClips[TILE_FLOORCRACKED2].y = 320;
+			gTileClips[TILE_FLOORCRACKED2].w = TILE_WIDTH;
+			gTileClips[TILE_FLOORCRACKED2].h = TILE_HEIGHT;
+
+			gTileClips[TILE_FLOORCRACKED3].x = 0;
+			gTileClips[TILE_FLOORCRACKED3].y = 384;
+			gTileClips[TILE_FLOORCRACKED3].w = TILE_WIDTH;
+			gTileClips[TILE_FLOORCRACKED3].h = TILE_HEIGHT;
+
+			gTileClips[TILE_FLOOR].x = 64;
+			gTileClips[TILE_FLOOR].y = 384;
+			gTileClips[TILE_FLOOR].w = TILE_WIDTH;
+			gTileClips[TILE_FLOOR].h = TILE_HEIGHT;
+
+			gTileClips[TILE_CORNERFRAGTOPLEFT].x = 128;
+			gTileClips[TILE_CORNERFRAGTOPLEFT].y = 384;
+			gTileClips[TILE_CORNERFRAGTOPLEFT].w = TILE_WIDTH;
+			gTileClips[TILE_CORNERFRAGTOPLEFT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_CORNERFRAGTOPRIGHT].x = 192;
+			gTileClips[TILE_CORNERFRAGTOPRIGHT].y = 384;
+			gTileClips[TILE_CORNERFRAGTOPRIGHT].w = TILE_WIDTH;
+			gTileClips[TILE_CORNERFRAGTOPRIGHT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_GIROFRAGTOPLEFT].x = 320;
+			gTileClips[TILE_GIROFRAGTOPLEFT].y = 384;
+			gTileClips[TILE_GIROFRAGTOPLEFT].w = TILE_WIDTH;
+			gTileClips[TILE_GIROFRAGTOPLEFT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_GIROFRAGTOPLEFT].x = 384;
+			gTileClips[TILE_GIROFRAGTOPLEFT].y = 384;
+			gTileClips[TILE_GIROFRAGTOPLEFT].w = TILE_WIDTH;
+			gTileClips[TILE_GIROFRAGTOPLEFT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_CORNERFRAGDOWNLEFT].x = 128;
+			gTileClips[TILE_CORNERFRAGDOWNLEFT].y = 448;
+			gTileClips[TILE_CORNERFRAGDOWNLEFT].w = TILE_WIDTH;
+			gTileClips[TILE_CORNERFRAGDOWNLEFT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_CORNERFRAGDOWNRIGHT].x = 192;
+			gTileClips[TILE_CORNERFRAGDOWNRIGHT].y = 448;
+			gTileClips[TILE_CORNERFRAGDOWNRIGHT].w = TILE_WIDTH;
+			gTileClips[TILE_CORNERFRAGDOWNRIGHT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_GIROFRAGDOWNLEFT].x = 320;
+			gTileClips[TILE_GIROFRAGDOWNLEFT].y = 448;
+			gTileClips[TILE_GIROFRAGDOWNLEFT].w = TILE_WIDTH;
+			gTileClips[TILE_GIROFRAGDOWNLEFT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_GIROFRAGDOWNRIGHT].x = 384;
+			gTileClips[TILE_GIROFRAGDOWNRIGHT].y = 448;
+			gTileClips[TILE_GIROFRAGDOWNRIGHT].w = TILE_WIDTH;
+			gTileClips[TILE_GIROFRAGDOWNRIGHT].h = TILE_HEIGHT;
+
+			
+
+
+
+
+
+
+			
+			/*
 			gTileClips[TILE_TOPLEFT].x = 0;
 			gTileClips[TILE_TOPLEFT].y = 0;
 			gTileClips[TILE_TOPLEFT].w = TILE_WIDTH;
 			gTileClips[TILE_TOPLEFT].h = TILE_HEIGHT;
 
-			gTileClips[TILE_TOP].x = 32;
-			gTileClips[TILE_TOP].y = 0;
-			gTileClips[TILE_TOP].w = TILE_WIDTH;
-			gTileClips[TILE_TOP].h = TILE_HEIGHT;
+			gTileClips[TILE_TOPMIDDLE].x = 64;
+			gTileClips[TILE_TOPMIDDLE].y = 0;
+			gTileClips[TILE_TOPMIDDLE].w = TILE_WIDTH;
+			gTileClips[TILE_TOPMIDDLE].h = TILE_HEIGHT;
 
-			gTileClips[TILE_TOPRIGHT].x = 64;
+			gTileClips[TILE_TOPRIGHT].x = 128;
 			gTileClips[TILE_TOPRIGHT].y = 0;
 			gTileClips[TILE_TOPRIGHT].w = TILE_WIDTH;
 			gTileClips[TILE_TOPRIGHT].h = TILE_HEIGHT;
