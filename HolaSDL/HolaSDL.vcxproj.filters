@@ -69,9 +69,6 @@
     <ClCompile Include="BalaPlayer.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="MovimientoJugador.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Textura.h">
@@ -118,9 +115,6 @@
     </ClInclude>
     <ClInclude Include="BalaPlayer.h">
       <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="MovimientoJugador.h">
-      <Filter>Archivos de encabezado\Estados</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,8 +7,6 @@
 #include "Textura.h"
 #include "EstadoJuego.h"
 
-#include "MovimientoJugador.h"
-
 
 class Juego
 {
@@ -22,8 +20,6 @@ private:
 	Textura * pTexture;
 	std::vector<std::string> texturas;
 	std::vector<Textura*> arrayTex;
-
-	MovimientoJugador* movjugador;
 
 	int const SCREEN_WIDTH = 860;
 	int const SCREEN_HEIGHT = 480;

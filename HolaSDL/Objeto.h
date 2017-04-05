@@ -3,7 +3,6 @@
 #include "SDL.h"
 #include "Play.h"
 
-
 class Objeto : public ObjetoJuego
 {
 public:

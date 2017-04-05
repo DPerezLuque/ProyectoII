@@ -1,6 +1,8 @@
 #pragma once
 #include "Estado.h"
-#include "Player.h"
+//#include "Player.h"
+
+class Player;
 
 class Play : public Estado
 {

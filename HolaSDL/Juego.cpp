@@ -56,10 +56,11 @@ void Juego::run()
 
 	while (!exit) {
 		//estado = topEstado();
-		if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
-			estado->update();
+		//if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
+			int delta = SDL_GetTicks() - lastUpdate;
+			estado->update(delta);
 			lastUpdate = SDL_GetTicks();
-		}
+		//}
 		estado = topEstado();
 		estado->draw();
 		handle_events();

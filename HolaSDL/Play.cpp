@@ -10,10 +10,11 @@ using namespace std;
 
 Play::Play(Juego* ptr) : Estado(ptr)
 {
+	player = new Player(juego, 200, 200);
 	//arrayObjetos.resize(1);
 	init();
 
-	player = new Player(juego, 200, 200);
+	
 
 }
 
@@ -29,6 +30,7 @@ void Play::init()
 
 void Play:: handleEvent(SDL_Event e){
 
+	//Control del de los eventos de ratón 
 	if (e.type == SDL_MOUSEBUTTONUP) {
 		if (e.button.button == SDL_BUTTON_LEFT) {
 			
@@ -37,23 +39,33 @@ void Play:: handleEvent(SDL_Event e){
 			onClick();
 		}
 		else if (e.button.button == SDL_BUTTON_RIGHT){
-			//Lee mentes
+			//Lee mentes, eso es
 		}
 
 	}
+	//
 
 	//Comparar los estados del personaje para ver qué cosas puede hacer
-
 	else if (e.type == SDL_KEYDOWN) {
 
 		if (e.key.keysym.sym == SDLK_ESCAPE) {
 			juego -> pushState(new Pausa(juego));
 		}
 
+		else {
+			player->movimientoDown(e);
+		}
+
 
 	}
 
-}
+	else if (e.type == SDL_KEYUP) {
+
+			player->movimientoUp(e);
+
+	}
+
+}//play
 
 void Play::update() {
 	

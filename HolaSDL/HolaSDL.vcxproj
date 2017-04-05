@@ -20,7 +20,6 @@
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuPrincipal.cpp" />
-    <ClCompile Include="MovimientoJugador.cpp" />
     <ClCompile Include="Objeto.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -37,7 +36,6 @@
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="MenuPrincipal.h" />
-    <ClInclude Include="MovimientoJugador.h" />
     <ClInclude Include="ObjetoJuego.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="Pausa.h" />
