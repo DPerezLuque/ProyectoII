@@ -1,5 +1,4 @@
 #pragma once
-
 #include "SDL.h"
 #include "Juego.h"
 
@@ -221,6 +220,9 @@ void Juego::freeMedia()
 		delete arrayTex[aux];
 		//arrayTex[aux] = nullptr;
 	}
+
+	close(tileSet, pRenderer, pWindow);
+	
 }
 
 void Juego::closeSDL()

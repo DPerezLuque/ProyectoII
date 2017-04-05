@@ -132,7 +132,7 @@ public:
 //bool loadMedia(Tilemap::Tile* tiles[]);
 
 //Frees media and shuts down SDL
-//void close(Tilemap::Tile* tiles[]);
+void close(Tilemap::Tile* tiles[], SDL_Renderer* pRenderer, SDL_Window* pWindow);
 
 //Box collision detector
 //bool checkCollision( SDL_Rect a, SDL_Rect b );
@@ -399,7 +399,7 @@ bool loadMedia(Tilemap::Tile* tiles[])
 	bool success = true;
 
 	//Load dot texture
-	/*if( !gDotTexture.loadFromFile( "39_tiling/dot.bmp" ) )
+	if( !gDotTexture.loadFromFile( "39_tiling/dot.bmp" ) )
 	{
 	printf( "Failed to load dot texture!\n" );
 	success = false;
@@ -421,8 +421,8 @@ bool loadMedia(Tilemap::Tile* tiles[])
 
 	return success;
 }
-
-void close(Tilemap::Tile* tiles[])
+*/
+void close(Tilemap::Tile* tiles[], SDL_Renderer* pRenderer, SDL_Window* pWindow)
 {
 	//Deallocate tiles
 	for (int i = 0; i < TOTAL_TILES; ++i)
@@ -448,7 +448,7 @@ void close(Tilemap::Tile* tiles[])
 	IMG_Quit();
 	SDL_Quit();
 }
-*/
+
 
 bool setTiles(Tilemap::Tile* tiles[])
 {
