@@ -8,8 +8,12 @@ public:
 	~Player();
 
 	void update();
-	//void move();
 	bool onClick();
+	void getPos(int& x, int& y);
+
+
+	void onCollision();
+
 private:
 	int velX, velY;
 };

@@ -31,8 +31,9 @@ bool Objeto::dentro(int x, int y)const
 	return  (x >= rect.x && x <= (rect.w + rect.x) && y >= rect.y && y <= (rect.h + rect.y));
 }
 
-bool Objeto::onClick() //Devuelve true lo han pinchado, false si no lo han pinchado
+bool Objeto::onClick()
 {
+	//printf("onclick objeto \n");
 	int x, y;
 	juego->getMousePos(x, y);
 	if (dentro(x, y)) {
@@ -41,4 +42,10 @@ bool Objeto::onClick() //Devuelve true lo han pinchado, false si no lo han pinch
 	return false;
 }
 
+SDL_Rect Objeto::getRect(){
+	return rectCollision;
+}
 
+void Objeto::onCollision(){
+//	printf("lalal");
+}

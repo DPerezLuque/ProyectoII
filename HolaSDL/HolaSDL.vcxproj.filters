@@ -63,10 +63,22 @@
     <ClCompile Include="Player.cpp">
       <Filter>Archivos de código fuente\Objetos</Filter>
     </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Archivos de código fuente\Objetos</Filter>
+    </ClCompile>
     <ClCompile Include="Bala.cpp">
-      <Filter>Archivos de código fuente</Filter>
+      <Filter>Archivos de código fuente\Objetos</Filter>
+    </ClCompile>
+    <ClCompile Include="BalaEnemigo.cpp">
+      <Filter>Archivos de código fuente\Objetos</Filter>
     </ClCompile>
     <ClCompile Include="BalaPlayer.cpp">
+      <Filter>Archivos de código fuente\Objetos</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemigoPlanta.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="BossRino.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,13 +122,25 @@
     <ClInclude Include="Player.h">
       <Filter>Archivos de encabezado\Objetos</Filter>
     </ClInclude>
-    <ClInclude Include="Bala.h">
+    <ClInclude Include="MapEditor.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Archivos de encabezado\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="Bala.h">
+      <Filter>Archivos de encabezado\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaEnemigo.h">
+      <Filter>Archivos de encabezado\Objetos</Filter>
     </ClInclude>
     <ClInclude Include="BalaPlayer.h">
+      <Filter>Archivos de encabezado\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemigoPlanta.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="MapEditor.h">
+    <ClInclude Include="BossRino.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,3 +2,7 @@
 
 HolaSDL/Debug/
 
+#Ignorar archivos concretos
+
+*Proyecto_2.sdf
+*Proyecto_2.v12.suo

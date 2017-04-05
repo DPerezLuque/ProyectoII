@@ -12,8 +12,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bala.cpp" />
+    <ClCompile Include="BalaEnemigo.cpp" />
     <ClCompile Include="BalaPlayer.cpp" />
+    <ClCompile Include="BossRino.cpp" />
     <ClCompile Include="Boton.cpp" />
+    <ClCompile Include="EnemigoPlanta.cpp" />
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Estado.cpp" />
     <ClCompile Include="GameOver.cpp" />
@@ -28,8 +32,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
+    <ClInclude Include="BalaEnemigo.h" />
     <ClInclude Include="BalaPlayer.h" />
+    <ClInclude Include="BossRino.h" />
     <ClInclude Include="Boton.h" />
+    <ClInclude Include="EnemigoPlanta.h" />
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="Estado.h" />

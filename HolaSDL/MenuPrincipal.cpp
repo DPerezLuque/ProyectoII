@@ -14,8 +14,8 @@ MenuPrincipal::~MenuPrincipal() {}
 
 void MenuPrincipal::init()
 {
-	arrayObjetos[0] = new Boton(juego, width/2 - 80, 300, salir, Juego::TBExit);
-	arrayObjetos[1] = new Boton(juego, width / 2 - 80, 200, play, Juego::TBPlay);
+//	arrayObjetos[0] = new Boton(juego, width/2 - 80, 300, salir, Juego::TBExit);
+//	arrayObjetos[1] = new Boton(juego, width / 2 - 80, 200, play, Juego::TBPlay);
 }
 
 void MenuPrincipal::salir(Juego * juego){
