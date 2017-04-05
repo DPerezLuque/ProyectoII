@@ -1,0 +1,4 @@
+#Ignorar carpeta Debug
+
+HolaSDL/Debug/
+
