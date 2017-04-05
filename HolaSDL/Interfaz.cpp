@@ -1,7 +1,8 @@
 #include "Interfaz.h"
 
-Interfaz::Interfaz(Juego* pJuego, SDL_Rect Camera, int ancho, int alto)
+Interfaz::Interfaz(Juego* juego, SDL_Rect Camera, int ancho, int alto)
 {
+	pJuego = juego;
 	pRect = Camera;
 	pRenderer = pJuego->getRender();	
 

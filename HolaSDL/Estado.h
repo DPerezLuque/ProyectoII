@@ -23,10 +23,10 @@ protected:
 	Textura* textura;
 	
 	vector <HUD*> elemInterfaz; //Estarán todos los elementos de la interfaz
-	SDL_Rect camera_;
+	SDL_Rect camera_; //Utilizado por interfaz
 	
 	std::vector<ObjetoJuego*> arrayObjetos;
-
+	std::vector<int> stats;
 	int height, width;
 };
 

@@ -22,5 +22,9 @@ private:
 	Textura* cosaDePrueba;
 	SDL_Color Black;
 	SDL_Rect rectamgulon;
+
+	//Stats del jugador (necesarios para la interfaz)
+	int vida; //Del 0 al 4
+	int vidaAux;
 };
 

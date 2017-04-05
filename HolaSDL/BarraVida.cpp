@@ -4,8 +4,9 @@
 BarraVida::BarraVida(Juego* pJuego, SDL_Rect Camera, int ancho, int alto) : Interfaz(pJuego, Camera, ancho, alto)
 {
 	//Misma constructora que interfaz
+	textura = pJuego->getTextura(Juego::TVidaLlena);
 	distX = 15;
-	distY = 15;
+	distY = 15;	
 }
 
 
@@ -23,5 +24,4 @@ void BarraVida::update(SDL_Rect Camera, int contador){ //Hay que pasarle la cama
 	else {
 		pRect.w = 0; //Muerto, se muestra la vacia
 	}	
-
 }

@@ -43,7 +43,10 @@ public:
 	Juego();
 	~Juego();
 
-	enum Texturas_t { TPlayer = 0, TBulletPlayer = 1, TBExit = 2, TBPlay = 3, TBMenu = 4, TBResume = 5, TEnemy = 6, TBulletEnemy = 7 };
+	enum Texturas_t { TPlayer = 0, TBulletPlayer = 1, TBExit = 2, TBPlay = 3, TBMenu = 4, TBResume = 5, 
+		TEnemy = 6, TBulletEnemy = 7,
+		TVidaLlena = 8, TVidaVacia = 9, TDashLleno = 10, TDashVacio = 11, TCargador = 12
+	};
 
 	void run();
 

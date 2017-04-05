@@ -220,6 +220,12 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\menu_resume.png");
 	texturas.push_back("..\\bmps\\enemy.png");
 	texturas.push_back("..\\bmps\\balaEnemigo.png");
+	//Interfaz
+	texturas.push_back("..\\bmps\\VidaLlena.png");
+	texturas.push_back("..\\bmps\\VidaVacia.png");
+	texturas.push_back("..\\bmps\\DashLleno.png");
+	texturas.push_back("..\\bmps\\DashVacio.png");
+	texturas.push_back("..\\bmps\\Cargador.png");
 
 
 	//Load Assets Textures

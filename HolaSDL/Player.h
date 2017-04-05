@@ -10,8 +10,10 @@ public:
 	void update();
 	bool onClick();
 	void getPos(int& x, int& y);
+	int getVida(){ return vida; }
 
 private:
 	int velX, velY;
+	int vida;
 };
 

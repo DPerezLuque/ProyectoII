@@ -5,6 +5,10 @@
 #include "BalaPlayer.h"
 #include "BalaEnemigo.h"
 #include "enemy.h"
+
+#include "BarraVida.h"
+#include "BarraVidaVacia.h"
+#include "Cargador.h"
 using namespace std;
 
 
@@ -23,12 +27,25 @@ void Play::init()
 {
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	arrayObjetos.push_back(new enemy(juego, 0, 0));
+
+	vida = dynamic_cast<Player*>(arrayObjetos[0])->getVida();
+	vidaAux = 8;
+	stats.push_back(vidaAux);
+	stats.push_back(vida); //Ambas barras utilizan la variable vida
+
+	//elemInterfaz.push_back(new BarraVidaVacia(juego, camera_, 32, 32));
+	elemInterfaz.push_back(new BarraVida(juego, camera_, 32, 32)); //AQUI CONIO
+	elemInterfaz.push_back(new Cargador(juego, camera_, 200, 200));
+	
 }
 
 void Play::update() {
 	
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
 		arrayObjetos[i]->update();
+	}
+	for (int i = 0; i < elemInterfaz.size(); i++){
+		elemInterfaz[i]->update(camera_, stats[i]); //Cada elemento del vector tiene su propio contador
 	}
 }
 

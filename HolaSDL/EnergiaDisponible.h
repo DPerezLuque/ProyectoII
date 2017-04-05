@@ -13,6 +13,7 @@ public:
 	void draw(); //Cambiamos el draw, recorrerá el vector de rectangulos y dibujará todos
 
 	int cuenta = 1; //Numero inicial de energia
+	Textura* textura2; //DashVacio
 	vector<SDL_Rect> numEnergias; //En función del número (inicialmente 1) se dibujarán más o menos texturas
 
 };

@@ -4,6 +4,8 @@
 EnergiaDisponible::EnergiaDisponible(Juego* pJuego, SDL_Rect Camera, int ancho, int alto) : Interfaz(pJuego, Camera, ancho, alto)
 {
 	//Misma constructora que interfaz
+	textura = pJuego->getTextura(Juego::TDashLleno); //Necesitará el vacio too
+	textura2 = pJuego->getTextura(Juego::TDashVacio);
 	distX = 30;
 	distY = 60;
 

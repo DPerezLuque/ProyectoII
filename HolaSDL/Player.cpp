@@ -10,7 +10,7 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	velX = 0;
 	velY = 0;
-
+	vida = 4;
 }
 
 

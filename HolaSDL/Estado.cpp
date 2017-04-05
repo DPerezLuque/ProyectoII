@@ -14,9 +14,15 @@ Estado::Estado(Juego* ptr)
 
 Estado::~Estado() 
 {
+	//Objetos
 	for (size_t aux = 0; aux < arrayObjetos.size(); ++aux) {
 		delete arrayObjetos[aux];
 		arrayObjetos[aux] = nullptr;
+	}
+	//Interfaz
+	for (int i = 0; i < elemInterfaz.size(); i++){
+		delete elemInterfaz[i]; 
+		elemInterfaz[i] = nullptr;
 	}
 
 	juego = nullptr;
@@ -46,9 +52,8 @@ void Estado::draw()
 	}
 
 	//Dibuja interfaz, por encima de los objetos
-	
+	//ESTO ES LO QUE DA FALLO, Falta meter la textura de la vida en sí y decirle que la use
 	for (int i = 0; i < elemInterfaz.size(); i++) {
-		elemInterfaz[i] = dynamic_cast<Interfaz*>(elemInterfaz[i]);		
 		elemInterfaz[i]->draw();
 	}
 	
@@ -62,8 +67,7 @@ void Estado::update()
 	}
 		
 	for (int i = 0; i < elemInterfaz.size(); i++) {
-		elemInterfaz[i] = dynamic_cast<Interfaz*>(elemInterfaz[i]);
-		//elemInterfaz[i]->update(camera_, 8); //AIUDA CON ESTO
+		dynamic_cast<Interfaz*>(elemInterfaz[i])->update(camera_, 8);
 	}
 	
 }
