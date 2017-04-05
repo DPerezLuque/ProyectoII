@@ -48,7 +48,7 @@ void Play::getStats(int i){
 		stats[i] = dynamic_cast<Player*>(arrayObjetos[0])->getVida();
 		break;
 	case 2: //Balas
-		stats[i] = dynamic_cast<Player*>(arrayObjetos[0])->getBalas();
+		stats[i] = dynamic_cast<Player*>(arrayObjetos[2])->getBalas();
 	default:
 		break;
 	}
@@ -64,7 +64,7 @@ void Play::update() {
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
 		arrayObjetos[i]->update();
 	}
-
+s
 	for (int i = 0; i < elemInterfaz.size(); i++){
 		elemInterfaz[i]->update(camera_, stats[i]); //Cada elemento del vector tiene su propio contador
 	}
