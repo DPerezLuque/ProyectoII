@@ -1,9 +1,8 @@
-﻿Compilación iniciada a las 05/04/2017 16:43:30.
+﻿Compilación iniciada a las 05/04/2017 16:47:47.
      1>Proyecto "C:\hlocal\ProyectoII\HolaSDL\HolaSDL.vcxproj" en el nodo 2 (Build destinos).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (HolaSDL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
-         C:\software\programacion\MSVStudio2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Play.cpp Player.cpp
-         Player.cpp
+         C:\software\programacion\MSVStudio2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Play.cpp
          Play.cpp
      1>c:\hlocal\proyectoii\holasdl\play.cpp(60): warning C4018: '<' : no coinciden signed/unsigned
      1>c:\hlocal\proyectoii\holasdl\play.cpp(64): warning C4018: '<' : no coinciden signed/unsigned
@@ -14,7 +13,6 @@
      1>c:\hlocal\proyectoii\holasdl\play.cpp(108): warning C4244: 'inicializando' : conversión de 'double' a 'float'; posible pérdida de datos
      1>c:\hlocal\proyectoii\holasdl\play.cpp(109): warning C4244: 'inicializando' : conversión de 'double' a 'float'; posible pérdida de datos
      1>c:\hlocal\proyectoii\holasdl\play.cpp(112): warning C4244: 'argumento' : conversión de 'float' a 'int'; posible pérdida de datos
-         Generando código...
      1>cl : Línea de comandos warning D9028: error de recompilación mínimo, revirtiendo a la compilación normal
        Link:
          C:\software\programacion\MSVStudio2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\hlocal\ProyectoII\bin\Practica1Debug.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\hlocal\ProyectoII\bin\Practica1Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\hlocal\ProyectoII\bin\Practica1Debug.lib" /MACHINE:X86 Debug\Bala.obj
@@ -46,4 +44,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:01.13
+Tiempo transcurrido 00:00:00.70
