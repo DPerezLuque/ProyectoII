@@ -18,44 +18,39 @@ using namespace std;
 class Juego
 {
 public:
+	Juego();
+	~Juego();
 
 	SDL_Renderer* pRenderer;
 	SDL_Window* pWindow;
 	SDL_Color pcolor;
 	Textura * pTexture;
-	std::vector<std::string> texturas;
-	std::vector<Textura*> arrayTex;
+	
+	enum Texturas_t {
+		TPlayer, TBulletPlayer, TBExit, TBPlay, TBMenu, TBResume,
+		TEnemy, TBulletEnemy,
+		TVidaLlena, TVidaVacia, TDashLleno, TDashVacio, TCargador,
+	};
 
-	int const SCREEN_WIDTH = 640;// 860;
+	int const SCREEN_WIDTH = 860; // 480 antes
 	int const SCREEN_HEIGHT = 480;
 	int x, y;
 	bool exit;
+
+	SDL_Event e;
 	static const int VPLAYER = 10;
 	int mVelX, mVelY;
 
-	SDL_Event e;
-
-	EstadoJuego* estado;
+	EstadoJuego* estado;	
+	std::stack<EstadoJuego*> states;	
 	
-	std::stack<EstadoJuego*> states;
-///////
-
-	Juego();
-	~Juego();
-
-	enum Texturas_t { TPlayer = 0, TBulletPlayer = 1, TBExit = 2, TBPlay = 3, TBMenu = 4, TBResume = 5, 
-		TEnemy = 6, TBulletEnemy = 7,
-		TVidaLlena = 8, TVidaVacia = 9, TDashLleno = 10, TDashVacio = 11, TCargador = 12
-	};
-
 	void run();
-
 	void handle_events();
 	void updateDirection();
 	bool initSDL();
 	bool initMedia(); //carga las texturas en el vector de texturas (fuente y música)
 	
-	void setSalir();
+	void setSalir(){ exit = true; }
 	void freeMedia();
 	void closeSDL();
 
@@ -76,6 +71,8 @@ public:
 	EstadoJuego* topEstado();
 
 private:
+	std::vector<std::string> texturas;
+	std::vector<Textura*> arrayTex;
 	//Level camera
 	SDL_Rect camera;
 	//Musica

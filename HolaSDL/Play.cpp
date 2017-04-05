@@ -28,14 +28,17 @@ void Play::init()
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	arrayObjetos.push_back(new enemy(juego, 0, 0));
 
+	vidaAux = 4;
 	vida = dynamic_cast<Player*>(arrayObjetos[0])->getVida();
-	vidaAux = 8;
-	stats.push_back(vidaAux);
-	stats.push_back(vida); //Ambas barras utilizan la variable vida
+	balas = dynamic_cast<Player*>(arrayObjetos[0])->getBalas();
 
-	//elemInterfaz.push_back(new BarraVidaVacia(juego, camera_, 32, 32));
-	elemInterfaz.push_back(new BarraVida(juego, camera_, 32, 32)); //AQUI CONIO
-	elemInterfaz.push_back(new Cargador(juego, camera_, 200, 200));
+	stats.push_back(vidaAux);
+	stats.push_back(vida);
+	stats.push_back(balas);
+
+	elemInterfaz.push_back(new BarraVidaVacia(juego, camera_, 32, 32));
+	elemInterfaz.push_back(new BarraVida(juego, camera_, 32, 32)); 
+	elemInterfaz.push_back(new Cargador(juego, camera_, 75, 75));
 	
 }
 

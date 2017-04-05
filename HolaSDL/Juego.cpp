@@ -202,7 +202,7 @@ bool Juego::initMedia()
 		musicFiles.push_back(cancion);		
 	}
 
-	musicFiles[Come]->play();
+	//musicFiles[Come]->play();
 
 	textoDePrueba.load("..\\Fuentes\\ARIAL.ttf", 20);
 	cosaDePrueba = new Textura();
@@ -220,6 +220,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\menu_resume.png");
 	texturas.push_back("..\\bmps\\enemy.png");
 	texturas.push_back("..\\bmps\\balaEnemigo.png");
+
 	//Interfaz
 	texturas.push_back("..\\bmps\\VidaLlena.png");
 	texturas.push_back("..\\bmps\\VidaVacia.png");
@@ -252,14 +253,14 @@ bool Juego::initMedia()
 	return success;
 }
 
-
-void Juego::setSalir() { exit = true; }
-
 void Juego::freeMedia()
 {	
 	for (size_t aux = 0; aux < arrayTex.size(); ++aux) {
 		delete arrayTex[aux];
 		//arrayTex[aux] = nullptr;
+	}
+	for (int i = 0; i < musicFiles.size(); i++){
+		delete musicFiles[i];
 	}
 }
 

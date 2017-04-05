@@ -11,9 +11,11 @@ public:
 	bool onClick();
 	void getPos(int& x, int& y);
 	int getVida(){ return vida; }
+	int getBalas(){ return balas; }
 
 private:
 	int velX, velY;
 	int vida;
+	int balas;
 };
 

@@ -4,8 +4,8 @@ BalaPlayer::BalaPlayer(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, p
 {
 	textura = juego->getTextura(Juego::TBulletPlayer);
 	
-	rect.w = 50;
-	rect.h = 50;
+	rect.w = 25;
+	rect.h = 25;
 
 	rect.x = px;
 	rect.y = py;
