@@ -1,7 +1,5 @@
 #include "Player.h"
 
-
-
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TPlayer);
@@ -10,7 +8,7 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	velX = 0;
 	velY = 0;
-	vida = 1;
+	vida = 4;
 	balas = 30;
 }
 
@@ -24,7 +22,7 @@ void Player::update() {
 	//Move the dot left or right
 	rect.x += juego->getVelX();
 	//Move the dot up or down
-	rect.y += juego->getVelY();
+	rect.y += juego->getVelY();	
 } 
 
 bool Player::onClick() {

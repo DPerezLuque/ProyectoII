@@ -16,6 +16,7 @@ public:
 	void newDisparoEnemigo(int posX, int posY, int targetX, int targetY, int velDis);
 	void posPlayer(int& x, int& y);
 private:
+	void getStats(int i);
 
 	bool gameOver;
 	Texto textoDePrueba;
@@ -24,8 +25,6 @@ private:
 	SDL_Rect rectamgulon;
 
 	//Stats del jugador (necesarios para la interfaz)
-	int vida; //Del 0 al 4
 	int vidaAux;
-	int balas;
 };
 

@@ -28,25 +28,43 @@ void Play::init()
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	arrayObjetos.push_back(new enemy(juego, 0, 0));
 
-	vidaAux = 4;
-	vida = dynamic_cast<Player*>(arrayObjetos[0])->getVida();
-	balas = dynamic_cast<Player*>(arrayObjetos[0])->getBalas();
+	vidaAux = 0; //Barra Vacia
 
 	stats.push_back(vidaAux);
-	stats.push_back(vida);
-	stats.push_back(balas);
+	stats.push_back(dynamic_cast<Player*>(arrayObjetos[0])->getVida());
+	stats.push_back(dynamic_cast<Player*>(arrayObjetos[0])->getBalas());
 
-	elemInterfaz.push_back(new BarraVidaVacia(juego, camera_, 32, 32));
+	elemInterfaz.push_back(new BarraVidaVacia(juego, camera_, 128, 32));
 	elemInterfaz.push_back(new BarraVida(juego, camera_, 32, 32)); 
 	elemInterfaz.push_back(new Cargador(juego, camera_, 75, 75));
 	
 }
 
+void Play::getStats(int i){
+
+	switch (i)
+	{
+	case 1: //Vida
+		stats[i] = dynamic_cast<Player*>(arrayObjetos[0])->getVida();
+		break;
+	case 2: //Balas
+		stats[i] = dynamic_cast<Player*>(arrayObjetos[0])->getBalas();
+	default:
+		break;
+	}
+}
+
 void Play::update() {
-	
+
+	//Actualiza valores de la vida, las balas (Interfaz)
+	for (int i = 0; i < stats.size(); i++) {
+		getStats(i);
+	}
+
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
 		arrayObjetos[i]->update();
 	}
+
 	for (int i = 0; i < elemInterfaz.size(); i++){
 		elemInterfaz[i]->update(camera_, stats[i]); //Cada elemento del vector tiene su propio contador
 	}
