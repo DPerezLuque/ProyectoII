@@ -8,6 +8,6 @@ public:
 	BalaEnemigo(Juego* ptr, int px, int py, int vX, int vY);
 	~BalaEnemigo();
 
-	void update();
+	void update(int delta);
 };
 

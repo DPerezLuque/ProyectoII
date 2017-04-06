@@ -12,8 +12,8 @@ BalaPlayer::~BalaPlayer()
 {
 }
 
-void BalaPlayer::update() {
-	rect.x += velX;
-	rect.y += velY;
+void BalaPlayer::update(int delta) {
+	rect.x += velX * delta;
+	rect.y += velY * delta;
 }
 

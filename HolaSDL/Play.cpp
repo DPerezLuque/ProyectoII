@@ -28,7 +28,7 @@ void Play::init()
 
 }
 
-void Play::update() {
+void Play::update(int delta) {
 	
 	//El update de cada objeto debe comprobar las colisiones con el entorno
 	
@@ -55,7 +55,7 @@ void Play::update() {
 	//UPDATE
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
 		if (!arrayObjetos[i]->isDead())
-			arrayObjetos[i]->update();
+			arrayObjetos[i]->update(delta);
 	}
 }
 

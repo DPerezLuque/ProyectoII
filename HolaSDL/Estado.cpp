@@ -47,11 +47,11 @@ void Estado::draw()
 	SDL_RenderPresent(pRenderer);
 };
 
-void Estado::update()
+void Estado::update(int delta)
 {
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
 		if (!arrayObjetos[aux]->isDead())
-			arrayObjetos[aux]->update();
+			arrayObjetos[aux]->update(delta);
 	}
 }
 

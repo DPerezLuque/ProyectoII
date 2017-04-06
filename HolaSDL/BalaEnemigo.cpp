@@ -19,7 +19,7 @@ BalaEnemigo::~BalaEnemigo()
 {
 }
 
-void BalaEnemigo::update() {
-	rect.x += velX;
-	rect.y += velY;
+void BalaEnemigo::update(int delta) {
+	rect.x += velX * delta;
+	rect.y += velY * delta;
 }

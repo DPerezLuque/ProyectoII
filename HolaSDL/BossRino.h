@@ -7,7 +7,7 @@ public:
 	~BossRino();
 	void follow(int x, int y);
 	void follow2(int x, int y);
-	void update();
+	void update(int delta);
 	enum Estaditos{PARADO,ACELERON,NORMAL};
 	Estaditos humuluhumulu = Estaditos::NORMAL;
 	void sma();

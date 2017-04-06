@@ -73,7 +73,7 @@ void BossRino::follow2(int x, int y){
 
 }
 
-void BossRino::update(){
+void BossRino::update(int delta){
 	int x, y;
 	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
 	++contDis;

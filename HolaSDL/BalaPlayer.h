@@ -6,6 +6,6 @@ public:
 	BalaPlayer(Juego* ptr, int px, int py, int vX, int vY);
 	~BalaPlayer();
 
-	void update();
+	void update(int delta);
 
 };

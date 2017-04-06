@@ -10,7 +10,7 @@ public:
 
 	void init();
 	void onClick();
-	void update();
+	void update(int delta);
 
 	void newDisparo(ObjetoJuego*po, int posX, int posY);
 	void newDisparoEnemigo(int posX, int posY, int targetX, int targetY, int velDis);

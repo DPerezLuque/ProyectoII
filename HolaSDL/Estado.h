@@ -12,7 +12,7 @@ public:
 	virtual ~Estado();
 
 	void draw();
-	void update();
+	void update(int delta);
 	void onClick();
 
 	std::vector<ObjetoJuego*> arrayObjetos;

@@ -26,6 +26,8 @@ public:
 	static const int VPLAYER = 10;
 	int mVelX, mVelY;
 
+	float delta; //USING THIS TO CONTROL GAME TIME
+
 	SDL_Event e;
 
 	EstadoJuego* estado;

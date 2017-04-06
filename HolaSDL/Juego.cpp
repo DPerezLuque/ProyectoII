@@ -58,7 +58,7 @@ Juego::~Juego()
 
 void Juego::run()
 {
-	Uint32 MSxUpdate = 25;
+	//Uint32 MSxUpdate = 25;
 	cout << "PLAY \n";
 	Uint32 lastUpdate = SDL_GetTicks();
 
@@ -79,10 +79,11 @@ void Juego::run()
 
 	while (!exit) {
 		//estado = topEstado();
-		if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
-			estado->update();
-			lastUpdate = SDL_GetTicks();
-		}
+		//if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
+		delta = (SDL_GetTicks() - lastUpdate) / 10;
+		estado->update(delta);
+		lastUpdate = SDL_GetTicks();
+		//}
 		estado = topEstado();
 		//Render level
 		for (int i = 0; i < TOTAL_TILES; ++i)
@@ -90,6 +91,7 @@ void Juego::run()
 			tileSet[i]->render(pRenderer, camera);
 		}
 
+		cout << delta << "\n";
 		estado->draw();
 		handle_events();
 	}

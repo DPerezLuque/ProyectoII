@@ -7,7 +7,7 @@ public:
 	Player(Juego* ptr, int px, int py);
 	~Player();
 
-	void update();
+	void update(int delta);
 	bool onClick();
 	void getPos(int& x, int& y);
 
