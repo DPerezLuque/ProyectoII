@@ -7,6 +7,6 @@ public:
 	Bala(Juego* ptr, int px, int py, int vX, int vY);
 	~Bala();
 
-	virtual void update() = 0;
+	void update(){}
 };
 

@@ -12,7 +12,7 @@ public:
 	virtual ~Estado();
 
 	virtual void draw();
-	virtual void update();
+	virtual void update(int delta);
 	virtual void onClick();
 	virtual void handleEvent(SDL_Event e);
 

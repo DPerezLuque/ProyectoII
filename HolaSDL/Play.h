@@ -14,7 +14,7 @@ public:
 	void init();
 
 	virtual void onClick();
-	virtual void update();
+	virtual void update(int delta);
 	void handleEvent(SDL_Event e);
 	void getMousePos(int & mpx, int & mpy) const{};
 

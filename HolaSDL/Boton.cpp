@@ -23,6 +23,5 @@ bool Boton::onClick()
 	else return false;
 }
 
-void Boton::update() {}
 
 

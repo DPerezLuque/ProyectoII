@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include <algorithm>
 
 
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
@@ -14,7 +14,7 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	estJugador = QUIETO;
 
-	tiempoMaxDash = SDL_AddTimer(0.3, resetPlayerVel(), nullptr);
+	//tiempoMaxDash = SDL_AddTimer(0.3, resetPlayerVel(), nullptr);
 }
 
 
@@ -22,17 +22,25 @@ Player::~Player()
 {
 }
 
+//Bueno básicamente vamos a aplicar newton al código. Necesito un enum de direcciones del jugador y que esas direcciones sean lo que le sumas, restas etc. 
+//Luego tenemos un modulo de la velocidad que es la del jugador media?? y el enum de lo que esta haciendo lo pudedes igualar a números que va a ser lo que multipliques
+//Usamos una specie de velocidad por el angulo, para las diagonales, por el tiempo del procesador
+//Y el direccion es, sorpresa sorpresa, las direcciones
 void Player::update(int delta) {
 
 	//movimientoYDash(evento);
 
-	rect.x += velX;
-	rect.y += velY;
+	//rect.x += velX;
+	//rect.y += velY;
 
-	typedef enum {STOPPED = 0, WALK = 4, DASH = 12};
+	modulo_vel =  estJugador;
 
-	rect.x += modulo_vel * cos(angulo) * delta;
-	rect.y += modulo_vel * sin(angulo) * delta;
+	rect.x += modulo_vel * cos((direccion*M_PI)/180) * delta;
+	rect.y += modulo_vel * sin((direccion*M_PI) / 180) * delta;
+
+	//Reset del movimiento
+	if (estJugador == DASH)			
+			estJugador = ANDANDO;
 } 
 
 bool Player::onClick() {
@@ -44,245 +52,112 @@ bool Player::onClick() {
 //Método que controla el movimiento y el dash en el down de la tecla
 void Player::movimientoDown(SDL_Event evento){
 
-	int d = DASH;						//Variable que se añade o resta a la velocidad del jugador para el dash
-
 	//Cuando el jugador pulse una tecla...
 	if (evento.key.repeat == 0)
 	{
 
-		if (estJugador == QUIETO || estJugador == ANDANDO){
+		if (estJugador == QUIETO) {
+			direccion = NoDir;
 
 			//Ajustamos la velocidad en función de la tecla pulsada, a excepcion del espacio que hace un dash
 			switch (evento.key.keysym.sym)
 			{
-				//Arriba
-			case SDLK_i: //Teclado zurdos
+				//Arriba//
+			case SDLK_i: //Teclado zurdos de los cojones
 
-				velY -= VPLAYER;
+				if (direccion = Este) direccion = NorEste;
+				else if (direccion = Oeste) direccion = NorOeste;
+				else direccion = Norte;
+				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
+
 			case SDLK_w:
+				//Comprobamos el ángulo del jugador
+				if (direccion = Este) direccion = NorEste;
+				else if (direccion = Oeste) direccion = NorOeste;
+				else direccion = Norte;
 
-				velY -= VPLAYER;
+				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
 
-				//Abajo
+				//Abajo//
 			case SDLK_k: //Teclado zurdos
+				if (direccion = Este) direccion = SurEste;
+				else if (direccion = Oeste) direccion = SurOeste;
+				else direccion = Sur;
 
-				velY += VPLAYER;
+				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
 			case SDLK_s:
 
-				velY += VPLAYER;
+				if (direccion = Este) direccion = SurEste;
+				else if (direccion = Oeste) direccion = SurOeste;
+				else direccion = Sur;
+
+				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
 
-				//Izquierda
+				//Izquierda//
 			case SDLK_j: //Teclado zurdos
 
-				velX -= VPLAYER;
+				if (direccion = Norte) direccion = NorOeste;
+				else if (direccion = Sur) direccion = SurOeste;
+				else direccion = Oeste;
+
+				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
 
 			case SDLK_a:
 
-				velX -= VPLAYER;
+				if (direccion = Norte) direccion = NorOeste;
+				else if (direccion = Sur) direccion = SurOeste;
+				else direccion = Oeste;
+
+				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
 
 				//Derecha
 			case SDLK_l: //Teclado zurdos
 
-				velX += VPLAYER;
+				if (direccion = Norte) direccion = NorEste;
+				else if (direccion = Sur) direccion = SurEste;
+				else direccion = Este;
+
+				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
 
 			case SDLK_d:
 
-				velX += VPLAYER;
+				if (direccion = Norte) direccion = NorEste;
+				else if (direccion = Sur) direccion = SurEste;
+				else direccion = Este;
+
+				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
 
 				//Espacio
 			case SDLK_SPACE:	// ACTUA COMO MODIFICADOR DEL MOVIMIENTO
 
-				if (estJugador == ANDANDO){
-					estJugador = DASHEANDO;
+				estJugador = DASH;
 
-					if (velX > 0 && velX <= d) {					// Cuando vas a la derecha (Right o D) Y SUELTAS EL BOTÓN DE ESPACIO
+				break;
 
-						if (velY != 0) {				//Regulamos las direcciones en diagonal
-							if (velY > 0 && velY <= d) {
-
-								velY += (d / 2);
-							}
-							else if (velY < 0 && velY >= -d)
-								velY -= (d / 2);
-							// Cantidad fija a la X
-							velX += (d / 2);
-						}
-						else
-						{
-							velX += d;						//Cuando no vas en diagonal
-						}
-					}
-
-					else if (velX < 0 && velX >= -d) {				// Cuando vas a la izquierda (Left o A)
-
-						if (velY != 0) {				//Regulamos las direcciones en diagonal
-							if (velY > 0 && velY <= d) {
-
-								velY += (d / 2);
-							}
-							else if (velY < 0 && velY >= -d)
-								velY -= (d / 2);
-							// Cantidad fija a la X
-							velX -= (d / 2);					//Cuando no vas en diagonal
-						}
-						else
-						{
-							velX -= d;
-						}
-					}
-
-					else if (velY > 0 && velY <= d) {					// Cuando vas abajo (Down o S) Y SUELTAS EL PUTO BOTON
-
-						velY += d;
-					}
-
-
-
-					else if (velY < 0 && velY >= -d) {				// Cuando vas arriba (Up o W)
-
-						velY -= d;
-
-					}
-					break;
-
-				}
-			}
-
-		} // Switch ()
-
+			} // Switch ()
+		}
 	}
 
 }
 
 void Player::movimientoUp(SDL_Event evento) {
 
-	int d = DASH;						//Variable que se añade o resta a la velocidad del jugador para el dash
-
-	//If a key was released
-	if (evento.key.repeat == 0)
-	{
-
-		//Adjust the velocity
-		switch (evento.key.keysym.sym)
-		{
-			//Arriba
-		case SDLK_i: //Teclado zurdos
-			velY += VPLAYER;
-			estJugador = QUIETO;
-			break;
-
-		case SDLK_w:
-			velY += VPLAYER;
-			estJugador = QUIETO;
-			break;
-
-			//Abajo
-		case SDLK_k: //Teclado zurdos
-			velY -= VPLAYER;
-			estJugador = QUIETO;
-			break;
-
-		case SDLK_s:
-			velY -= VPLAYER;
-			estJugador = QUIETO;
-			break;
-
-			//Izquierda
-		case SDLK_j: //Teclado zurdos
-			velX += VPLAYER;
-			estJugador = QUIETO;
-			break;
-
-		case SDLK_a:
-			velX += VPLAYER;
-			estJugador = QUIETO;
-			break;
-
-			//Derecha
-		case SDLK_l: //Teclado zurdos
-			velX -= VPLAYER;
-			estJugador = QUIETO;
-			break;
-
-		case SDLK_d:
-			velX -= VPLAYER;
-			estJugador = QUIETO;
-			break;
-
-			//Espacio
-		case SDLK_SPACE:
-
-			if (estJugador == DASHEANDO){
-
-				if (velX > 0 && velX <= d) {					// Cuando vas a la derecha (Right o D) Y SUELTAS EL BOTÓN DE ESPACIO
-
-					if (velY != 0) {		//Regulamos las direcciones en diagonal
-						if (velY > 0 && velY <= d) {
-
-							velY -= (d / 2);
-						}
-						else if (velY < 0 && velY >= -d)
-							velY += (d / 2);
-						// Cantidad fija a la X
-						velX -= (d / 2);
-					}
-					else
-					{
-						velX -= d;
-					}
-				}
-
-				else if (velX < 0) {				// Cuando vas a la izquierda (Left o A)
-
-					if (velY != 0) {		//Regulamos las direcciones en diagonal
-						if (velY > 0 && velY <= d) {
-
-							velY -= (d / 2);
-						}
-						else if (velY < 0 && velY >= -d)
-							velY += (d / 2);
-						// Cantidad fija a la X
-						velX += (d / 2);
-					}
-					else
-					{
-						velX += d;
-					}
-				}
-
-				else if (velY > 0 && velY <= d) {					// Cuando vas abajo (Down o S) Y SUELTAS EL PUTO BOTON
-
-					velY -= d;
-				}
-
-
-
-				else if (velY < 0 && velY >= -d) {				// Cuando vas arriba (Up o W)
-
-					velY += d;
-
-				}
-
-				estJugador = QUIETO;
-				break;
-			}
-		}
-
-	}
+	estJugador = QUIETO;
+	
 }

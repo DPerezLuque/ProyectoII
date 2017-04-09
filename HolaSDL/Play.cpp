@@ -67,10 +67,10 @@ void Play:: handleEvent(SDL_Event e){
 
 }//play
 
-void Play::update() {
+void Play::update(int delta) {
 	
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
-		arrayObjetos[i]->update();
+		arrayObjetos[i]->update( delta);
 	}
 }
 

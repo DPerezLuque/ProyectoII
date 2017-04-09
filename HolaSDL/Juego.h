@@ -51,7 +51,7 @@ public:
 	void run();
 
 	void handle_events();
-	void updateDirection();
+	void updateDirection(int delta);
 	//bool compruebaDash();
 	void initSDL();
 	void initMedia(); //carga las texturas en el vector de texturas (fuente y música)

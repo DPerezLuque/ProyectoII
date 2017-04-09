@@ -10,7 +10,7 @@ public:
 	virtual ~Boton();
 
 	bool onClick();
-	void update();
+	void update(int delta) {};
 
 private:
 	CallBack_t * cbOnClick;

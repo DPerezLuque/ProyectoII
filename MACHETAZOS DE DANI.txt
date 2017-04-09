@@ -1,0 +1,12 @@
+He creado un enumerado que regula las direcciones del jugador, y que uso para hallar el seno y el coseno del angulo
+y con eso obtener parte de la dirección. Digamos que en teoria el signo de lo que hay que sumar y restar te lo da esto.
+¿Y esto arregla algo? 
+En teoria, si. Lo del signo. Pero NO creo que arregle lo de soltar botones y todo 
+También he creado el enumerado de quieto, andando, y dash y le he dado unos valores numéricos
+Y con todo eso, el tiempo que viene de Juego (delta) y muchas cosas bonitas creamos
+la función del movimiento que nos dió cleon
+
+Sorpresa: No funciona.
+
+Aunque el dash va ahí ahí, el movimiento no va del todo bien.
+Revisar: el switch, cómo no, y la función.
