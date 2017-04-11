@@ -1,45 +1,22 @@
-﻿Compilación iniciada a las 11/04/2017 19:14:28.
-     1>Proyecto "C:\Users\PcCom\Desktop\PROYECTO 2\ProyectoII\HolaSDL\HolaSDL.vcxproj" en el nodo 2 (Build destinos).
+﻿Compilación iniciada a las 11/04/2017 19:49:24.
+     1>Proyecto "C:\Users\PcCom\Desktop\PROYECTO 2\Interfaz\ProyectoII\HolaSDL\HolaSDL.vcxproj" en el nodo 2 (Build destinos).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (HolaSDL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bala.cpp BalaEnemigo.cpp BalaPlayer.cpp BarraVida.cpp BarraVidaVacia.cpp Boton.cpp Cargador.cpp EnergiaDisponible.cpp Estado.cpp GameOver.cpp Interfaz.cpp Juego.cpp MenuPrincipal.cpp Objeto.cpp Pausa.cpp Play.cpp Player.cpp enemy.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Play.cpp
          Play.cpp
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(54): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(60): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(86): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(90): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(94): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(104): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(117): warning C4244: 'inicializando' : conversión de 'double' a 'int'; posible pérdida de datos
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(133): warning C4244: 'inicializando' : conversión de 'double' a 'int'; posible pérdida de datos
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(135): warning C4244: 'inicializando' : conversión de 'double' a 'float'; posible pérdida de datos
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(136): warning C4244: 'inicializando' : conversión de 'double' a 'float'; posible pérdida de datos
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\play.cpp(139): warning C4244: 'argumento' : conversión de 'float' a 'int'; posible pérdida de datos
-         Juego.cpp
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\juego.cpp(192): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\juego.cpp(203): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\juego.cpp(227): warning C4018: '<' : no coinciden signed/unsigned
-     1>c:\users\pccom\desktop\proyecto 2\proyectoii\holasdl\juego.cpp(256): warning C4018: '<' : no coinciden signed/unsigned
-         Generando código...
-         Omitiendo... (no se detectaron cambios relevantes)
-         enemy.cpp
-         Player.cpp
-         Pausa.cpp
-         Objeto.cpp
-         MenuPrincipal.cpp
-         Interfaz.cpp
-         GameOver.cpp
-         Estado.cpp
-         EnergiaDisponible.cpp
-         Cargador.cpp
-         Boton.cpp
-         BarraVidaVacia.cpp
-         BarraVida.cpp
-         BalaPlayer.cpp
-         BalaEnemigo.cpp
-         Bala.cpp
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(54): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(59): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(86): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(90): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(94): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(104): warning C4018: '<' : no coinciden signed/unsigned
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(117): warning C4244: 'inicializando' : conversión de 'double' a 'int'; posible pérdida de datos
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(133): warning C4244: 'inicializando' : conversión de 'double' a 'int'; posible pérdida de datos
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(135): warning C4244: 'inicializando' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(136): warning C4244: 'inicializando' : conversión de 'double' a 'float'; posible pérdida de datos
+     1>c:\users\pccom\desktop\proyecto 2\interfaz\proyectoii\holasdl\play.cpp(139): warning C4244: 'argumento' : conversión de 'float' a 'int'; posible pérdida de datos
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\PcCom\Desktop\PROYECTO 2\ProyectoII\bin\Practica1Debug.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\PcCom\Desktop\PROYECTO 2\ProyectoII\bin\Practica1Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\PcCom\Desktop\PROYECTO 2\ProyectoII\bin\Practica1Debug.lib" /MACHINE:X86 Debug\Bala.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\PcCom\Desktop\PROYECTO 2\Interfaz\ProyectoII\bin\Practica1Debug.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\PcCom\Desktop\PROYECTO 2\Interfaz\ProyectoII\bin\Practica1Debug.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\PcCom\Desktop\PROYECTO 2\Interfaz\ProyectoII\bin\Practica1Debug.lib" /MACHINE:X86 Debug\Bala.obj
          Debug\BalaEnemigo.obj
          Debug\BalaPlayer.obj
          Debug\BarraVida.obj
@@ -63,9 +40,9 @@
          Debug\Play.obj
          Debug\Texto.obj
          Debug\Textura.obj
-         HolaSDL.vcxproj -> C:\Users\PcCom\Desktop\PROYECTO 2\ProyectoII\bin\Practica1Debug.exe
-     1>Compilación del proyecto terminada "C:\Users\PcCom\Desktop\PROYECTO 2\ProyectoII\HolaSDL\HolaSDL.vcxproj" (Build destinos).
+         HolaSDL.vcxproj -> C:\Users\PcCom\Desktop\PROYECTO 2\Interfaz\ProyectoII\bin\Practica1Debug.exe
+     1>Compilación del proyecto terminada "C:\Users\PcCom\Desktop\PROYECTO 2\Interfaz\ProyectoII\HolaSDL\HolaSDL.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:02.53
+Tiempo transcurrido 00:00:01.45

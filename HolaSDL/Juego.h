@@ -74,7 +74,8 @@ public:
 	enum MusicIds { Cancion1, };
 	//Fuentes
 	enum Fuentes{ Arial, };
-	Texto getTexto(Fuentes F){ return arrayFuentes[F]; }
+	Texto getTexto(Fuentes fun){ return arrayFuentes[fun]; }
+	Texto getTexto(int num){ return arrayFuentes[num]; }
 
 private:
 	//Level camera

@@ -21,9 +21,9 @@ private:
 
 	bool gameOver;
 
-	Texto textoDePrueba;
-	Textura* cosaDePrueba;
-	SDL_Color Black;
+	Texto fuenteDePrueba;
+	Textura* mensaje;
+	SDL_Color Red;
 	SDL_Rect rectanTexto;
 
 	int vidaAux;

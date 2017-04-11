@@ -13,10 +13,12 @@ public:
 
 	bool load(SDL_Renderer* pRenderer, std::string const& nombArch);
 	void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect);
-	void drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect const& rectaux);
+	void drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect const& rectaux);	
 
-	bool Textura::loadFromText(SDL_Renderer* renderer, std::string text,
-		const Texto& font, const SDL_Color color);
+	bool loadFromText(SDL_Renderer * pRender, std::string texto, Texto const& font, SDL_Color color = { 0, 0, 0, 255 });
+	void render(SDL_Renderer* renderer, int x, int y) const;
+	void render(SDL_Renderer* renderer, SDL_Rect const& dest, SDL_Rect* clip = nullptr) const;
+
 	SDL_Rect rectori;
 
 private:

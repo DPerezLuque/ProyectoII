@@ -36,10 +36,10 @@ void Play::init()
 	elemInterfaz.push_back(new BarraVida(juego, camera_, 32, 32)); 
 	elemInterfaz.push_back(new Cargador(juego, camera_, 75, 75));
 
-	textoDePrueba = juego->getTexto(Juego::Arial);
-	cosaDePrueba = new Textura();
-	Black = { 255, 0, 0, 255 }; //RGBA	
-	cosaDePrueba->loadFromText(pRenderer, "HOLA", textoDePrueba, Black);
+	fuenteDePrueba = juego->getTexto(Juego::Arial);
+	mensaje = new Textura();
+	Red = { 255, 0, 0, 255 }; //RGBA	
+	mensaje->loadFromText(pRenderer, "HOLA", fuenteDePrueba, Red); //el render, el texto, la fuente y el color
 	rectanTexto = { 80, 300, 300, 300 };	
 }
 
@@ -52,17 +52,17 @@ void Play::draw()
 	
 	//Dibuja los objetos
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
-		arrayObjetos[aux]->draw();
-		//Muestra la ventana
+		arrayObjetos[aux]->draw();		
 	}
-
+	
 	//Dibuja interfaz, por encima de los objetos
 	for (int i = 0; i < elemInterfaz.size(); i++) {
 		elemInterfaz[i]->draw();
 	}
+
 	//Pintado de texto (pruebas)	
-	cosaDePrueba->draw(pRenderer, rectanTexto);
-	cosaDePrueba->loadFromText(pRenderer, "HOLA", textoDePrueba, Black);
+	mensaje->render(pRenderer, 80, 100);
+	
 	SDL_RenderPresent(pRenderer);
 }
 
