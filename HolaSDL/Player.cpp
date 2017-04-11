@@ -65,18 +65,18 @@ void Player::movimientoDown(SDL_Event evento){
 				//Arriba//
 			case SDLK_i: //Teclado zurdos de los cojones
 
-				if (direccion = Este) direccion = NorEste;
-				else if (direccion = Oeste) direccion = NorOeste;
-				else direccion = Norte;
+				//if (direccion = Este) direccion = NorEste;
+				//else if (direccion = Oeste) direccion = NorOeste;
+				 direccion = Norte;
 				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
 
 			case SDLK_w:
 				//Comprobamos el ángulo del jugador
-				if (direccion = Este) direccion = NorEste;
-				else if (direccion = Oeste) direccion = NorOeste;
-				else direccion = Norte;
+				//if (direccion = Este) direccion = NorEste;
+				//else if (direccion = Oeste) direccion = NorOeste;
+				 direccion = Norte;
 
 				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
@@ -84,18 +84,18 @@ void Player::movimientoDown(SDL_Event evento){
 
 				//Abajo//
 			case SDLK_k: //Teclado zurdos
-				if (direccion = Este) direccion = SurEste;
-				else if (direccion = Oeste) direccion = SurOeste;
-				else direccion = Sur;
+				//if (direccion = Este) direccion = SurEste;
+				//else if (direccion = Oeste) direccion = SurOeste;
+				 direccion = Sur;
 
 				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
 				break;
 			case SDLK_s:
 
-				if (direccion = Este) direccion = SurEste;
-				else if (direccion = Oeste) direccion = SurOeste;
-				else direccion = Sur;
+				//if (direccion = Este) direccion = SurEste;
+				//else if (direccion = Oeste) direccion = SurOeste;
+				 direccion = Sur;
 
 				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
@@ -104,9 +104,9 @@ void Player::movimientoDown(SDL_Event evento){
 				//Izquierda//
 			case SDLK_j: //Teclado zurdos
 
-				if (direccion = Norte) direccion = NorOeste;
-				else if (direccion = Sur) direccion = SurOeste;
-				else direccion = Oeste;
+				//if (direccion = Norte) direccion = NorOeste;
+				//else if (direccion = Sur) direccion = SurOeste;
+				 direccion = Oeste;
 
 				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
@@ -114,9 +114,9 @@ void Player::movimientoDown(SDL_Event evento){
 
 			case SDLK_a:
 
-				if (direccion = Norte) direccion = NorOeste;
-				else if (direccion = Sur) direccion = SurOeste;
-				else direccion = Oeste;
+				//if (direccion = Norte) direccion = NorOeste;
+				//else if (direccion = Sur) direccion = SurOeste;
+				  direccion = Oeste;
 
 				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
@@ -125,9 +125,9 @@ void Player::movimientoDown(SDL_Event evento){
 				//Derecha
 			case SDLK_l: //Teclado zurdos
 
-				if (direccion = Norte) direccion = NorEste;
-				else if (direccion = Sur) direccion = SurEste;
-				else direccion = Este;
+				//if (direccion = Norte) direccion = NorEste;
+				//else if (direccion = Sur) direccion = SurEste;
+				  direccion = Este;
 
 				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
@@ -135,9 +135,9 @@ void Player::movimientoDown(SDL_Event evento){
 
 			case SDLK_d:
 
-				if (direccion = Norte) direccion = NorEste;
-				else if (direccion = Sur) direccion = SurEste;
-				else direccion = Este;
+				//if (direccion = Norte) direccion = NorEste;
+				//else if (direccion = Sur) direccion = SurEste;
+				  direccion = Este;
 
 				//Ponemos al jugador en movimiento
 				estJugador = ANDANDO;
@@ -146,6 +146,7 @@ void Player::movimientoDown(SDL_Event evento){
 				//Espacio
 			case SDLK_SPACE:	// ACTUA COMO MODIFICADOR DEL MOVIMIENTO
 
+				//if ( estJugador==ANDANDO)
 				estJugador = DASH;
 
 				break;

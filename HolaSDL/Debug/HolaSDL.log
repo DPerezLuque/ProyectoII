@@ -1,5 +1,9 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (HolaSDL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (HolaSDL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Player.cpp
-c:\users\danikai\desktop\gitclone\proyectoii\holasdl\player.cpp(38): warning C4244: '+=' : conversión de 'double' a 'int'; posible pérdida de datos
-c:\users\danikai\desktop\gitclone\proyectoii\holasdl\player.cpp(39): warning C4244: '+=' : conversión de 'double' a 'int'; posible pérdida de datos
-  HolaSDL.vcxproj -> C:\Users\Danikai\Desktop\gitclone\ProyectoII\bin\Practica1Debug.exe
+c:\users\dani\documents\ucm\proyecto ii - l'starbugs\proyectoii\holasdl\player.cpp(38): warning C4244: '+=': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\dani\documents\ucm\proyecto ii - l'starbugs\proyectoii\holasdl\player.cpp(39): warning C4244: '+=': conversión de 'double' a 'int'; posible pérdida de datos
+  Generando código...
+  Omitiendo... (no se detectaron cambios relevantes)
+  Play.cpp
+  HolaSDL.vcxproj -> C:\Users\Dani\Documents\UCM\Proyecto II - L'Starbugs\ProyectoII\bin\Practica1Debug.exe
+  HolaSDL.vcxproj -> C:\Users\Dani\Documents\UCM\Proyecto II - L'Starbugs\ProyectoII\bin\Practica1Debug.pdb (Full PDB)
