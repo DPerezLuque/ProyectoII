@@ -70,25 +70,27 @@ public:
 	void popState();
 	EstadoJuego* topEstado();
 
+	//Musica
+	enum MusicIds { Cancion1, };
+	//Fuentes
+	enum Fuentes{ Arial, };
+	Texto getTexto(Fuentes F){ return arrayFuentes[F]; }
+
 private:
-	std::vector<std::string> texturas;
-	std::vector<Textura*> arrayTex;
 	//Level camera
 	SDL_Rect camera;
-	//Musica
-	enum MusicIds {	Come,};
+	//ARRAYS
+	std::vector<std::string> texturas;
+	std::vector<Textura*> arrayTex;
+	//texto
+	std::vector<Texto> arrayFuentes;
+	std::vector<string> nombreFuentes;
+	//Musica	
 	vector <string> musicNames;//Vector para almacenar direcciones de canciones
 	Musica* cancion; //Auxiliar para llenar el vector de musica
 	vector <Musica*> musicFiles;
 
-	////
-	Efecto* effectFile;
-
-	Texto textoDePrueba;
-	Textura* cosaDePrueba;
+	Texto textoAux;	
 	SDL_Color Black;
-	SDL_Rect rectamgulon;
-	
-
 };
 

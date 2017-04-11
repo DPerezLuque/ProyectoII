@@ -25,7 +25,7 @@ bool Musica::load(string const& nombArch){
 	pMusic = Mix_LoadMUS(nombArch.c_str());	
 
 	bool culo = pMusic == nullptr;
-	cout << culo;
+	cout << "Musica cargada con exito: " << culo << " \n";
 
 	return pMusic != nullptr;
 

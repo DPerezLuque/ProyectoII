@@ -14,9 +14,7 @@ using namespace std;
 
 Play::Play(Juego* ptr) : Estado(ptr)
 {
-	//arrayObjetos.resize(1);
 	init();
-
 }
 
 Play::~Play() {}
@@ -37,7 +35,34 @@ void Play::init()
 	elemInterfaz.push_back(new BarraVidaVacia(juego, camera_, 128, 32));
 	elemInterfaz.push_back(new BarraVida(juego, camera_, 32, 32)); 
 	elemInterfaz.push_back(new Cargador(juego, camera_, 75, 75));
-	
+
+	textoDePrueba = juego->getTexto(Juego::Arial);
+	cosaDePrueba = new Textura();
+	Black = { 255, 0, 0, 255 };
+	cosaDePrueba->loadFromText(pRenderer, "HOLA", textoDePrueba, Black);
+	rectamgulon = { 80, 300, 300, 300 };	
+}
+
+//DE MOMENTO Play tiene su propio draw
+void Play::draw()
+{
+	//Limpia el buffer
+	//SDL_RenderClear(pRenderer);
+	SDL_SetRenderDrawColor(pRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+
+	//Dibuja los objetos
+	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
+		arrayObjetos[aux]->draw();
+		//Muestra la ventana
+	}
+
+	//Dibuja interfaz, por encima de los objetos
+	for (int i = 0; i < elemInterfaz.size(); i++) {
+		elemInterfaz[i]->draw();
+	}
+	cosaDePrueba->draw(pRenderer, rectamgulon);
+
+	SDL_RenderPresent(pRenderer);
 }
 
 void Play::getStats(int i){
@@ -68,6 +93,7 @@ void Play::update() {
 	for (int i = 0; i < elemInterfaz.size(); i++){
 		elemInterfaz[i]->update(camera_, stats[i]); //Cada elemento del vector tiene su propio contador
 	}
+	
 }
 
 void Play::onClick() {

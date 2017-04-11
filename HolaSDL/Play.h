@@ -11,6 +11,7 @@ public:
 	void init();
 	void onClick();
 	void update();
+	void draw();
 
 	void newDisparo(ObjetoJuego*po, int posX, int posY);
 	void newDisparoEnemigo(int posX, int posY, int targetX, int targetY, int velDis);
@@ -19,12 +20,12 @@ private:
 	void getStats(int i);
 
 	bool gameOver;
+
 	Texto textoDePrueba;
 	Textura* cosaDePrueba;
 	SDL_Color Black;
 	SDL_Rect rectamgulon;
 
-	//Stats del jugador (necesarios para la interfaz)
 	int vidaAux;
 };
 

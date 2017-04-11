@@ -15,6 +15,10 @@ Texto::~Texto(){
 
 bool Texto::load(string nombArch, int size) {
 	pFont = TTF_OpenFont(nombArch.c_str(), size);
+
+	bool culo = pFont == nullptr;
+	cout << "Texto cargado con exito: " << culo << " \n";
+
 	return pFont != nullptr;
 }
 

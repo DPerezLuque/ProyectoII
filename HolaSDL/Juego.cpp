@@ -185,39 +185,34 @@ bool Juego::initSDL()
 bool Juego::initMedia()
 {
 	bool success = true;	
-
-	//musicFiles[0] = new Musica("..\\Sonidos\\Musica\\Come.ogg");
-	//musicFiles[0]->load("..\\Sonidos\\Musica\\Come.Mp3");
-	//musicFiles[0]->play();
-
-	//effectFile = new Efecto("..\\Sonidos\\Efectos\\Come.wav");
-	//effectFile->play();
-
-	musicNames.push_back("..\\Sonidos\\Musica\\Come.mp3");
+	//MUSICA
+	//musicNames.push_back("..\\Sonidos\\Musica\\Come.mp3");
 	//musicNames.push_back("..\\Sonidos\\Efectos\\Come.wav");
 
-	for (int j = 0; j < musicNames.size(); ++j) {
+	for (int j = 0; j < musicNames.size(); j++) {
 		cancion = new Musica;
 		cancion->load(musicNames[j]);		
 		musicFiles.push_back(cancion);		
 	}
 
-	//musicFiles[Come]->play();
+	//musicFiles[Cancion1]->play();
 
-	textoDePrueba.load("..\\Fuentes\\ARIAL.ttf", 20);
-	cosaDePrueba = new Textura();
-	Black = { 0, 0, 0 };
-	cosaDePrueba->loadFromText(pRenderer, "Hola que tal", textoDePrueba,Black);
-	rectamgulon = {15, 15, 300, 300};
-	cosaDePrueba->draw(pRenderer, rectamgulon);
+	//TEXTO
+	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");
 
+	for (int j = 0; j < nombreFuentes.size(); j++) {		
+		textoAux.load(nombreFuentes[j], 20);
+		arrayFuentes.push_back(textoAux);
+	}	
+	
 	texturas.push_back("..\\bmps\\personaje.png");
 	texturas.push_back("..\\bmps\\bala.png");
+
 	texturas.push_back("..\\bmps\\menu_salir.png");
 	texturas.push_back("..\\bmps\\menu_play.png");
-
 	texturas.push_back("..\\bmps\\menu_menu.png");
 	texturas.push_back("..\\bmps\\menu_resume.png");
+
 	texturas.push_back("..\\bmps\\enemy.png");
 	texturas.push_back("..\\bmps\\balaEnemigo.png");
 
@@ -227,7 +222,6 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\DashLleno.png");
 	texturas.push_back("..\\bmps\\DashVacio.png");
 	texturas.push_back("..\\bmps\\Cargador.png");
-
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {

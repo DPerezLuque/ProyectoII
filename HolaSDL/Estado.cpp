@@ -51,12 +51,11 @@ void Estado::draw()
 		//Muestra la ventana
 	}
 
-	//Dibuja interfaz, por encima de los objetos
-	//ESTO ES LO QUE DA FALLO, Falta meter la textura de la vida en sí y decirle que la use
+	//Dibuja interfaz, por encima de los objetos	
 	for (int i = 0; i < elemInterfaz.size(); i++) {
 		elemInterfaz[i]->draw();
 	}
-	
+
 	SDL_RenderPresent(pRenderer);
 };
 
