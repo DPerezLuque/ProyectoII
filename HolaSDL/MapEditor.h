@@ -21,8 +21,8 @@ const int LEVEL_HEIGHT = 640; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT
 //Tile constants (INDIVIDUAL)
 const int TILE_WIDTH = 64;
 const int TILE_HEIGHT = 64;
-const int TOTAL_TILES = 240;       // FILAS * COLUMNAS DEL TXT
-const int TOTAL_TILE_SPRITES = 50; //TIPOS DISTINTOS DE SPRITES
+const int TOTAL_TILES = 4600;       // FILAS * COLUMNAS DEL TXT
+const int TOTAL_TILE_SPRITES = 51; //TIPOS DISTINTOS DE SPRITES
 //DECLARACION DE TILES
 const int TILE_TOPLEFT = 0;
 const int TILE_TOPMIDDLE = 1;
@@ -74,6 +74,7 @@ const int TILE_CORNERDOWNLEFT = 46;
 const int TILE_CORNERDOWNRIGHT = 47;
 const int TILE_GIROFRAGDOWNLEFT = 48;
 const int TILE_GIROFRAGDOWNRIGHT = 49;
+const int TILE_BLACK = 50;
 
 class Tilemap {
 public:
@@ -542,7 +543,7 @@ bool setTiles(Tilemap::Tile* tiles[])
 		//Clip the sprite sheet
 		if (tilesLoaded)
 		{
-			gTileClips[TILE_FRAGTOP].x = 128;
+			gTileClips[TILE_FRAGTOP].x = 64;
 			gTileClips[TILE_FRAGTOP].y = 192;
 			gTileClips[TILE_FRAGTOP].w = TILE_WIDTH;
 			gTileClips[TILE_FRAGTOP].h = TILE_HEIGHT;
@@ -563,7 +564,7 @@ bool setTiles(Tilemap::Tile* tiles[])
 			gTileClips[TILE_FRAGLEFT].h = TILE_HEIGHT;
 
 			gTileClips[TILE_FLOORCRACKED0].x = 0;
-			gTileClips[TILE_FLOORCRACKED0].y = 192;
+			gTileClips[TILE_FLOORCRACKED0].y = 256;
 			gTileClips[TILE_FLOORCRACKED0].w = TILE_WIDTH;
 			gTileClips[TILE_FLOORCRACKED0].h = TILE_HEIGHT;
 
@@ -612,10 +613,15 @@ bool setTiles(Tilemap::Tile* tiles[])
 			gTileClips[TILE_GIROFRAGTOPLEFT].w = TILE_WIDTH;
 			gTileClips[TILE_GIROFRAGTOPLEFT].h = TILE_HEIGHT;
 
-			gTileClips[TILE_CORNERFRAGDOWNLEFT].x = 128;
-			gTileClips[TILE_CORNERFRAGDOWNLEFT].y = 448;
-			gTileClips[TILE_CORNERFRAGDOWNLEFT].w = TILE_WIDTH;
-			gTileClips[TILE_CORNERFRAGDOWNLEFT].h = TILE_HEIGHT;
+			gTileClips[TILE_GIROFRAGTOPLEFT].x = 384;
+			gTileClips[TILE_GIROFRAGTOPLEFT].y = 384;
+			gTileClips[TILE_GIROFRAGTOPLEFT].w = TILE_WIDTH;
+			gTileClips[TILE_GIROFRAGTOPLEFT].h = TILE_HEIGHT;
+
+			gTileClips[TILE_BLACK].x = 0;
+			gTileClips[TILE_BLACK].y = 448;
+			gTileClips[TILE_BLACK].w = TILE_WIDTH;
+			gTileClips[TILE_BLACK].h = TILE_HEIGHT;
 
 			gTileClips[TILE_CORNERFRAGDOWNRIGHT].x = 192;
 			gTileClips[TILE_CORNERFRAGDOWNRIGHT].y = 448;
