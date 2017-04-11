@@ -24,7 +24,7 @@ private:
 	Texto textoDePrueba;
 	Textura* cosaDePrueba;
 	SDL_Color Black;
-	SDL_Rect rectamgulon;
+	SDL_Rect rectanTexto;
 
 	int vidaAux;
 };

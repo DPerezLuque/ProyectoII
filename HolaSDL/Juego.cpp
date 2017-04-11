@@ -201,7 +201,7 @@ bool Juego::initMedia()
 	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");
 
 	for (int j = 0; j < nombreFuentes.size(); j++) {		
-		textoAux.load(nombreFuentes[j], 20);
+		textoAux.load(nombreFuentes[j], 20); //fuente, size
 		arrayFuentes.push_back(textoAux);
 	}	
 	

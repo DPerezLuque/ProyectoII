@@ -38,9 +38,9 @@ void Play::init()
 
 	textoDePrueba = juego->getTexto(Juego::Arial);
 	cosaDePrueba = new Textura();
-	Black = { 255, 0, 0, 255 };
+	Black = { 255, 0, 0, 255 }; //RGBA	
 	cosaDePrueba->loadFromText(pRenderer, "HOLA", textoDePrueba, Black);
-	rectamgulon = { 80, 300, 300, 300 };	
+	rectanTexto = { 80, 300, 300, 300 };	
 }
 
 //DE MOMENTO Play tiene su propio draw
@@ -49,7 +49,7 @@ void Play::draw()
 	//Limpia el buffer
 	//SDL_RenderClear(pRenderer);
 	SDL_SetRenderDrawColor(pRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-
+	
 	//Dibuja los objetos
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
 		arrayObjetos[aux]->draw();
@@ -60,8 +60,9 @@ void Play::draw()
 	for (int i = 0; i < elemInterfaz.size(); i++) {
 		elemInterfaz[i]->draw();
 	}
-	cosaDePrueba->draw(pRenderer, rectamgulon);
-
+	//Pintado de texto (pruebas)	
+	cosaDePrueba->draw(pRenderer, rectanTexto);
+	cosaDePrueba->loadFromText(pRenderer, "HOLA", textoDePrueba, Black);
 	SDL_RenderPresent(pRenderer);
 }
 

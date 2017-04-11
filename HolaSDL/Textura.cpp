@@ -49,10 +49,12 @@ void Textura::drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_R
 	SDL_RenderCopy(pRenderer, pTextura, &rectaux, &rect); // (render, textura, rect de lo que quieres dibujar, rect destino)
 }
 
-bool Textura::loadFromText(SDL_Renderer* renderer, std::string text,
+bool Textura::loadFromText(SDL_Renderer* renderer, std::string text,	//Este es el metodo para que el texto aparezca por pantalla
 	const Texto& font, const SDL_Color color) {
+	
 	SDL_Surface* textSurface = font.renderText(text, color);
 	if (textSurface != nullptr) {	
+		cout << "creando surface\n"; //Aquí no entra
 		pTextura = SDL_CreateTextureFromSurface(renderer, textSurface);
 		if (pTextura != nullptr) {
 			ancho = textSurface->w;

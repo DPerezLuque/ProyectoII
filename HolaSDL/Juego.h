@@ -91,6 +91,5 @@ private:
 	vector <Musica*> musicFiles;
 
 	Texto textoAux;	
-	SDL_Color Black;
 };
 
