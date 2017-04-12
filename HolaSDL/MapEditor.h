@@ -14,9 +14,12 @@ and may not be redistributed without written permission.*/
 //const int SCREEN_HEIGHT = 480;
 
 //The dimensions of the level
-const int LEVEL_WIDTH = 1536; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT  24*10
-const int LEVEL_HEIGHT = 640; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT
-
+//const int LEVEL_WIDTH = 1536; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT	10*24
+//const int LEVEL_HEIGHT = 640; // TAMAÑO EN X DEL TILE * FILAS DEL TXT
+							  
+//The dimensions of the level
+const int LEVEL_WIDTH = 2560; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT	115*40
+const int LEVEL_HEIGHT = 7360; // TAMAÑO EN X DEL TILE * FILAS DEL TXT
 
 //Tile constants (INDIVIDUAL)
 const int TILE_WIDTH = 64;

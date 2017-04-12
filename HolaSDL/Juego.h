@@ -28,7 +28,8 @@ public:
 	int mVelX, mVelY;
 
 	SDL_Event e;
-
+	//Level camera
+	SDL_Rect camera = { 0, 0, 860, 480 };
 	EstadoJuego* estado;
 	
 	std::stack<EstadoJuego*> states;

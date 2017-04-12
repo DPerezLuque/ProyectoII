@@ -24,6 +24,8 @@ void Player::update() {
 	rect.x += juego->getVelX();
 	//Move the dot up or down
 	rect.y += juego->getVelY();
+	
+	juego->camera = { rect.x, rect.y, 860, 480 };
 } 
 
 bool Player::onClick() {

@@ -18,8 +18,6 @@ using namespace std;
 
 //The level tiles
 Tilemap::Tile* tileSet[TOTAL_TILES];
-//Level camera
-SDL_Rect camera = { 0, 0, 860, 480 };
 
 Juego::Juego()
 {
@@ -74,7 +72,8 @@ void Juego::run()
 
 	estado->draw();
 	handle_events();
-
+	SDL_Rect aux;
+	
 	while (!exit) {
 		//estado = topEstado();
 		if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
