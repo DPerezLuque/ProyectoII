@@ -8,10 +8,9 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	rect.w = 64;
 	rect.h = 64;
 
-	rectAnim = { 0, 0, 32, 32 };
+	rectAnim = { 0, 0, 64, 64 };
 
-
-	rectCollision.w = 32;
+	rectCollision.w = 32; //Hay que retocar esto
 	rectCollision.h = 32;
 	rectCollision.x = rect.x + rect.w / 3;
 	rectCollision.y = rect.y + rect.h / 3;
@@ -33,28 +32,28 @@ void Player::animar(animacion current){ //derecha, izquierda, arriba, abajo
 	switch (current)
 	{
 		case Player::derecha:
-			rectAnim.y = 96; //Altura de la animacion		
+			rectAnim.y = 192; //Altura de la animacion		
 			break;
 		case Player::izquierda:
-			rectAnim.y = 64; 		
+			rectAnim.y = 128; 		
 			break;
 		case Player::arriba:
-			rectAnim.y = 32; 
+			rectAnim.y = 64; 
 			break;
 		case Player::abajo:
 			rectAnim.y = 0; 
 			break;
 		case Player::dchaUp:
-			rectAnim.y = 160; 
+			rectAnim.y = 320; 
 			break;
 		case Player::dchaDown:
-			rectAnim.y = 128; 
+			rectAnim.y = 256; 
 			break;
 		case Player::izdaUp:
-			rectAnim.y = 192; 	
+			rectAnim.y = 384; 	
 			break;
 		case Player::izdaDown:
-			rectAnim.y = 224; 
+			rectAnim.y = 448; 
 			break;
 		default:
 			break;
@@ -64,12 +63,12 @@ void Player::animar(animacion current){ //derecha, izquierda, arriba, abajo
 }
 
 void Player::animacionBasica(){ //Para el paso de frames
-	if (rectAnim.x >= 96){
+	if (rectAnim.x >= 192){
 		rectAnim.x = 0;
 	}
 	else {
-		rectAnim.x += 32;
-	}
+		rectAnim.x += 64;
+	}	
 }
 
 void Player::update(int delta) {
@@ -96,32 +95,34 @@ void Player::update(int delta) {
 		//Move the dot up or down
 		rect.y += juego->getVelY();
 	*/
-	//ANIMACION
-	if (juego->getVelX() * delta > 0 && juego->getVelY() * delta == 0){
-		animar(derecha);
-	}
-	if (juego->getVelX() * delta < 0 && juego->getVelY() * delta == 0){
-		animar(izquierda);
-	}
-	if (juego->getVelY() * delta < 0 && juego->getVelX() * delta == 0){
-		animar(arriba);
-	}
-	if (juego->getVelY() * delta > 0 && juego->getVelX() * delta == 0){
-		animar(abajo);
-	}
-	if (juego->getVelX() * delta > 0 && juego->getVelY() * delta < 0){
-		animar(dchaUp);
-	}
-	if (juego->getVelX() * delta > 0 && juego->getVelY() * delta > 0){
-		animar(dchaDown);
-	}
-	if (juego->getVelX() * delta < 0 && juego->getVelY() * delta < 0){
-		animar(izdaUp);
-	}
-	if (juego->getVelX() * delta < 0 && juego->getVelY() * delta > 0){
-		animar(izdaDown);
-	}
 	
+		//ANIMACION
+		if (juego->getVelX() * delta > 0 && juego->getVelY() * delta == 0){
+			animar(derecha);
+		}
+		if (juego->getVelX() * delta < 0 && juego->getVelY() * delta == 0){
+			animar(izquierda);
+		}
+		if (juego->getVelY() * delta < 0 && juego->getVelX() * delta == 0){
+			animar(arriba);
+		}
+		if (juego->getVelY() * delta > 0 && juego->getVelX() * delta == 0){
+			animar(abajo);
+		}
+		if (juego->getVelX() * delta > 0 && juego->getVelY() * delta < 0){
+			animar(dchaUp);
+		}
+		if (juego->getVelX() * delta > 0 && juego->getVelY() * delta > 0){
+			animar(dchaDown);
+		}
+		if (juego->getVelX() * delta < 0 && juego->getVelY() * delta < 0){
+			animar(izdaUp);
+		}
+		if (juego->getVelX() * delta < 0 && juego->getVelY() * delta > 0){
+			animar(izdaDown);
+		}
+	
+
 } 
 
 bool Player::onClick() {
