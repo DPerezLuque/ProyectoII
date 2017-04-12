@@ -9,7 +9,6 @@ class Objeto : public ObjetoJuego
 public:
 	Objeto(Juego* ptr, int px, int py);
 	virtual ~Objeto();
-
 	
 	virtual void onCollision() = 0;
 	bool dentro(int x, int y) const; //(A LO MEJOR ES NECESARIO)
