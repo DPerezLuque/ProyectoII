@@ -7,5 +7,8 @@ public:
 	BarraVida(Juego* pJuego, SDL_Rect Camera, int alto, int ancho);
 	virtual ~BarraVida();
 	void update(SDL_Rect Camera, int contador);	
+	void draw() const;
+private:
+	SDL_Rect rectAnim;
 };
 
