@@ -19,9 +19,6 @@ using namespace std;
 
 //The level tiles
 Tilemap::Tile* tileSet[TOTAL_TILES];
-//Level camera
-SDL_Rect camera = { 0, 0, 860, 480 };
-
 
 Juego::Juego()
 {
@@ -91,7 +88,7 @@ void Juego::run()
 			tileSet[i]->render(pRenderer, camera);
 		}
 
-		cout << delta << "\n";
+		//cout << delta << "\n";
 		estado->draw();
 		handle_events();
 	}
@@ -223,7 +220,7 @@ void Juego::freeMedia()
 		//arrayTex[aux] = nullptr;
 	}
 
-	close(tileSet, pRenderer, pWindow);
+	//close(tileSet, pRenderer, pWindow);
 	
 }
 
@@ -260,8 +257,8 @@ void Juego::handle_events()
 		else if (e.type == SDL_MOUSEBUTTONUP) {
 			if (e.button.button == SDL_BUTTON_LEFT) {
 				//std::cout << "CLICK";
-				x = e.button.x;
-				y = e.button.y;
+				x = e.button.x + (camera.x + camera.w/2) - SCREEN_WIDTH / 2;
+				y = e.button.y + (camera.y + camera.h/2) - SCREEN_HEIGHT / 2;
 				estado->onClick();
 			}
 			// else if(...)    
@@ -428,13 +425,13 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	return true;
 }
 
-bool Juego::touchesWall(ObjetoJuego * a)
+bool Juego::touchesWall(ObjetoJuego * object)
 {
 	//Go through the tiles
 	for (int i = 0; i < TOTAL_TILES; ++i)
 	{
 		//If the tile is a wall type tile
-		//(tileSet[i]->getType() >= TILE_CENTER) && (tileSet[i]->getType() <= TILE_TOPLEFT)) <<-- EXTRAÍDO DE LAZYFOO
+		/*//(tileSet[i]->getType() >= TILE_CENTER) && (tileSet[i]->getType() <= TILE_TOPLEFT)) <<-- EXTRAÍDO DE LAZYFOO
 		if (tileSet[i]->getType() == TILE_TOPLEFT || tileSet[i]->getType() == TILE_TOP ||
 			tileSet[i]->getType() == TILE_LEFT || tileSet[i]->getType() == TILE_DOWN ||
 			tileSet[i]->getType() == TILE_RIGHT || tileSet[i]->getType() == TILE_DOWNRIGHT ||
@@ -442,6 +439,14 @@ bool Juego::touchesWall(ObjetoJuego * a)
 		{
 			//If the collision box touches the wall tile
 			if (checkWallCollisions(a, tileSet[i]->getBox()))
+			{
+				return true;
+			}
+		}*/
+
+		if (tileSet[i]->isWall()) {
+			//If the collision box touches the wall tile
+			if (checkWallCollisions(object, tileSet[i]->getBox()))
 			{
 				return true;
 			}

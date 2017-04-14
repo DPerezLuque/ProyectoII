@@ -32,6 +32,9 @@ public:
 
 	EstadoJuego* estado;
 
+	//Level camera
+	//SDL_Rect camera = { 0, 0, 860, 480 };
+	SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	bool touchesWall(ObjetoJuego * a);
 	bool checkWallCollisions(ObjetoJuego * a, SDL_Rect b);

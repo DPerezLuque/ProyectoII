@@ -21,7 +21,7 @@ Objeto::~Objeto() {
 
 void Objeto::draw() const
 {
-	textura->draw(pRenderer, rect);
+	textura->draw(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect);
 }
 
 

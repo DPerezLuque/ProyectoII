@@ -22,9 +22,9 @@ Play::~Play() {}
 
 void Play::init() 
 {
-	arrayObjetos.push_back(new Player(juego, 200, 200)); 
+	arrayObjetos.push_back(new Player(juego, juego->camera.w / 2, juego->camera.h / 2)); 
 	arrayObjetos.push_back(new BossRino(juego, 0, 0));
-	arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
+	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 
 }
 
@@ -45,9 +45,6 @@ void Play::update(int delta) {
 			arrayObjetos.erase(arrayObjetos.begin() + aux);
 	}
 
-	for (int j = 0; j < arrayObjetos.size(); ++j){
-	}
-	
 	//COLISIONES CON ENTORNO
 	//***********
 	//EN PLAYER.CPP
@@ -74,7 +71,7 @@ void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 	//posiciones del ratón
 	int mX, mY;
 	juego->getMousePos(mX, mY);
-
+	
 	int distance = sqrt((mX - posX)*(mX - posX) + (mY - posY)*(mY - posY));
 
 	int vX = 75 * (mX - posX) / distance;

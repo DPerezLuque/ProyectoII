@@ -41,8 +41,14 @@ bool Textura::load(SDL_Renderer* pRenderer, std::string const& nombArch) {
 }
 
 
-void Textura::draw(SDL_Renderer* pRenderer, SDL_Rect const& rect) {
-	SDL_RenderCopy(pRenderer, pTextura, &rectori, &rect); // (render, textura, rect de lo que quieres dibujar, rect destino)
+void Textura::draw(SDL_Renderer* pRenderer, int rectX, int rectY, SDL_Rect const& rect) {
+
+	//Set rendering space and render to screen
+	SDL_Rect renderQuad = { rectX, rectY, rect.w, rect.h };
+
+	//Render to screen
+	//SDL_RenderCopyEx(pRenderer, mTexture, clip, &renderQuad);
+	SDL_RenderCopy(pRenderer, pTextura, &rectori, &renderQuad); // (render, textura, rect de lo que quieres dibujar, rect destino)
 }
 
 void Textura::drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect const& rectaux) {

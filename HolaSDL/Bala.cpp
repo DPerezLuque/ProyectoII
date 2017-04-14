@@ -29,5 +29,10 @@ Bala::~Bala()
 }
 
 void Bala::onCollision(){
-
+	
+	if (juego->touchesWall(this)) {
+		printf("Bala Destruida");
+		dead = true;
+	}
+	
 }

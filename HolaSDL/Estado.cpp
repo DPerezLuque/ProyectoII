@@ -25,6 +25,8 @@ Estado::~Estado()
 void Estado::draw()
 {
 	//Limpia el buffer
+	//
+	
 	//SDL_RenderClear(pRenderer);
 	SDL_SetRenderDrawColor(pRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	//Dibuja el fondo (tendremos que cambiarlo cuando empecemos con los fondos y los niveles)
