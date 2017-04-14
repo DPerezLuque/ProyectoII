@@ -1,5 +1,9 @@
 #pragma once
 #include "Objeto.h"
+#include "GestorVida.h"
+
+const int VIDAMAX = 4; //vida máxima del jugador
+const int VIDAMIN = 0; //Vida mínima del jugador
 
 class Player : public Objeto 
 {
@@ -16,5 +20,6 @@ public:
 
 private:
 	int velX, velY;
+	int vidaActual; //Vida actual
 };
 

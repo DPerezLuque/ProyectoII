@@ -12,6 +12,8 @@ BalaEnemigo::BalaEnemigo(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr,
 
 	velX = vX;
 	velY = vY;
+
+	tipo = ENEMY;
 }
 
 

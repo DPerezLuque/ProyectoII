@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "GestorVida.h"
 
 
 
@@ -16,6 +17,8 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	velY = 0;
 
 	tipo = PJ;
+
+	vidaActual = VIDAMAX; //Inicialización de la vida a su máximo
 }
 
 
@@ -24,11 +27,6 @@ Player::~Player()
 }
 
 void Player::update(int delta) {
-	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
-	//juego->checkCollision()
-	/*for (int i = 0; i < 10; ++i){
-		juego->checkCollision(this->rect, juego->topEstado()->)
-	}*/
 
 	rect.x += juego->getVelX() * delta;
 	rect.y += juego->getVelY() * delta;
@@ -48,6 +46,17 @@ void Player::update(int delta) {
 		//Move the dot up or down
 		rect.y += juego->getVelY();
 	*/
+
+	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
+	for (int i = 0; i < juego->topEstado()->getArray().size(); ++i){
+		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
+		if (juego->checkCollision(this, juego->topEstado()->getArray()[i])) {
+			if(juego->topEstado()->getArray()[i]->getType() == ENEMY) vidaActual--;
+		}
+	}
+
+	//-- - Gestión de la vida-- -
+	if (vidaActual <= 0) GestorVida::muerteYDestruccion();
 	
 } 
 

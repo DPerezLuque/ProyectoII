@@ -15,6 +15,8 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	rect.x = 100;
 	rect.y = 100;
+
+	tipo = ENEMY;
 }
 
 

@@ -1,6 +1,5 @@
 #pragma once
 #include "EstadoJuego.h"
-#include "ObjetoJuego.h"
 #include "Juego.h"
 
 
@@ -15,7 +14,9 @@ public:
 	void update(int delta);
 	void onClick();
 
-	std::vector<ObjetoJuego*> arrayObjetos;
+	vector<ObjetoJuego*> getArray() const { return arrayObjetos; }; //Getter del array de objetos
+
+	vector<ObjetoJuego*> arrayObjetos;
 protected:
 
 	Juego* juego;
