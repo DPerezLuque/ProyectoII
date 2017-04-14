@@ -13,8 +13,6 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	rect.w = 50;
 	rect.h = 50;
 
-	rect.x = 100;
-	rect.y = 100;
 }
 
 
@@ -24,17 +22,6 @@ enemy::~enemy()
 
 void enemy::update() 
 {	
-	int x, y;
-	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
-	if (contDis < freDis - 10){ //Algo tope chungo para que se pare al disparar
-		follow(x, y);
-	}
-	//follow(x, y);
-	++contDis;
-	if (contDis >= freDis){
-		shoot(x, y);
-		contDis = 0;
-	}
 }
 
 void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir 
@@ -55,4 +42,8 @@ void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir
 
 void enemy::shoot(int targetX, int targetY){
 	static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
+}
+
+void enemy::getPlayerPos(int& x, int& y) {
+	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
 }

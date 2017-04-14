@@ -10,6 +10,6 @@ public:
 	virtual void update(int delta) {};
 
 
-	void onCollision();
+	void onCollision(collision c);
 };
 

@@ -11,7 +11,10 @@ public:
 	virtual ~Objeto();
 
 	
-	virtual void onCollision() = 0;
+	virtual void onCollision(collision c) = 0;
+
+	void update() {};
+
 	bool dentro(int x, int y) const; //(A LO MEJOR ES NECESARIO)
 	void draw() const;
 	bool onClick();
@@ -33,7 +36,7 @@ protected:
 	SDL_Rect rect; //Cuadrado en el que se va a dibujar el objeto
 	SDL_Rect rectCollision;
 
-	collision tipo;
+	collision tipo, obj; //obj es el tipo del objeto con el que ha colisionado
 	bool dead = false;
 	int velX, velY;	//Velocidad del objeto
 	//int h, w; // tamaño (ya va en el rect)

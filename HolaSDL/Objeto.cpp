@@ -46,6 +46,6 @@ SDL_Rect Objeto::getRect(){
 	return rectCollision;
 }
 
-void Objeto::onCollision(){
+void Objeto::onCollision(collision c){
 //	printf("lalal");
 }

@@ -18,7 +18,6 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	tipo = PJ;
 }
 
-
 Player::~Player()
 {
 }
@@ -30,24 +29,20 @@ void Player::update(int delta) {
 		juego->checkCollision(this->rect, juego->topEstado()->)
 	}*/
 
+	//movimiento
 	rect.x += juego->getVelX() * delta;
 	rect.y += juego->getVelY() * delta;
 	
+	//actualiza el rectangulo de colisiones
 	rectCollision.x = (rect.x + rect.w / 3) * delta;
 	rectCollision.y = (rect.y + rect.h / 3) * delta;
 
-	if (juego->touchesWall(this)){
-		printf("Wall touched!\n");
+	if (juego->touchesWall(this) || obj == ENVIROMENT){
+		//printf("Wall touched!\n");
 		rect.x -= juego->getVelX() * delta;
-		rect.y -= juego->getVelY() * delta;
-		
-		
-	}/*
-		//Move the dot left or right
-		rect.x += juego->getVelX();
-		//Move the dot up or down
-		rect.y += juego->getVelY();
-	*/
+		rect.y -= juego->getVelY() * delta;	
+		obj = PJ; //para que se pueda seguir moviendo 
+	}
 	
 } 
 
@@ -58,14 +53,16 @@ bool Player::onClick() {
 	return true;
 }
 
+void Player::onCollision(collision c){
+	obj = c;
+	if (obj == ENEMY) {
+		printf("Auch!");
+		//dead = true;
+	}
+}
+
 void Player::getPos(int& x, int& y) {
 	x = rect.x;
 	y = rect.y;
 }
 
-void Player::onCollision(){
-
-	printf("Auch!");
-	dead = true;
-
-}

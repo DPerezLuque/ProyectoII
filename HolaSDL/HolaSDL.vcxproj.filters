@@ -75,10 +75,13 @@
     <ClCompile Include="BalaPlayer.cpp">
       <Filter>Archivos de código fuente\Objetos</Filter>
     </ClCompile>
-    <ClCompile Include="EnemigoPlanta.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
     <ClCompile Include="BossRino.cpp">
+      <Filter>Archivos de código fuente\Objetos</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemigoPlanta.cpp">
+      <Filter>Archivos de código fuente\Objetos</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxRino.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -137,10 +140,13 @@
     <ClInclude Include="BalaPlayer.h">
       <Filter>Archivos de encabezado\Objetos</Filter>
     </ClInclude>
-    <ClInclude Include="EnemigoPlanta.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="BossRino.h">
+      <Filter>Archivos de encabezado\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemigoPlanta.h">
+      <Filter>Archivos de encabezado\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxRino.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

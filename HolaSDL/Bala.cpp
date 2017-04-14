@@ -28,6 +28,6 @@ Bala::~Bala()
 {
 }
 
-void Bala::onCollision(){
+void Bala::onCollision(collision c){
 
 }

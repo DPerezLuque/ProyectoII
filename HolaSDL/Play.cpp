@@ -6,6 +6,7 @@
 #include "BalaEnemigo.h"
 #include "enemy.h"
 #include "BossRino.h"
+#include "BoxRino.h"
 #include <iostream>
 
 using namespace std;
@@ -22,9 +23,15 @@ Play::~Play() {}
 
 void Play::init() 
 {
-	arrayObjetos.push_back(new Player(juego, 200, 200)); 
-	arrayObjetos.push_back(new BossRino(juego, 0, 0));
-	arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
+	arrayObjetos.push_back(new Player(juego, 150, 150)); 
+	arrayObjetos.push_back(new BossRino(juego, 300, 300));
+	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
+	arrayObjetos.push_back(new BoxRino(juego, 0, 0));
+	arrayObjetos.push_back(new BoxRino(juego, 0, juego->getHeight() - 100));
+	arrayObjetos.push_back(new BoxRino(juego, juego->getWidth() - 100, 0));
+	arrayObjetos.push_back(new BoxRino(juego, juego->getWidth() - 100, juego->getHeight() - 100));
+
+
 
 }
 
@@ -36,18 +43,22 @@ void Play::update(int delta) {
 	//PERSONAJE
 	for (int i = 1; i < arrayObjetos.size(); ++i){
 		if (!arrayObjetos[0]->isDead() && juego->checkCollision(arrayObjetos[0], arrayObjetos[i])){
-			arrayObjetos[0]->onCollision();
+			arrayObjetos[0]->onCollision(arrayObjetos[i]->getType());
 		}
 	}
+
+	for (int j = 2; j < arrayObjetos.size(); ++j){
+		if (!arrayObjetos[1]->isDead() && juego->checkCollision(arrayObjetos[1], arrayObjetos[j])) {
+			arrayObjetos[1]->onCollision(arrayObjetos[j]->getType());
+		}
+	}
+	
 	//LIMPIEZA DE VECTOR DE OBJETOS
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
 		if (arrayObjetos[aux]->isDead())
 			arrayObjetos.erase(arrayObjetos.begin() + aux);
 	}
 
-	for (int j = 0; j < arrayObjetos.size(); ++j){
-	}
-	
 	//COLISIONES CON ENTORNO
 	//***********
 	//EN PLAYER.CPP
