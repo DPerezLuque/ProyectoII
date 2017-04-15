@@ -1,228 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de código fuente">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Archivos de código fuente\Objetos">
-      <UniqueIdentifier>{60205726-6876-4dc1-8aa8-7051b05ea0fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Objetos">
-      <UniqueIdentifier>{caa8284c-9e8c-432a-be5d-4e128e298fd6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de código fuente\Estados">
-      <UniqueIdentifier>{c163db1a-0c47-457a-887d-58bc9b624131}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Estados">
-      <UniqueIdentifier>{78704072-8c42-451b-ada3-dc552f42acf4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de código fuente\Utiles">
-      <UniqueIdentifier>{032b389a-661a-4f61-aaed-c1cad8c5ecdd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Utiles">
-      <UniqueIdentifier>{9e3e1586-0ef6-432f-9c7e-7f79d475368d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de código fuente\Interfaz">
-      <UniqueIdentifier>{dcb041ab-f7df-4e92-ac44-fc9c366029fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\Interfaz">
-      <UniqueIdentifier>{519c8a1d-e4b0-474f-8e5d-ede343921c47}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Bala.cpp" />
+    <ClCompile Include="BalaEnemigo.cpp" />
+    <ClCompile Include="BalaPlayer.cpp" />
+    <ClCompile Include="BossRino.cpp" />
+    <ClCompile Include="EnemigoPlanta.cpp" />
+    <ClCompile Include="BarraVida.cpp" />
+    <ClCompile Include="BarraVidaVacia.cpp" />
+    <ClCompile Include="Boton.cpp" />
+    <ClCompile Include="Cargador.cpp" />
+    <ClCompile Include="Efecto.cpp" />
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="EnergiaDisponible.cpp" />
+    <ClCompile Include="Error.cpp" />
+    <ClCompile Include="Estado.cpp" />
+    <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="Interfaz.cpp" />
+    <ClCompile Include="Juego.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuPrincipal.cpp" />
+    <ClCompile Include="Musica.cpp" />
+    <ClCompile Include="Objeto.cpp" />
+    <ClCompile Include="Pausa.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Play.cpp" />
+    <ClCompile Include="Texto.cpp" />
+    <ClCompile Include="Textura.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="Juego.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuPrincipal.cpp">
-      <Filter>Archivos de código fuente\Estados</Filter>
-    </ClCompile>
-    <ClCompile Include="GameOver.cpp">
-      <Filter>Archivos de código fuente\Estados</Filter>
-    </ClCompile>
-    <ClCompile Include="Pausa.cpp">
-      <Filter>Archivos de código fuente\Estados</Filter>
-    </ClCompile>
-    <ClCompile Include="Objeto.cpp">
-      <Filter>Archivos de código fuente\Objetos</Filter>
-    </ClCompile>
-    <ClCompile Include="Boton.cpp">
-      <Filter>Archivos de código fuente\Objetos</Filter>
-    </ClCompile>
-    <ClCompile Include="Play.cpp">
-      <Filter>Archivos de código fuente\Estados</Filter>
-    </ClCompile>
-    <ClCompile Include="Estado.cpp">
-      <Filter>Archivos de código fuente\Estados</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Archivos de código fuente\Objetos</Filter>
-    </ClCompile>
-    <ClCompile Include="enemy.cpp">
-      <Filter>Archivos de código fuente\Objetos</Filter>
-    </ClCompile>
-    <ClCompile Include="Bala.cpp">
-      <Filter>Archivos de código fuente\Objetos</Filter>
-    </ClCompile>
-    <ClCompile Include="BalaEnemigo.cpp">
-      <Filter>Archivos de código fuente\Objetos</Filter>
-    </ClCompile>
-    <ClCompile Include="BalaPlayer.cpp">
-      <Filter>Archivos de código fuente\Objetos</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="EnemigoPlanta.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="BossRino.cpp">
-      <Filter>Archivos de código fuente</Filter>
-=======
-    <ClCompile Include="Musica.cpp">
-      <Filter>Archivos de código fuente\Utiles</Filter>
-    </ClCompile>
-    <ClCompile Include="Textura.cpp">
-      <Filter>Archivos de código fuente\Utiles</Filter>
-    </ClCompile>
-    <ClCompile Include="Error.cpp">
-      <Filter>Archivos de código fuente\Utiles</Filter>
-    </ClCompile>
-    <ClCompile Include="Efecto.cpp">
-      <Filter>Archivos de código fuente\Utiles</Filter>
-    </ClCompile>
-    <ClCompile Include="Texto.cpp">
-      <Filter>Archivos de código fuente\Utiles</Filter>
-    </ClCompile>
-    <ClCompile Include="Interfaz.cpp">
-      <Filter>Archivos de código fuente\Interfaz</Filter>
-    </ClCompile>
-    <ClCompile Include="BarraVida.cpp">
-      <Filter>Archivos de código fuente\Interfaz</Filter>
-    </ClCompile>
-    <ClCompile Include="BarraVidaVacia.cpp">
-      <Filter>Archivos de código fuente\Interfaz</Filter>
-    </ClCompile>
-    <ClCompile Include="Cargador.cpp">
-      <Filter>Archivos de código fuente\Interfaz</Filter>
-    </ClCompile>
-    <ClCompile Include="EnergiaDisponible.cpp">
-      <Filter>Archivos de código fuente\Interfaz</Filter>
->>>>>>> origin/Interfaz
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Juego.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuPrincipal.h">
-      <Filter>Archivos de encabezado\Estados</Filter>
-    </ClInclude>
-    <ClInclude Include="GameOver.h">
-      <Filter>Archivos de encabezado\Estados</Filter>
-    </ClInclude>
-    <ClInclude Include="Pausa.h">
-      <Filter>Archivos de encabezado\Estados</Filter>
-    </ClInclude>
-    <ClInclude Include="Objeto.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjetoJuego.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-    <ClInclude Include="Boton.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-    <ClInclude Include="Play.h">
-      <Filter>Archivos de encabezado\Estados</Filter>
-    </ClInclude>
-    <ClInclude Include="Estado.h">
-      <Filter>Archivos de encabezado\Estados</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="MapEditor.h">
-      <Filter>Archivos de encabezado</Filter>
-=======
-    <ClInclude Include="enemy.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-    <ClInclude Include="Bala.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-    <ClInclude Include="BalaEnemigo.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
->>>>>>> origin/Interfaz
-    </ClInclude>
-    <ClInclude Include="enemy.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-    <ClInclude Include="Bala.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-    <ClInclude Include="BalaEnemigo.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-    <ClInclude Include="BalaPlayer.h">
-      <Filter>Archivos de encabezado\Objetos</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="EnemigoPlanta.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="BossRino.h">
-      <Filter>Archivos de encabezado</Filter>
-=======
-    <ClInclude Include="EstadoJuego.h">
-      <Filter>Archivos de encabezado\Estados</Filter>
-    </ClInclude>
-    <ClInclude Include="Error.h">
-      <Filter>Archivos de encabezado\Utiles</Filter>
-    </ClInclude>
-    <ClInclude Include="Musica.h">
-      <Filter>Archivos de encabezado\Utiles</Filter>
-    </ClInclude>
-    <ClInclude Include="Textura.h">
-      <Filter>Archivos de encabezado\Utiles</Filter>
-    </ClInclude>
-    <ClInclude Include="MapEditor.h">
-      <Filter>Archivos de encabezado\Utiles</Filter>
-    </ClInclude>
-    <ClInclude Include="Efecto.h">
-      <Filter>Archivos de encabezado\Utiles</Filter>
-    </ClInclude>
-    <ClInclude Include="Texto.h">
-      <Filter>Archivos de encabezado\Utiles</Filter>
-    </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>Archivos de encabezado\Interfaz</Filter>
-    </ClInclude>
-    <ClInclude Include="Interfaz.h">
-      <Filter>Archivos de encabezado\Interfaz</Filter>
-    </ClInclude>
-    <ClInclude Include="BarraVida.h">
-      <Filter>Archivos de encabezado\Interfaz</Filter>
-    </ClInclude>
-    <ClInclude Include="BarraVidaVacia.h">
-      <Filter>Archivos de encabezado\Interfaz</Filter>
-    </ClInclude>
-    <ClInclude Include="Cargador.h">
-      <Filter>Archivos de encabezado\Interfaz</Filter>
-    </ClInclude>
-    <ClInclude Include="EnergiaDisponible.h">
-      <Filter>Archivos de encabezado\Interfaz</Filter>
->>>>>>> origin/Interfaz
-    </ClInclude>
+    <ClInclude Include="Bala.h" />
+    <ClInclude Include="BalaEnemigo.h" />
+    <ClInclude Include="BalaPlayer.h" />
+    <ClInclude Include="BossRino.h" />
+    <ClInclude Include="EnemigoPlanta.h" />
+    <ClInclude Include="BarraVida.h" />
+    <ClInclude Include="BarraVidaVacia.h" />
+    <ClInclude Include="Boton.h" />
+    <ClInclude Include="Cargador.h" />
+    <ClInclude Include="Efecto.h" />
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="EnergiaDisponible.h" />
+    <ClInclude Include="Error.h" />
+    <ClInclude Include="EstadoJuego.h" />
+    <ClInclude Include="Estado.h" />
+    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="HUD.h" />
+    <ClInclude Include="Interfaz.h" />
+    <ClInclude Include="Juego.h" />
+    <ClInclude Include="MapEditor.h" />
+    <ClInclude Include="MenuPrincipal.h" />
+    <ClInclude Include="Musica.h" />
+    <ClInclude Include="ObjetoJuego.h" />
+    <ClInclude Include="Objeto.h" />
+    <ClInclude Include="Pausa.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Play.h" />
+    <ClInclude Include="Texto.h" />
+    <ClInclude Include="Textura.h" />
   </ItemGroup>
 </Project>

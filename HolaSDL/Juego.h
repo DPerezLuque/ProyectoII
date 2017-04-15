@@ -49,7 +49,7 @@ public:
 	EstadoJuego* estado;
 
 	//Level camera
-	SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+	SDL_Rect camera;
 	
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	bool touchesWall(ObjetoJuego * a);
@@ -62,6 +62,7 @@ public:
 	void pushState(EstadoJuego* newState);
 	void popState();
 	EstadoJuego* topEstado();
+
 	//Musica
 	enum MusicIds { Cancion1, };
 	//Fuentes
@@ -69,28 +70,12 @@ public:
 	Texto getTexto(Fuentes fun) { return arrayFuentes[fun]; }
 	Texto getTexto(int num) { return arrayFuentes[num]; }
 
-private:
-	//ARRAYS
-	std::vector<std::string> texturas;
-	std::vector<Textura*> arrayTex;
-	//texto
-	std::vector<Texto> arrayFuentes;
-	std::vector<string> nombreFuentes;
-	//Musica	
-	vector <string> musicNames;//Vector para almacenar direcciones de canciones
-	Musica* cancion; //Auxiliar para llenar el vector de musica
-	vector <Musica*> musicFiles;
-
-	Texto textoAux;
-public:
-
-
 	void run();
 	void handle_events();
 	void updateDirection();
 	bool initSDL();
 	bool initMedia(); //carga las texturas en el vector de texturas (fuente y música)
-	
+
 	void setSalir(){ exit = true; }
 	void freeMedia();
 	void closeSDL();
@@ -106,8 +91,18 @@ public:
 	int getVelY();
 
 
+private:
+	//ARRAYS
+	std::vector<std::string> texturas;
+	std::vector<Textura*> arrayTex;
+	//texto
+	std::vector<Texto> arrayFuentes;
+	std::vector<string> nombreFuentes;
+	//Musica	
+	vector <string> musicNames;//Vector para almacenar direcciones de canciones
+	Musica* cancion; //Auxiliar para llenar el vector de musica
+	vector <Musica*> musicFiles;
 
-
-
+	Texto textoAux;
 };
 

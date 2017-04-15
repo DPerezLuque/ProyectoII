@@ -14,10 +14,8 @@
     <ClCompile Include="Bala.cpp" />
     <ClCompile Include="BalaEnemigo.cpp" />
     <ClCompile Include="BalaPlayer.cpp" />
-
     <ClCompile Include="BossRino.cpp" />
     <ClCompile Include="EnemigoPlanta.cpp" />
-
     <ClCompile Include="BarraVida.cpp" />
     <ClCompile Include="BarraVidaVacia.cpp" />
     <ClCompile Include="Boton.cpp" />
@@ -25,7 +23,6 @@
     <ClCompile Include="Efecto.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="EnergiaDisponible.cpp" />
-
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Estado.cpp" />
     <ClCompile Include="GameOver.cpp" />
@@ -45,10 +42,8 @@
     <ClInclude Include="Bala.h" />
     <ClInclude Include="BalaEnemigo.h" />
     <ClInclude Include="BalaPlayer.h" />
-
     <ClInclude Include="BossRino.h" />
     <ClInclude Include="EnemigoPlanta.h" />
-
     <ClInclude Include="BarraVida.h" />
     <ClInclude Include="BarraVidaVacia.h" />
     <ClInclude Include="Boton.h" />
@@ -84,7 +79,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

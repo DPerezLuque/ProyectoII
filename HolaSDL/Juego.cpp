@@ -55,6 +55,7 @@ Juego::Juego()
 		changeState(new Play(this));
 		estado = topEstado(); //primer estado: MENU
 	}
+	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 }
 
 Juego::~Juego()
@@ -191,7 +192,7 @@ bool Juego::initMedia()
 	bool success = true;	
 	//MUSICA
 	musicNames.push_back("..\\Sonidos\\Musica\\Come.mp3");
-	musicNames.push_back("..\\Sonidos\\Efectos\\Come.wav");
+	//musicNames.push_back("..\\Sonidos\\Efectos\\Come.wav");
 
 	for (int j = 0; j < musicNames.size(); j++) {
 		cancion = new Musica;

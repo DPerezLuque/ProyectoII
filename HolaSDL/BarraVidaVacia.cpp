@@ -13,3 +13,8 @@ BarraVidaVacia::BarraVidaVacia(Juego* pJuego, SDL_Rect Camera, int ancho, int al
 BarraVidaVacia::~BarraVidaVacia()
 {
 }
+
+void BarraVidaVacia::update(SDL_Rect Camera, int contador){
+	pRect.x = Camera.x + distX;
+	pRect.y = Camera.y + distY;
+}

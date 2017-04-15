@@ -15,8 +15,7 @@ public:
 	void draw();
 	void update(int delta);
 	void onClick();
-
-	std::vector<ObjetoJuego*> arrayObjetos;
+	
 protected:
 
 	Juego* juego;
@@ -27,6 +26,7 @@ protected:
 	SDL_Rect camera_; //Utilizado por interfaz
 	
 	std::vector<int> stats;
+	std::vector<ObjetoJuego*> arrayObjetos;
 
 	int height, width;
 };

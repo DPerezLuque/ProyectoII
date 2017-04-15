@@ -25,14 +25,23 @@ Play::~Play() {}
 
 void Play::init() 
 {
-	arrayObjetos.push_back(new Player(juego, juego->camera.w / 2, juego->camera.h / 2)); 
+	arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	//arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 	//arrayObjetos.push_back(new enemy(juego, 0, 0));
+
+	vidaAux = 0; //Barra Vacia
+
+	stats.push_back(vidaAux);
+	stats.push_back(dynamic_cast<Player*>(arrayObjetos[0])->getVida()); // En player
+	stats.push_back(dynamic_cast<Player*>(arrayObjetos[0])->getBalas());
+
+	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
+	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
+	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->camera.w - 80, juego->camera.h - 80));
 }
 
 void Play::update(int delta) {
-	
 	//El update de cada objeto debe comprobar las colisiones con el entorno
 	
 	//COLISIONES CON OBJETOS
@@ -48,36 +57,22 @@ void Play::update(int delta) {
 			arrayObjetos.erase(arrayObjetos.begin() + aux);
 	}
 
-	//COLISIONES CON ENTORNO
-	//***********
-	//EN PLAYER.CPP
-
-
 	//UPDATE
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
 		if (!arrayObjetos[i]->isDead())
 			arrayObjetos[i]->update(delta);
 	}
-	//arrayObjetos.push_back(new Player(juego, 200, 200)); 
-	
 
-	vidaAux = 0; //Barra Vacia
+	//Actualiza valores de la vida, las balas (Interfaz)
+	for (int i = 0; i < stats.size(); i++) {
+		getStats(i);
+	}
 
-	stats.push_back(vidaAux);
-//	stats.push_back(dynamic_cast<Player*>(arrayObjetos[0])->getVida());
-//	stats.push_back(dynamic_cast<Player*>(arrayObjetos[0])->getBalas());
-
-	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
-	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0)); 
-	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->camera.w - 80, juego->camera.h - 80));
-/*
-	fuenteDePrueba = juego->getTexto(Juego::Arial);
-	mensaje = new Textura();
-	Red = { 255, 0, 0, 255 }; //RGBA	
-	mensaje->loadFromText(pRenderer, "HOLA", fuenteDePrueba, Red); //el render, el texto, la fuente y el color
-	rectanTexto = { 80, 300, 300, 300 };	
-	*/
+	for (int i = 0; i < elemInterfaz.size(); i++){
+		elemInterfaz[i]->update(camera_, stats[i]); //Cada elemento del vector tiene su propio contador
+	}
 }
+
 
 //DE MOMENTO Play tiene su propio draw
 void Play::draw()
@@ -111,11 +106,13 @@ void Play::getStats(int i){
 		break;
 	case 2: //Balas
 		stats[i] = dynamic_cast<Player*>(arrayObjetos[0])->getBalas();
+		break;
 	default:
 		break;
 	}
 }
 
+/*
 void Play::update() {
 
 	//Actualiza valores de la vida, las balas (Interfaz)
@@ -133,6 +130,7 @@ void Play::update() {
 	}
 	
 }
+*/
 
 void Play::onClick() {
 
