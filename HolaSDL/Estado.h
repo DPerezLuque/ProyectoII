@@ -14,7 +14,8 @@ public:
 	void update(int delta);
 	void onClick();
 
-	vector<ObjetoJuego*> getArray() const { return arrayObjetos; }; //Getter del array de objetos
+	ObjetoJuego* getObjeto(int i) const { return arrayObjetos[i]; }; //Getter del objeto i del array
+	int getSizeArray() const { return arrayObjetos.size(); }; //Getter del tamaño del array
 
 	vector<ObjetoJuego*> arrayObjetos;
 protected:

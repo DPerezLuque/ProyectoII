@@ -11,7 +11,7 @@ EnemigoPlanta::~EnemigoPlanta()
 {
 }
 
-void EnemigoPlanta::update(){
+void EnemigoPlanta::update(int delta){
 	int x, y;
 	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
 	++contDis;

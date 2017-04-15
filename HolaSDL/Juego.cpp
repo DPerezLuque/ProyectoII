@@ -91,7 +91,7 @@ void Juego::run()
 			tileSet[i]->render(pRenderer, camera);
 		}
 
-		cout << delta << "\n";
+		//cout << delta << "\n";
 		estado->draw();
 		handle_events();
 	}
@@ -422,7 +422,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		return false;
 	}
 
-	printf("Enemy touched!\n");
+	//printf("Enemy touched!\n");
 
 	//If none of the sides from A are outside B
 	return true;

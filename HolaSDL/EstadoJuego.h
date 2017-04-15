@@ -19,6 +19,7 @@ public:
 
 	virtual void onClick() = 0;
 
-	virtual vector<ObjetoJuego*> getArray() const = 0;
+	virtual ObjetoJuego* getObjeto(int i) const = 0;
+	virtual int getSizeArray() const = 0;
 };
 

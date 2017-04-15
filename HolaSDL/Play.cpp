@@ -6,6 +6,7 @@
 #include "BalaEnemigo.h"
 #include "enemy.h"
 #include "BossRino.h"
+#include "EnemigoPlanta.h"
 #include <iostream>
 #include "GestorVida.h"
 
@@ -26,8 +27,8 @@ void Play::init()
 	GestorVida::GestorVida(juego);
 
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
-	arrayObjetos.push_back(new BossRino(juego, 0, 0));
-	arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
+	arrayObjetos.push_back(new EnemigoPlanta(juego, 0, 0));
+	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 
 }
 

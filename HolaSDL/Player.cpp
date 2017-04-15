@@ -19,6 +19,8 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	tipo = PJ;
 
 	vidaActual = VIDAMAX; //Inicialización de la vida a su máximo
+	inmunidad = false;
+	contadorInmunidad = 0;
 }
 
 
@@ -35,7 +37,7 @@ void Player::update(int delta) {
 	rectCollision.y = (rect.y + rect.h / 3) * delta;
 
 	if (juego->touchesWall(this)){
-		printf("Wall touched!\n");
+		//printf("Wall touched!\n");
 		rect.x -= juego->getVelX() * delta;
 		rect.y -= juego->getVelY() * delta;
 		
@@ -47,16 +49,33 @@ void Player::update(int delta) {
 		rect.y += juego->getVelY();
 	*/
 
+	if (inmunidad) {
+		if (contadorInmunidad < 100) contadorInmunidad++;
+		else if (contadorInmunidad == 100)
+		{
+			inmunidad = false;
+			contadorInmunidad = 0;
+		}
+	}
+
 	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
-	for (int i = 0; i < juego->topEstado()->getArray().size(); ++i){
+	for (int i = 0; i < juego->topEstado()->getSizeArray(); ++i){
 		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
-		if (juego->checkCollision(this, juego->topEstado()->getArray()[i])) {
-			if(juego->topEstado()->getArray()[i]->getType() == ENEMY) vidaActual--;
+		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
+			if (juego->topEstado()->getObjeto(i)->getType() == ENEMY)
+			{
+				if (!inmunidad) {
+					vidaActual--;
+					cout << vidaActual;
+					inmunidad = true;
+				}
+			}
 		}
 	}
 
 	//-- - Gestión de la vida-- -
-	if (vidaActual <= 0) GestorVida::muerteYDestruccion();
+	if (vidaActual <= 0) //GestorVida::muerteYDestruccion();
+		dead = true;
 	
 } 
 
@@ -74,7 +93,7 @@ void Player::getPos(int& x, int& y) {
 
 void Player::onCollision(){
 
-	printf("Auch!");
-	dead = true;
+	//printf("Auch!");
+	//dead = true;
 
 }

@@ -21,5 +21,7 @@ public:
 private:
 	int velX, velY;
 	int vidaActual; //Vida actual
+	bool inmunidad; //Booleano que se activa cuando toc a un enemigo para que no reste la vida de golpe
+	int contadorInmunidad; //Contador del tiempo de inmunidad
 };
 
