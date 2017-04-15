@@ -8,7 +8,6 @@
 #include "BossRino.h"
 #include "EnemigoPlanta.h"
 #include <iostream>
-#include "GestorVida.h"
 
 using namespace std;
 
@@ -24,8 +23,6 @@ Play::~Play() {}
 
 void Play::init() 
 {
-	GestorVida::GestorVida(juego);
-
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	arrayObjetos.push_back(new EnemigoPlanta(juego, 0, 0));
 	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
@@ -38,11 +35,11 @@ void Play::update(int delta) {
 	
 	//COLISIONES CON OBJETOS
 	//PERSONAJE
-	for (int i = 1; i < arrayObjetos.size(); ++i){
+	/*for (int i = 1; i < arrayObjetos.size(); ++i){
 		if (!arrayObjetos[0]->isDead() && juego->checkCollision(arrayObjetos[0], arrayObjetos[i])){
 			arrayObjetos[0]->onCollision();
 		}
-	}
+	}*/
 	//LIMPIEZA DE VECTOR DE OBJETOS
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
 		if (arrayObjetos[aux]->isDead())

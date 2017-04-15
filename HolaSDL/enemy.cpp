@@ -26,7 +26,7 @@ enemy::~enemy()
 {
 }
 
-void enemy::update() 
+void enemy::update(int delta) 
 {	
 	int x, y;
 	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
@@ -65,14 +65,14 @@ void enemy::shoot(int targetX, int targetY){
 
 void enemy::gestorVida(int vida) 
 {
-	int i = 0;
-	bool encontrado = false;
-	while (!encontrado || i < juego->topEstado()->getSizeArray()) {
+	//int i = 0;
+	//bool encontrado = false;
+	for (/*!encontrado ||*/int i = 0; i < juego->topEstado()->getSizeArray(); i++) {
 		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
 		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
 			if (juego->topEstado()->getObjeto(i)->getType() == WEAPON)
 			{
-				encontrado = true;
+				//encontrado = true;
 				vida--;
 				cout << vida;
 				

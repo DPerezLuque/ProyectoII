@@ -91,9 +91,9 @@ void Player::getPos(int& x, int& y) {
 	y = rect.y;
 }
 
-void Player::onCollision(){
+/*void Player::onCollision(){
 
 	//printf("Auch!");
 	//dead = true;
 
-}
+}*/

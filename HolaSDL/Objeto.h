@@ -11,7 +11,7 @@ public:
 	virtual ~Objeto();
 
 	
-	virtual void onCollision() = 0;
+	//virtual void onCollision() = 0;
 	bool dentro(int x, int y) const; //(A LO MEJOR ES NECESARIO)
 	void draw() const;
 	bool onClick();

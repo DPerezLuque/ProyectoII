@@ -9,7 +9,7 @@ public:
 	enemy(Juego* ptr, int px, int py);
 	~enemy();
 
-	void update();
+	void update(int delta);
 	void follow(int x, int y);
 	void shoot(int x, int y);
 	

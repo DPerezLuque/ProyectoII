@@ -15,7 +15,7 @@ public:
 	void getPos(int& x, int& y);
 
 
-	void onCollision();
+	//void onCollision();
 
 private:
 	int velX, velY;
