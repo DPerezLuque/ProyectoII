@@ -31,6 +31,7 @@ void Texto::close(){
 
 SDL_Surface* Texto::renderText(std::string text, SDL_Color color) const {
 	if (pFont) {
+
 		return TTF_RenderText_Solid(pFont, text.c_str(), color);
 	}
 	else {

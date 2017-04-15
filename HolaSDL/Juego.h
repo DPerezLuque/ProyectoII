@@ -11,7 +11,7 @@
 #include "Musica.h"
 #include "Efecto.h"
 
-#include "Texto.h"
+//#include "Texto.h"
 
 using namespace std;
 

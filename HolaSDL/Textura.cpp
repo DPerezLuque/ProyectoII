@@ -52,7 +52,7 @@ void Textura::drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_R
 //PARA EL TEXTO:
 bool Textura::loadFromText(SDL_Renderer* renderer, std::string text,
 	const Texto& font, const SDL_Color color) {
-	
+	/*
 	SDL_Surface* textSurface = font.renderText(text, color);
 	if (textSurface != nullptr) {	
 		cout << "creando surface\n"; //Aquí no entra
@@ -61,10 +61,12 @@ bool Textura::loadFromText(SDL_Renderer* renderer, std::string text,
 			ancho = textSurface->w;
 			alto = textSurface->h;
 		}
-		SDL_FreeSurface(textSurface);
+//		SDL_FreeSurface(textSurface);
 	}
+	*/
 	return pTextura != nullptr;
 }
+
 
 void Textura::render(SDL_Renderer* renderer, int x, int y) const {
 	SDL_Rect dest;
