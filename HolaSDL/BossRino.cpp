@@ -15,7 +15,7 @@ BossRino::BossRino(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 	rect.x = 100;
 	rect.y = 100;
 
-	tipo = ENEMY;
+	tipo = BOSS;
 
 }
 

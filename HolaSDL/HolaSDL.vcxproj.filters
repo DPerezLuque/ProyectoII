@@ -81,9 +81,6 @@
     <ClCompile Include="BossRino.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="GestorVida.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Textura.h">
@@ -144,9 +141,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="BossRino.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="GestorVida.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

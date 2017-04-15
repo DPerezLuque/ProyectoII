@@ -17,6 +17,8 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	rect.y = 100;
 
 	tipo = ENEMY;
+
+	vidaEnemigo = VIDAMAXENEMY;		
 }
 
 
@@ -37,6 +39,8 @@ void enemy::update()
 		shoot(x, y);
 		contDis = 0;
 	}
+
+	gestorVida(vidaEnemigo);
 }
 
 void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir 
@@ -57,4 +61,25 @@ void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir
 
 void enemy::shoot(int targetX, int targetY){
 	static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
+}
+
+void enemy::gestorVida(int vida) 
+{
+	int i = 0;
+	bool encontrado = false;
+	while (!encontrado || i < juego->topEstado()->getSizeArray()) {
+		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
+		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
+			if (juego->topEstado()->getObjeto(i)->getType() == WEAPON)
+			{
+				encontrado = true;
+				vida--;
+				cout << vida;
+				
+			}
+		}
+	}
+
+	if (vida <= 0) 
+		dead = true;
 }

@@ -2,7 +2,7 @@
 #include <SDL.h>
 
 //Collision Manager
-enum collision { PJ = 1, ENEMY = 2, WEAPON = 3, ENVIROMENT = 4 };
+enum collision { PJ = 1, ENEMY = 2, WEAPON = 3, ENVIROMENT = 4, BOSS = 5};
 
 class ObjetoJuego
 {

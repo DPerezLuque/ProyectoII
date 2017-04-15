@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "GestorVida.h"
+//#include "GestorVida.h"
 
 
 
@@ -62,7 +62,7 @@ void Player::update(int delta) {
 	for (int i = 0; i < juego->topEstado()->getSizeArray(); ++i){
 		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
 		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
-			if (juego->topEstado()->getObjeto(i)->getType() == ENEMY)
+			if (juego->topEstado()->getObjeto(i)->getType() == ENEMY || juego->topEstado()->getObjeto(i)->getType() == BOSS)
 			{
 				if (!inmunidad) {
 					vidaActual--;

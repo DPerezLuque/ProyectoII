@@ -21,7 +21,6 @@
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Estado.cpp" />
     <ClCompile Include="GameOver.cpp" />
-    <ClCompile Include="GestorVida.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuPrincipal.cpp" />
@@ -43,7 +42,6 @@
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="Estado.h" />
     <ClInclude Include="GameOver.h" />
-    <ClInclude Include="GestorVida.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="MapEditor.h" />
     <ClInclude Include="MenuPrincipal.h" />
