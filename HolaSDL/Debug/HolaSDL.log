@@ -1,5 +1,0 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (HolaSDL.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Textura.cpp
-c:\users\jose\desktop\proyectoii\holasdl\textura.cpp(31): warning C4150: deletion of pointer to incomplete type 'SDL_Texture'; no destructor called
-  c:\users\jose\desktop\proyectoii\sdl2-2.0.4\include\sdl_render.h(128): note: see declaration of 'SDL_Texture'
-  HolaSDL.vcxproj -> C:\Users\Jose\Desktop\ProyectoII\bin\Practica1Debug.exe
