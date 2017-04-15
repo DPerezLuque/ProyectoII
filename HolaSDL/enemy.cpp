@@ -22,14 +22,17 @@ enemy::~enemy()
 {
 }
 
-void enemy::update() 
+void enemy::update(int delta) 
 {	
 	int x, y;
 	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
+
 	if (contDis < freDis - 10){ //Algo tope chungo para que se pare al disparar
 		follow(x, y);
 	}
 	//follow(x, y);
+
+	follow(x, y);
 	++contDis;
 	if (contDis >= freDis){
 		shoot(x, y);
@@ -41,7 +44,11 @@ void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir
 	
 	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
 
+
 	if (distance > vel / 2) { //este numero es un margen de error que tendra que ir acorde con la velocidad del enemigo (vel)
+
+	//if (distance > vel / 2) { //este numero es un margen de error que tendra que ir a corde con la velocidad del enemigo (vel)
+
 		vX = vel * (x - rect.x) / distance;
 		vY = vel * (y - rect.y) / distance;
 	}

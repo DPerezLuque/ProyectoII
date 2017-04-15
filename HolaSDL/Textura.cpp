@@ -55,3 +55,41 @@ void Textura::drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_R
 	SDL_RenderCopy(pRenderer, pTextura, &rectaux, &rect); // (render, textura, rect de lo que quieres dibujar, rect destino)
 }
 
+//PARA EL TEXTO:
+bool Textura::loadFromText(SDL_Renderer* renderer, std::string text,
+	const Texto& font, const SDL_Color color) {
+	/*
+	SDL_Surface* textSurface = font.renderText(text, color);
+	if (textSurface != nullptr) {	
+		cout << "creando surface\n"; //Aquí no entra
+		pTextura = SDL_CreateTextureFromSurface(renderer, textSurface);
+		if (pTextura != nullptr) {
+			ancho = textSurface->w;
+			alto = textSurface->h;
+		}
+//		SDL_FreeSurface(textSurface);
+	}
+	*/
+	return pTextura != nullptr;
+}
+
+
+void Textura::render(SDL_Renderer* renderer, int x, int y) const {
+	/*SDL_Rect dest;
+	dest.x = x;
+	dest.y = y;
+	dest.w = ancho;
+	dest.h = alto;
+	render(renderer, dest);*/
+}
+
+void Textura::render(SDL_Renderer* renderer, const SDL_Rect& dest,
+	SDL_Rect* clip) const {
+	if (pTextura) {
+		SDL_Rect default_clip = { 0, 0, ancho, ancho };
+		if (clip == nullptr) {
+			clip = &default_clip;
+		}
+		SDL_RenderCopy(renderer, pTextura, clip, &dest);
+	}
+}

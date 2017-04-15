@@ -10,18 +10,29 @@
 #include "Play.h"
 #include "MenuPrincipal.h"
 #include "Pausa.h"
-
 #include <exception>
 #include "Error.h"
-
 #include "MapEditor.h"
+
+#include <SDL_mixer.h>
+#include <SDL_ttf.h>
+
 using namespace std;
 
 //The level tiles
 Tilemap::Tile* tileSet[TOTAL_TILES];
 
+
 Juego::Juego()
 {
+	
+	//Música
+	Mix_Init(27);
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	Mix_Volume(1, MIX_MAX_VOLUME / 2);
+	//Texto
+	TTF_Init();
+
 	srand(SDL_GetTicks());
 
 	pWindow = nullptr;
@@ -40,6 +51,7 @@ Juego::Juego()
 	}
 	else 
 	{
+		//camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 		changeState(new Play(this));
 		estado = topEstado(); //primer estado: MENU
 	}
@@ -49,6 +61,8 @@ Juego::~Juego()
 {
 	estado = nullptr;
 	freeMedia();
+	Mix_Quit(); //Musica
+	TTF_Quit(); //Texto
 	closeSDL();
 }
 
@@ -174,16 +188,44 @@ bool Juego::initSDL()
 
 bool Juego::initMedia()
 {
-	bool success = true;
+	bool success = true;	
+	//MUSICA
+	musicNames.push_back("..\\Sonidos\\Musica\\Come.mp3");
+	musicNames.push_back("..\\Sonidos\\Efectos\\Come.wav");
 
+	for (int j = 0; j < musicNames.size(); j++) {
+		cancion = new Musica;
+		cancion->load(musicNames[j]);		
+		musicFiles.push_back(cancion);		
+	}
+
+	//musicFiles[Cancion1]->play();
+
+	//TEXTO
+	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");
+
+	for (int j = 0; j < nombreFuentes.size(); j++) {		
+		textoAux.load(nombreFuentes[j], 20); //fuente, size
+		arrayFuentes.push_back(textoAux);
+	}	
+	
 	texturas.push_back("..\\bmps\\personaje.png");
 	texturas.push_back("..\\bmps\\bala.png");
+
 	texturas.push_back("..\\bmps\\menu_salir.png");
 	texturas.push_back("..\\bmps\\menu_play.png");
 	texturas.push_back("..\\bmps\\menu_menu.png");
 	texturas.push_back("..\\bmps\\menu_resume.png");
+
 	texturas.push_back("..\\bmps\\enemy.png");
 	texturas.push_back("..\\bmps\\balaEnemigo.png");
+
+	//Interfaz
+	texturas.push_back("..\\bmps\\VidaLlena.png");
+	texturas.push_back("..\\bmps\\VidaVacia.png");
+	texturas.push_back("..\\bmps\\DashLleno.png");
+	texturas.push_back("..\\bmps\\DashVacio.png");
+	texturas.push_back("..\\bmps\\Cargador.png");
 
 
 	//Load Assets Textures
@@ -210,9 +252,6 @@ bool Juego::initMedia()
 	return success;
 }
 
-
-void Juego::setSalir() { exit = true; }
-
 void Juego::freeMedia()
 {	
 	for (size_t aux = 0; aux < arrayTex.size(); ++aux) {
@@ -222,6 +261,10 @@ void Juego::freeMedia()
 
 	//close(tileSet, pRenderer, pWindow);
 	
+	for (int i = 0; i < musicFiles.size(); i++){
+		delete musicFiles[i];
+	}
+
 }
 
 void Juego::closeSDL()

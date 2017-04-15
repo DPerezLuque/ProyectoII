@@ -23,3 +23,8 @@ void BalaEnemigo::update(int delta) {
 	rect.x += velX * delta;
 	rect.y += velY * delta;
 }
+
+void BalaEnemigo::update() {
+	rect.x += velX;
+	rect.y += velY;
+}

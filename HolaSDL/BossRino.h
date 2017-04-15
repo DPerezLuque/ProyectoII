@@ -1,5 +1,6 @@
 #pragma once
 #include "enemy.h"
+
 class BossRino: public enemy
 {
 public:

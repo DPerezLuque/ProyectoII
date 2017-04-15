@@ -14,42 +14,64 @@
     <ClCompile Include="Bala.cpp" />
     <ClCompile Include="BalaEnemigo.cpp" />
     <ClCompile Include="BalaPlayer.cpp" />
+
     <ClCompile Include="BossRino.cpp" />
-    <ClCompile Include="Boton.cpp" />
     <ClCompile Include="EnemigoPlanta.cpp" />
+
+    <ClCompile Include="BarraVida.cpp" />
+    <ClCompile Include="BarraVidaVacia.cpp" />
+    <ClCompile Include="Boton.cpp" />
+    <ClCompile Include="Cargador.cpp" />
+    <ClCompile Include="Efecto.cpp" />
     <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="EnergiaDisponible.cpp" />
+
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Estado.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuPrincipal.cpp" />
+    <ClCompile Include="Musica.cpp" />
     <ClCompile Include="Objeto.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Play.cpp" />
+    <ClCompile Include="Texto.cpp" />
     <ClCompile Include="Textura.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
     <ClInclude Include="BalaEnemigo.h" />
     <ClInclude Include="BalaPlayer.h" />
+
     <ClInclude Include="BossRino.h" />
-    <ClInclude Include="Boton.h" />
     <ClInclude Include="EnemigoPlanta.h" />
+
+    <ClInclude Include="BarraVida.h" />
+    <ClInclude Include="BarraVidaVacia.h" />
+    <ClInclude Include="Boton.h" />
+    <ClInclude Include="Cargador.h" />
+    <ClInclude Include="Efecto.h" />
     <ClInclude Include="enemy.h" />
+    <ClInclude Include="EnergiaDisponible.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="Estado.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="HUD.h" />
+    <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="MapEditor.h" />
     <ClInclude Include="MenuPrincipal.h" />
+    <ClInclude Include="Musica.h" />
     <ClInclude Include="ObjetoJuego.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Play.h" />
+    <ClInclude Include="Texto.h" />
     <ClInclude Include="Textura.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -84,7 +106,10 @@
     <Import Project="..\ProyectosSDL.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(SolutionDir)\HolaSDL\SDL2_ttf-2.0.14\lib\x86;$(SolutionDir)\HolaSDL\SDL2_mixer-2.0.1\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\HolaSDL\SDL2_mixer-2.0.1\include;$(SolutionDir)\HolaSDL\SDL2_ttf-2.0.14\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>

@@ -1,7 +1,6 @@
 #include "Player.h"
 #include <iostream>
 
-
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TPlayer);
@@ -16,6 +15,8 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	velY = 0;
 
 	tipo = PJ;
+	vida = 2;
+	balas = 30;
 }
 
 
@@ -53,12 +54,10 @@ void Player::update(int delta) {
 	//std::cout << "RECT X JUGADOR: " << rect.x << "\n";
 	//std::cout << "CAMARA X: " << juego->camera.x << "\n";
 
-	
 } 
 
 bool Player::onClick() {
 	
-
 	static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
 	return true;
 }
@@ -67,6 +66,7 @@ void Player::getPos(int& x, int& y) {
 	x = rect.x;
 	y = rect.y;
 }
+
 
 void Player::onCollision(){
 

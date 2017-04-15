@@ -8,6 +8,9 @@
 #include "BossRino.h"
 #include <iostream>
 
+#include "BarraVida.h"
+#include "BarraVidaVacia.h"
+#include "Cargador.h"
 using namespace std;
 
 
@@ -23,9 +26,9 @@ Play::~Play() {}
 void Play::init() 
 {
 	arrayObjetos.push_back(new Player(juego, juego->camera.w / 2, juego->camera.h / 2)); 
-	arrayObjetos.push_back(new BossRino(juego, 0, 0));
+	//arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
-
+	//arrayObjetos.push_back(new enemy(juego, 0, 0));
 }
 
 void Play::update(int delta) {
@@ -49,11 +52,86 @@ void Play::update(int delta) {
 	//***********
 	//EN PLAYER.CPP
 
+
 	//UPDATE
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
 		if (!arrayObjetos[i]->isDead())
 			arrayObjetos[i]->update(delta);
 	}
+	//arrayObjetos.push_back(new Player(juego, 200, 200)); 
+	
+
+	vidaAux = 0; //Barra Vacia
+
+	stats.push_back(vidaAux);
+//	stats.push_back(dynamic_cast<Player*>(arrayObjetos[0])->getVida());
+//	stats.push_back(dynamic_cast<Player*>(arrayObjetos[0])->getBalas());
+
+	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
+	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0)); 
+	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->camera.w - 80, juego->camera.h - 80));
+/*
+	fuenteDePrueba = juego->getTexto(Juego::Arial);
+	mensaje = new Textura();
+	Red = { 255, 0, 0, 255 }; //RGBA	
+	mensaje->loadFromText(pRenderer, "HOLA", fuenteDePrueba, Red); //el render, el texto, la fuente y el color
+	rectanTexto = { 80, 300, 300, 300 };	
+	*/
+}
+
+//DE MOMENTO Play tiene su propio draw
+void Play::draw()
+{
+	//Limpia el buffer
+	//SDL_RenderClear(pRenderer);
+	SDL_SetRenderDrawColor(pRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	
+	//Dibuja los objetos
+	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
+		arrayObjetos[aux]->draw();		
+	}
+	
+	//Dibuja interfaz, por encima de los objetos
+	for (int i = 0; i < elemInterfaz.size(); i++) {
+		elemInterfaz[i]->draw();
+	}
+
+	//Pintado de texto (pruebas)	
+	mensaje->render(pRenderer, 80, 100);
+	
+	SDL_RenderPresent(pRenderer);
+}
+
+void Play::getStats(int i){
+
+	switch (i)
+	{
+	case 1: //Vida
+		stats[i] = dynamic_cast<Player*>(arrayObjetos[0])->getVida();
+		break;
+	case 2: //Balas
+		stats[i] = dynamic_cast<Player*>(arrayObjetos[0])->getBalas();
+	default:
+		break;
+	}
+}
+
+void Play::update() {
+
+	//Actualiza valores de la vida, las balas (Interfaz)
+	for (int i = 0; i < stats.size(); i++) {
+		getStats(i);
+	}
+
+	for (int i = 0; i < arrayObjetos.size(); ++i) {
+		if (!arrayObjetos[i]->isDead())
+			arrayObjetos[i]->update(juego->delta);
+	}
+
+	for (int i = 0; i < elemInterfaz.size(); i++){
+		elemInterfaz[i]->update(camera_, stats[i]); //Cada elemento del vector tiene su propio contador
+	}
+	
 }
 
 void Play::onClick() {
@@ -100,6 +178,11 @@ void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int
 	if (vX == 0 && vY == 0){ // Para que con lo de antes no se quede la bala flotando
 		vX = vY = 10; // Si se hace lo de que al tocar al jugador haga daño y te empuje un poco igual no hace falta
 	}
+
+
+	//float vX = velDis * (targetX - posEx) / distance + 0.01; //Arreglad esto para que no se haga 0
+	//float vY = velDis * (targetY - posEy) / distance + 0.01;
+
 
 	//Disparo
 	arrayObjetos.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));

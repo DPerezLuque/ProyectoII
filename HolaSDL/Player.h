@@ -7,14 +7,21 @@ public:
 	Player(Juego* ptr, int px, int py);
 	~Player();
 
+
 	void update(int delta);
 	bool onClick();
 	void getPos(int& x, int& y);
 	void setCamera(SDL_Rect &camera);
-	void drawPlayer();
+	//void drawPlayer();
 	void onCollision();
+
+	int getVida(){ return vida; }
+	int getBalas(){ return balas; }
+
 
 private:
 	int velX, velY;
+	int vida;
+	int balas;
 };
 

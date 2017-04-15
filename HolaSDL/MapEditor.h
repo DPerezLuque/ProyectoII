@@ -242,7 +242,8 @@ bool Tilemap::LTexture::loadFromFile(SDL_Renderer* pRenderer, std::string path)
 	return mTexture != NULL;
 }
 
-#ifdef _SDL_TTF_H
+
+/*
 bool LTexture::loadFromRenderedText(std::string textureText, SDL_Color textColor)
 {
 	//Get rid of preexisting texture
@@ -278,13 +279,13 @@ bool LTexture::loadFromRenderedText(std::string textureText, SDL_Color textColor
 	return mTexture != NULL;
 }
 #endif
-
+*/
 void Tilemap::LTexture::free()
 {
 	//Free texture if it exists
 	if (mTexture != NULL)
 	{
-		SDL_DestroyTexture(mTexture);
+//		SDL_DestroyTexture(mTexture);
 		mTexture = NULL;
 		mWidth = 0;
 		mHeight = 0;
