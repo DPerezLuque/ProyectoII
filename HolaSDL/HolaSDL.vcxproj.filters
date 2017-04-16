@@ -27,6 +27,7 @@
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Texto.cpp" />
     <ClCompile Include="Textura.cpp" />
+    <ClCompile Include="Checkpoint.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -58,5 +59,6 @@
     <ClInclude Include="Play.h" />
     <ClInclude Include="Texto.h" />
     <ClInclude Include="Textura.h" />
+    <ClInclude Include="Checkpoint.h" />
   </ItemGroup>
 </Project>

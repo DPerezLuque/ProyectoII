@@ -32,7 +32,7 @@ public:
 	enum Texturas_t {
 		TPlayer, TBulletPlayer, TBExit, TBPlay, TBMenu, TBResume,
 		TEnemy, TBulletEnemy,
-		TVidaLlena, TVidaVacia, TDashLleno, TDashVacio, TCargador,
+		TVidaLlena, TVidaVacia, TDashLleno, TDashVacio, TCargador, TCheck,
 	};
 
 	int const SCREEN_WIDTH = 1366; 

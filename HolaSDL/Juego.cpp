@@ -227,6 +227,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\DashLleno.png");
 	texturas.push_back("..\\bmps\\DashVacio.png");
 	texturas.push_back("..\\bmps\\Cargador.png");
+	texturas.push_back("..\\bmps\\Checkpoint.png");
 
 
 	//Load Assets Textures

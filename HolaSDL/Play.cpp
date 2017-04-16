@@ -11,6 +11,7 @@
 #include "BarraVida.h"
 #include "BarraVidaVacia.h"
 #include "Cargador.h"
+#include "Checkpoint.h"
 using namespace std;
 
 
@@ -26,8 +27,10 @@ Play::~Play() {}
 void Play::init() 
 {
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
+	
 	//arrayObjetos.push_back(new BossRino(juego, 0, 0));
-	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
+	arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
+	arrayObjetos.push_back(new Checkpoint(juego, 500, 250));
 	//arrayObjetos.push_back(new enemy(juego, 0, 0));
 
 	vidaAux = 0; //Barra Vacia
@@ -63,9 +66,11 @@ void Play::update(int delta) {
 			arrayObjetos[i]->update(delta);
 	}
 
-	//Actualiza valores de la vida, las balas (Interfaz)
-	for (int i = 0; i < stats.size(); i++) {
-		getStats(i);
+	if (!arrayObjetos[0]->isDead()){  //Si player esta vivo
+		//Actualiza valores de la vida, las balas (Interfaz)
+		for (int i = 0; i < stats.size(); i++) {
+			getStats(i);
+		}
 	}
 
 	for (int i = 0; i < elemInterfaz.size(); i++){
@@ -111,26 +116,6 @@ void Play::getStats(int i){
 		break;
 	}
 }
-
-/*
-void Play::update() {
-
-	//Actualiza valores de la vida, las balas (Interfaz)
-	for (int i = 0; i < stats.size(); i++) {
-		getStats(i);
-	}
-
-	for (int i = 0; i < arrayObjetos.size(); ++i) {
-		if (!arrayObjetos[i]->isDead())
-			arrayObjetos[i]->update(juego->delta);
-	}
-
-	for (int i = 0; i < elemInterfaz.size(); i++){
-		elemInterfaz[i]->update(camera_, stats[i]); //Cada elemento del vector tiene su propio contador
-	}
-	
-}
-*/
 
 void Play::onClick() {
 
