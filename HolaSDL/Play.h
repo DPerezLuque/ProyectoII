@@ -23,7 +23,7 @@ private:
 
 	bool gameOver;
 
-	Texto fuenteDePrueba;
+	Texto* fuenteDePrueba;
 	Textura* mensaje;
 	SDL_Color Red;
 	SDL_Rect rectanTexto;

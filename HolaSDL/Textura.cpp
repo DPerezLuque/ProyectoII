@@ -52,41 +52,39 @@ void Textura::draw(SDL_Renderer* pRenderer, int rectX, int rectY, SDL_Rect const
 }
 
 void Textura::drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect const& rectaux) {
-	SDL_RenderCopy(pRenderer, pTextura, &rectaux, &rect); // (render, textura, rect de lo que quieres dibujar, rect destino)
+	SDL_RenderCopy(pRenderer, pTextura, &rectaux, &rect);
 }
 
 //PARA EL TEXTO:
 bool Textura::loadFromText(SDL_Renderer* renderer, std::string text,
 	const Texto& font, const SDL_Color color) {
-	/*
+	
 	SDL_Surface* textSurface = font.renderText(text, color);
-	if (textSurface != nullptr) {	
-		cout << "creando surface\n"; //Aquí no entra
+	if (textSurface != nullptr) {			
 		pTextura = SDL_CreateTextureFromSurface(renderer, textSurface);
-		if (pTextura != nullptr) {
-			ancho = textSurface->w;
-			alto = textSurface->h;
+		if (pTextura != nullptr) { //Ya por fin crea surface
+			width = textSurface->w;
+			height = textSurface->h;
 		}
-//		SDL_FreeSurface(textSurface);
+		SDL_FreeSurface(textSurface);
 	}
-	*/
+	
 	return pTextura != nullptr;
 }
 
-
 void Textura::render(SDL_Renderer* renderer, int x, int y) const {
-	/*SDL_Rect dest;
+	SDL_Rect dest;
 	dest.x = x;
 	dest.y = y;
-	dest.w = ancho;
-	dest.h = alto;
-	render(renderer, dest);*/
+	dest.w = width;
+	dest.h = height;
+	render(renderer, dest);
 }
 
 void Textura::render(SDL_Renderer* renderer, const SDL_Rect& dest,
 	SDL_Rect* clip) const {
 	if (pTextura) {
-		SDL_Rect default_clip = { 0, 0, ancho, ancho };
+		SDL_Rect default_clip = { 0, 0, width, height };
 		if (clip == nullptr) {
 			clip = &default_clip;
 		}

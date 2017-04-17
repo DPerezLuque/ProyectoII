@@ -10,9 +10,6 @@
 #include "ObjetoJuego.h"
 
 #include "Musica.h"
-#include "Efecto.h"
-
-//#include "Texto.h"
 
 using namespace std;
 
@@ -32,7 +29,7 @@ public:
 	enum Texturas_t {
 		TPlayer, TBulletPlayer, TBExit, TBPlay, TBMenu, TBResume,
 		TEnemy, TBulletEnemy,
-		TVidaLlena, TVidaVacia, TDashLleno, TDashVacio, TCargador,
+		TVidaLlena, TVidaVacia, TDashLleno, TDashVacio, TCargador, TDialogo
 	};
 
 	int const SCREEN_WIDTH = 1366; 
@@ -67,8 +64,7 @@ public:
 	enum MusicIds { Cancion1, };
 	//Fuentes
 	enum Fuentes { Arial, };
-	Texto getTexto(Fuentes fun) { return arrayFuentes[fun]; }
-	Texto getTexto(int num) { return arrayFuentes[num]; }
+	string getTexto(int fun) { return nombreFuentes[fun]; }
 
 	void run();
 	void handle_events();

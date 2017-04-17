@@ -24,7 +24,7 @@ public:
 
 private:
 	int ancho, alto;
+	float width, height;
 	SDL_Texture* pTextura;
-
 };
 

@@ -19,9 +19,9 @@ Play::Play(Juego* ptr) : Estado(ptr)
 	init();
 }
 
-Play::~Play() {}
-
-
+Play::~Play() 
+{
+}
 
 void Play::init() 
 {
@@ -39,6 +39,12 @@ void Play::init()
 	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
 	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
 	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->camera.w - 80, juego->camera.h - 80));
+
+	fuenteDePrueba = new Texto(juego->getTexto(0), 50);
+	mensaje = new Textura();
+	Red = { 255, 0, 0, 255 }; //RGBA	
+	rectanTexto = { 80, 300, 300, 300 };
+	mensaje->loadFromText(pRenderer, "Hola que tal", *fuenteDePrueba, Red);
 }
 
 void Play::update(int delta) {
@@ -92,8 +98,7 @@ void Play::draw()
 	}
 
 	//Pintado de texto (pruebas)	
-	mensaje->render(pRenderer, 80, 100);
-	
+	mensaje->render(pRenderer,300,300);
 	SDL_RenderPresent(pRenderer);
 }
 
@@ -112,26 +117,6 @@ void Play::getStats(int i){
 	}
 }
 
-/*
-void Play::update() {
-
-	//Actualiza valores de la vida, las balas (Interfaz)
-	for (int i = 0; i < stats.size(); i++) {
-		getStats(i);
-	}
-
-	for (int i = 0; i < arrayObjetos.size(); ++i) {
-		if (!arrayObjetos[i]->isDead())
-			arrayObjetos[i]->update(juego->delta);
-	}
-
-	for (int i = 0; i < elemInterfaz.size(); i++){
-		elemInterfaz[i]->update(camera_, stats[i]); //Cada elemento del vector tiene su propio contador
-	}
-	
-}
-*/
-
 void Play::onClick() {
 
 	for (int i = 0; i < arrayObjetos.size(); ++i) {
@@ -140,7 +125,6 @@ void Play::onClick() {
 	}
 
 }
-
 
 void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 
@@ -176,11 +160,9 @@ void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int
 	if (vX == 0 && vY == 0){ // Para que con lo de antes no se quede la bala flotando
 		vX = vY = 10; // Si se hace lo de que al tocar al jugador haga daño y te empuje un poco igual no hace falta
 	}
-
-
+	
 	//float vX = velDis * (targetX - posEx) / distance + 0.01; //Arreglad esto para que no se haga 0
 	//float vY = velDis * (targetY - posEy) / distance + 0.01;
-
 
 	//Disparo
 	arrayObjetos.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));

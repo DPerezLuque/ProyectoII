@@ -23,12 +23,7 @@ Musica::~Musica()
 bool Musica::load(string const& nombArch){
 	close();
 	pMusic = Mix_LoadMUS(nombArch.c_str());	
-
-	bool culo = pMusic == nullptr;
-	cout << "Musica cargada con exito: " << culo << " \n";
-
 	return pMusic != nullptr;
-
 }
 
 void Musica::pause(){
@@ -36,7 +31,6 @@ void Musica::pause(){
 }
 void Musica::play(){
 	Mix_PlayMusic(pMusic, -1);
-	cout << "Playing music\n";
 }
 
 void Musica::close(){
