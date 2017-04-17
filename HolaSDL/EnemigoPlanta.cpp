@@ -21,5 +21,5 @@ void EnemigoPlanta::update(int delta){
 		contDis = 0;
 	}
 
-	gestorVida(vidaEnemigo);
+	onCollision(vidaEnemigo, tipo);
 }

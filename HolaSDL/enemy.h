@@ -13,8 +13,6 @@ public:
 	void follow(int x, int y);
 	void shoot(int x, int y);
 	
-	void gestorVida(int vida);
-
 protected:
 	int vX, vY;
 	int vel; //velocidad del monimiento

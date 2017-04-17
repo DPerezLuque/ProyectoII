@@ -18,7 +18,9 @@ public:
 	
 	virtual SDL_Rect getRect() = 0;
 
-	//virtual void onCollision() = 0;
+	virtual void onCollision(int vida, collision tipo) = 0;
+
+	virtual void gestorVida(int) = 0;
 
 	virtual bool isDead() = 0;
 

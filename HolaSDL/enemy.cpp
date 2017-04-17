@@ -40,7 +40,7 @@ void enemy::update(int delta)
 		contDis = 0;
 	}
 
-	gestorVida(vidaEnemigo);
+	onCollision(vidaEnemigo, tipo);
 }
 
 void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir 
@@ -61,25 +61,4 @@ void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir
 
 void enemy::shoot(int targetX, int targetY){
 	static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
-}
-
-void enemy::gestorVida(int vida) 
-{
-	//int i = 0;
-	//bool encontrado = false;
-	for (/*!encontrado ||*/int i = 0; i < juego->topEstado()->getSizeArray(); i++) {
-		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
-		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
-			if (juego->topEstado()->getObjeto(i)->getType() == WEAPON)
-			{
-				//encontrado = true;
-				vida--;
-				cout << vida;
-				
-			}
-		}
-	}
-
-	if (vida <= 0) 
-		dead = true;
 }

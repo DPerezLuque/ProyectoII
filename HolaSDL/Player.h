@@ -15,7 +15,8 @@ public:
 	void getPos(int& x, int& y);
 
 
-	//void onCollision();
+	void onCollision(int vida, collision tipo);
+	void gestorVida(int vida);
 
 private:
 	int velX, velY;

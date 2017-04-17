@@ -58,24 +58,7 @@ void Player::update(int delta) {
 		}
 	}
 
-	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
-	for (int i = 0; i < juego->topEstado()->getSizeArray(); ++i){
-		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
-		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
-			if (juego->topEstado()->getObjeto(i)->getType() == ENEMY || juego->topEstado()->getObjeto(i)->getType() == BOSS)
-			{
-				if (!inmunidad) {
-					vidaActual--;
-					cout << vidaActual;
-					inmunidad = true;
-				}
-			}
-		}
-	}
-
-	//-- - Gestión de la vida-- -
-	if (vidaActual <= 0) //GestorVida::muerteYDestruccion();
-		dead = true;
+	onCollision(vidaActual, tipo);
 	
 } 
 
@@ -91,9 +74,30 @@ void Player::getPos(int& x, int& y) {
 	y = rect.y;
 }
 
-/*void Player::onCollision(){
+void Player::onCollision(int vidaActual, collision tipo){
 
-	//printf("Auch!");
-	//dead = true;
+	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
+	for (int i = 0; i < juego->topEstado()->getSizeArray(); ++i) {
+		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
+		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
+			if (juego->topEstado()->getObjeto(i)->getType() == ENEMY || juego->topEstado()->getObjeto(i)->getType() == BOSS)
+			{
+				gestorVida(vidaActual);
+				
+			}
+		}
+	}
 
-}*/
+}
+
+void Player::gestorVida(int vida) 
+{
+	if (!inmunidad) {
+		vidaActual--;
+		cout << vidaActual;
+		inmunidad = true;
+	}
+
+	if (vidaActual <= 0) 
+		dead = true;
+}

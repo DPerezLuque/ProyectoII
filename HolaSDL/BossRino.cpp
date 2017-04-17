@@ -17,6 +17,8 @@ BossRino::BossRino(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 
 	tipo = BOSS;
 
+	//vidaEnemigo = 4;
+
 }
 
 
@@ -108,6 +110,7 @@ void BossRino::update(int delta){
 		break;
 	}
 	
+	//onCollision(vidaEnemigo, tipo);
 
 }
 void BossRino::sma(){
