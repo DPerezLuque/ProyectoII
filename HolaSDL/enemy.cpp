@@ -44,6 +44,15 @@ void enemy::shoot(int targetX, int targetY){
 	static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
 }
 
+void enemy::isActive(int x, int y) {
+	int distance = sqrt((x + 50 - rect.x + rect.w / 2)*(x + 50 - rect.x + rect.w / 2)
+		+ (y + 50 - rect.y + rect.h / 2)*(y + 50 - rect.y + rect.h / 2)); // distancia entre los centros y no las esquinas
+	std::cout << distance << "\n";
+	if (distance <= radioEnable) active = true;
+	if (distance >= radioDisable) active = false;
+}
+
 void enemy::getPlayerPos(int& x, int& y) {
 	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
 }
+

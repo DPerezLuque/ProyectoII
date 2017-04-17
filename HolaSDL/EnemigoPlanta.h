@@ -6,6 +6,7 @@ public:
 	EnemigoPlanta(Juego* ptr, int px, int py);
 	~EnemigoPlanta();
 
-	void update();
+	void update(int delta);
+	void onCollision(collision c);
 };
 
