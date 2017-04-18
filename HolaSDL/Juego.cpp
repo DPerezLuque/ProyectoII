@@ -423,6 +423,10 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		if (b->getType() == PJ)
 			goodToGo = true;
 		break;
+	case CHECK: //AQUI FALTA POR HACER
+		if (b->getType() == PJ)
+			goodToGo = true;
+		break;
 	default:
 		goodToGo = true;
 		break;

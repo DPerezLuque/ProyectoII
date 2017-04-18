@@ -4,6 +4,7 @@
 Checkpoint::Checkpoint(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TCheck);
+	tipo = CHECK;
 	rect.w = 64;
 	rect.h = 64;
 	cogido = false;
@@ -17,6 +18,9 @@ Checkpoint::~Checkpoint()
 
 void Checkpoint::update(int delta) {
 	animar();
+
+	rectCollision.x = (rect.x + rect.w / 2) * delta; //Esto requiere que vaya en el update?
+	rectCollision.y = (rect.y + rect.h / 2) * delta;
 }
 
 void Checkpoint::draw() const {
@@ -37,4 +41,5 @@ void Checkpoint::animar(){
 void Checkpoint::onCollision(){
 	//cuando haya colision:
 	cogido = true;	
+	cout << "Checkpoint cogido\n";
 }

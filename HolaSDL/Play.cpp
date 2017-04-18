@@ -30,7 +30,7 @@ void Play::init()
 	
 	//arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
-	arrayObjetos.push_back(new Checkpoint(juego, 500, 250));
+	arrayObjetos.push_back(new Checkpoint(juego, 600, 250));
 	//arrayObjetos.push_back(new enemy(juego, 0, 0));
 
 	vidaAux = 0; //Barra Vacia
