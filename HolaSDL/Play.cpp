@@ -66,7 +66,7 @@ void Play::update(int delta) {
 			arrayObjetos[i]->update(delta);
 	}
 
-	if (!arrayObjetos[0]->isDead()){  //Si player esta vivo
+	if (arrayObjetos[0]->isDead()){  //Si player esta vivo
 		//Actualiza valores de la vida, las balas (Interfaz)
 		for (int i = 0; i < stats.size(); i++) {
 			getStats(i);
@@ -95,10 +95,7 @@ void Play::draw()
 	for (int i = 0; i < elemInterfaz.size(); i++) {
 		elemInterfaz[i]->draw();
 	}
-
-	//Pintado de texto (pruebas)	
-	mensaje->render(pRenderer, 80, 100);
-	
+		
 	SDL_RenderPresent(pRenderer);
 }
 
@@ -125,7 +122,6 @@ void Play::onClick() {
 	}
 
 }
-
 
 void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 
@@ -162,10 +158,8 @@ void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int
 		vX = vY = 10; // Si se hace lo de que al tocar al jugador haga daño y te empuje un poco igual no hace falta
 	}
 
-
 	//float vX = velDis * (targetX - posEx) / distance + 0.01; //Arreglad esto para que no se haga 0
 	//float vY = velDis * (targetY - posEy) / distance + 0.01;
-
 
 	//Disparo
 	arrayObjetos.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));

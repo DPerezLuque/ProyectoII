@@ -44,9 +44,7 @@ void Player::update(int delta) {
 
 		//printf("Wall touched!\n");
 		rect.x -= juego->getVelX() * delta;
-		rect.y -= juego->getVelY() * delta;
-		
-		
+		rect.y -= juego->getVelY() * delta;	
 	}
 
 	setCamera(juego->camera);
@@ -72,7 +70,6 @@ void Player::onCollision(){
 
 	printf("Auch!");
 	dead = true;
-
 }
 
 void Player::setCamera(SDL_Rect& camera)

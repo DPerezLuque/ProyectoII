@@ -20,7 +20,7 @@ void Checkpoint::update(int delta) {
 }
 
 void Checkpoint::draw() const {
-	textura->drawAnimacion(pRenderer, rect, rectAnim);
+	textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
 }
 
 void Checkpoint::animar(){
