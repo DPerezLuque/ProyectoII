@@ -1,6 +1,5 @@
 #pragma once
 #include "EstadoJuego.h"
-#include "ObjetoJuego.h"
 #include "Juego.h"
 #include "HUD.h"
 using namespace std;
@@ -15,7 +14,10 @@ public:
 	void draw();
 	void update(int delta);
 	void onClick();
-	
+
+	ObjetoJuego* getObjeto(int i) const { return arrayObjetos[i]; }; //Getter del objeto i del array
+	int getSizeArray() const { return arrayObjetos.size(); }; //Getter del tamaño del array
+
 protected:
 
 	Juego* juego;

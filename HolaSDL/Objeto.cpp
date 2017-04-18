@@ -45,6 +45,25 @@ SDL_Rect Objeto::getRect(){
 	return rectCollision;
 }
 
-void Objeto::onCollision(){
-//	printf("lalal");
+void Objeto::gestorVida(int vidaObjeto) 
+{
+	vidaObjeto--;
+	cout << vidaObjeto;
+
+	if (vidaObjeto <= 0)
+		dead = true;
+}
+
+void Objeto::onCollision(int vidaObjeto, collision tipo){
+
+	for (int i = 0; i < juego->topEstado()->getSizeArray(); i++) {
+		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
+		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
+			if (juego->topEstado()->getObjeto(i)->getType() == WEAPON)
+			{
+				gestorVida(vidaObjeto);
+
+			}
+		}
+	}
 }

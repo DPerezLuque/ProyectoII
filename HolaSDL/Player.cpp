@@ -1,6 +1,7 @@
 #include "Player.h"
 #include <iostream>
 
+
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TPlayer);
@@ -15,8 +16,13 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	velY = 0;
 
 	tipo = PJ;
-	vida = 2;
+
+	vida = 4;
 	balas = 30;
+
+	inmunidad = false;
+	contadorInmunidad = 0;
+
 }
 
 
@@ -25,11 +31,6 @@ Player::~Player()
 }
 
 void Player::update(int delta) {
-	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
-	//juego->checkCollision()
-	/*for (int i = 0; i < 10; ++i){
-		juego->checkCollision(this->rect, juego->topEstado()->)
-	}*/
 
 	//rect.x = rect.x - juego->camera.x;
 	//rect.y = rect.y - juego->camera.y;
@@ -45,11 +46,29 @@ void Player::update(int delta) {
 		//printf("Wall touched!\n");
 		rect.x -= juego->getVelX() * delta;
 		rect.y -= juego->getVelY() * delta;
-		
-		
+
 	}
 
 	setCamera(juego->camera);
+
+	/*
+		//Move the dot left or right
+		rect.x += juego->getVelX();
+		//Move the dot up or down
+		rect.y += juego->getVelY();
+	*/
+
+	if (inmunidad) {
+		if (contadorInmunidad < 100) contadorInmunidad++;
+		else if (contadorInmunidad == 100)
+		{
+			inmunidad = false;
+			contadorInmunidad = 0;
+		}
+	}
+
+	onCollision(vida, tipo);
+
 	
 	//std::cout << "RECT X JUGADOR: " << rect.x << "\n";
 	//std::cout << "CAMARA X: " << juego->camera.x << "\n";
@@ -67,12 +86,32 @@ void Player::getPos(int& x, int& y) {
 	y = rect.y;
 }
 
+void Player::onCollision(int vidaActual, collision tipo){
 
-void Player::onCollision(){
+	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
+	for (int i = 0; i < juego->topEstado()->getSizeArray(); ++i) {
+		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
+		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
+			if (juego->topEstado()->getObjeto(i)->getType() == ENEMY || juego->topEstado()->getObjeto(i)->getType() == BOSS)
+			{
+				gestorVida(vidaActual);
+				
+			}
+		}
+	}
 
-	printf("Auch!");
-	dead = true;
+}
 
+void Player::gestorVida(int vida) 
+{
+	if (!inmunidad) {
+		vida--;
+		cout << vida;
+		inmunidad = true;
+	}
+
+	if (vida <= 0) 
+		dead = true;
 }
 
 void Player::setCamera(SDL_Rect& camera)

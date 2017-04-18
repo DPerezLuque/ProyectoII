@@ -8,4 +8,6 @@ public:
 
 	void update(int delta);
 
+	//void onCollision(int vida, collision tipo);
+
 };

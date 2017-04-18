@@ -6,6 +6,7 @@
 #include "BalaEnemigo.h"
 #include "enemy.h"
 #include "BossRino.h"
+#include "EnemigoPlanta.h"
 #include <iostream>
 
 #include "BarraVida.h"
@@ -26,9 +27,12 @@ Play::~Play()
 void Play::init() 
 {
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
+
 	//arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
-	//arrayObjetos.push_back(new enemy(juego, 0, 0));
+	arrayObjetos.push_back(new enemy(juego, 350, 200));
+	//arrayObjetos.push_back(new EnemigoPlanta(juego, 270, 200));
+
 
 	vidaAux = 0; //Barra Vacia
 
@@ -52,11 +56,11 @@ void Play::update(int delta) {
 	
 	//COLISIONES CON OBJETOS
 	//PERSONAJE
-	for (int i = 1; i < arrayObjetos.size(); ++i){
+	/*for (int i = 1; i < arrayObjetos.size(); ++i){
 		if (!arrayObjetos[0]->isDead() && juego->checkCollision(arrayObjetos[0], arrayObjetos[i])){
 			arrayObjetos[0]->onCollision();
 		}
-	}
+	}*/
 	//LIMPIEZA DE VECTOR DE OBJETOS
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
 		if (arrayObjetos[aux]->isDead())

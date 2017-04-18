@@ -6,10 +6,12 @@ BalaPlayer::BalaPlayer(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, p
 {
 	textura = juego->getTextura(Juego::TBulletPlayer);
 
+
 	rect.w = 35;
 	rect.h = 35;
 
-	tipo = PJ;
+	tipo = WEAPON;
+
 }
 
 
@@ -25,6 +27,22 @@ void BalaPlayer::update(int delta) {
 	rectCollision.x = (rect.x + rect.w / 4) * delta;
 	rectCollision.y = (rect.y + rect.h / 4) * delta;
 
-	onCollision();
+	onCollision(1, tipo);
 }
+
+/*void BalaPlayer::onCollision(int vida, collision tipo)
+{
+	Bala::onCollision(vida, tipo);
+
+	for (int i = 0; i < juego->topEstado()->getSizeArray(); ++i) {
+		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
+		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
+			if (juego->topEstado()->getObjeto(i)->getType() == ENEMY)
+			{
+				dead = true;
+
+			}
+		}
+	}
+}*/
 

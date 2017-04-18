@@ -415,7 +415,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 
 	switch (a->getType()) {
 	case PJ:
-		if (b->getType() == PJ)
+		if (b->getType() == PJ || b->getType() == WEAPON)
 			goodToGo = false;
 		break;
 	case ENEMY:
@@ -463,7 +463,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		return false;
 	}
 
-	printf("Enemy touched!\n");
+	//printf("Enemy touched!\n");
 
 	//If none of the sides from A are outside B
 	return true;

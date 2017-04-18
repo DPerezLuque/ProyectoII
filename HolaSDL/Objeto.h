@@ -10,11 +10,13 @@ public:
 	virtual ~Objeto();
 
 	
-	virtual void onCollision() = 0;
 	bool dentro(int x, int y) const; //(A LO MEJOR ES NECESARIO)
 	void draw() const;
 	bool onClick();
 	SDL_Rect getRect();
+
+	void onCollision(int vida, collision tipo);
+	void gestorVida(int vida);
 
 	collision getType() {
 		return tipo;

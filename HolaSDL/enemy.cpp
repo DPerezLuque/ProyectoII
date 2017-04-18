@@ -10,11 +10,16 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	freDis = 100;
 	velDis = 20;
 
+	rect.x = px;
+	rect.y = py;
+
 	rect.w = 50;
 	rect.h = 50;
 
-	rect.x = 100;
-	rect.y = 100;
+
+	tipo = ENEMY;
+
+	vidaEnemigo = VIDAMAXENEMY;		
 }
 
 
@@ -38,6 +43,8 @@ void enemy::update(int delta)
 		shoot(x, y);
 		contDis = 0;
 	}
+
+	onCollision(vidaEnemigo, tipo);
 }
 
 void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir 
