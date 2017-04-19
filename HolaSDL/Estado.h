@@ -15,8 +15,8 @@ public:
 	void update(int delta);
 	void onClick();
 
-	ObjetoJuego* getObjeto(int i) const { return arrayObjetos[i]; }; //Getter del objeto i del array
-	int getSizeArray() const { return arrayObjetos.size(); }; //Getter del tamaño del array
+	ObjetoJuego* getObjeto(int i) const { return juego->arrayObjetos[i]; }; //Getter del objeto i del array
+	int getSizeArray() const { return juego->arrayObjetos.size(); }; //Getter del tamaño del array
 
 protected:
 
@@ -25,10 +25,8 @@ protected:
 	Textura* textura;
 	
 	vector <HUD*> elemInterfaz; //Estarán todos los elementos de la interfaz
-	SDL_Rect camera_; //Utilizado por interfaz
+	//SDL_Rect camera_; //Utilizado por interfaz
 	
-	std::vector<int> stats;
-	std::vector<ObjetoJuego*> arrayObjetos;
 
 	int height, width;
 };

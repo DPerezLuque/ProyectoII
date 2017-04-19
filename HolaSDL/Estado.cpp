@@ -15,9 +15,9 @@ Estado::Estado(Juego* ptr)
 Estado::~Estado() 
 {
 	//Objetos
-	for (size_t aux = 0; aux < arrayObjetos.size(); ++aux) {
-		delete arrayObjetos[aux];
-		arrayObjetos[aux] = nullptr;
+	for (size_t aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
+		delete juego->arrayObjetos[aux];
+		juego->arrayObjetos[aux] = nullptr;
 	}
 	//Interfaz
 	for (int i = 0; i < elemInterfaz.size(); i++){
@@ -48,9 +48,9 @@ void Estado::draw()
 	textura->draw(pRenderer, rect);*/
 
 	//Dibuja los objetos
-	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
-		if (!arrayObjetos[aux]->isDead())
-			arrayObjetos[aux]->draw();
+	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
+		if (!juego->arrayObjetos[aux]->isDead())
+			juego->arrayObjetos[aux]->draw();
 		//Muestra la ventana
 	}
 
@@ -64,9 +64,9 @@ void Estado::draw()
 
 void Estado::update(int delta)
 {
-	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
-		if (!arrayObjetos[aux]->isDead())
-			arrayObjetos[aux]->update(delta);
+	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
+		if (!juego->arrayObjetos[aux]->isDead())
+			juego->arrayObjetos[aux]->update(delta);
 	}
 		
 	for (int i = 0; i < elemInterfaz.size(); i++) {
@@ -77,10 +77,10 @@ void Estado::update(int delta)
 
 void Estado::onClick() //VAMOS A CAMBIARLO O ELIMINARLO 
 {	
-	/*int aux = arrayObjetos.size() - 1;
+	/*int aux = juego->arrayObjetos.size() - 1;
 	bool flag = false;
 	while (aux >= 0 && !flag) {
-		if (arrayObjetos[aux]->onClick()) {
+		if (juego->arrayObjetos[aux]->onClick()) {
 			flag = true;
 		}
 		--aux;

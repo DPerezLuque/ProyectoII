@@ -30,6 +30,7 @@ enemy::~enemy()
 void enemy::update(int delta) 
 {	
 	int x, y;
+	
 	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
 
 	if (contDis < freDis - 10){ //Algo tope chungo para que se pare al disparar
@@ -44,7 +45,7 @@ void enemy::update(int delta)
 		contDis = 0;
 	}
 
-	onCollision(vidaEnemigo, tipo);
+//	onCollision(vidaEnemigo, tipo);
 }
 
 void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir 
@@ -63,8 +64,8 @@ void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir
 		vX = 0;
 		vY = 0;
 	}
-	rect.x += vX;
-	rect.y += vY;
+	rect.x += vX /2;
+	rect.y += vY /2;
 }
 
 void enemy::shoot(int targetX, int targetY){

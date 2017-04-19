@@ -4,7 +4,7 @@
 #include <string>
 
 GameOver::GameOver(Juego* ptr, int p) : Estado(ptr) {
-	arrayObjetos.resize(1); 
+	juego->arrayMenu.resize(1); 
 
 	init();
 }

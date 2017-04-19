@@ -21,8 +21,3 @@ Interfaz::~Interfaz()
 void Interfaz::draw() const {
 	textura->draw(pRenderer, pRect.x, pRect.y, pRect);
 }
-
-void Interfaz::update(SDL_Rect Camera, int contador){
-	//pRect.x = Camera.x + distX;
-	//pRect.y = Camera.y + distY;
-}

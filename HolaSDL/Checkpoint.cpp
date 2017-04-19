@@ -8,7 +8,8 @@ Checkpoint::Checkpoint(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	rect.w = 64;
 	rect.h = 64;
 	cogido = false;
-	rectAnim = { 0, 0, 64, 64 };	
+	rectAnim = rect;
+	rectCollision = rect;
 }
 
 
@@ -18,8 +19,10 @@ Checkpoint::~Checkpoint()
 
 void Checkpoint::update(int delta) {
 	animar();
-	rectCollision.x = (rect.x + rect.w / 2) * delta; //Esto requiere que vaya en el update?
-	rectCollision.y = (rect.y + rect.h / 2) * delta;
+
+	juego->checkCollision(this, juego->arrayObjetos[0]);
+	//rectCollision.x = (rect.x + rect.w / 2) * delta; //Esto requiere que vaya en el update?
+	//rectCollision.y = (rect.y + rect.h / 2) * delta;
 }
 
 void Checkpoint::draw() const {

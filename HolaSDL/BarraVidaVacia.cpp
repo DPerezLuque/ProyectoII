@@ -15,6 +15,6 @@ BarraVidaVacia::~BarraVidaVacia()
 }
 
 void BarraVidaVacia::update(SDL_Rect Camera, int contador){
-	pRect.x = Camera.x + distX;
-	pRect.y = Camera.y + distY;
+//	pRect.x = Camera.x + distX;
+	//pRect.y = Camera.y + distY;
 }

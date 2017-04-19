@@ -11,7 +11,7 @@ public:
 	void init();
 	void onClick();
 
-	void update();
+	//void update();
 	void update(int delta);	
 	void draw();
 
@@ -23,10 +23,10 @@ private:
 
 	bool gameOver;
 
-	Texto* fuenteDePrueba;
-	Textura* mensaje;
-	SDL_Color Red;
-	SDL_Rect rectanTexto;
+	//Texto* fuenteDePrueba;
+	//Textura* mensaje;
+	//SDL_Color Red;
+	//SDL_Rect rectanTexto;
 
 	int vidaAux;
 };

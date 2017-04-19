@@ -6,8 +6,8 @@ Bala::Bala(Juego* ptr, int px, int py, int vX, int vY) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TBulletPlayer);
 	
-	rect.w = 50;
-	rect.h = 50;
+	rect.w = 35;
+	rect.h = 35;
 
 	rect.x = px;
 	rect.y = py;
@@ -28,18 +28,33 @@ Bala::~Bala()
 {
 }
 
+void Bala::update(int delta) {
+
+	rect.x += velX * delta / 3;
+	rect.y += velY * delta / 3;
+
+	rectCollision.x = (rect.x + rect.w / 4) * delta;
+	rectCollision.y = (rect.y + rect.h / 4) * delta;
+
+	
+	if (juego->touchesWall(this)) {
+		printf("Bala Destruida (WALL) \n");
+		dead = true;
+	}
+}
+
 
 void Bala::onCollision(int vida, collision tipo){
 
 	if (juego->touchesWall(this)) {
-		//printf("Bala Destruida");
+		printf("Bala Destruida (pared) \n");
+		dead = true;
 	}
 }
 
 void Bala::onCollision(ObjetoJuego * colisionado){
 	
-	if (juego->touchesWall(this)) {
-		printf("Bala Destruida\n");
+		printf("Bala Destruida (OBJETO) \n");
 		dead = true;
-	}
+	
 }

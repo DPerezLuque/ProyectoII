@@ -415,10 +415,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 
 	switch (a->getType()) {
 	case PJ:
-		if (b->getType() == PJ || b->getType() == WEAPON)
-			goodToGo = false;
-		break;
-		if (b->getType() == CHECK)
+		if (b->getType() == PJ || b->getType() == CHECK)
 			goodToGo = false;
 		break;
 	case ENEMY:
@@ -426,14 +423,12 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 			goodToGo = true;
 		break;
 	case CHECK:
-		if (b->getType() == PJ){
-			goodToGo = true;			
-			break;			
-		} else {
+		if (b->getType() != PJ)
 			goodToGo = false;
-			break;
-		}
 		break;
+	case WEAPON:
+		if (b->getType() != PJ)
+			goodToGo = false;
 	default:
 		goodToGo = true;
 		break;

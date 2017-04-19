@@ -85,7 +85,7 @@ void Player::getPos(int& x, int& y) {
 }
 
 void Player::onCollision(int vidaActual, collision tipo){
-
+	/*
 	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
 	for (int i = 0; i < juego->topEstado()->getSizeArray(); ++i) {
 		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
@@ -96,7 +96,7 @@ void Player::onCollision(int vidaActual, collision tipo){
 				
 			}
 		}
-	}
+	}/*/
 }
 
 void Player::gestorVida(int vida)
@@ -117,7 +117,7 @@ void Player::onCollision(ObjetoJuego * colisionado){
 		colisionado->onCollision(this);
 	}
 	else{
-		printf("Auch!");
+		printf("Auch! \n");
 		dead = true;
 	}
 

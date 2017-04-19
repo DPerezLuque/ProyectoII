@@ -11,7 +11,7 @@ public:
 	virtual ~Interfaz();
 
 	void draw() const;
-	void update(SDL_Rect Camera, int contador); //Se encargará de actualizar el contador, el ancho y el alto en proporcion
+	virtual void update(SDL_Rect Camera, int contador) = 0; //Se encargará de actualizar el contador, el ancho y el alto en proporcion
 
 protected:
 	Juego* pJuego;

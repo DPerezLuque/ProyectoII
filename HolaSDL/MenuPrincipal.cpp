@@ -4,7 +4,7 @@
 
 MenuPrincipal::MenuPrincipal(Juego* ptr) : Estado(ptr)
 {
-	arrayObjetos.resize(2); //dos objetos = dos botones
+	juego->arrayMenu.resize(2); //dos objetos = dos botones
 
 	init();
 }

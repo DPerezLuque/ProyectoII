@@ -21,8 +21,8 @@ void BarraVida::draw() const{
 
 void BarraVida::update(SDL_Rect Camera, int contador){ //Hay que pasarle la camara y el numero de vidas
 	
-	pRect.x = Camera.x + distX;
-	pRect.y = Camera.x + distY;
+	//pRect.x = Camera.x + distX;
+	//pRect.y = Camera.x + distY;
 
 	if (contador > 0){ //4 vidas máx
 		rectAnim.w = 32*contador;

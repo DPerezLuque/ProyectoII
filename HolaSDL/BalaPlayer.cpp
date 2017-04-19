@@ -6,11 +6,7 @@ BalaPlayer::BalaPlayer(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, p
 {
 	textura = juego->getTextura(Juego::TBulletPlayer);
 
-
-	rect.w = 35;
-	rect.h = 35;
-
-	tipo = WEAPON;
+	tipo = PJ;
 
 }
 
@@ -18,7 +14,7 @@ BalaPlayer::BalaPlayer(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, p
 BalaPlayer::~BalaPlayer()
 {
 }
-
+/*
 void BalaPlayer::update(int delta) {
 	
 	rect.x += velX * delta /3;
@@ -33,7 +29,7 @@ void BalaPlayer::update(int delta) {
 	onCollision(this);
 
 }
-
+*/
 /*void BalaPlayer::onCollision(int vida, collision tipo)
 {
 	Bala::onCollision(vida, tipo);
