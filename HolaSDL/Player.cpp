@@ -66,10 +66,15 @@ void Player::getPos(int& x, int& y) {
 }
 
 
-void Player::onCollision(){
+void Player::onCollision(ObjetoJuego * colisionado){
 
-	printf("Auch!");
-	dead = true;
+	if (colisionado->getType() == CHECK){
+		colisionado->onCollision(this);
+	}
+	else{
+		printf("Auch!");
+		dead = true;
+	}
 }
 
 void Player::setCamera(SDL_Rect& camera)

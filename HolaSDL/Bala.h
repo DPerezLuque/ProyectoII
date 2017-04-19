@@ -8,8 +8,6 @@ public:
 	~Bala();
 
 	virtual void update(int delta) {};
-
-
-	void onCollision();
+	void onCollision(ObjetoJuego * colisionado);
 };
 

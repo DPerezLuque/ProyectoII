@@ -419,13 +419,20 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		if (b->getType() == PJ)
 			goodToGo = false;
 		break;
+		if (b->getType() == CHECK)
+			goodToGo = false;
+		break;
 	case ENEMY:
 		if (b->getType() == PJ)
 			goodToGo = true;
 		break;
-	case CHECK: //AQUI FALTA POR HACER
+	case CHECK:
 		if (b->getType() == PJ)
 			goodToGo = true;
+		std::cout << "check toca pj \n";
+		break;
+		if (!b->getType() == PJ)
+			goodToGo = false;
 		break;
 	default:
 		goodToGo = true;

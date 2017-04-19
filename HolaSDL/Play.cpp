@@ -51,7 +51,7 @@ void Play::update(int delta) {
 	//PERSONAJE
 	for (int i = 1; i < arrayObjetos.size(); ++i){
 		if (!arrayObjetos[0]->isDead() && juego->checkCollision(arrayObjetos[0], arrayObjetos[i])){
-			arrayObjetos[0]->onCollision();
+			arrayObjetos[0]->onCollision(arrayObjetos[i]);
 		}
 	}
 	//LIMPIEZA DE VECTOR DE OBJETOS
