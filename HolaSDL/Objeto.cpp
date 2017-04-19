@@ -26,7 +26,6 @@ void Objeto::draw() const
 
 bool Objeto::dentro(int x, int y)const
 {
-
 	return  (x >= rect.x && x <= (rect.w + rect.x) && y >= rect.y && y <= (rect.h + rect.y));
 }
 
@@ -44,6 +43,7 @@ bool Objeto::onClick()
 SDL_Rect Objeto::getRect(){
 	return rectCollision;
 }
+
 
 void Objeto::gestorVida(int vidaObjeto) 
 {
@@ -67,3 +67,4 @@ void Objeto::onCollision(int vidaObjeto, collision tipo){
 		}
 	}
 }
+

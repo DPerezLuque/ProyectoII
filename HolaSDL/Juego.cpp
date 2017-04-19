@@ -227,7 +227,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\DashVacio.png");
 	texturas.push_back("..\\bmps\\Cargador.png");
 	texturas.push_back("..\\bmps\\CuadroDialogo.png");
-
+	texturas.push_back("..\\bmps\\Checkpoint.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
@@ -418,9 +418,21 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		if (b->getType() == PJ || b->getType() == WEAPON)
 			goodToGo = false;
 		break;
+		if (b->getType() == CHECK)
+			goodToGo = false;
+		break;
 	case ENEMY:
 		if (b->getType() == PJ)
 			goodToGo = true;
+		break;
+	case CHECK:
+		if (b->getType() == PJ){
+			goodToGo = true;			
+			break;			
+		} else {
+			goodToGo = false;
+			break;
+		}
 		break;
 	default:
 		goodToGo = true;

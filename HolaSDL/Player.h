@@ -14,7 +14,8 @@ public:
 	void getPos(int& x, int& y);
 	void setCamera(SDL_Rect &camera);
 	//void drawPlayer();
-	//void onCollision();
+
+	void onCollision(ObjetoJuego * colisionado);
 
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }

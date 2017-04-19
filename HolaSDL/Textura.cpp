@@ -51,8 +51,14 @@ void Textura::draw(SDL_Renderer* pRenderer, int rectX, int rectY, SDL_Rect const
 	SDL_RenderCopy(pRenderer, pTextura, &rectori, &renderQuad); // (render, textura, rect de lo que quieres dibujar, rect destino)
 }
 
+void Textura::drawAnimacion(SDL_Renderer* pRenderer, int rectX, int rectY, SDL_Rect const& rect, SDL_Rect const& rectaux) {
+	SDL_Rect renderQuad = { rectX, rectY, rect.w, rect.h };
+
+	SDL_RenderCopy(pRenderer, pTextura, &rectaux, &renderQuad); // (render, textura, rect de lo que quieres dibujar, rect destino)
+}
+
 void Textura::drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect const& rectaux) {
-	SDL_RenderCopy(pRenderer, pTextura, &rectaux, &rect);
+		SDL_RenderCopy(pRenderer, pTextura, &rectaux, &rect); // (render, textura, rect de lo que quieres dibujar, rect destino)
 }
 
 //PARA EL TEXTO:

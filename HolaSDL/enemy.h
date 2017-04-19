@@ -13,9 +13,9 @@ public:
 	void follow(int x, int y);
 	void shoot(int x, int y);
 
-	
+	void onCollision(ObjetoJuego * colisionado) {}
+	void onCollision(int vida, collision tipo){}
 protected:
-
 	int vX, vY;
 	int vel; //velocidad del monimiento
 	int contDis = 0;

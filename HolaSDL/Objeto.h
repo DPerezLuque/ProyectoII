@@ -9,7 +9,8 @@ public:
 	Objeto(Juego* ptr, int px, int py);
 	virtual ~Objeto();
 
-	
+	virtual void onCollision(ObjetoJuego * colisionado) = 0;
+
 	bool dentro(int x, int y) const; //(A LO MEJOR ES NECESARIO)
 	void draw() const;
 	bool onClick();

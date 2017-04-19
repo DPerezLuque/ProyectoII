@@ -14,6 +14,7 @@ public:
 	bool load(SDL_Renderer* pRenderer, std::string const& nombArch);
 
 	void draw(SDL_Renderer* pRenderer, int rectX, int rectY, SDL_Rect const& rect);
+	void drawAnimacion(SDL_Renderer* pRenderer, int rectX, int rectY, SDL_Rect const& rect, SDL_Rect const& rectaux);
 	void drawAnimacion(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect const& rectaux);
 
 	bool loadFromText(SDL_Renderer * pRender, std::string texto, Texto const& font, SDL_Color color = { 0, 0, 0, 255 });

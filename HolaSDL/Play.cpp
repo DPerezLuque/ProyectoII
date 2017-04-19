@@ -12,6 +12,7 @@
 #include "BarraVida.h"
 #include "BarraVidaVacia.h"
 #include "Cargador.h"
+#include "Checkpoint.h"
 using namespace std;
 
 
@@ -27,12 +28,11 @@ Play::~Play()
 void Play::init() 
 {
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
-
+	
 	//arrayObjetos.push_back(new BossRino(juego, 0, 0));
-	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
-	arrayObjetos.push_back(new enemy(juego, 350, 200));
-	//arrayObjetos.push_back(new EnemigoPlanta(juego, 270, 200));
-
+	arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
+	arrayObjetos.push_back(new Checkpoint(juego, 600, 250));
+	//arrayObjetos.push_back(new enemy(juego, 0, 0));
 
 	vidaAux = 0; //Barra Vacia
 
@@ -56,11 +56,11 @@ void Play::update(int delta) {
 	
 	//COLISIONES CON OBJETOS
 	//PERSONAJE
-	/*for (int i = 1; i < arrayObjetos.size(); ++i){
+	for (int i = 1; i < arrayObjetos.size(); ++i){
 		if (!arrayObjetos[0]->isDead() && juego->checkCollision(arrayObjetos[0], arrayObjetos[i])){
-			arrayObjetos[0]->onCollision();
+			arrayObjetos[0]->onCollision(arrayObjetos[i]);
 		}
-	}*/
+	}
 	//LIMPIEZA DE VECTOR DE OBJETOS
 	for (int aux = 0; aux < arrayObjetos.size(); ++aux) {
 		if (arrayObjetos[aux]->isDead())
@@ -73,9 +73,11 @@ void Play::update(int delta) {
 			arrayObjetos[i]->update(delta);
 	}
 
-	//Actualiza valores de la vida, las balas (Interfaz)
-	for (int i = 0; i < stats.size(); i++) {
-		getStats(i);
+	if (arrayObjetos[0]->isDead()){  //Si player esta vivo
+		//Actualiza valores de la vida, las balas (Interfaz)
+		for (int i = 0; i < stats.size(); i++) {
+			getStats(i);
+		}
 	}
 
 	for (int i = 0; i < elemInterfaz.size(); i++){
@@ -103,6 +105,7 @@ void Play::draw()
 
 	//Pintado de texto (pruebas)	
 	mensaje->render(pRenderer,300,300);
+
 	SDL_RenderPresent(pRenderer);
 }
 
@@ -164,7 +167,7 @@ void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int
 	if (vX == 0 && vY == 0){ // Para que con lo de antes no se quede la bala flotando
 		vX = vY = 10; // Si se hace lo de que al tocar al jugador haga daño y te empuje un poco igual no hace falta
 	}
-	
+
 	//float vX = velDis * (targetX - posEx) / distance + 0.01; //Arreglad esto para que no se haga 0
 	//float vY = velDis * (targetY - posEy) / distance + 0.01;
 

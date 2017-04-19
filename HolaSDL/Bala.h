@@ -9,7 +9,9 @@ public:
 
 	virtual void update(int delta) {};
 
-
 	void onCollision(int  vida, collision tipo);
+
+	void onCollision(ObjetoJuego * colisionado);
+
 };
 

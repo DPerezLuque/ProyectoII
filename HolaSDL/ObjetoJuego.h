@@ -2,7 +2,8 @@
 #include <SDL.h>
 
 //Collision Manager
-enum collision { PJ = 1, ENEMY = 2, WEAPON = 3, ENVIROMENT = 4, BOSS = 5};
+
+enum collision { PJ = 1, ENEMY = 2, WEAPON = 3, ENVIROMENT = 4, CHECK = 5 , BOSS = 6,};
 
 class ObjetoJuego
 {
@@ -21,6 +22,8 @@ public:
 	virtual void onCollision(int vida, collision tipo) = 0;
 
 	virtual void gestorVida(int) = 0;
+
+	virtual void onCollision(ObjetoJuego * colisionado) = 0;
 
 	virtual bool isDead() = 0;
 

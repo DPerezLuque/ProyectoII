@@ -28,11 +28,18 @@ Bala::~Bala()
 {
 }
 
+
 void Bala::onCollision(int vida, collision tipo){
-	
+
 	if (juego->touchesWall(this)) {
 		//printf("Bala Destruida");
+	}
+}
+
+void Bala::onCollision(ObjetoJuego * colisionado){
+	
+	if (juego->touchesWall(this)) {
+		printf("Bala Destruida\n");
 		dead = true;
 	}
-
 }

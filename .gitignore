@@ -5,11 +5,9 @@ bin/*Practica1Debug.exe
 bin/*Practica1Debug.ilk
 bin/*Practica1Debug.pdb
 bin/*Proyect1Debug
-<<<<<<< HEAD
+
 .vs/
 
-=======
->>>>>>> origin/Interfaz
 #Ignorar archivos concretos
 
 *Proyecto_2.sdf

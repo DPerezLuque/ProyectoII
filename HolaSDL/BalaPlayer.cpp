@@ -27,7 +27,11 @@ void BalaPlayer::update(int delta) {
 	rectCollision.x = (rect.x + rect.w / 4) * delta;
 	rectCollision.y = (rect.y + rect.h / 4) * delta;
 
+
 	onCollision(1, tipo);
+
+	onCollision(this);
+
 }
 
 /*void BalaPlayer::onCollision(int vida, collision tipo)

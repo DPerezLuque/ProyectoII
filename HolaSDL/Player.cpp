@@ -42,11 +42,9 @@ void Player::update(int delta) {
 	rectCollision.y = (rect.y + rect.h / 3) * delta;
 
 	if (juego->touchesWall(this)){
-
 		//printf("Wall touched!\n");
 		rect.x -= juego->getVelX() * delta;
 		rect.y -= juego->getVelY() * delta;
-
 	}
 
 	setCamera(juego->camera);
@@ -99,10 +97,9 @@ void Player::onCollision(int vidaActual, collision tipo){
 			}
 		}
 	}
-
 }
 
-void Player::gestorVida(int vida) 
+void Player::gestorVida(int vida)
 {
 	if (!inmunidad) {
 		vida--;
@@ -110,8 +107,20 @@ void Player::gestorVida(int vida)
 		inmunidad = true;
 	}
 
-	if (vida <= 0) 
+	if (vida <= 0)
 		dead = true;
+}
+
+void Player::onCollision(ObjetoJuego * colisionado){
+
+	if (colisionado->getType() == CHECK){
+		colisionado->onCollision(this);
+	}
+	else{
+		printf("Auch!");
+		dead = true;
+	}
+
 }
 
 void Player::setCamera(SDL_Rect& camera)
