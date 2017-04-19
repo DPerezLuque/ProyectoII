@@ -21,5 +21,7 @@ private:
 	enum animacion {derecha, izquierda, arriba, abajo, dchaUp, dchaDown, izdaUp, izdaDown };
 	void animar(animacion current);
 	void animacionBasica(); //Para el paso de frames
+	void proceso();
+	int contador; //Para los frames
 };
 

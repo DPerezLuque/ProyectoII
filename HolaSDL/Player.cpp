@@ -28,6 +28,7 @@ Player::~Player()
 void Player::draw() const {
 	textura->drawAnimacion(pRenderer, rect, rectAnim);
 }
+
 void Player::animar(animacion current){ //derecha, izquierda, arriba, abajo
 	switch (current)
 	{
@@ -78,9 +79,7 @@ void Player::update(int delta) {
 	//juego->checkCollision()
 	/*for (int i = 0; i < 10; ++i){
 		juego->checkCollision(this->rect, juego->topEstado()->)
-	}*/
-
-	aux += juego->getVelX();
+	}*/	
 
 	rect.x += juego->getVelX() * delta / 1.5f;
 	rect.y += juego->getVelY() * delta / 1.5f;
@@ -99,51 +98,46 @@ void Player::update(int delta) {
 		//Move the dot up or down
 		rect.y += juego->getVelY();
 	*/
-	
-		//ANIMACION
-	
-		if (juego->getVelX() > 0 && juego->getVelY() == 0){
-			if (aux >= 60){
-				animar(derecha);
-				aux = 0;
-			}
-			
+		contador += delta;
+		if (contador >= 6){
+			proceso();
+			contador = 0;
 		}
-		if (juego->getVelX() < 0 && juego->getVelY() == 0){
-			if (aux <= -60){
-				animar(izquierda);
-				aux = 0;
-			}
-		}
-		if (juego->getVelY() < 0 && juego->getVelX() == 0){
-			animar(arriba);
-		}
-		if (juego->getVelY() * delta > 0 && juego->getVelX() == 0){
-			animar(abajo);
-		}
-		if (juego->getVelX() * delta > 0 && juego->getVelY() < 0){
-			animar(dchaUp);
-		}
-		if (juego->getVelX() > 0 && juego->getVelY() > 0){
-			animar(dchaDown);
-		}
-		if (juego->getVelX() < 0 && juego->getVelY() * delta < 0){
-			animar(izdaUp);
-		}
-		if (juego->getVelX() * delta < 0 && juego->getVelY() * delta > 0){
-			animar(izdaDown);
-		}
-
-		if (juego->getVelX() == 0 && juego->getVelY() == 0){
-			aux = 0;
-		}
-	
-
 } 
+void Player::proceso(){
+	//ANIMACION
+
+	if (juego->getVelX() > 0 && juego->getVelY() == 0){
+		animar(derecha);
+	}
+	if (juego->getVelX() < 0 && juego->getVelY() == 0){
+		animar(izquierda);
+	}
+	if (juego->getVelY() < 0 && juego->getVelX() == 0){
+		animar(arriba);
+	}
+	if (juego->getVelY()  > 0 && juego->getVelX() == 0){
+		animar(abajo);
+	}
+	if (juego->getVelX()  > 0 && juego->getVelY() < 0){
+		animar(dchaUp);
+	}
+	if (juego->getVelX() > 0 && juego->getVelY() > 0){
+		animar(dchaDown);
+	}
+	if (juego->getVelX() < 0 && juego->getVelY()  < 0){
+		animar(izdaUp);
+	}
+	if (juego->getVelX()  < 0 && juego->getVelY()  > 0){
+		animar(izdaDown);
+	}
+
+	if (juego->getVelX() == 0 && juego->getVelY() == 0){
+		contador = 0;
+	}
+}
 
 bool Player::onClick() {
-	
-
 	static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
 	return true;
 }
