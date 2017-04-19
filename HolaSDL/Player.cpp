@@ -71,6 +71,8 @@ void Player::animacionBasica(){ //Para el paso de frames
 	}	
 }
 
+int aux = 0;
+
 void Player::update(int delta) {
 	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
 	//juego->checkCollision()
@@ -78,8 +80,10 @@ void Player::update(int delta) {
 		juego->checkCollision(this->rect, juego->topEstado()->)
 	}*/
 
-	rect.x += juego->getVelX() * delta;
-	rect.y += juego->getVelY() * delta;
+	aux += juego->getVelX();
+
+	rect.x += juego->getVelX() * delta / 1.5f;
+	rect.y += juego->getVelY() * delta / 1.5f;
 	
 	rectCollision.x = (rect.x + rect.w / 3) * delta;
 	rectCollision.y = (rect.y + rect.h / 3) * delta;
@@ -97,29 +101,41 @@ void Player::update(int delta) {
 	*/
 	
 		//ANIMACION
-		if (juego->getVelX() * delta > 0 && juego->getVelY() * delta == 0){
-			animar(derecha);
+	
+		if (juego->getVelX() > 0 && juego->getVelY() == 0){
+			if (aux >= 60){
+				animar(derecha);
+				aux = 0;
+			}
+			
 		}
-		if (juego->getVelX() * delta < 0 && juego->getVelY() * delta == 0){
-			animar(izquierda);
+		if (juego->getVelX() < 0 && juego->getVelY() == 0){
+			if (aux <= -60){
+				animar(izquierda);
+				aux = 0;
+			}
 		}
-		if (juego->getVelY() * delta < 0 && juego->getVelX() * delta == 0){
+		if (juego->getVelY() < 0 && juego->getVelX() == 0){
 			animar(arriba);
 		}
-		if (juego->getVelY() * delta > 0 && juego->getVelX() * delta == 0){
+		if (juego->getVelY() * delta > 0 && juego->getVelX() == 0){
 			animar(abajo);
 		}
-		if (juego->getVelX() * delta > 0 && juego->getVelY() * delta < 0){
+		if (juego->getVelX() * delta > 0 && juego->getVelY() < 0){
 			animar(dchaUp);
 		}
-		if (juego->getVelX() * delta > 0 && juego->getVelY() * delta > 0){
+		if (juego->getVelX() > 0 && juego->getVelY() > 0){
 			animar(dchaDown);
 		}
-		if (juego->getVelX() * delta < 0 && juego->getVelY() * delta < 0){
+		if (juego->getVelX() < 0 && juego->getVelY() * delta < 0){
 			animar(izdaUp);
 		}
 		if (juego->getVelX() * delta < 0 && juego->getVelY() * delta > 0){
 			animar(izdaDown);
+		}
+
+		if (juego->getVelX() == 0 && juego->getVelY() == 0){
+			aux = 0;
 		}
 	
 

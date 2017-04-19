@@ -91,7 +91,7 @@ void Juego::run()
 			tileSet[i]->render(pRenderer, camera);
 		}
 
-		cout << delta << "\n";
+		//cout << delta << "\n";
 		estado->draw();
 		handle_events();
 	}

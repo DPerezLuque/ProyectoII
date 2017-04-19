@@ -23,8 +23,8 @@ Play::~Play() {}
 void Play::init() 
 {
 	arrayObjetos.push_back(new Player(juego, 200, 200)); 
-	arrayObjetos.push_back(new BossRino(juego, 0, 0));
-	arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
+	//arrayObjetos.push_back(new BossRino(juego, 0, 0));
+	//arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 
 }
 
