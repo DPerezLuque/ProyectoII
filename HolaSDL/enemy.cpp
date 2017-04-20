@@ -19,7 +19,10 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	tipo = ENEMY;
 
-	vida = 3;		
+	vida = 3;	
+
+	inmunidad = false;
+	contInm = 0;
 }
 
 
@@ -47,6 +50,15 @@ void enemy::update(int delta)
 
 	rectCollision.x = (rect.x + rect.w / 3) * delta;
 	rectCollision.y = (rect.y + rect.h / 3) * delta;
+
+	if (inmunidad) {
+		if (contInm < 50) contInm++;
+		else if (contInm == 50)
+		{
+			inmunidad = false;
+			contInm = 0;
+		}
+	}
 
 }
 
@@ -76,7 +88,7 @@ void enemy::shoot(int targetX, int targetY){
 
 void enemy::onCollision(ObjetoJuego * colisionado){
 
-	if (colisionado->getType() == PJ){
+	if (colisionado->getType() == BALAPJ){
 		gestorVida(vida);
 	}
 
@@ -84,8 +96,11 @@ void enemy::onCollision(ObjetoJuego * colisionado){
 
 void enemy::gestorVida(int &vida)
 {
-	vida--;
-	cout << "Vida enemigo: " << vida;
+	if (!inmunidad){
+		vida--;
+		cout << "Vida enemigo: " << vida;
+		inmunidad = true;
+	}
 
 	if (vida <= 0)
 		dead = true;

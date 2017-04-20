@@ -3,7 +3,6 @@
 BalaEnemigo::BalaEnemigo(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px, py, vX, vY)
 {
 	textura = juego->getTextura(Juego::TBulletEnemy);
-
 }
 
 

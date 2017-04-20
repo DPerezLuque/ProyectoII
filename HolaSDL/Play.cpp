@@ -75,6 +75,14 @@ void Play::update(int delta) {
 				juego->arrayObjetos[j]->onCollision(juego->arrayObjetos[0]);
 			}
 		}
+		/*//BALAS PJ
+		else if (juego->arrayObjetos[j]->getType() == BALAPJ) {
+			for (int k = 1; k < juego->arrayObjetos.size(); ++k){
+				if (juego->checkCollision(juego->arrayObjetos[j], juego->arrayObjetos[k])) {
+					juego->arrayObjetos[j]->onCollision(juego->arrayObjetos[k]);
+				}
+			}
+		}*/
 		//ENEMIGOS
 		else if (juego->arrayObjetos[j]->getType() == ENEMY) {
 			for (int k = 1; k < juego->arrayObjetos.size(); ++k){

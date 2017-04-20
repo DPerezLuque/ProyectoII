@@ -28,7 +28,7 @@ private:
 	int vida;
 	int balas;
 
-	bool inmunidad; //Booleano que se activa cuando toc a un enemigo para que no reste la vida de golpe
+	bool inmunidad; //Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
 	int contadorInmunidad; //Contador del tiempo de inmunidad
 
 };
