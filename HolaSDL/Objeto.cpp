@@ -45,10 +45,10 @@ SDL_Rect Objeto::getRect(){
 }
 
 
-void Objeto::gestorVida(int vidaObjeto) 
+void Objeto::gestorVida(int &vidaObjeto) 
 {
 	vidaObjeto--;
-	cout << vidaObjeto;
+	cout << "Vida enemigo: " << vidaObjeto;
 
 	if (vidaObjeto <= 0)
 		dead = true;

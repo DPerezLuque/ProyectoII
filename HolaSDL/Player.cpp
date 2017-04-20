@@ -65,7 +65,7 @@ void Player::update(int delta) {
 		}
 	}
 
-	onCollision(vida, tipo);
+	//onCollision(vida, tipo);
 
 	
 	//std::cout << "RECT X JUGADOR: " << rect.x << "\n";
@@ -84,22 +84,8 @@ void Player::getPos(int& x, int& y) {
 	y = rect.y;
 }
 
-void Player::onCollision(int vidaActual, collision tipo){
-	/*
-	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
-	for (int i = 0; i < juego->topEstado()->getSizeArray(); ++i) {
-		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
-		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
-			if (juego->topEstado()->getObjeto(i)->getType() == ENEMY || juego->topEstado()->getObjeto(i)->getType() == BOSS)
-			{
-				gestorVida(vidaActual);
-				
-			}
-		}
-	}/*/
-}
 
-void Player::gestorVida(int vida)
+void Player::gestorVida(int &vida)
 {
 	if (!inmunidad) {
 		vida--;
@@ -118,7 +104,7 @@ void Player::onCollision(ObjetoJuego * colisionado){
 	}
 	else{
 		printf("Auch! \n");
-		dead = true;
+		gestorVida(vida);
 	}
 
 }

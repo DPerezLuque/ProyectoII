@@ -17,7 +17,7 @@ public:
 	SDL_Rect getRect();
 
 	void onCollision(int vida, collision tipo);
-	void gestorVida(int vida);
+	void gestorVida(int &vida);
 
 	collision getType() {
 		return tipo;
@@ -38,5 +38,7 @@ protected:
 	bool dead = false;
 	int velX, velY;	//Velocidad del objeto
 	//int h, w; // tamaño (ya va en el rect)
+
+	int vida;
 };
 

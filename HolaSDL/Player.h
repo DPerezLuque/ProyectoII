@@ -20,8 +20,7 @@ public:
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }
 
-	void onCollision(int vida, collision tipo); //onCollision mergeado de gestor de vida
-	void gestorVida(int vida);
+	void gestorVida(int &vida);
 
 
 private:

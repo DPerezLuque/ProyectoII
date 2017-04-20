@@ -21,7 +21,7 @@ public:
 
 	virtual void onCollision(int vida, collision tipo) = 0;
 
-	virtual void gestorVida(int) = 0;
+	virtual void gestorVida(int &vida) = 0;
 
 	virtual void onCollision(ObjetoJuego * colisionado) = 0;
 
