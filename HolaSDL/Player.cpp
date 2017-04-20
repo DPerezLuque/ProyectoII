@@ -14,6 +14,9 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	velX = 0;
 	velY = 0;
 
+	posIniX = rect.x; //Lo inicializamos al valor que le pasan por parametro
+	posIniY = rect.y;
+
 	tipo = PJ;
 	vida = 2;
 	balas = 30;

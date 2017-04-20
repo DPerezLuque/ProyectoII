@@ -1,5 +1,6 @@
 #pragma once
 #include "Objeto.h"
+#include "Player.h"
 class Checkpoint :	public Objeto
 {
 public:
@@ -13,5 +14,7 @@ private:
 	bool cogido;
 	SDL_Rect rectAnim;
 	void animar();
+	void setPosition(Player* p, int x, int y);
+	int contador; //Para los frames
 };
 

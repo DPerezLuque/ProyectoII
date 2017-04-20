@@ -18,8 +18,10 @@ public:
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }
 
-
+	void setPosition(int x, int y);
+	int posIniX, posIniY;
 private:
+	
 	int velX, velY;
 	int vida;
 	int balas;
