@@ -13,6 +13,7 @@ public:
 	void follow(int x, int y);
 	void shoot(int x, int y);
 
+	void onCollision();
 	void onCollision(ObjetoJuego * colisionado) {}
 	void onCollision(int vida, collision tipo){}
 protected:

@@ -23,7 +23,7 @@ public:
 
 	virtual void gestorVida(int) = 0;
 
-	virtual void onCollision(ObjetoJuego * colisionado) = 0;
+	virtual void onCollision() = 0;
 
 	virtual bool isDead() = 0;
 

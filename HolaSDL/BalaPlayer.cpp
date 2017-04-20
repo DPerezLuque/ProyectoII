@@ -6,7 +6,7 @@ BalaPlayer::BalaPlayer(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, p
 {
 	textura = juego->getTextura(Juego::TBulletPlayer);
 
-	tipo = PJ;
+	//tipo = PJ;
 
 }
 
@@ -45,4 +45,27 @@ void BalaPlayer::update(int delta) {
 		}
 	}
 }*/
+
+
+void BalaPlayer::onCollision() {
+	
+	if (juego->touchesWall(this)) {
+		printf("Bala Destruida (WALL) \n");
+		dead = true;
+	}
+	else {
+
+		for (int i = 1; i < juego->arrayObjetos.size(); ++i) {
+			if (juego->arrayObjetos[i]->getType() == ENEMY || juego->arrayObjetos[i]->getType() == BOSS) {
+				if (juego->checkCollision(this, juego->arrayObjetos[i])) {
+					cout << "Bala destruida! (ENEMY) \n";
+					juego->arrayObjetos[i]->onCollision();
+					dead = true;
+				}
+			}
+		}
+
+	}
+	
+}
 

@@ -5,7 +5,7 @@ class Checkpoint :	public Objeto
 public:
 	Checkpoint(Juego* ptr, int px, int py);
 	virtual ~Checkpoint();
-	void onCollision(ObjetoJuego * colisionado);
+	void onCollision();
 	void draw() const; //Necesita su propio draw, por la animacion
 	void update(int delta);
 

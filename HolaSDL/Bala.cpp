@@ -14,6 +14,7 @@ Bala::Bala(Juego* ptr, int px, int py, int vX, int vY) : Objeto(ptr, px, py)
 
 	rectCollision.w = 32;
 	rectCollision.h = 32;
+
 	rectCollision.x = rect.x + rect.w / 4;
 	rectCollision.y = rect.y + rect.h / 4;
 
@@ -30,6 +31,8 @@ Bala::~Bala()
 
 void Bala::update(int delta) {
 
+	//onCollision();
+
 	rect.x += velX * delta / 3;
 	rect.y += velY * delta / 3;
 
@@ -37,10 +40,6 @@ void Bala::update(int delta) {
 	rectCollision.y = (rect.y + rect.h / 4) * delta;
 
 	
-	if (juego->touchesWall(this)) {
-		printf("Bala Destruida (WALL) \n");
-		dead = true;
-	}
 }
 
 
@@ -51,10 +50,10 @@ void Bala::onCollision(int vida, collision tipo){
 		dead = true;
 	}
 }
-
+/*
 void Bala::onCollision(ObjetoJuego * colisionado){
 	
 		printf("Bala Destruida (OBJETO) \n");
 		dead = true;
 	
-}
+}*/

@@ -7,5 +7,5 @@ public:
 	~BalaPlayer();
 
 	//void onCollision(int vida, collision tipo);
-
+	void onCollision();
 };

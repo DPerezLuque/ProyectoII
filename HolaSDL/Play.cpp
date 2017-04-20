@@ -30,8 +30,8 @@ void Play::init()
 	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	//juego->arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
-	//juego->arrayObjetos.push_back(new Checkpoint(juego, 220, 250));
-//	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
+	//juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250));
+	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
 	vidaAux = 0; //Barra Vacia
 
@@ -64,17 +64,15 @@ void Play::update(int delta) {
 	//PERSONAJE
 	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
 		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayObjetos[i])){
-			juego->arrayObjetos[0]->onCollision(juego->arrayObjetos[i]);
+			juego->arrayObjetos[0]->onCollision();
 		}
 	}
-	//BALAS
 	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
-		if (juego->arrayObjetos[j]->getType() == WEAPON) {
-			if (juego->checkCollision(juego->arrayObjetos[j], juego->arrayObjetos[0])) {
-				juego->arrayObjetos[j]->onCollision(juego->arrayObjetos[0]);
-			}
+		if (!juego->arrayObjetos[j]->isDead() && juego->arrayObjetos[j]->getType() == WEAPON) {
+			juego->arrayObjetos[j]->onCollision();
 		}
 	}
+	
 	//LIMPIEZA DE VECTOR DE OBJETOS
 	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 		if (juego->arrayObjetos[aux]->isDead())

@@ -5,8 +5,8 @@
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TPlayer);
-	rect.w = 100;
-	rect.h = 100;
+	rect.w = 64;
+	rect.h = 64;
 
 	rectCollision.w = 32;
 	rectCollision.h = 32;
@@ -113,13 +113,9 @@ void Player::gestorVida(int vida)
 
 void Player::onCollision(ObjetoJuego * colisionado){
 
-	if (colisionado->getType() == CHECK){
-		colisionado->onCollision(this);
-	}
-	else{
 		printf("Auch! \n");
-		dead = true;
-	}
+		//dead = true;
+	
 
 }
 

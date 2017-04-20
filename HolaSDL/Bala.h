@@ -11,7 +11,7 @@ public:
 
 	void onCollision(int  vida, collision tipo);
 
-	void onCollision(ObjetoJuego * colisionado);
+	virtual void onCollision() = 0;
 
 };
 

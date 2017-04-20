@@ -45,10 +45,10 @@ const int TILE_DOORTOP = 12;
 const int TILE_LEFTDOWN = 13;
 const int TILE_RIGHTDOWN = 14;
 const int TILE_DOORDOWN = 15;
-const int TILE_FRAGTOP = 16;
-const int TILE_FRAGRIGHT = 17;
-const int TILE_FRAGDOWN = 18;
-const int TILE_FRAGLEFT = 19;
+const int TILE_FRAGTOP = 16;	//WALL
+const int TILE_FRAGRIGHT = 17;	//WALL
+const int TILE_FRAGDOWN = 18;	//WALL
+const int TILE_FRAGLEFT = 19;	//WALL
 const int TILE_FLOORCRACKED0 = 20;
 const int TILE_FLOORWSHADOW = 21;
 const int TILE_BLOCKTOP = 22;
@@ -67,19 +67,19 @@ const int TILE_GIRODOWNLEFT = 34;
 const int TILE_GIRODOWNRIGHT = 35;
 const int TILE_FLOORCRACKED3 = 36;
 const int TILE_FLOOR = 37;
-const int TILE_CORNERFRAGTOPLEFT = 38;
-const int TILE_CORNERFRAGTOPRIGHT = 39;
+const int TILE_CORNERFRAGTOPLEFT = 38;	//WALL
+const int TILE_CORNERFRAGTOPRIGHT = 39;	//WALL
 const int TILE_CORNERTOPLEFT = 40;
 const int TILE_CORNERTOPRIGHT = 41;
-const int TILE_GIROFRAGTOPLEFT = 42;
-const int TILE_GIROFRAGTOPRIGHT = 43;
-const int TILE_CORNERFRAGDOWNLEFT = 44;
-const int TILE_CORNERFRAGDOWNRIGHT = 45;
+const int TILE_GIROFRAGTOPLEFT = 42;	//WALL
+const int TILE_GIROFRAGTOPRIGHT = 43;	//WALL
+const int TILE_CORNERFRAGDOWNLEFT = 44;	//WALL
+const int TILE_CORNERFRAGDOWNRIGHT = 45;	//WALL
 const int TILE_CORNERDOWNLEFT = 46;
 const int TILE_CORNERDOWNRIGHT = 47;
-const int TILE_GIROFRAGDOWNLEFT = 48;
-const int TILE_GIROFRAGDOWNRIGHT = 49;
-const int TILE_BLACK = 50;
+const int TILE_GIROFRAGDOWNLEFT = 48;	//WALL
+const int TILE_GIROFRAGDOWNRIGHT = 49;	//WALL
+const int TILE_BLACK = 50;				//WALL
 
 class Tilemap {
 public:
@@ -97,11 +97,12 @@ public:
 		//Loads image at specified path
 		bool loadFromFile(SDL_Renderer* pRenderer, std::string path);
 
+		/*
 #ifdef _SDL_TTF_H
 		//Creates image from font string
 		bool loadFromRenderedText(std::string textureText, SDL_Color textColor);
 #endif
-
+*/
 		//Deallocates texture
 		void free();
 
@@ -348,9 +349,45 @@ Tilemap::Tile::Tile(int x, int y, int tileType)
 
 	//Get the tile type
 	mType = tileType;
-
+	//26,30, 27
 	switch (mType) {
-	case TILE_BLACK:
+	case 16:
+		wall = true;
+		break;
+	case 17:
+		wall = true;
+		break;
+	case 18:
+		wall = true;
+		break;
+	case 19:
+		wall = true;
+		break;
+	case 38:
+		wall = true;
+		break;
+	case 39:
+		wall = true;
+		break;
+	case 42:
+		wall = true;
+		break;
+	case 43:
+		wall = true;
+		break;
+	case 44:
+		wall = true;
+		break;
+	case 45:
+		wall = true;
+		break;
+	case 48:
+		wall = true;
+		break;
+	case 49:
+		wall = true;
+		break;
+	case 50:
 		wall = true;
 		break;
 	default:

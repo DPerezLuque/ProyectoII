@@ -15,8 +15,9 @@ BossRino::BossRino(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 	rect.x = 100;
 	rect.y = 100;
 
-	tipo = BOSS;
+	rectCollision = rect;
 
+	tipo = BOSS;
 	//vidaEnemigo = 4;
 
 }
@@ -110,6 +111,7 @@ void BossRino::update(int delta){
 		break;
 	}
 	
+	rectCollision = rect;
 	//onCollision(vidaEnemigo, tipo);
 
 }
@@ -117,3 +119,4 @@ void BossRino::sma(){
 	
 	static_cast <Play*> (juego->topEstado())->posPlayer(posx, posy);
 }
+

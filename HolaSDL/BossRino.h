@@ -13,6 +13,7 @@ public:
 	Estaditos humuluhumulu = Estaditos::NORMAL;
 	void sma();
 
+
 private:
 	int contParado = 0;
 	int contAceleron = 0;

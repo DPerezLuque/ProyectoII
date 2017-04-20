@@ -29,22 +29,23 @@ enemy::~enemy()
 
 void enemy::update(int delta) 
 {	
-	int x, y;
-	
-	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
+	SDL_Rect rectPlayer;
+	rectPlayer = juego->arrayObjetos[0]->getRect();
+	//static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
 
 	if (contDis < freDis - 10){ //Algo tope chungo para que se pare al disparar
-		follow(x, y);
+		follow(rectPlayer.x, rectPlayer.y);
 	}
 	//follow(x, y);
 
-	follow(x, y);
+	follow(rectPlayer.x, rectPlayer.y);
 	++contDis;
 	if (contDis >= freDis){
-		shoot(x, y);
+		shoot(rectPlayer.x, rectPlayer.y);
 		contDis = 0;
 	}
 
+	rectCollision = rect;
 //	onCollision(vidaEnemigo, tipo);
 }
 
@@ -69,5 +70,11 @@ void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir
 }
 
 void enemy::shoot(int targetX, int targetY){
+
 	static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
+}
+
+void enemy::onCollision() {
+	cout << "Enemy Dead! \n";
+	dead = true;
 }

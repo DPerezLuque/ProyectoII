@@ -8,5 +8,6 @@ public:
 	~BalaEnemigo();
 
 	//void onCollision(int vida, collision tipo);
+	void onCollision();
 };
 
