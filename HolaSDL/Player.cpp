@@ -101,7 +101,7 @@ void Player::update(int delta) {
 		contador += delta;
 		if (contador >= 6){
 			proceso();
-			contador = 0;
+			contador = 0;				
 		}
 } 
 void Player::proceso(){
@@ -134,6 +134,7 @@ void Player::proceso(){
 
 	if (juego->getVelX() == 0 && juego->getVelY() == 0){
 		contador = 0;
+		rectAnim.x = 0;
 	}
 }
 
