@@ -27,6 +27,7 @@ Play::~Play()
 
 void Play::init() 
 {
+
 	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	//juego->arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
@@ -34,6 +35,7 @@ void Play::init()
 	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
 	vidaAux = 0; //Barra Vacia
+
 
 	juego->stats.push_back(vidaAux);
 	juego->stats.push_back(dynamic_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
