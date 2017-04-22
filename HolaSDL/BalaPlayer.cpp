@@ -6,7 +6,7 @@ BalaPlayer::BalaPlayer(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, p
 {
 	textura = juego->getTextura(Juego::TBulletPlayer);
 
-	//tipo = PJ;
+	//tipo = BALAPJ; 
 
 }
 

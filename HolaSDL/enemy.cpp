@@ -19,7 +19,10 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	tipo = ENEMY;
 
-	vidaEnemigo = VIDAMAXENEMY;		
+	vida = 3;	
+
+	inmunidad = false;
+	contInm = 0;
 }
 
 
@@ -45,8 +48,21 @@ void enemy::update(int delta)
 		contDis = 0;
 	}
 
-	rectCollision = rect;
-//	onCollision(vidaEnemigo, tipo);
+
+	//rectCollision = rect;
+
+	rectCollision.x = (rect.x + rect.w / 3) * delta;
+	rectCollision.y = (rect.y + rect.h / 3) * delta;
+
+	if (inmunidad) {
+		if (contInm < 50) contInm++;
+		else if (contInm == 50)
+		{
+			inmunidad = false;
+			contInm = 0;
+		}
+	}
+
 }
 
 void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir 
@@ -74,7 +90,29 @@ void enemy::shoot(int targetX, int targetY){
 	static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
 }
 
+
 void enemy::onCollision() {
 	cout << "Enemy Dead! \n";
 	dead = true;
 }
+
+void enemy::onCollision(ObjetoJuego * colisionado){ //onCollision de gestor de vida
+
+	if (colisionado->getType() == BALAPJ){
+		gestorVida(vida);
+	}
+
+}
+
+void enemy::gestorVida(int &vida)
+{
+	if (!inmunidad){
+		vida--;
+		cout << "Vida enemigo: " << vida;
+		inmunidad = true;
+	}
+
+	if (vida <= 0)
+		dead = true;
+}
+

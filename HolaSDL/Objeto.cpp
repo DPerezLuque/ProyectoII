@@ -45,23 +45,24 @@ SDL_Rect Objeto::getRect(){
 }
 
 
-void Objeto::gestorVida(int vidaObjeto) 
+void Objeto::gestorVida(int &vidaObjeto) 
 {
 	vidaObjeto--;
-	cout << vidaObjeto;
+	cout << "Vida enemigo: " << vidaObjeto;
 
 	if (vidaObjeto <= 0)
 		dead = true;
 }
 
-void Objeto::onCollision(int vidaObjeto, collision tipo){
+
+void Objeto::onCollision(ObjetoJuego* objeto){
 
 	for (int i = 0; i < juego->topEstado()->getSizeArray(); i++) {
 		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
 		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
 			if (juego->topEstado()->getObjeto(i)->getType() == WEAPON)
 			{
-				gestorVida(vidaObjeto);
+				gestorVida(vida);
 
 			}
 		}

@@ -17,14 +17,14 @@ public:
 	//void drawPlayer();
 	void draw() const;
 	void onCollision() {};
-	void onCollision(ObjetoJuego * colisionado);
+	void onCollision(ObjetoJuego*);
 
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }
 
-	void onCollision(int vida, collision tipo); //onCollision mergeado de gestor de vida
-	void gestorVida(int vida);
 	int posIniX, posIniY;
+	void gestorVida(int &vida);
+
 private:
 	void respawn();
 	int velX, velY;
@@ -32,7 +32,7 @@ private:
 	int vida;
 	int balas;
 
-	bool inmunidad; //Booleano que se activa cuando toc a un enemigo para que no reste la vida de golpe
+	bool inmunidad; //Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
 	int contadorInmunidad; //Contador del tiempo de inmunidad
 
 	//ANIMACIÓN PERSONAJE

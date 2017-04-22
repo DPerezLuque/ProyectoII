@@ -4,7 +4,8 @@ BalaEnemigo::BalaEnemigo(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr,
 {
 	textura = juego->getTextura(Juego::TBulletEnemy);
 
-	tipo = ENEMY;
+	tipo = ENEMY; //Al final es enemy o weapon?
+
 }
 
 

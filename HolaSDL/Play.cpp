@@ -33,6 +33,9 @@ void Play::init()
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, dynamic_cast<Player*>(juego->arrayObjetos[0])));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
+	//juego->arrayObjetos.push_back(new Checkpoint(juego, 220, 250));
+	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
+
 
 	vidaAux = 0; //Barra Vacia
 
@@ -61,15 +64,16 @@ void Play::update(int delta) {
 	//PERSONAJE
 	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
 		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayObjetos[i])){
-			juego->arrayObjetos[0]->onCollision();
+			juego->arrayObjetos[0]->onCollision(juego->arrayObjetos[i]);
 		}
 	}
+
 	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
 		if (!juego->arrayObjetos[j]->isDead() && juego->arrayObjetos[j]->getType() == WEAPON) {
 			juego->arrayObjetos[j]->onCollision();
 		}
 	}
-	
+
 	//LIMPIEZA DE VECTOR DE OBJETOS
 	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 		if (juego->arrayObjetos[aux]->isDead())
@@ -83,9 +87,10 @@ void Play::update(int delta) {
 	}
 
 	if (!juego->arrayObjetos[0]->isDead()){  //Si player esta vivo  //DEJAD DE COMENTARLO
+
 		//Actualiza valores de la vida, las balas (Interfaz)
 		for (int i = 0; i < juego->stats.size(); i++) {
-			getStats(i);
+			getStats(i);  //--->Sigue intentando acceder a la vida cuando el prota muere
 		}
 	}
 	

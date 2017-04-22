@@ -4,7 +4,7 @@
 EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TEnemy); //TODO: cambiar a la textura de la planta
-	vidaEnemigo = 5;
+	vida = 5;
 }
 
 
@@ -21,5 +21,5 @@ void EnemigoPlanta::update(int delta){
 		contDis = 0;
 	}
 
-	onCollision(vidaEnemigo, tipo);
+	//onCollision(vida, tipo);
 }
