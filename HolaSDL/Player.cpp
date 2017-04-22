@@ -17,19 +17,27 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	velX = 0;
 	velY = 0;
 
-	tipo = PJ;
+	posIniX = rect.x; //Lo inicializamos al valor que le pasan por parametro
+	posIniY = rect.y;
 
+	tipo = PJ;
 	vida = 4;
-	balas = 30;
+	balas = 5;
+	maximoBalas = 20;
 
 	inmunidad = false;
 	contadorInmunidad = 0;
-
 }
 
 
 Player::~Player()
 {
+}
+void Player::respawn(){
+	if (dead){
+		rect.x = posIniX;
+		rect.y = posIniY;
+	}
 }
 
 void Player::draw() const {
@@ -82,7 +90,7 @@ void Player::animacionBasica(){ //Para el paso de frames
 int aux = 0;
 
 void Player::update(int delta) {
-
+	respawn();
 	//rect.x = rect.x - juego->camera.x;
 	//rect.y = rect.y - juego->camera.y;
 
@@ -129,6 +137,15 @@ void Player::update(int delta) {
 			contador = 0;				
 		}
 
+		//Recargar balas
+		if (balas <= 0){
+			contador2 += delta;
+			balas = 0;
+			if (contador2 >= 200){
+				balas = maximoBalas;
+				contador2 = 0;
+			}
+		}
 		//rectAnim.x = rect.x;
 		//rectAnim.y = rect.y;
 } 
@@ -167,9 +184,15 @@ void Player::proceso(){
 }
 
 bool Player::onClick() {
-
-	static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
-	return true;
+	if (balas > 0){
+		static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
+		balas--;
+		std::cout << balas << "\n";
+		return true;
+	}
+	else return false;
+	
+	
 }
 
 void Player::getPos(int& x, int& y) {
@@ -205,11 +228,8 @@ void Player::gestorVida(int vida)
 }
 
 void Player::onCollision(ObjetoJuego * colisionado){
-
-		printf("Auch! \n");
-		//dead = true;
-	
-
+	printf("Auch! \n");
+	//dead = true;
 }
 
 void Player::setCamera(SDL_Rect& camera)

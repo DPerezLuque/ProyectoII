@@ -16,7 +16,6 @@ public:
 	void close();
 	bool load(string nombArch, int size);
 	SDL_Surface* renderText(string text, SDL_Color color) const;
-
 private:
 	TTF_Font * pFont;
 };

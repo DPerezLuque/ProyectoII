@@ -22,11 +22,11 @@ private:
 	void getStats(int i);
 
 	bool gameOver;
-
-	//Texto* fuenteDePrueba;
-	//Textura* mensaje;
-	//SDL_Color Red;
-	//SDL_Rect rectanTexto;
+	Texto* fuenteCargador;
+	Textura* mensaje;
+	SDL_Color Black;
+	SDL_Color Red;
+	SDL_Rect rectanTexto;
 
 	int vidaAux;
 };

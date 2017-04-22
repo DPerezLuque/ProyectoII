@@ -15,7 +15,7 @@ public:
 
 	void setCamera(SDL_Rect &camera);
 	//void drawPlayer();
-
+	void draw() const;
 	void onCollision() {};
 	void onCollision(ObjetoJuego * colisionado);
 
@@ -24,12 +24,9 @@ public:
 
 	void onCollision(int vida, collision tipo); //onCollision mergeado de gestor de vida
 	void gestorVida(int vida);
-
-	
-	void draw() const;	
-
-
+	int posIniX, posIniY;
 private:
+	void respawn();
 	int velX, velY;
 
 	int vida;
@@ -45,5 +42,7 @@ private:
 	void animacionBasica(); //Para el paso de frames
 	void proceso();
 	int contador; //Para los frames
+	int contador2; //Para recargar arma
+	int maximoBalas;
 };
 

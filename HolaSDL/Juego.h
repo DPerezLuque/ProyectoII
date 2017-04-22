@@ -68,9 +68,7 @@ public:
 	std::vector<int> stats;
 	
 	//CAMERA LEVEL
-	SDL_Rect camera;
-	
-	
+	SDL_Rect camera;	
 	
 	//INITS
 	bool initSDL();
@@ -105,8 +103,6 @@ public:
 	//FONTS
 	enum Fuentes { Arial, };
 	string getTexto(int fun) { return nombreFuentes[fun]; }
-
-
 
 private:
 	
