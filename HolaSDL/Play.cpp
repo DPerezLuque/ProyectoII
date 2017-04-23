@@ -36,9 +36,13 @@ void Play::init()
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 220, 250));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
+
+	//ENEMIGOS PLANTA
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
 
 	vidaAux = 0; //Barra Vacia
 
