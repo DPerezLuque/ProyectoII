@@ -18,13 +18,13 @@ and may not be redistributed without written permission.*/
 //const int LEVEL_HEIGHT = 640; // TAMAÑO EN X DEL TILE * FILAS DEL TXT
 							  
 //The dimensions of the level
-const int LEVEL_WIDTH = 2560; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT	115*40
+const int LEVEL_WIDTH = 2624; // TAMAÑO EN X DEL TILE * COLUMNAS DEL TXT	115*40
 const int LEVEL_HEIGHT = 7360; // TAMAÑO EN X DEL TILE * FILAS DEL TXT
 
 //Tile constants (INDIVIDUAL)
 const int TILE_WIDTH = 64;
 const int TILE_HEIGHT = 64;
-const int TOTAL_TILES = 4600;       // FILAS * COLUMNAS DEL TXT
+const int TOTAL_TILES = 4715;       // FILAS * COLUMNAS DEL TXT
 const int TOTAL_TILE_SPRITES = 51; //TIPOS DISTINTOS DE SPRITES
 
 								   

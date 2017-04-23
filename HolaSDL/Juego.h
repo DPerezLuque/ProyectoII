@@ -31,7 +31,7 @@ public:
 	enum Texturas_t {
 		TPlayer, TBulletPlayer, TBExit, TBPlay, TBMenu, TBResume,
 		TEnemy, TBulletEnemy, TVidaLlena, TVidaVacia, TDashLleno,
-		TDashVacio, TCargador, TDialogo, TCheck,
+		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta
 	};
 
 	//PUBLIC VARIABLES
@@ -72,9 +72,7 @@ public:
 	//PLAYER
 	//ObjetoJuego * pj;
 	//CAMERA LEVEL
-	SDL_Rect camera;
-	
-	
+	SDL_Rect camera;	
 	
 	//INITS
 	bool initSDL();
@@ -109,8 +107,6 @@ public:
 	//FONTS
 	enum Fuentes { Arial, };
 	string getTexto(int fun) { return nombreFuentes[fun]; }
-
-
 
 private:
 	

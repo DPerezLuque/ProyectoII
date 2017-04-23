@@ -203,9 +203,10 @@ bool Juego::initMedia()
 
 	//TEXTO
 	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");
+	//nombreFuentes.push_back("..\\Fuentes\\atwriter.ttf");
 
 	for (int j = 0; j < nombreFuentes.size(); j++) {		
-		textoAux.load(nombreFuentes[j], 20); //fuente, size
+		textoAux.load(nombreFuentes[j], 50); //fuente, size
 		arrayFuentes.push_back(textoAux);
 	}	
 	
@@ -228,6 +229,8 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Cargador.png");
 	texturas.push_back("..\\bmps\\CuadroDialogo.png");
 	texturas.push_back("..\\bmps\\Checkpoint.png");
+	texturas.push_back("..\\bmps\\enemyPlanta.png");
+	
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
@@ -415,7 +418,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 
 	switch (a->getType()) {
 	case PJ:
-		if (b->getType() == PJ || b->getType() == CHECK)
+		if (b->getType() == PJ || b->getType() == CHECK || b->getType() == WEAPON)
 			goodToGo = false;
 		break;
 	case ENEMY:

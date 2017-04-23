@@ -13,6 +13,7 @@
 #include "BarraVidaVacia.h"
 #include "Cargador.h"
 #include "Checkpoint.h"
+#include "EnemigoPlanta.h"
 using namespace std;
 
 
@@ -31,31 +32,51 @@ void Play::init()
 	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	//juego->arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
+
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250));
 	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));
 
+	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
+	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
+	//juego->arrayObjetos.push_back(new Checkpoint(juego, 220, 250));
+	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
+
+	//ENEMIGOS PLANTA
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
+
+
 	vidaAux = 0; //Barra Vacia
 
-
 	juego->stats.push_back(vidaAux);
-	juego->stats.push_back(dynamic_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
-	juego->stats.push_back(dynamic_cast<Player*>(juego->arrayObjetos[0])->getBalas());
+	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
+	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getBalas());
 
 	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
 	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
+
 	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT- 85));
 
 
 	//FUENTE DE PRUEBA, LO DEJO COMENTADO PARA SABER LA ESTRUCTURA
 	/*
 	fuenteDePrueba = new Texto(juego->getTexto(0), 50);
-	mensaje = new Textura();
-	Red = { 255, 0, 0, 255 }; //RGBA	
-	rectanTexto = { 80, 300, 300, 300 };
-	mensaje->loadFromText(pRenderer, "Hola que tal", *fuenteDePrueba, Red);
 
+	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT- 85));	
 	*/
+	//FUENTE DE BALAS
+	fuenteCargador = new Texto(juego->getTexto(0), 28);
+
+	mensaje = new Textura();
+	Black = { 0, 0, 0, 255 }; //RGBA	
+	Red = { 175, 20, 20, 255 }; //RGBA	
+	rectanTexto = { 80, 300, 300, 300 };
+	mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
+	
 }
 
 void Play::update(int delta) {
@@ -65,6 +86,7 @@ void Play::update(int delta) {
 	//PERSONAJE CON ENEMIGOS
 	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
 		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayObjetos[i])){
+
 			juego->arrayObjetos[0]->onCollision();
 			juego->arrayObjetos[i]->onCollision();
 		}
@@ -105,6 +127,18 @@ void Play::update(int delta) {
 
 		}
 	}
+	
+
+			juego->arrayObjetos[0]->onCollision(juego->arrayObjetos[i]);
+		}
+	}
+	
+	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
+		if (!juego->arrayObjetos[j]->isDead() && juego->arrayObjetos[j]->getType() == WEAPON) {
+			juego->arrayObjetos[j]->onCollision();
+		}
+	}
+
 	*/
 	//LIMPIEZA DE VECTOR DE OBJETOS
 	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
@@ -135,16 +169,22 @@ void Play::update(int delta) {
 	}
 
 
-	/*if (!juego->arrayObjetos[0]->isDead()){  //Si player esta vivo
+	if (!juego->arrayObjetos[0]->isDead()){  //Si player esta vivo
 		//Actualiza valores de la vida, las balas (Interfaz)
-		for (int i = 0; i < stats.size(); i++) {
-			getStats(i);
+		for (int i = 0; i < juego->stats.size(); i++) {
+			getStats(i); 
+		}
+
+		for (int i = 0; i < elemInterfaz.size(); i++){
+			elemInterfaz[i]->update(juego->camera, juego->stats[i]); //Cada elemento del vector tiene su propio contador
 		}
 	}
-	*/
-	for (int i = 0; i < elemInterfaz.size(); i++){
-		elemInterfaz[i]->update(juego->camera, juego->stats[i]); //Cada elemento del vector tiene su propio contador
+	else{
+		for (int i = 0; i < juego->stats.size(); i++) {
+			juego->stats[i] = 0;  
+		}
 	}
+	
 }
 
 
@@ -167,13 +207,22 @@ void Play::draw()
 	}
 	
 	//Dibuja interfaz, por encima de los objetos
-	for (int i = 0; i < elemInterfaz.size(); i++) {
-		elemInterfaz[i]->draw();
+	if (!juego->arrayObjetos[0]->isDead()){
+		for (int i = 0; i < elemInterfaz.size(); i++) {
+			elemInterfaz[i]->draw();
+		}
+		//Pintado de texto (cargador)	
+		if (juego->stats[2] > 0 && !juego->arrayObjetos[0]->isDead()){			
+			fuenteCargador->load(juego->getTexto(0), 28);
+			mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
+			mensaje->render(pRenderer, juego->SCREEN_WIDTH - 54, juego->SCREEN_HEIGHT - 58);
+		}
+		else{
+			fuenteCargador->load(juego->getTexto(0), 18);
+			mensaje->loadFromText(pRenderer, "Recargando", *fuenteCargador, Red);
+			mensaje->render(pRenderer, ((juego->SCREEN_WIDTH / 2) - 50), ((juego->SCREEN_HEIGHT / 2) - 100));
+		}
 	}
-
-	//Pintado de texto (pruebas)	
-//	mensaje->render(pRenderer,300,300);
-
 	SDL_RenderPresent(pRenderer);
 }
 
@@ -182,10 +231,10 @@ void Play::getStats(int i){
 	switch (i)
 	{
 	case 1: //Vida
-		juego->stats[i] = dynamic_cast<Player*>(juego->arrayObjetos[0])->getVida();
+		juego->stats[i] = static_cast<Player*>(juego->arrayObjetos[0])->getVida();
 		break;
 	case 2: //Balas
-		juego->stats[i] = dynamic_cast<Player*>(juego->arrayObjetos[0])->getBalas();
+		juego->stats[i] = static_cast<Player*>(juego->arrayObjetos[0])->getBalas();
 		break;
 	default:
 		break;

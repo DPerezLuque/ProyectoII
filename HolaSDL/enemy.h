@@ -2,8 +2,6 @@
 #include "Objeto.h"
 #include "BalaEnemigo.h"
 
-const int VIDAMAXENEMY = 3; //vida máxima del enemigo
-
 class enemy : public Objeto 
 {
 public:
@@ -15,14 +13,17 @@ public:
 	void shoot(int x, int y);
 
 	void onCollision();
-	void onCollision(ObjetoJuego * colisionado) {}
-	void onCollision(int vida, collision tipo){}
+	void onCollision(ObjetoJuego * colisionado);
+	void gestorVida(int &vida);
+
 protected:
 	int vX, vY;
 	int vel; //velocidad del monimiento
 	int contDis = 0;
 	int freDis; //frecuencia con la que dispara
 	int velDis; //velocidad del disparo
-	int vidaEnemigo; //Vida del enemigo
+
+	bool inmunidad; //Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
+	int contInm; //Contador inmunidad
 };
 

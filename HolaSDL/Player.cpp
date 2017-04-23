@@ -17,19 +17,27 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	velX = 0;
 	velY = 0;
 
-	tipo = PJ;
+	posIniX = rect.x; //Lo inicializamos al valor que le pasan por parametro
+	posIniY = rect.y;
 
+	tipo = PJ;
 	vida = 4;
-	balas = 30;
+	balas = 20;
+	maximoBalas = 20;
 
 	inmunidad = false;
 	contadorInmunidad = 0;
-
 }
 
 
 Player::~Player()
 {
+}
+void Player::respawn(){
+	if (dead){
+		rect.x = posIniX;
+		rect.y = posIniY;
+	}
 }
 
 void Player::draw() const {
@@ -82,7 +90,7 @@ void Player::animacionBasica(){ //Para el paso de frames
 int aux = 0;
 
 void Player::update(int delta) {
-
+	respawn();
 	//rect.x = rect.x - juego->camera.x;
 	//rect.y = rect.y - juego->camera.y;
 
@@ -115,7 +123,7 @@ void Player::update(int delta) {
 		}
 	}
 
-	onCollision(vida, tipo);
+	//onCollision(vida, tipo);
 
 	
 	//std::cout << "RECT X JUGADOR: " << rect.x << "\n";
@@ -129,6 +137,15 @@ void Player::update(int delta) {
 			contador = 0;				
 		}
 
+		//Recargar balas
+		if (balas <= 0){
+			contador2 += delta;
+			balas = 0;
+			if (contador2 >= 200){
+				balas = maximoBalas;
+				contador2 = 0;
+			}
+		}
 		//rectAnim.x = rect.x;
 		//rectAnim.y = rect.y;
 } 
@@ -168,6 +185,7 @@ void Player::proceso(){
 
 bool Player::onClick() {
 
+
 	//posiciones del ratón
 	int mX, mY, posX, posY;
 	juego->getMousePos(mX, mY);
@@ -181,10 +199,19 @@ bool Player::onClick() {
 	int vY = 75 * (mY - posY) / distance;
 
 	//Disparo
-	juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
+	//juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
 
-	//static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
-	return true;
+
+	if (balas > 0){
+		//static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
+		juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
+		balas--;
+		std::cout << balas << "\n";
+		return true;
+	}
+	else return false;
+	
+	
 }
 
 void Player::getPos(int& x, int& y) {
@@ -192,22 +219,8 @@ void Player::getPos(int& x, int& y) {
 	y = rect.y;
 }
 
-void Player::onCollision(int vidaActual, collision tipo){
-	/*
-	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
-	for (int i = 0; i < juego->topEstado()->getSizeArray(); ++i) {
-		//Comprueba si se ha colisionado con el objeto de la posición i del array de objetos
-		if (juego->checkCollision(this, juego->topEstado()->getObjeto(i))) {
-			if (juego->topEstado()->getObjeto(i)->getType() == ENEMY || juego->topEstado()->getObjeto(i)->getType() == BOSS)
-			{
-				gestorVida(vidaActual);
-				
-			}
-		}
-	}/*/
-}
 
-void Player::gestorVida(int vida)
+void Player::gestorVida(int &vida)
 {
 	if (!inmunidad) {
 		vida--;
@@ -221,9 +234,13 @@ void Player::gestorVida(int vida)
 
 void Player::onCollision(ObjetoJuego * colisionado){
 
+	if (colisionado->getType() == CHECK){
+		colisionado->onCollision(this);
+	}
+	else if (colisionado->getType() == ENEMY){
 		printf("Auch! \n");
-		//dead = true;
-	
+		gestorVida(vida);
+	}
 
 }
 

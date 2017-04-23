@@ -3,7 +3,9 @@
 
 //Collision Manager
 
+
 enum collision { PJ = 1, ENEMY = 2, WEAPON = 3, ENVIROMENT = 4, CHECK = 5 , BOSS = 6, PJ_WEAPON = 7, ENEMY_WEAPON = 8 };
+
 
 class ObjetoJuego
 {
@@ -19,9 +21,9 @@ public:
 	
 	virtual SDL_Rect getRect() = 0;
 
-	virtual void onCollision(int vida, collision tipo) = 0;
+	virtual void onCollision(ObjetoJuego* objeto) = 0;
 
-	virtual void gestorVida(int) = 0;
+	virtual void gestorVida(int &vida) = 0;
 
 	virtual void onCollision() = 0;
 
