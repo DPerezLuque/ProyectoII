@@ -22,7 +22,7 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	tipo = PJ;
 	vida = 4;
-	balas = 5;
+	balas = 20;
 	maximoBalas = 20;
 
 	inmunidad = false;

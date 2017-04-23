@@ -229,6 +229,8 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Cargador.png");
 	texturas.push_back("..\\bmps\\CuadroDialogo.png");
 	texturas.push_back("..\\bmps\\Checkpoint.png");
+	texturas.push_back("..\\bmps\\enemyPlanta.png");
+	
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {

@@ -13,6 +13,7 @@
 #include "BarraVidaVacia.h"
 #include "Cargador.h"
 #include "Checkpoint.h"
+#include "EnemigoPlanta.h"
 using namespace std;
 
 
@@ -31,17 +32,19 @@ void Play::init()
 	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	//juego->arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
-	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, dynamic_cast<Player*>(juego->arrayObjetos[0])));
+	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 220, 250));
-	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
-
+	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
 
 	vidaAux = 0; //Barra Vacia
 
 	juego->stats.push_back(vidaAux);
-	juego->stats.push_back(dynamic_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
-	juego->stats.push_back(dynamic_cast<Player*>(juego->arrayObjetos[0])->getBalas());
+	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
+	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getBalas());
 
 	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
 	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
@@ -86,17 +89,22 @@ void Play::update(int delta) {
 			juego->arrayObjetos[i]->update(delta);
 	}
 
-	if (!juego->arrayObjetos[0]->isDead()){  //Si player esta vivo  //DEJAD DE COMENTARLO
-
+	if (!juego->arrayObjetos[0]->isDead()){  //Si player esta vivo
 		//Actualiza valores de la vida, las balas (Interfaz)
 		for (int i = 0; i < juego->stats.size(); i++) {
-			getStats(i);  //--->Sigue intentando acceder a la vida cuando el prota muere
+			getStats(i); 
+		}
+
+		for (int i = 0; i < elemInterfaz.size(); i++){
+			elemInterfaz[i]->update(juego->camera, juego->stats[i]); //Cada elemento del vector tiene su propio contador
+		}
+	}
+	else{
+		for (int i = 0; i < juego->stats.size(); i++) {
+			juego->stats[i] = 0;  
 		}
 	}
 	
-	for (int i = 0; i < elemInterfaz.size(); i++){
-		elemInterfaz[i]->update(juego->camera, juego->stats[i]); //Cada elemento del vector tiene su propio contador
-	}
 }
 
 
@@ -113,22 +121,22 @@ void Play::draw()
 	}
 	
 	//Dibuja interfaz, por encima de los objetos
-	for (int i = 0; i < elemInterfaz.size(); i++) {
-		elemInterfaz[i]->draw();
+	if (!juego->arrayObjetos[0]->isDead()){
+		for (int i = 0; i < elemInterfaz.size(); i++) {
+			elemInterfaz[i]->draw();
+		}
+		//Pintado de texto (cargador)	
+		if (juego->stats[2] > 0 && !juego->arrayObjetos[0]->isDead()){			
+			fuenteCargador->load(juego->getTexto(0), 28);
+			mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
+			mensaje->render(pRenderer, juego->SCREEN_WIDTH - 54, juego->SCREEN_HEIGHT - 58);
+		}
+		else{
+			fuenteCargador->load(juego->getTexto(0), 18);
+			mensaje->loadFromText(pRenderer, "Recargando", *fuenteCargador, Red);
+			mensaje->render(pRenderer, ((juego->SCREEN_WIDTH / 2) - 50), ((juego->SCREEN_HEIGHT / 2) - 100));
+		}
 	}
-
-	//Pintado de texto (cargador)	
-	if (juego->stats[2] > 0){
-		fuenteCargador->load(juego->getTexto(0), 28);
-		mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
-		mensaje->render(pRenderer, juego->SCREEN_WIDTH - 54, juego->SCREEN_HEIGHT - 58);
-	}
-	else{
-		fuenteCargador->load(juego->getTexto(0), 18);
-		mensaje->loadFromText(pRenderer, "Recargando", *fuenteCargador, Red);
-		mensaje->render(pRenderer, ((juego->SCREEN_WIDTH / 2) - 50), ((juego->SCREEN_HEIGHT / 2) - 100));
-	}
-
 	SDL_RenderPresent(pRenderer);
 }
 
@@ -137,10 +145,10 @@ void Play::getStats(int i){
 	switch (i)
 	{
 	case 1: //Vida
-		juego->stats[i] = dynamic_cast<Player*>(juego->arrayObjetos[0])->getVida();
+		juego->stats[i] = static_cast<Player*>(juego->arrayObjetos[0])->getVida();
 		break;
 	case 2: //Balas
-		juego->stats[i] = dynamic_cast<Player*>(juego->arrayObjetos[0])->getBalas();
+		juego->stats[i] = static_cast<Player*>(juego->arrayObjetos[0])->getBalas();
 		break;
 	default:
 		break;
