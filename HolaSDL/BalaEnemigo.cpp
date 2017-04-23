@@ -4,7 +4,7 @@ BalaEnemigo::BalaEnemigo(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr,
 {
 	textura = juego->getTextura(Juego::TBulletEnemy);
 
-	tipo = ENEMY;
+	tipo = ENEMY_WEAPON;
 }
 
 
@@ -36,6 +36,8 @@ BalaEnemigo::~BalaEnemigo()
 }*/
 
 void BalaEnemigo::onCollision() {
+
+	dead = true;
 	/*//BALAS
 	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
 		if (juego->arrayObjetos[j]->getType() == WEAPON) {

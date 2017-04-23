@@ -1,6 +1,6 @@
 #pragma once
 #include "Objeto.h"
-
+#include "BalaPlayer.h"
 
 class Player : public Objeto 
 {

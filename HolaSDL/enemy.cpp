@@ -65,13 +65,28 @@ void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir
 		vX = 0;
 		vY = 0;
 	}
-	rect.x += vX /2;
-	rect.y += vY /2;
+	rect.x += vX / 4;
+	rect.y += vY /4;
 }
 
 void enemy::shoot(int targetX, int targetY){
 
-	static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
+	//static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
+	
+	int distance = sqrt((targetX - rect.x)*(targetX - rect.x) + (targetY - rect.y)*(targetY - rect.y));
+
+	if (distance == 0) //He puesto esto para que no salga la excepción de que divide entre 0
+		distance = 5;
+
+	int vX = velDis * (targetX - rect.x) / distance;
+	int vY = velDis * (targetY - rect.y) / distance;
+
+	if (vX == 0 && vY == 0) { // Para que con lo de antes no se quede la bala flotando
+		vX = vY = 10; // Si se hace lo de que al tocar al jugador haga daño y te empuje un poco igual no hace falta
+	}
+
+	//Disparo
+	juego->arrayEnemigas.push_back(new BalaEnemigo(juego, rect.x, rect.y, vX, vY));
 }
 
 void enemy::onCollision() {

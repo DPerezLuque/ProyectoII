@@ -90,9 +90,9 @@ void Juego::run()
 	handle_events();
 
 	while (!exit) {
-		//estado = topEstado();
+		estado = topEstado();
 		//if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
-		delta = (SDL_GetTicks() - lastUpdate) / 10;
+		delta = (SDL_GetTicks() - lastUpdate) / 10.0f;
 		estado->update(delta);
 		lastUpdate = SDL_GetTicks();
 		//}
@@ -402,7 +402,7 @@ void Juego::popState()
 EstadoJuego* Juego::topEstado() { return states.top();  }
 
 
-////////////////// COLISIONES ///////////////////////////
+////////////////// COLISIONES ////////////////////
 bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 {
 	//The sides of the rectangles
@@ -426,8 +426,12 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		if (b->getType() != PJ)
 			goodToGo = false;
 		break;
-	case WEAPON:
+	case PJ_WEAPON:
 		if (b->getType() == PJ || b->getType() == CHECK)
+			goodToGo = false;
+		break;
+	case ENEMY_WEAPON:
+		if (b->getType() == ENEMY || b->getType() == CHECK)
 			goodToGo = false;
 		break;
 	default:

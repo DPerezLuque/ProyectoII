@@ -27,12 +27,13 @@ Play::~Play()
 
 void Play::init() 
 {
-
+	
 	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
 	//juego->arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250));
 	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
+	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));
 
 	vidaAux = 0; //Barra Vacia
 
@@ -46,8 +47,6 @@ void Play::init()
 	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT- 85));
 
 
-	
-	
 	//FUENTE DE PRUEBA, LO DEJO COMENTADO PARA SABER LA ESTRUCTURA
 	/*
 	fuenteDePrueba = new Texto(juego->getTexto(0), 50);
@@ -60,32 +59,81 @@ void Play::init()
 }
 
 void Play::update(int delta) {
-	//El update de cada objeto debe comprobar las colisiones con el entorno
-	
+
 	//COLISIONES CON OBJETOS
-	//PERSONAJE
+
+	//PERSONAJE CON ENEMIGOS
 	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
 		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayObjetos[i])){
 			juego->arrayObjetos[0]->onCollision();
+			juego->arrayObjetos[i]->onCollision();
 		}
 	}
-	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
-		if (!juego->arrayObjetos[j]->isDead() && juego->arrayObjetos[j]->getType() == WEAPON) {
-			juego->arrayObjetos[j]->onCollision();
+
+	//PERSONAJE CON BALAS ENEMIGAS
+	for (int i = 0; i < juego->arrayEnemigas.size(); ++i) {
+		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayEnemigas[i])) {
+			juego->arrayObjetos[0]->onCollision();
+			juego->arrayEnemigas[i]->onCollision();
 		}
 	}
-	
+
+	//BALAS CON ENEMIGOS
+	for (int i = 0; i < juego->arrayBalas.size(); ++i) {
+		for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
+			if (!juego->arrayBalas[i]->isDead() && juego->checkCollision(juego->arrayBalas[i], juego->arrayObjetos[j])) {
+				juego->arrayBalas[i]->onCollision();
+				juego->arrayObjetos[j]->onCollision();
+			}
+		}
+	}
+
+	/*
+	//ARREGLAR
+	for (int j = 0; j < juego->arrayBalas.size(); ++j) {
+		if (!juego->arrayBalas[j]->isDead()) {
+			if (juego->touchesWall(juego->arrayBalas[j]))
+				juego->arrayBalas[j]->onCollision();
+			else {
+				for (int j2 = 1; j2 < juego->arrayObjetos.size(); ++j2) {
+					if (juego->checkCollision(juego->arrayBalas[j], juego->arrayObjetos[j2])) {
+						juego->arrayBalas[j]->onCollision();
+						juego->arrayObjetos[j2]->onCollision();
+					}
+				}
+			}
+
+		}
+	}
+	*/
 	//LIMPIEZA DE VECTOR DE OBJETOS
 	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 		if (juego->arrayObjetos[aux]->isDead())
 			juego->arrayObjetos.erase(juego->arrayObjetos.begin() + aux);
 	}
+	for (int aux2 = 0; aux2 < juego->arrayBalas.size(); ++aux2) {
+		if (juego->arrayBalas[aux2]->isDead())
+			juego->arrayBalas.erase(juego->arrayBalas.begin() + aux2);
+	}
+	for (int aux3 = 0; aux3 < juego->arrayEnemigas.size(); ++aux3) {
+		if (juego->arrayEnemigas[aux3]->isDead())
+			juego->arrayEnemigas.erase(juego->arrayEnemigas.begin() + aux3);
+	}
 
 	//UPDATE
 	for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
-		if (!juego->arrayObjetos[i]->isDead())
+		//if (!juego->arrayObjetos[i]->isDead())
 			juego->arrayObjetos[i]->update(delta);
 	}
+	for (int x = 0; x < juego->arrayBalas.size(); ++x) {
+		//if (!juego->arrayBalas[x]->isDead())
+			juego->arrayBalas[x]->update(delta);
+	}
+	for (int x = 0; x < juego->arrayEnemigas.size(); ++x) {
+		//if (!juego->arrayEnemigas[x]->isDead())
+			juego->arrayEnemigas[x]->update(delta);
+	}
+
 
 	/*if (!juego->arrayObjetos[0]->isDead()){  //Si player esta vivo
 		//Actualiza valores de la vida, las balas (Interfaz)
@@ -110,6 +158,12 @@ void Play::draw()
 	//Dibuja los objetos
 	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 		juego->arrayObjetos[aux]->draw();		
+	}
+	for (int aux2 = 0; aux2 < juego->arrayBalas.size(); ++aux2) {
+		juego->arrayBalas[aux2]->draw();
+	}
+	for (int aux3 = 0; aux3 < juego->arrayEnemigas.size(); ++aux3) {
+		juego->arrayEnemigas[aux3]->draw();
 	}
 	
 	//Dibuja interfaz, por encima de los objetos
@@ -159,7 +213,7 @@ void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 	int vY = 75 * (mY - posY) / distance;
 
 	//Disparo
-	juego->arrayObjetos.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
+	juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
 }
 
 void Play::posPlayer(int& x, int& y) {
@@ -186,5 +240,5 @@ void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int
 	//float vY = velDis * (targetY - posEy) / distance + 0.01;
 
 	//Disparo
-	juego->arrayObjetos.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));
+	juego->arrayEnemigas.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));
 }

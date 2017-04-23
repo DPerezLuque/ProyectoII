@@ -1,5 +1,6 @@
 #pragma once
 #include "Objeto.h"
+#include "BalaEnemigo.h"
 
 const int VIDAMAXENEMY = 3; //vida máxima del enemigo
 

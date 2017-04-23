@@ -6,7 +6,7 @@ BalaPlayer::BalaPlayer(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, p
 {
 	textura = juego->getTextura(Juego::TBulletPlayer);
 
-	//tipo = PJ;
+	tipo = PJ_WEAPON;
 
 }
 
@@ -49,7 +49,7 @@ void BalaPlayer::update(int delta) {
 
 void BalaPlayer::onCollision() {
 	
-	if (juego->touchesWall(this)) {
+	/*if (juego->touchesWall(this)) {
 		printf("Bala Destruida (WALL) \n");
 		dead = true;
 	}
@@ -65,7 +65,8 @@ void BalaPlayer::onCollision() {
 			}
 		}
 
-	}
-	
+	}*/
+	printf("Bala Destruida (WALL) \n");
+	dead = true;
 }
 

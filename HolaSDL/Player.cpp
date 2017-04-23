@@ -168,7 +168,22 @@ void Player::proceso(){
 
 bool Player::onClick() {
 
-	static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
+	//posiciones del ratón
+	int mX, mY, posX, posY;
+	juego->getMousePos(mX, mY);
+
+	posX = rect.x + rect.w / 2;
+	posY = rect.y + rect.h / 2;
+
+	int distance = sqrt((mX - posX)*(mX - posX) + (mY - posY)*(mY - posY));
+
+	int vX = 75 * (mX - posX) / distance;
+	int vY = 75 * (mY - posY) / distance;
+
+	//Disparo
+	juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
+
+	//static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
 	return true;
 }
 

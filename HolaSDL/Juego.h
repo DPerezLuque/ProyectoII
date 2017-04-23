@@ -63,10 +63,14 @@ public:
 	EstadoJuego* topEstado();
 
 	//GLOBAL ARRAYS
-	std::vector<ObjetoJuego*> arrayObjetos;
+	std::vector<ObjetoJuego*> arrayObjetos;	//PERSONAJE [0] + ENEMIGOS
+	std::vector<ObjetoJuego*> arrayBalas;	//BALAS PERSONAJE
+	std::vector<ObjetoJuego*> arrayEnemigas;	//BALAS ENEMIGOS
 	std::vector<ObjetoJuego*> arrayMenu;
 	std::vector<int> stats;
 	
+	//PLAYER
+	//ObjetoJuego * pj;
 	//CAMERA LEVEL
 	SDL_Rect camera;
 	
