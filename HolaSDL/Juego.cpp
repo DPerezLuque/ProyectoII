@@ -203,7 +203,7 @@ bool Juego::initMedia()
 
 	//TEXTO
 	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");
-	//nombreFuentes.push_back("..\\Fuentes\\atwriter.ttf");
+	nombreFuentes.push_back("..\\Fuentes\\NES-Chimera.ttf");
 
 	for (int j = 0; j < nombreFuentes.size(); j++) {		
 		textoAux.load(nombreFuentes[j], 50); //fuente, size
@@ -228,8 +228,10 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\DashVacio.png");
 	texturas.push_back("..\\bmps\\Cargador.png");
 	texturas.push_back("..\\bmps\\CuadroDialogo.png");
+	//
 	texturas.push_back("..\\bmps\\Checkpoint.png");
 	texturas.push_back("..\\bmps\\enemyPlanta.png");
+	texturas.push_back("..\\bmps\\BarraVida.png");
 	
 
 	//Load Assets Textures

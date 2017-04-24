@@ -31,7 +31,7 @@ public:
 	enum Texturas_t {
 		TPlayer, TBulletPlayer, TBExit, TBPlay, TBMenu, TBResume,
 		TEnemy, TBulletEnemy, TVidaLlena, TVidaVacia, TDashLleno,
-		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta
+		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta, TBarraVida,
 	};
 
 	//PUBLIC VARIABLES

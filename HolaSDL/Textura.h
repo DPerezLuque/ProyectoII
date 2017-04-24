@@ -20,12 +20,14 @@ public:
 	bool loadFromText(SDL_Renderer * pRender, std::string texto, Texto const& font, SDL_Color color = { 0, 0, 0, 255 });
 	void render(SDL_Renderer* renderer, int x, int y) const;
 	void render(SDL_Renderer* renderer, SDL_Rect const& dest, SDL_Rect* clip = nullptr) const;
-
+	int getWidth() { return rectAux.w; }
+	int getHeight() {return rectAux.h;}
 	SDL_Rect rectori;
 
 private:
 	int ancho, alto;
 	float width, height;
 	SDL_Texture* pTextura;
+	SDL_Rect rectAux;
 };
 
