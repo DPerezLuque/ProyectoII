@@ -311,12 +311,17 @@ void Juego::handle_events()
 			// else if(...)    
 		}
 		updateDirection();
-		
+		if (e.type == SDL_KEYDOWN) {
+			if (e.key.keysym.sym == SDLK_SPACE)
+					dashing = true;
+				//dashing = true;
+		}
 		if (e.type == SDL_KEYUP) {
 			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
 				pushState(new Pausa(this));
 			}
 		}
+
 
 	}
 }
@@ -383,7 +388,8 @@ int Juego::getWidth() const
 
 int Juego::getVelX() { return mVelX; }
 int Juego::getVelY() { return mVelY; }
-
+bool Juego::getDash() { return dashing; }
+void Juego::setDash() { dashing = false; }
 ////////////////// PILA ///////////////////////////
 void Juego::changeState(EstadoJuego* newSt)
 {

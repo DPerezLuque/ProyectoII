@@ -101,6 +101,8 @@ public:
 	int getWidth() const;
 	int getVelX();
 	int getVelY();
+	bool getDash();
+	void setDash();
 
 	//MUSIC
 	enum MusicIds { Cancion1, };
@@ -122,5 +124,7 @@ private:
 	vector <Musica*> musicFiles;
 
 	Texto textoAux;
+
+	bool dashing = false;
 };
 
