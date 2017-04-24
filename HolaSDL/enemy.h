@@ -9,7 +9,7 @@ public:
 	~enemy();
 
 	void update(int delta);
-	void follow(int x, int y);
+	void follow(int x, int y, float delta);
 	void shoot(int x, int y);
 
 	void onCollision();

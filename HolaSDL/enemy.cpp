@@ -16,6 +16,10 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	rect.w = 50;
 	rect.h = 50;
 
+	rectCollision.x = rect.x;
+	rectCollision.y = rect.y;
+	rectCollision.w = rect.w / 2;
+	rectCollision.h = rect.h / 2;
 
 	tipo = ENEMY;
 
@@ -37,11 +41,11 @@ void enemy::update(int delta)
 	//static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
 
 	if (contDis < freDis - 10){ //Algo tope chungo para que se pare al disparar
-		follow(rectPlayer.x, rectPlayer.y);
+		follow(rectPlayer.x, rectPlayer.y, delta);
 	}
 	//follow(x, y);
 
-	follow(rectPlayer.x, rectPlayer.y);
+	//follow(rectPlayer.x, rectPlayer.y, delta);
 	++contDis;
 	if (contDis >= freDis){
 		shoot(rectPlayer.x, rectPlayer.y);
@@ -51,8 +55,8 @@ void enemy::update(int delta)
 
 	//rectCollision = rect;
 
-	rectCollision.x = (rect.x + rect.w / 3) * delta;
-	rectCollision.y = (rect.y + rect.h / 3) * delta;
+	rectCollision.x = rect.x;//(rect.x + rect.w / 3) * delta;
+	rectCollision.y = rect.y;//(rect.y + rect.h / 3) * delta;
 
 	if (inmunidad) {
 		if (contInm < 50) contInm++;
@@ -65,7 +69,7 @@ void enemy::update(int delta)
 
 }
 
-void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir 
+void enemy::follow(int x, int y, float delta){ // posicion del objeto que vas a seguir 
 	
 	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
 
@@ -81,8 +85,8 @@ void enemy::follow(int x, int y){ // posicion del objeto que vas a seguir
 		vX = 0;
 		vY = 0;
 	}
-	rect.x += vX / 4;
-	rect.y += vY /4;
+	rect.x += (vX / 4) * delta;
+	rect.y += (vY / 4) * delta;
 }
 
 void enemy::shoot(int targetX, int targetY){
@@ -107,12 +111,14 @@ void enemy::shoot(int targetX, int targetY){
 
 
 void enemy::onCollision() {
-	cout << "Enemy Dead! \n";
-	dead = true;
+	
+	//dead = true;
+	gestorVida(vida);
 }
 
 void enemy::onCollision(ObjetoJuego * colisionado){ //onCollision de gestor de vida
 
+	cout << "auch!\n";
 	if (colisionado->getType() == PJ_WEAPON){
 		gestorVida(vida);
 	}
@@ -123,11 +129,13 @@ void enemy::gestorVida(int &vida)
 {
 	if (!inmunidad){
 		vida--;
-		cout << "Vida enemigo: " << vida;
+		cout << "Vida enemigo: " << vida << "\n";
 		inmunidad = true;
 	}
 
-	if (vida <= 0)
+	if (vida <= 0){
+		cout << "Enemy Dead! \n";
 		dead = true;
+	}
 }
 

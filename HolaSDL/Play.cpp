@@ -29,15 +29,16 @@ Play::~Play()
 void Play::init() 
 {
 	
-	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
+	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); //200,200
 	//juego->arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250));
-	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
-	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));
+	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
+	
+	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 220, 250));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
@@ -86,7 +87,6 @@ void Play::update(int delta) {
 	//PERSONAJE CON ENEMIGOS
 	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
 		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayObjetos[i])){
-
 			juego->arrayObjetos[0]->onCollision();
 			juego->arrayObjetos[i]->onCollision();
 		}
@@ -140,6 +140,13 @@ void Play::update(int delta) {
 	}
 
 	*/
+	if (juego->arrayObjetos[0]->isDead()){
+		for (int i = 0; i < juego->stats.size(); i++) {
+			juego->stats[i] = 0;
+		}
+		juego->exit = true;
+	}
+	else{
 	//LIMPIEZA DE VECTOR DE OBJETOS
 	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 		if (juego->arrayObjetos[aux]->isDead())
@@ -155,35 +162,32 @@ void Play::update(int delta) {
 	}
 
 	//UPDATE
-	for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
-		//if (!juego->arrayObjetos[i]->isDead())
+
+		for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
+			//if (!juego->arrayObjetos[i]->isDead())
 			juego->arrayObjetos[i]->update(delta);
-	}
-	for (int x = 0; x < juego->arrayBalas.size(); ++x) {
-		//if (!juego->arrayBalas[x]->isDead())
+		}
+		for (int x = 0; x < juego->arrayBalas.size(); ++x) {
+			//if (!juego->arrayBalas[x]->isDead())
 			juego->arrayBalas[x]->update(delta);
-	}
-	for (int x = 0; x < juego->arrayEnemigas.size(); ++x) {
-		//if (!juego->arrayEnemigas[x]->isDead())
+		}
+		for (int x = 0; x < juego->arrayEnemigas.size(); ++x) {
+			//if (!juego->arrayEnemigas[x]->isDead())
 			juego->arrayEnemigas[x]->update(delta);
-	}
+		}
 
 
-	if (!juego->arrayObjetos[0]->isDead()){  //Si player esta vivo
+		//	if (!juego->arrayObjetos[0]->isDead()){  //Si player esta vivo
 		//Actualiza valores de la vida, las balas (Interfaz)
 		for (int i = 0; i < juego->stats.size(); i++) {
-			getStats(i); 
+			getStats(i);
 		}
 
 		for (int i = 0; i < elemInterfaz.size(); i++){
 			elemInterfaz[i]->update(juego->camera, juego->stats[i]); //Cada elemento del vector tiene su propio contador
 		}
 	}
-	else{
-		for (int i = 0; i < juego->stats.size(); i++) {
-			juego->stats[i] = 0;  
-		}
-	}
+
 	
 }
 

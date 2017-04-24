@@ -23,9 +23,9 @@ public:
 	Juego();
 	~Juego();
 
-	//SCREEN (WINDOW) DIMENSIONS
-	int const SCREEN_WIDTH = 680;
-	int const SCREEN_HEIGHT = 480;
+	//SCREEN (WINDOW) DIMENSIONS	//680x480
+	int const SCREEN_WIDTH = 800;
+	int const SCREEN_HEIGHT = 600;
 
 	//TEXTURE TYPES
 	enum Texturas_t {

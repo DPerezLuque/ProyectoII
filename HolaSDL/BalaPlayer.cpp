@@ -68,7 +68,7 @@ void BalaPlayer::onCollision() {
 		}
 
 	}*/
-	printf("Bala Destruida (WALL) \n");
+	printf("Bala Destruida () \n");
 	dead = true;
 }
 

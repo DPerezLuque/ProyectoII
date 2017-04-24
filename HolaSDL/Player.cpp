@@ -206,7 +206,7 @@ bool Player::onClick() {
 		//static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
 		juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
 		balas--;
-		std::cout << balas << "\n";
+		//std::cout << balas << "\n";
 		return true;
 	}
 	else return false;
@@ -224,23 +224,31 @@ void Player::gestorVida(int &vida)
 {
 	if (!inmunidad) {
 		vida--;
-		cout << vida;
+		cout << vida << "\n";
 		inmunidad = true;
 	}
 
-	if (vida <= 0)
-		dead = true;
+	if (vida <= 0){
+		SDL_Rect aux;
+		aux = juego->arrayObjetos[1]->getRect();
+		rect.x = aux.x;
+		rect.y = aux.y;
+		rectCollision.x = aux.x;
+		rectCollision.y = aux.y;
+		vida = 4;
+		//dead = true; << PARA PROBAR EL CHECKPOINT 
+	}
 }
 
-void Player::onCollision(ObjetoJuego * colisionado){
+void Player::onCollision(){
 
-	if (colisionado->getType() == CHECK){
-		colisionado->onCollision(this);
-	}
-	else if (colisionado->getType() == ENEMY){
-		printf("Auch! \n");
+	//if (colisionado->getType() == CHECK){
+	//	colisionado->onCollision(this);
+	//}
+//	else if (colisionado->getType() == ENEMY){
+	//	printf("Auch! \n");
 		gestorVida(vida);
-	}
+//	}
 
 }
 
