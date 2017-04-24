@@ -414,12 +414,20 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	int topA, topB;
 	int bottomA, bottomB;
 	
-	bool goodToGo = true;
+	bool goodToGo = true; //True ha colisionado, false suda de ello
 
 	switch (a->getType()) {
 	case PJ:
-		if (b->getType() == PJ || b->getType() == CHECK || b->getType() == WEAPON)
+		if (b->getType() == PJ ) 
 			goodToGo = false;
+		if (b->getType() == CHECK) 
+			goodToGo = false;
+		if (b->getType() == PJ_WEAPON) 
+			goodToGo = false;
+		/*if (b->getType() == ENEMY)
+		if(a->getvida <= 1)
+			destruyeunidades(a)
+			goodToGo = false;*/
 		break;
 	case ENEMY:
 		if (b->getType() == ENEMY || b->getType() == BOSS)
@@ -431,6 +439,9 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		break;
 	case PJ_WEAPON:
 		if (b->getType() == PJ || b->getType() == CHECK)
+			/*if (ha chocado con un enemigo)
+				destruyeuniodades (a)
+			*/
 			goodToGo = false;
 		break;
 	case ENEMY_WEAPON:

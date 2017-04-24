@@ -108,14 +108,14 @@ void enemy::shoot(int targetX, int targetY){
 
 void enemy::onCollision() {
 	cout << "Enemy Dead! \n";
-	dead = true;
+	gestorVida(vida);
 }
 
 void enemy::onCollision(ObjetoJuego * colisionado){ //onCollision de gestor de vida
 
-	if (colisionado->getType() == PJ_WEAPON){
+	/*if (colisionado->getType() == PJ_WEAPON){
 		gestorVida(vida);
-	}
+	}*/
 
 }
 

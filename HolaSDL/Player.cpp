@@ -232,16 +232,11 @@ void Player::gestorVida(int &vida)
 		dead = true;
 }
 
-void Player::onCollision(ObjetoJuego * colisionado){
+void Player::onCollision(){
 
-	if (colisionado->getType() == CHECK){
-		colisionado->onCollision(this);
-	}
-	else if (colisionado->getType() == ENEMY){
 		printf("Auch! \n");
-		gestorVida(vida);
-	}
-
+		//gestorVida(vida);
+	
 }
 
 void Player::setCamera(SDL_Rect& camera)
