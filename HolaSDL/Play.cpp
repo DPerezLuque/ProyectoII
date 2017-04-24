@@ -29,7 +29,8 @@ Play::~Play()
 }
 
 void Play::init() {	
-	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
+	//juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
+	juego->arrayObjetos.push_back(new Player(juego, 1100, 2800));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
 	//El drop de enemigos deberia ser el encargado de hacer pushback de AURAS
@@ -46,6 +47,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
 	juego->stats.push_back(vidaAux);
 	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
