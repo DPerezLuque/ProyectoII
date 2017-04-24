@@ -8,8 +8,7 @@ EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 	rectAnim = { 0, 0, 32, 32 };
 	contador = 0;
 
-	rectCollision.x = rect.x;
-	rectCollision.y = rect.y;
+	rectCollision = rect;
 }
 
 void EnemigoPlanta::animacionBasica(){ //Para el paso de frames

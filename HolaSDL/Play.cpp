@@ -45,6 +45,7 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
 
 	juego->stats.push_back(vidaAux);
 	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
