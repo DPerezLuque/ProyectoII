@@ -15,6 +15,7 @@
 #include "Checkpoint.h"
 #include "EnemigoPlanta.h"
 #include "Dialogo.h"
+#include "Aura.h"
 using namespace std;
 
 
@@ -34,7 +35,8 @@ Play::~Play()
 void Play::init() 
 {	
 	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
-	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
+	//juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
+	juego->arrayObjetos.push_back(new Aura(juego, 450, 300, "Soy el mensaje de un muerto"));
 	//juego->arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 
@@ -56,7 +58,7 @@ void Play::init()
 	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT- 85));
 	
 	//Los push_back deberian hacerse en un metodo onRightClick de player (?)
-	arrayDialogos.push_back(new Dialogo(juego, 350, 300, 250, 45, "Hola soy Grant")); //x,y,ancho y alto
+	//arrayDialogos.push_back(new Dialogo(juego, 350, 300, 250, 45, "Hola soy Grant")); //x,y,ancho y alto
 
 	//FUENTE DE BALAS
 	fuenteCargador = new Texto(juego->getTexto(0), 28);

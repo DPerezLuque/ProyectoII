@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Aura.cpp" />
     <ClCompile Include="Bala.cpp" />
     <ClCompile Include="BalaEnemigo.cpp" />
     <ClCompile Include="BalaPlayer.cpp" />
@@ -41,6 +42,7 @@
     <ClCompile Include="Textura.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Aura.h" />
     <ClInclude Include="Bala.h" />
     <ClInclude Include="BalaEnemigo.h" />
     <ClInclude Include="BalaPlayer.h" />

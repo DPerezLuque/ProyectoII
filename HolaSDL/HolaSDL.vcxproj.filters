@@ -29,6 +29,7 @@
     <ClCompile Include="Textura.cpp" />
     <ClCompile Include="Checkpoint.cpp" />
     <ClCompile Include="Dialogo.cpp" />
+    <ClCompile Include="Aura.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -62,5 +63,6 @@
     <ClInclude Include="Textura.h" />
     <ClInclude Include="Checkpoint.h" />
     <ClInclude Include="Dialogo.h" />
+    <ClInclude Include="Aura.h" />
   </ItemGroup>
 </Project>

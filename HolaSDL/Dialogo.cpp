@@ -16,6 +16,8 @@ Dialogo::Dialogo(Juego* ptr, int px, int py, int ancho, int alto, std::string te
 
 Dialogo::~Dialogo()
 {
+	delete escrito;
+	delete mensaje;
 }
 
 void Dialogo::draw() const{
