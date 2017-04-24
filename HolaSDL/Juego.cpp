@@ -25,7 +25,7 @@ Tilemap::Tile* tileSet[TOTAL_TILES];
 
 Juego::Juego()
 {
-	
+
 	//Música
 	Mix_Init(27);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
@@ -49,7 +49,7 @@ Juego::Juego()
 	{
 		printf("Failed to load media!\n");
 	}
-	else 
+	else
 	{
 		//camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 		changeState(new Play(this));
@@ -134,7 +134,7 @@ SDL_RenderPresent(pRenderer);
 
 bool Juego::initSDL()
 {
-	
+
 	//Initialization flag
 	bool success = true;
 
@@ -189,14 +189,14 @@ bool Juego::initSDL()
 
 bool Juego::initMedia()
 {
-	bool success = true;	
+	bool success = true;
 	//MUSICA
 	musicNames.push_back("..\\Sonidos\\Musica\\Come.mp3");
 
 	for (int j = 0; j < musicNames.size(); j++) {
 		cancion = new Musica;
-		cancion->load(musicNames[j]);		
-		musicFiles.push_back(cancion);		
+		cancion->load(musicNames[j]);
+		musicFiles.push_back(cancion);
 	}
 
 	//musicFiles[Cancion1]->play();
@@ -205,11 +205,11 @@ bool Juego::initMedia()
 	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");
 	nombreFuentes.push_back("..\\Fuentes\\NES-Chimera.ttf");
 
-	for (int j = 0; j < nombreFuentes.size(); j++) {		
+	for (int j = 0; j < nombreFuentes.size(); j++) {
 		textoAux.load(nombreFuentes[j], 50); //fuente, size
 		arrayFuentes.push_back(textoAux);
-	}	
-	
+	}
+
 	texturas.push_back("..\\bmps\\personaje.png");
 	texturas.push_back("..\\bmps\\bala.png");
 
@@ -232,13 +232,13 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Checkpoint.png");
 	texturas.push_back("..\\bmps\\enemyPlanta.png");
 	texturas.push_back("..\\bmps\\BarraVida.png");
-	
+	texturas.push_back("..\\bmps\\Humo.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
 		pTexture = new Textura;
 		pTexture->load(pRenderer, texturas[j]);
-		arrayTex.push_back(pTexture);	
+		arrayTex.push_back(pTexture);
 	}
 
 	//Load tile texture
@@ -259,14 +259,14 @@ bool Juego::initMedia()
 }
 
 void Juego::freeMedia()
-{	
+{
 	for (size_t aux = 0; aux < arrayTex.size(); ++aux) {
 		delete arrayTex[aux];
 		//arrayTex[aux] = nullptr;
 	}
 
 	//close(tileSet, pRenderer, pWindow);
-	
+
 	for (int i = 0; i < musicFiles.size(); i++){
 		delete musicFiles[i];
 	}
@@ -306,14 +306,14 @@ void Juego::handle_events()
 		else if (e.type == SDL_MOUSEBUTTONUP) {
 			if (e.button.button == SDL_BUTTON_LEFT) {
 				//std::cout << "CLICK";
-				x = e.button.x + (camera.x + camera.w/2) - SCREEN_WIDTH / 2;
-				y = e.button.y + (camera.y + camera.h/2) - SCREEN_HEIGHT / 2;
+				x = e.button.x + (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
+				y = e.button.y + (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
 				estado->onClick();
 			}
 			// else if(...)    
 		}
 		updateDirection();
-		
+
 		if (e.type == SDL_KEYUP) {
 			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
 				pushState(new Pausa(this));
@@ -391,20 +391,20 @@ void Juego::changeState(EstadoJuego* newSt)
 {
 	if (!states.empty()) popState(); //si no está vacía, se vacía
 	pushState(newSt); //se mete el nuevo estado
-} 
+}
 
 void Juego::pushState(EstadoJuego* newState)
 {
 	states.push(newState);
 }
 
-void Juego::popState() 
+void Juego::popState()
 {
 	delete states.top();
 	states.pop();
 }
 
-EstadoJuego* Juego::topEstado() { return states.top();  }
+EstadoJuego* Juego::topEstado() { return states.top(); }
 
 
 ////////////////// COLISIONES ////////////////////
@@ -415,7 +415,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	int rightA, rightB;
 	int topA, topB;
 	int bottomA, bottomB;
-	
+
 	bool goodToGo = true;
 
 	switch (a->getType()) {
@@ -494,15 +494,15 @@ bool Juego::touchesWall(ObjetoJuego * object)
 		//If the tile is a wall type tile
 		/*//(tileSet[i]->getType() >= TILE_CENTER) && (tileSet[i]->getType() <= TILE_TOPLEFT)) <<-- EXTRAÍDO DE LAZYFOO
 		if (tileSet[i]->getType() == TILE_TOPLEFT || tileSet[i]->getType() == TILE_TOP ||
-			tileSet[i]->getType() == TILE_LEFT || tileSet[i]->getType() == TILE_DOWN ||
-			tileSet[i]->getType() == TILE_RIGHT || tileSet[i]->getType() == TILE_DOWNRIGHT ||
-			tileSet[i]->getType() == TILE_DOWNLEFT)
+		tileSet[i]->getType() == TILE_LEFT || tileSet[i]->getType() == TILE_DOWN ||
+		tileSet[i]->getType() == TILE_RIGHT || tileSet[i]->getType() == TILE_DOWNRIGHT ||
+		tileSet[i]->getType() == TILE_DOWNLEFT)
 		{
-			//If the collision box touches the wall tile
-			if (checkWallCollisions(a, tileSet[i]->getBox()))
-			{
-				return true;
-			}
+		//If the collision box touches the wall tile
+		if (checkWallCollisions(a, tileSet[i]->getBox()))
+		{
+		return true;
+		}
 		}*/
 
 		if (tileSet[i]->isWall()) {

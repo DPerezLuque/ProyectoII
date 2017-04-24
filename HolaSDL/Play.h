@@ -12,7 +12,7 @@ public:
 	void onClick();
 
 	//void update();
-	void update(int delta);	
+	void update(int delta);
 	void draw();
 
 	void newDisparo(ObjetoJuego*po, int posX, int posY);

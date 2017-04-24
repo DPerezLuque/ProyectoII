@@ -29,6 +29,7 @@
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Estado.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="Humo.cpp" />
     <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="main.cpp" />
@@ -62,6 +63,7 @@
     <ClInclude Include="Estado.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="HUD.h" />
+    <ClInclude Include="Humo.h" />
     <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="MapEditor.h" />

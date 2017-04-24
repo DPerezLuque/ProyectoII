@@ -16,38 +16,39 @@
 #include "EnemigoPlanta.h"
 #include "Dialogo.h"
 #include "Aura.h"
+#include "Humo.h"
 using namespace std;
-
 
 Play::Play(Juego* ptr) : Estado(ptr)
 {
 	init();
 }
 
-Play::~Play() 
+Play::~Play()
 {
 }
 
-void Play::init() {	
-	//juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
-	juego->arrayObjetos.push_back(new Player(juego, 1100, 2800));
+void Play::init() {
+	juego->arrayObjetos.push_back(new Player(juego, 200, 200));
+	//juego->arrayObjetos.push_back(new Player(juego, 1100, 2800));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
 	//El drop de enemigos deberia ser el encargado de hacer pushback de AURAS
 	juego->arrayObjetos.push_back(new Aura(juego, 450, 300, 420, 50, "Soy el mensaje de un muerto"));
-	
+	juego->arrayObjetos.push_back(new Humo(juego, 150, 200));
+
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));	
 	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
-	
+
 	//ENEMIGOS PLANTA
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
 	juego->stats.push_back(vidaAux);
 	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
@@ -55,8 +56,8 @@ void Play::init() {
 
 	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
 	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
-	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT- 85));
-	
+	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
+
 	//Los push_back deberian hacerse en un metodo onRightClick de player (?)
 	//arrayDialogos.push_back(new Dialogo(juego, 350, 300, 250, 45, "Hola soy Grant")); //x,y,ancho y alto
 
@@ -65,7 +66,7 @@ void Play::init() {
 	mensaje = new Textura();
 	Black = { 0, 0, 0, 255 }; //RGBA	
 	Red = { 175, 20, 20, 255 }; //RGBA	
-	mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);	
+	mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
 }
 
 void Play::update(int delta) {
@@ -101,30 +102,30 @@ void Play::update(int delta) {
 	/*
 	//ARREGLAR
 	for (int j = 0; j < juego->arrayBalas.size(); ++j) {
-		if (!juego->arrayBalas[j]->isDead()) {
-			if (juego->touchesWall(juego->arrayBalas[j]))
-				juego->arrayBalas[j]->onCollision();
-			else {
-				for (int j2 = 1; j2 < juego->arrayObjetos.size(); ++j2) {
-					if (juego->checkCollision(juego->arrayBalas[j], juego->arrayObjetos[j2])) {
-						juego->arrayBalas[j]->onCollision();
-						juego->arrayObjetos[j2]->onCollision();
-					}
-				}
-			}
-
-		}
+	if (!juego->arrayBalas[j]->isDead()) {
+	if (juego->touchesWall(juego->arrayBalas[j]))
+	juego->arrayBalas[j]->onCollision();
+	else {
+	for (int j2 = 1; j2 < juego->arrayObjetos.size(); ++j2) {
+	if (juego->checkCollision(juego->arrayBalas[j], juego->arrayObjetos[j2])) {
+	juego->arrayBalas[j]->onCollision();
+	juego->arrayObjetos[j2]->onCollision();
 	}
-	
-
-			juego->arrayObjetos[0]->onCollision(juego->arrayObjetos[i]);
-		}
 	}
-	
+	}
+
+	}
+	}
+
+
+	juego->arrayObjetos[0]->onCollision(juego->arrayObjetos[i]);
+	}
+	}
+
 	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
-		if (!juego->arrayObjetos[j]->isDead() && juego->arrayObjetos[j]->getType() == WEAPON) {
-			juego->arrayObjetos[j]->onCollision();
-		}
+	if (!juego->arrayObjetos[j]->isDead() && juego->arrayObjetos[j]->getType() == WEAPON) {
+	juego->arrayObjetos[j]->onCollision();
+	}
 	}
 
 	*/
@@ -135,21 +136,21 @@ void Play::update(int delta) {
 		juego->exit = true;
 	}
 	else{
-	//LIMPIEZA DE VECTOR DE OBJETOS
-	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
-		if (juego->arrayObjetos[aux]->isDead())
-			juego->arrayObjetos.erase(juego->arrayObjetos.begin() + aux);
-	}
-	for (int aux2 = 0; aux2 < juego->arrayBalas.size(); ++aux2) {
-		if (juego->arrayBalas[aux2]->isDead())
-			juego->arrayBalas.erase(juego->arrayBalas.begin() + aux2);
-	}
-	for (int aux3 = 0; aux3 < juego->arrayEnemigas.size(); ++aux3) {
-		if (juego->arrayEnemigas[aux3]->isDead())
-			juego->arrayEnemigas.erase(juego->arrayEnemigas.begin() + aux3);
-	}
+		//LIMPIEZA DE VECTOR DE OBJETOS
+		for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
+			if (juego->arrayObjetos[aux]->isDead())
+				juego->arrayObjetos.erase(juego->arrayObjetos.begin() + aux);
+		}
+		for (int aux2 = 0; aux2 < juego->arrayBalas.size(); ++aux2) {
+			if (juego->arrayBalas[aux2]->isDead())
+				juego->arrayBalas.erase(juego->arrayBalas.begin() + aux2);
+		}
+		for (int aux3 = 0; aux3 < juego->arrayEnemigas.size(); ++aux3) {
+			if (juego->arrayEnemigas[aux3]->isDead())
+				juego->arrayEnemigas.erase(juego->arrayEnemigas.begin() + aux3);
+		}
 
-	//UPDATE
+		//UPDATE
 
 		for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
 			//if (!juego->arrayObjetos[i]->isDead())
@@ -176,7 +177,7 @@ void Play::update(int delta) {
 		}
 	}
 
-	
+
 }
 
 
@@ -186,10 +187,10 @@ void Play::draw()
 	//Limpia el buffer
 	//SDL_RenderClear(pRenderer);
 	SDL_SetRenderDrawColor(pRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	
+
 	//Dibuja los objetos
 	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
-		juego->arrayObjetos[aux]->draw();		
+		juego->arrayObjetos[aux]->draw();
 	}
 	for (int aux2 = 0; aux2 < juego->arrayBalas.size(); ++aux2) {
 		juego->arrayBalas[aux2]->draw();
@@ -204,7 +205,7 @@ void Play::draw()
 			elemInterfaz[i]->draw();
 		}
 		//Pintado de texto (cargador)	
-		if (juego->stats[2] > 0 && !juego->arrayObjetos[0]->isDead()){			
+		if (juego->stats[2] > 0 && !juego->arrayObjetos[0]->isDead()){
 			fuenteCargador->load(juego->getTexto(1), 18);
 			mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
 			if (juego->stats[2] < 10){
@@ -250,7 +251,7 @@ void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 	//posiciones del ratón
 	int mX, mY;
 	juego->getMousePos(mX, mY);
-	
+
 	int distance = sqrt((mX - posX)*(mX - posX) + (mY - posY)*(mY - posY));
 
 	int vX = 75 * (mX - posX) / distance;
@@ -265,7 +266,7 @@ void Play::posPlayer(int& x, int& y) {
 }
 
 void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int velDis) {
-							//desde donde dispara //hacia donde dispara     //velocidad disparo
+	//desde donde dispara //hacia donde dispara     //velocidad disparo
 
 
 	int distance = sqrt((targetX - posEx)*(targetX - posEx) + (targetY - posEy)*(targetY - posEy));

@@ -30,6 +30,7 @@
     <ClCompile Include="Checkpoint.cpp" />
     <ClCompile Include="Dialogo.cpp" />
     <ClCompile Include="Aura.cpp" />
+    <ClCompile Include="Humo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -64,5 +65,6 @@
     <ClInclude Include="Checkpoint.h" />
     <ClInclude Include="Dialogo.h" />
     <ClInclude Include="Aura.h" />
+    <ClInclude Include="Humo.h" />
   </ItemGroup>
 </Project>

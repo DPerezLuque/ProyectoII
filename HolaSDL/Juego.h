@@ -13,8 +13,6 @@
 
 using namespace std;
 
-
-
 //860 460
 class Juego
 {
@@ -31,7 +29,7 @@ public:
 	enum Texturas_t {
 		TPlayer, TBulletPlayer, TBExit, TBPlay, TBMenu, TBResume,
 		TEnemy, TBulletEnemy, TVidaLlena, TVidaVacia, TDashLleno,
-		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta, TBarraVida,
+		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta, TBarraVida, THumo,
 	};
 
 	//PUBLIC VARIABLES
@@ -68,12 +66,12 @@ public:
 	std::vector<ObjetoJuego*> arrayEnemigas;	//BALAS ENEMIGOS
 	std::vector<ObjetoJuego*> arrayMenu;
 	std::vector<int> stats;
-	
+
 	//PLAYER
 	//ObjetoJuego * pj;
 	//CAMERA LEVEL
-	SDL_Rect camera;	
-	
+	SDL_Rect camera;
+
 	//INITS
 	bool initSDL();
 	bool initMedia();
@@ -82,11 +80,11 @@ public:
 	void run();
 	void handle_events();
 	void updateDirection();
-	
+
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	bool touchesWall(ObjetoJuego * a);
 	bool checkWallCollisions(ObjetoJuego * a, SDL_Rect b);
-	
+
 	//CLOSERS
 	void setSalir(){ exit = true; }
 	void freeMedia();
@@ -109,7 +107,7 @@ public:
 	string getTexto(int fun) { return nombreFuentes[fun]; }
 
 private:
-	
+
 	//ARRAYS
 	std::vector<std::string> texturas;
 	std::vector<Textura*> arrayTex;

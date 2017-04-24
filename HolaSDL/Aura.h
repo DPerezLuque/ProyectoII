@@ -7,11 +7,14 @@ public:
 	Aura(Juego* ptr, int px, int py, int ancho, int alto, std::string texto);
 	~Aura();
 	void onCollision();
-	void update(int delta){}
+	void update(int delta);
 	void draw() const;
 private:
 	Dialogo* mensaje;
 	bool activo;
-
+	int contador; //Paso de frames
+	int contador2;
+	bool arriba = true;
+	int topeUp, topeDown;
 };
 
