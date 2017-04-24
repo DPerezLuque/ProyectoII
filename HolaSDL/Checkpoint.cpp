@@ -47,7 +47,7 @@ void Checkpoint::animar(){
 		if (rectAnim.x >= 832 && rectAnim.y == 64){ //
 			rectAnim.x = 832;
 			rectAnim.y = 64;
-			cout << "CHECKPOINT FALSE\n";
+		//	cout << "CHECKPOINT FALSE\n";
 			cogido = false;
 		}
 		else {

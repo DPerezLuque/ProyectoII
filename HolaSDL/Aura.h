@@ -4,7 +4,7 @@
 class Aura : public Objeto
 {
 public:
-	Aura(Juego* ptr, int px, int py, std::string texto);
+	Aura(Juego* ptr, int px, int py, int ancho, int alto, std::string texto);
 	~Aura();
 	void onCollision();
 	void update(int delta){}

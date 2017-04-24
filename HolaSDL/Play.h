@@ -28,7 +28,6 @@ private:
 	SDL_Color Black;
 	SDL_Color Red;
 
-	std::vector<ObjetoJuego*> arrayDialogos;
 	int vidaAux = 0;
 };
 
