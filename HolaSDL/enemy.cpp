@@ -5,6 +5,7 @@
 enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TEnemy);
+	barraVida = juego->getTextura(Juego::TBarraVida);
 
 	vel = 6;
 	freDis = 100;
@@ -12,10 +13,10 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	rect.x = px;
 	rect.y = py;
-
 	rect.w = 50;
 	rect.h = 50;
 
+	rectVida = { (px + 20), (py + 50), 128, 10 };		
 
 	tipo = ENEMY;
 
@@ -29,9 +30,15 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 enemy::~enemy()
 {
 }
+void enemy::draw() const{
+	textura->draw(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect);
+	//barraVida->drawAnimacion(pRenderer, (rectVida.x+20) - juego->camera.x, (rectVida.y+50) - juego->camera.y, rectVida, rectVida);
+}
 
 void enemy::update(int delta) 
 {	
+	rectVida = rect;
+	rectVidaAux = rectVida;
 	SDL_Rect rectPlayer;
 	rectPlayer = juego->arrayObjetos[0]->getRect();
 	//static_cast <Play*> (juego->topEstado())->posPlayer(x, y);

@@ -1,7 +1,6 @@
 #pragma once
 #include "Estado.h"
 
-
 class Play : public Estado
 {
 public:
@@ -21,14 +20,15 @@ public:
 	void posPlayer(int& x, int& y);
 private:
 	void getStats(int i);
-
 	bool gameOver;
+
+	//Texto
 	Texto* fuenteCargador;
 	Textura* mensaje;
 	SDL_Color Black;
 	SDL_Color Red;
-	SDL_Rect rectanTexto;
 
-	int vidaAux;
+	std::vector<ObjetoJuego*> arrayDialogos;
+	int vidaAux = 0;
 };
 

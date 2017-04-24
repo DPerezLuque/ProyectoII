@@ -14,6 +14,7 @@
 #include "Cargador.h"
 #include "Checkpoint.h"
 #include "EnemigoPlanta.h"
+#include "Dialogo.h"
 using namespace std;
 
 
@@ -24,22 +25,19 @@ Play::Play(Juego* ptr) : Estado(ptr)
 
 Play::~Play() 
 {
+	for (int i = 0; i < arrayDialogos.size(); i++) {
+		arrayDialogos[i] = nullptr;
+		delete arrayDialogos[i];
+	}
 }
 
 void Play::init() 
-{
-	
+{	
 	juego->arrayObjetos.push_back(new Player(juego, 200, 200)); 
+	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
 	//juego->arrayObjetos.push_back(new BossRino(juego, 0, 0));
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));
 
-	//juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250));
-	juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
-	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));
-
-	juego->arrayObjetos.push_back(new Checkpoint(juego, 320, 250, static_cast<Player*>(juego->arrayObjetos[0])));
-	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
-	//juego->arrayObjetos.push_back(new Checkpoint(juego, 220, 250));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
 	//ENEMIGOS PLANTA
@@ -49,34 +47,23 @@ void Play::init()
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
 
-
-	vidaAux = 0; //Barra Vacia
-
 	juego->stats.push_back(vidaAux);
 	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
 	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getBalas());
 
 	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
 	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
-
 	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT- 85));
+	
+	//Los push_back deberian hacerse en un metodo onRightClick de player (?)
+	arrayDialogos.push_back(new Dialogo(juego, 350, 300, 250, 45, "Hola soy Grant")); //x,y,ancho y alto
 
-
-	//FUENTE DE PRUEBA, LO DEJO COMENTADO PARA SABER LA ESTRUCTURA
-	/*
-	fuenteDePrueba = new Texto(juego->getTexto(0), 50);
-
-	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT- 85));	
-	*/
 	//FUENTE DE BALAS
 	fuenteCargador = new Texto(juego->getTexto(0), 28);
-
 	mensaje = new Textura();
 	Black = { 0, 0, 0, 255 }; //RGBA	
 	Red = { 175, 20, 20, 255 }; //RGBA	
-	rectanTexto = { 80, 300, 300, 300 };
-	mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
-	
+	mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);	
 }
 
 void Play::update(int delta) {
@@ -205,7 +192,10 @@ void Play::draw()
 	for (int aux3 = 0; aux3 < juego->arrayEnemigas.size(); ++aux3) {
 		juego->arrayEnemigas[aux3]->draw();
 	}
-	
+	//DIALOGOS
+	for (int i = 0; i < arrayDialogos.size(); i++) {
+		arrayDialogos[i]->draw();
+	}
 	//Dibuja interfaz, por encima de los objetos
 	if (!juego->arrayObjetos[0]->isDead()){
 		for (int i = 0; i < elemInterfaz.size(); i++) {
@@ -213,14 +203,17 @@ void Play::draw()
 		}
 		//Pintado de texto (cargador)	
 		if (juego->stats[2] > 0 && !juego->arrayObjetos[0]->isDead()){			
-			fuenteCargador->load(juego->getTexto(0), 28);
+			fuenteCargador->load(juego->getTexto(1), 18);
 			mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
-			mensaje->render(pRenderer, juego->SCREEN_WIDTH - 54, juego->SCREEN_HEIGHT - 58);
+			if (juego->stats[2] < 10){
+				mensaje->render(pRenderer, juego->SCREEN_WIDTH - 44, juego->SCREEN_HEIGHT - 50);
+			}
+			else{ mensaje->render(pRenderer, juego->SCREEN_WIDTH - 54, juego->SCREEN_HEIGHT - 50); }
 		}
 		else{
-			fuenteCargador->load(juego->getTexto(0), 18);
+			fuenteCargador->load(juego->getTexto(1), 18);
 			mensaje->loadFromText(pRenderer, "Recargando", *fuenteCargador, Red);
-			mensaje->render(pRenderer, ((juego->SCREEN_WIDTH / 2) - 50), ((juego->SCREEN_HEIGHT / 2) - 100));
+			mensaje->render(pRenderer, ((juego->SCREEN_WIDTH / 2) - 100), ((juego->SCREEN_HEIGHT / 2) - 100));
 		}
 	}
 	SDL_RenderPresent(pRenderer);

@@ -28,6 +28,7 @@
     <ClCompile Include="Texto.cpp" />
     <ClCompile Include="Textura.cpp" />
     <ClCompile Include="Checkpoint.cpp" />
+    <ClCompile Include="Dialogo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -60,5 +61,6 @@
     <ClInclude Include="Texto.h" />
     <ClInclude Include="Textura.h" />
     <ClInclude Include="Checkpoint.h" />
+    <ClInclude Include="Dialogo.h" />
   </ItemGroup>
 </Project>
