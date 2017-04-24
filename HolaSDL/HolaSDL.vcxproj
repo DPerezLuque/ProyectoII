@@ -16,6 +16,7 @@
     <ClCompile Include="BalaPlayer.cpp" />
     <ClCompile Include="BossRino.cpp" />
     <ClCompile Include="Checkpoint.cpp" />
+    <ClCompile Include="Dialogo.cpp" />
     <ClCompile Include="EnemigoPlanta.cpp" />
     <ClCompile Include="BarraVida.cpp" />
     <ClCompile Include="BarraVidaVacia.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="BalaPlayer.h" />
     <ClInclude Include="BossRino.h" />
     <ClInclude Include="Checkpoint.h" />
+    <ClInclude Include="Dialogo.h" />
     <ClInclude Include="EnemigoPlanta.h" />
     <ClInclude Include="BarraVida.h" />
     <ClInclude Include="BarraVidaVacia.h" />
