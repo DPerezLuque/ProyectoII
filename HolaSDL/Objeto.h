@@ -25,6 +25,7 @@ public:
 		return dead;
 	}
 protected:
+	void Oscilar(int delta);
 	Juego* juego;
 	Textura* textura;
 	SDL_Renderer* pRenderer;
@@ -37,7 +38,10 @@ protected:
 	bool inmunidad;
 	int velX, velY;	//Velocidad del objeto
 	//int h, w; // tamaño (ya va en el rect)
-
 	int vida;
+	//Para oscilar
+	int cont;
+	int cont2;
+	bool arriba = true;
 };
 

@@ -11,10 +11,7 @@ public:
 	void draw() const;
 private:
 	Dialogo* mensaje;
-	bool activo;
-	int contador; //Paso de frames
-	int contador2;
-	bool arriba = true;
+	bool activo;	
 	int topeUp, topeDown;
 };
 

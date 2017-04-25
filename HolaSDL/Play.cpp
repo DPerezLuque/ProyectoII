@@ -17,6 +17,8 @@
 #include "Dialogo.h"
 #include "Aura.h"
 #include "Humo.h"
+#include "Botiquin.h"
+
 using namespace std;
 
 Play::Play(Juego* ptr) : Estado(ptr)
@@ -36,6 +38,7 @@ void Play::init() {
 	//El drop de enemigos deberia ser el encargado de hacer pushback de AURAS
 	juego->arrayObjetos.push_back(new Aura(juego, 450, 300, 420, 50, "Soy el mensaje de un muerto"));
 	juego->arrayObjetos.push_back(new Humo(juego, 150, 200));
+	juego->arrayObjetos.push_back(new Botiquin(juego, 200, 400));
 
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));	
 	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	

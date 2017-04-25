@@ -9,6 +9,7 @@ Objeto::Objeto(Juego* ptr, int px, int py)
 	//Position
 	rect.x = px;
 	rect.y = py;
+	cont = cont2 = 0;
 
 	inmunidad = false;
 }
@@ -44,6 +45,25 @@ bool Objeto::onClick()
 
 SDL_Rect Objeto::getRect(){
 	return rectCollision;
+}
+
+void Objeto::Oscilar(int delta){
+	cont += delta;
+	cont2 += delta;
+
+	if (cont > 2 && arriba){
+		rect.y++;
+		cont = 0;
+	}
+	else if (cont > 2){
+		rect.y--;
+		cont = 0;
+	}
+
+	if (cont2 > 100){
+		arriba = !arriba;
+		cont2 = 0;
+	}
 }
 
 

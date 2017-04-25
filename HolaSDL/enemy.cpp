@@ -39,7 +39,7 @@ enemy::~enemy()
 }
 void enemy::draw() const{
 	textura->draw(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect);
-	//barraVida->drawAnimacion(pRenderer, (rectVida.x+20) - juego->camera.x, (rectVida.y+50) - juego->camera.y, rectVida, rectVida);
+	barraVida->drawAnimacion(pRenderer, (rectVida.x+20) - juego->camera.x, (rectVida.y+50) - juego->camera.y, rectVida, rectVida);
 }
 
 void enemy::update(int delta) 

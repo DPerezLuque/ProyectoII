@@ -154,7 +154,7 @@ bool Juego::initSDL()
 		}
 
 		//Create window
-		pWindow = SDL_CreateWindow("Proyecto II", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		pWindow = SDL_CreateWindow("GS-14", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 		if (pWindow == NULL)
 		{
 			printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
@@ -234,6 +234,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\enemyPlanta.png");
 	texturas.push_back("..\\bmps\\BarraVida.png");
 	texturas.push_back("..\\bmps\\Humo.png");
+	texturas.push_back("..\\bmps\\Botiquin1.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
