@@ -101,16 +101,13 @@ void Player::update(int delta) {
 	/*for (int i = 0; i < 10; ++i){
 		juego->checkCollision(this->rect, juego->topEstado()->)
 	}*/	
-	++contDash;
-	std::cout << contDash << "\n";
-	if (contDash >= 100) canDash = true; // tiempo de enfriamineto del dash
-	if (canDash){
+	//++contDash;
+	//std::cout << contDash << "\n";
+	//if (contDash >= 100) canDash = true; // tiempo de enfriamineto del dash
+	//if (canDash){
 		if (juego->getDash()){
 			canDash = false;
-			/*if (juego->getVelX() == 0 && juego->getVelY() == 0){
-				canDash = true;
-			}
-			else{*/
+
 				rect.x += juego->getVelX() * 4 * delta / 1.5f;
 				rect.y += juego->getVelY() * 4 * delta / 1.5f;
 				++contDashing;
@@ -119,20 +116,12 @@ void Player::update(int delta) {
 					contDash = 0;
 					juego->setDash();
 				}				
-			//}
-
-		
 		}
 		else{
 			rect.x += juego->getVelX() * delta / 1.5f;
 			rect.y += juego->getVelY() * delta / 1.5f;
 		}
-	}
-	else {
-		rect.x += juego->getVelX() * delta / 1.5f;
-		rect.y += juego->getVelY() * delta / 1.5f;
 
-	}
 		rectCollision.x = (rect.x + rect.w / 3) * delta;
 		rectCollision.y = (rect.y + rect.h / 3) * delta;
 

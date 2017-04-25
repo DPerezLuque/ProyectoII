@@ -126,5 +126,6 @@ private:
 	Texto textoAux;
 
 	bool dashing = false;
+	int contDash;
 };
 

@@ -56,6 +56,8 @@ Juego::Juego()
 		estado = topEstado(); //primer estado: MENU
 	}
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+	contDash = 400;
 }
 
 Juego::~Juego()
@@ -106,6 +108,8 @@ void Juego::run()
 		//cout << delta << "\n";
 		estado->draw();
 		handle_events();
+		++contDash; //PRUEBA
+		//std::cout << contDash << "\n";
 	}
 
 	if (exit) cout << "EXIT \n";
@@ -311,10 +315,15 @@ void Juego::handle_events()
 			// else if(...)    
 		}
 		updateDirection();
-		if (e.type == SDL_KEYDOWN) {
-			if (e.key.keysym.sym == SDLK_SPACE)
+		//std::cout << contDash << "\n";
+		if (contDash >= 400){
+			if (e.type == SDL_KEYDOWN) {
+				if (e.key.keysym.sym == SDLK_SPACE) {
+					contDash = 0;
 					dashing = true;
-				//dashing = true;
+				}
+			}
+			
 		}
 		if (e.type == SDL_KEYUP) {
 			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
