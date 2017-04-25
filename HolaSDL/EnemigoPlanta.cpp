@@ -4,7 +4,7 @@
 EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TEnemyPlanta); //TODO: cambiar a la textura de la planta
-	//vidaEnemigo = 5;  //REVISAD ESTO PLIS
+	vida = 5;
 	rectAnim = { 0, 0, 32, 32 };
 	contador = 0;
 
@@ -47,5 +47,31 @@ void EnemigoPlanta::update(int delta){
 	//rectCollision.x = (rect.x + rect.w / 3) * delta;
 	//rectCollision.y = (rect.y + rect.h / 3) * delta;
 
-	//onCollision(vidaEnemigo, tipo); //REVISAD ESTO PLIS
+	if (inmunidad) {
+		if (contInm < 50) contInm++;
+		else if (contInm == 50)
+		{
+			inmunidad = false;
+			contInm = 0;
+		}
+	}
+}
+
+void EnemigoPlanta::onCollision() { //onCollision de gestor de vida
+
+	gestorVida();
+}
+
+void EnemigoPlanta::gestorVida()
+{
+	if (!inmunidad) {
+		vida--;
+		cout << "Vida enemigo: " << vida << "\n";
+		inmunidad = true;
+	}
+
+	if (vida <= 0) {
+		cout << "Enemy Dead! \n";
+		dead = true;
+	}
 }

@@ -9,15 +9,13 @@ public:
 	Objeto(Juego* ptr, int px, int py);
 	virtual ~Objeto();
 
-	virtual void onCollision() = 0;
-
 	bool dentro(int x, int y) const; //(A LO MEJOR ES NECESARIO)
 	void draw() const;
 	bool onClick();
 	SDL_Rect getRect();
 
-	void onCollision(ObjetoJuego* objeto);
-	void gestorVida(int &vida);
+	void gestorVida() {};
+	void onCollision() {};
 
 	collision getType() {
 		return tipo;
@@ -36,6 +34,7 @@ protected:
 
 	collision tipo;
 	bool dead = false;
+	bool inmunidad;
 	int velX, velY;	//Velocidad del objeto
 	//int h, w; // tamaño (ya va en el rect)
 

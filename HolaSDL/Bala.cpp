@@ -43,17 +43,9 @@ void Bala::update(int delta) {
 		onCollision();
 }
 
-/*
-void Bala::onCollision(int vida, collision tipo){
 
-	if (juego->touchesWall(this)) {
-		printf("Bala Destruida (pared) \n");
+void Bala::onCollision(){
+
 		dead = true;
-	}
+
 }
-void Bala::onCollision(ObjetoJuego * colisionado){
-	
-		printf("Bala Destruida (OBJETO) \n");
-		dead = true;
-	
-}*/

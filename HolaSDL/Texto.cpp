@@ -1,5 +1,7 @@
 #include "Texto.h"
 
+using namespace std;
+
 Texto::Texto()
 {
 }

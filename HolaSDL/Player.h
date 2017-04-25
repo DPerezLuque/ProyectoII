@@ -17,13 +17,12 @@ public:
 	//void drawPlayer();
 	void draw() const;
 	void onCollision();
-	//void onCollision(ObjetoJuego*);
 
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }
 
 	int posIniX, posIniY;
-	void gestorVida(int &vida);
+	void gestorVida();
 
 private:
 	void respawn();

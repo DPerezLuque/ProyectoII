@@ -12,6 +12,8 @@ Aura::Aura(Juego* ptr, int px, int py, int ancho, int alto, std::string texto) :
 	contador2 = 0;
 	topeUp = rect.y + 15;
 	topeDown = rect.y - 15;
+
+	tipo = AURA;
 }
 
 

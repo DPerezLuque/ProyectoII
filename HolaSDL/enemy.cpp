@@ -117,23 +117,12 @@ void enemy::shoot(int targetX, int targetY){
 	juego->arrayEnemigas.push_back(new BalaEnemigo(juego, rect.x, rect.y, vX, vY));
 }
 
+void enemy::onCollision(){ //onCollision de gestor de vida
 
-void enemy::onCollision() {
-	
-	//dead = true;
-	gestorVida(vida);
+		gestorVida();
 }
 
-void enemy::onCollision(ObjetoJuego * colisionado){ //onCollision de gestor de vida
-
-	cout << "auch!\n";
-	if (colisionado->getType() == PJ_WEAPON){
-		gestorVida(vida);
-	}
-
-}
-
-void enemy::gestorVida(int &vida)
+void enemy::gestorVida()
 {
 	if (!inmunidad){
 		vida--;

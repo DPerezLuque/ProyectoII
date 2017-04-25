@@ -14,8 +14,7 @@ public:
 	void draw() const;
 
 	void onCollision();
-	void onCollision(ObjetoJuego * colisionado);
-	void gestorVida(int &vida);
+	void gestorVida();
 
 protected:
 	int vX, vY;

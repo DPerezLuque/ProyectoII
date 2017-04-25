@@ -4,18 +4,17 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
 
 class Texto
 {
 public:
 	Texto();
-	Texto(string nombArch, int size);
+	Texto(std::string nombArch, int size);
 	virtual ~Texto();
 
 	void close();
-	bool load(string nombArch, int size);
-	SDL_Surface* renderText(string text, SDL_Color color) const;
+	bool load(std::string nombArch, int size);
+	SDL_Surface* renderText(std::string text, SDL_Color color) const;
 private:
 	TTF_Font * pFont;
 };

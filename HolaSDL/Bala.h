@@ -9,9 +9,7 @@ public:
 
 	void update(int delta);
 
-	//void onCollision(int  vida, collision tipo);
-
-	virtual void onCollision() = 0;
+	void onCollision();
 
 };
 

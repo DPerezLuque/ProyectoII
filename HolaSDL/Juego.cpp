@@ -416,35 +416,39 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	int topA, topB;
 	int bottomA, bottomB;
 
-	bool goodToGo = true;
+	bool colisiona = false; //previo GoodToGo. Nos costaba enterderlo con ese nombre
 
+	//Cambiado a que revise los que queremos (los que son true) en vez de lo que queremos obviar
 	switch (a->getType()) {
-	case PJ:
-		if (b->getType() == PJ || b->getType() == CHECK || b->getType() == WEAPON)
-			goodToGo = false;
+	case PJ:																		//Hemos puesto la colision con el aura para que siga funcionando
+																					//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
+		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS || b->getType() == AURA)
+			colisiona= true;
+
 		break;
 	case ENEMY:
-		if (b->getType() == ENEMY_WEAPON || b->getType() == BOSS)
-			goodToGo = false;
+		if (b->getType() == PJ_WEAPON )
+			colisiona= true;
 		break;
 	case CHECK:
-		if (b->getType() != PJ)
-			goodToGo = false;
+		if (b->getType() == PJ)
+			colisiona= true;
 		break;
 	case PJ_WEAPON:
-		if (b->getType() == PJ || b->getType() == CHECK)
-			goodToGo = false;
+		if (b->getType() == ENEMY || b->getType() == BOSS || b->getType() == ENEMY_WEAPON)
+			colisiona= true;
 		break;
 	case ENEMY_WEAPON:
-		if (b->getType() == ENEMY || b->getType() == CHECK)
-			goodToGo = false;
+		if (b->getType() == PJ || b->getType() == PJ_WEAPON)
+			colisiona= true;
 		break;
-	default:
-		goodToGo = true;
+	case AURA:
+		if (b->getType() == PJ)
+			colisiona = true;
 		break;
 	}
 
-	if (!goodToGo)
+	if (!colisiona)
 		return false;
 
 	//Calculate the sides of rect A

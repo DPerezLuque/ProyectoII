@@ -8,7 +8,11 @@ public:
 
 	void draw() const;
 	void update(int delta);
-	void EnemigoPlanta::animacionBasica();
+	void animacionBasica();
+
+	void onCollision();
+	void gestorVida();
+
 private:
 	SDL_Rect rectAnim;
 	int contador; //Para el paso de frames

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <vector>
 #include <string>
 #include <stack>
@@ -63,7 +63,7 @@ public:
 	//GLOBAL ARRAYS
 	std::vector<ObjetoJuego*> arrayObjetos;	//PERSONAJE [0] + ENEMIGOS
 	std::vector<ObjetoJuego*> arrayBalas;	//BALAS PERSONAJE
-	std::vector<ObjetoJuego*> arrayEnemigas;	//BALAS ENEMIGOS
+	std::vector<ObjetoJuego*> arrayEnemigas;	//BALAS ENEMIGOS ese nombre es una puta basura ☻
 	std::vector<ObjetoJuego*> arrayMenu;
 	std::vector<int> stats;
 

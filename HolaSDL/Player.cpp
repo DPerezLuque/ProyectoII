@@ -123,8 +123,6 @@ void Player::update(int delta) {
 		}
 	}
 
-	//onCollision(vida, tipo);
-
 	
 	//std::cout << "RECT X JUGADOR: " << rect.x << "\n";
 	//std::cout << "CAMARA X: " << juego->camera.x << "\n";
@@ -186,7 +184,7 @@ void Player::proceso(){
 bool Player::onClick() {
 
 
-	//posiciones del ratón
+	//Posiciones del ratón
 	int mX, mY, posX, posY;
 	juego->getMousePos(mX, mY);
 
@@ -220,7 +218,7 @@ void Player::getPos(int& x, int& y) {
 }
 
 
-void Player::gestorVida(int &vida)
+void Player::gestorVida()
 {
 	if (!inmunidad) {
 		vida--;
@@ -229,6 +227,7 @@ void Player::gestorVida(int &vida)
 	}
 
 	if (vida <= 0){
+		//Se le posiciona en el checkpoint con la vida y las balas restauradas
 		SDL_Rect aux;
 		aux = juego->arrayObjetos[1]->getRect();
 		rect.x = aux.x;
@@ -236,19 +235,14 @@ void Player::gestorVida(int &vida)
 		rectCollision.x = aux.x;
 		rectCollision.y = aux.y;
 		vida = 4;
+		balas = 20;
 		//dead = true; << PARA PROBAR EL CHECKPOINT 
 	}
 }
 
 void Player::onCollision(){
 
-	//if (colisionado->getType() == CHECK){
-	//	colisionado->onCollision(this);
-	//}
-//	else if (colisionado->getType() == ENEMY){
-	//	printf("Auch! \n");
-		gestorVida(vida);
-//	}
+		gestorVida();
 
 }
 
