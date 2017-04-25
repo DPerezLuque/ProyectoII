@@ -13,6 +13,7 @@
 #include <exception>
 #include "Error.h"
 #include "MapEditor.h"
+#include "Aura.h"
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -420,9 +421,9 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 
 	//Cambiado a que revise los que queremos (los que son true) en vez de lo que queremos obviar
 	switch (a->getType()) {
-	case PJ:																		//Hemos puesto la colision con el aura para que siga funcionando
-																					//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
-		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS || b->getType() == AURA)
+	case PJ:												//Hemos puesto la colision con el aura para que siga funcionando
+												//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
+		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS || b->getType() == AURA )
 			colisiona= true;
 
 		break;
@@ -565,4 +566,19 @@ bool Juego::checkWallCollisions(ObjetoJuego * a, SDL_Rect b)
 
 	//If none of the sides from A are outside B
 	return true;
+}
+
+/// CREAR UNIDADES ///
+//Cuando los enemigos mueren, crean almas y/o objetos según un random. Aquí se recogen los métodos que
+//añaden cosas al juego
+
+void Juego::creaAlmas(int posEnemigoX, int posEnemigoY, string msj){
+
+	if (msj != ""){
+		//Selecciona una frase aleatoria en el vector de frases y la metes en msj.
+		//Si hay una que QUIERES que aparezca, la metes en el parámetro msj
+	}
+
+	arrayObjetos.push_back(new Aura(this, posEnemigoX, posEnemigoY, 420, 50, msj));
+
 }

@@ -106,7 +106,12 @@ void Player::update(int delta) {
 	rectCollision.x = (rect.x + rect.w / 3) * delta;
 	rectCollision.y = (rect.y + rect.h / 3) * delta;
 
-	if (juego->touchesWall(this)){
+	if (juego->touchesWall(this)){		
+		//IDEA: Hacer un "rectangulo" delante del jugador y comprobar si ese rectangulo, y no el del jugador es el que se está colisionando
+		//Porque si la condicion se mueve arriba entonces si está en contacto con la pared el jugador no se mueve.
+		//Tendría el mismo principio que un raycast en Unity, para lo cual necesitariamos un enum de direcciones y en funcion de la 
+		//direccion del jugador se gira el "ray" para que siempre esté en frente suya. El enum estaba hecho en el dash primigenio, no sé si en el dash dos está.
+
 		//printf("Wall touched!\n");
 		rect.x -= juego->getVelX() * delta;
 		rect.y -= juego->getVelY() * delta;

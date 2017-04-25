@@ -100,6 +100,9 @@ public:
 	int getVelX();
 	int getVelY();
 
+	//CREA COSAS
+	void creaAlmas(int, int, std::string);
+
 	//MUSIC
 	enum MusicIds { Cancion1, };
 	//FONTS

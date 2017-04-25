@@ -1,6 +1,7 @@
 #include "enemy.h"
 #include "Player.h"
 
+#include <random>
 
 enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
@@ -29,6 +30,7 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	inmunidad = false;
 	contInm = 0;
+
 }
 
 
@@ -133,6 +135,21 @@ void enemy::gestorVida()
 	if (vida <= 0){
 		cout << "Enemy Dead! \n";
 		dead = true;
+
+
+		/* generate secret number between 1 and 10: */
+		//int rnd = 1 - 100 * (rand() % 100);
+
+		//if (rnd % 2 == 0)
+		juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
+		
+		//Tiras un random mágico, de un 10% o asi												" "
+		//Si el random cuela -> juego -> meteAlma(posEnemigoX, posEnemigoY, Opcional: string frasePredeterminada);			mensaje random (:D)
+		//									 \																				 /
+		//									  Crea el aura en la posicion del enemigo - - - - - - - - - - - - - - - - - - - +
+		//																			 \
+		//																			   + mensajes prediseñados para X enemigo
+
 	}
 }
 

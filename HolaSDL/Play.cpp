@@ -38,7 +38,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Humo(juego, 150, 200));
 
 	//juego->arrayObjetos.push_back(new Bala(juego, 300, 300, 0, 0));	
-	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
+	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
 	//ENEMIGOS PLANTA
