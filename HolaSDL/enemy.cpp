@@ -22,7 +22,10 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	rectCollision.w = rect.w / 2;
 	rectCollision.h = rect.h / 2;
 
-	rectVida = { (px + 20), (py + 50), 128, 10 };		
+	rectVida.x = px - 20;
+	rectVida.y = py + 50;
+	rectVida.w = 128;
+	rectVida.h = 10;
 
 	tipo = ENEMY;
 
@@ -39,13 +42,15 @@ enemy::~enemy()
 }
 void enemy::draw() const{
 	textura->draw(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect);
-	barraVida->drawAnimacion(pRenderer, (rectVida.x+20) - juego->camera.x, (rectVida.y+50) - juego->camera.y, rectVida, rectVida);
+	barraVida->draw(pRenderer, rectVida.x - juego->camera.x, rectVida.y - juego->camera.y, rectVida);
 }
 
 void enemy::update(int delta) 
 {	
-	rectVida = rect;
-	rectVidaAux = rectVida;
+	rectVida.x = rect.x - 20;
+	rectVida.y = rect.y - 20;
+	rectVida.w = 32 * vida;
+
 	SDL_Rect rectPlayer;
 	rectPlayer = juego->arrayObjetos[0]->getRect();
 	//static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
@@ -61,8 +66,6 @@ void enemy::update(int delta)
 		shoot(rectPlayer.x, rectPlayer.y);
 		contDis = 0;
 	}
-
-
 	//rectCollision = rect;
 
 	rectCollision.x = rect.x;//(rect.x + rect.w / 3) * delta;
