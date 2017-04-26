@@ -11,8 +11,10 @@ public:
 	void draw() const; //Necesita su propio draw, por la animacion
 	void update(int delta);
 	void setPosition(int x, int y);
-
+	bool getCogido(){ return cogido; }		//Devuelve ek estado el bool "cogido"
+	
 private:
+	
 	bool cogido;
 	SDL_Rect rectAnim;
 	void animar();

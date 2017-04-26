@@ -73,5 +73,7 @@ void EnemigoPlanta::gestorVida()
 	if (vida <= 0) {
 		cout << "Enemy Dead! \n";
 		dead = true;
+		//RANDOM AQUÍ
+		juego->creaAlmas(rect.x, rect.y, "Menos mal que realmente ¡NO MORIMOS¡");
 	}
 }

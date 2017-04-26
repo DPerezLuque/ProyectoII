@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Checkpoint.h"
 #include <iostream>
 
 
@@ -233,14 +234,26 @@ void Player::gestorVida()
 
 	if (vida <= 0){
 		//Se le posiciona en el checkpoint con la vida y las balas restauradas
-		SDL_Rect aux;
-		aux = juego->arrayObjetos[1]->getRect();
-		rect.x = aux.x;
-		rect.y = aux.y;
-		rectCollision.x = aux.x;
-		rectCollision.y = aux.y;
-		vida = 4;
-		balas = 20;
+		if (static_cast <Checkpoint*>(juego->arrayObjetos[1])){
+			SDL_Rect aux;
+			aux = juego->arrayObjetos[1]->getRect();
+			rect.x = aux.x;
+			rect.y = aux.y;
+			rectCollision.x = aux.x;
+			rectCollision.y = aux.y;
+			vida = 4;
+			balas = 20;
+		}
+
+		else
+		{
+			//aux = juego->arrayObjetos[1]->getRect();
+			rect.x = 200;
+			rect.y = 200;
+			vida = 4;
+			balas = 20;
+		}
+
 		//dead = true; << PARA PROBAR EL CHECKPOINT 
 	}
 }

@@ -103,6 +103,7 @@ public:
 
 	//CREA COSAS
 	void creaAlmas(int, int, std::string);
+	void spawnObjetos(char, int, int, std::string);	//Identificador, posicionX, posicionY, String por si es un alma (opcional)
 
 	//MUSIC
 	enum MusicIds { Cancion1, };

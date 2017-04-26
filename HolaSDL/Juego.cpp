@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <random>
 #include <typeinfo>
 #include <stack>
 
@@ -14,6 +15,7 @@
 #include "Error.h"
 #include "MapEditor.h"
 #include "Aura.h"
+#include "Botiquin.h"
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -582,4 +584,33 @@ void Juego::creaAlmas(int posEnemigoX, int posEnemigoY, string msj){
 
 	arrayObjetos.push_back(new Aura(this, posEnemigoX, posEnemigoY, 420, 50, msj));
 
+}
+
+//Creamos un objeto dado por el id que se introduzca en la llamada a función, según el random deseado en el objeto desde el que se
+//llame a este método.
+void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
+
+	switch (id)
+	{
+
+	case 'a':	//alma
+
+		if (msj == ""){
+			//Selecciona una frase aleatoria en el vector de frases y la metes en msj.
+			//Si hay una que QUIERES que aparezca, la metes en el parámetro msj al llamar a la funcion spawnObjetos.
+		}
+
+		arrayObjetos.push_back(new Aura(this, posEnemigoX, posEnemigoY, 420, 50, msj));
+		break;
+
+	case 'b':	//botiquín
+
+		//Mini random aqui para que el objeto no caiga justo encima del enemigo sino ligeramente desplazado
+		int v2 = rand() % 70 + 30;				//Rango: [30,70]
+		int direction = 1 - 2 * (rand() % 2);	//Decide el signo del random
+		arrayObjetos.push_back(new Botiquin(this, posEnemigoX + (30*direction), posEnemigoY+(30*direction)));
+		break;
+
+
+	}
 }

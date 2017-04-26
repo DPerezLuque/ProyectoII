@@ -144,10 +144,12 @@ void enemy::gestorVida()
 		//int rnd = 1 - 100 * (rand() % 100);
 
 		//if (rnd % 2 == 0)
-		juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
+		//juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
+		juego->spawnObjetos('a', rect.x, rect.y, "¡Por fin me muero!");
+		juego->spawnObjetos('b', rect.x, rect.y, "");
 		
 		//Tiras un random mágico, de un 10% o asi												" "
-		//Si el random cuela -> juego -> meteAlma(posEnemigoX, posEnemigoY, Opcional: string frasePredeterminada);			mensaje random (:D)
+		//Si el random cuela --> juego -> meteAlma(posEnemigoX, posEnemigoY, Opcional: string frasePredeterminada);			mensaje random (:D)
 		//									 \																				 /
 		//									  Crea el aura en la posicion del enemigo - - - - - - - - - - - - - - - - - - - +
 		//																			 \
