@@ -7,6 +7,10 @@
 #include <random>
 #include <typeinfo>
 #include <stack>
+#include <iomanip>
+#include <string>
+#include <fstream>
+
 
 #include "Play.h"
 #include "MenuPrincipal.h"
@@ -20,10 +24,13 @@
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 
+
 using namespace std;
 
 //The level tiles
 Tilemap::Tile* tileSet[TOTAL_TILES];
+
+
 
 
 Juego::Juego()
@@ -59,6 +66,8 @@ Juego::Juego()
 		estado = topEstado(); //primer estado: MENU
 	}
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+
 }
 
 Juego::~Juego()
@@ -259,6 +268,25 @@ bool Juego::initMedia()
 		success = false;
 	}
 
+
+	ifstream file;
+	file.open("..\\bmps\\almas.txt", ios::in);
+	auto cinbuf = std::cin.rdbuf(file.rdbuf()); //
+
+	if (file.is_open())
+	{
+		string leeFraseI;
+		int tam = -1;
+		std::cin >> tam;
+
+		for (int i = 0; i < tam + 1; ++i)
+		{
+			getline(file, leeFraseI);
+
+			VectTextosAlma.push_back(leeFraseI);
+		}
+	}
+
 	return success;
 }
 
@@ -425,26 +453,26 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	//Cambiado a que revise los que queremos (los que son true) en vez de lo que queremos obviar
 	switch (a->getType()) {
 	case PJ:												//Hemos puesto la colision con el aura para que siga funcionando
-												//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
-		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS || b->getType() == AURA )
-			colisiona= true;
+		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
+		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS || b->getType() == AURA)
+			colisiona = true;
 
 		break;
 	case ENEMY:
-		if (b->getType() == PJ_WEAPON )
-			colisiona= true;
+		if (b->getType() == PJ_WEAPON)
+			colisiona = true;
 		break;
 	case CHECK:
 		if (b->getType() == PJ)
-			colisiona= true;
+			colisiona = true;
 		break;
 	case PJ_WEAPON:
 		if (b->getType() == ENEMY || b->getType() == BOSS || b->getType() == ENEMY_WEAPON)
-			colisiona= true;
+			colisiona = true;
 		break;
 	case ENEMY_WEAPON:
 		if (b->getType() == PJ || b->getType() == PJ_WEAPON)
-			colisiona= true;
+			colisiona = true;
 		break;
 	case AURA:
 		if (b->getType() == PJ)
@@ -595,9 +623,11 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 
 	case 'a':	//alma
 
-		if (msj == ""){
+		while (msj == ""){
 			//Selecciona una frase aleatoria en el vector de frases y la metes en msj.
 			//Si hay una que QUIERES que aparezca, la metes en el parámetro msj al llamar a la funcion spawnObjetos.
+			int miniRnd = rand() % 4 + 0;				//Rango: [30,70]
+			msj = VectTextosAlma.at(miniRnd);
 		}
 
 		arrayObjetos.push_back(new Aura(this, posEnemigoX, posEnemigoY, 420, 50, msj));
@@ -608,7 +638,7 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 		//Mini random aqui para que el objeto no caiga justo encima del enemigo sino ligeramente desplazado
 		int v2 = rand() % 70 + 30;				//Rango: [30,70]
 		int direction = 1 - 2 * (rand() % 2);	//Decide el signo del random
-		arrayObjetos.push_back(new Botiquin(this, posEnemigoX + (30*direction), posEnemigoY+(30*direction)));
+		arrayObjetos.push_back(new Botiquin(this, posEnemigoX + (30 * direction), posEnemigoY + (30 * direction)));
 		break;
 
 

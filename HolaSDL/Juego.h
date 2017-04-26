@@ -119,6 +119,7 @@ private:
 	///TEXT
 	std::vector<Texto> arrayFuentes;
 	std::vector<string> nombreFuentes;
+	std::vector<string> VectTextosAlma;
 	///MUSIC	
 	vector <string> musicNames;//Vector para almacenar direcciones de canciones
 	Musica* cancion; //Auxiliar para llenar el vector de musica

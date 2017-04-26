@@ -79,6 +79,7 @@ void EnemigoPlanta::gestorVida()
 		cout << "Enemy Dead! \n";
 		dead = true;
 		//RANDOM AQUÍ
-		juego->creaAlmas(rect.x, rect.y, "Menos mal que ¡NO MORIMOS¡");
+		juego->spawnObjetos('a', rect.x, rect.y, "");
+		juego->spawnObjetos('b', rect.x, rect.y, "");
 	}
 }
