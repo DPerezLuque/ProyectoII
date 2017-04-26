@@ -34,12 +34,6 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 Player::~Player()
 {
 }
-void Player::respawn(){
-	if (dead){
-		rect.x = posIniX;
-		rect.y = posIniY;
-	}
-}
 
 void Player::draw() const {
 	textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
@@ -91,7 +85,6 @@ void Player::animacionBasica(){ //Para el paso de frames
 int aux = 0;
 
 void Player::update(int delta) {
-	respawn();
 	//rect.x = rect.x - juego->camera.x;
 	//rect.y = rect.y - juego->camera.y;
 
@@ -205,7 +198,6 @@ bool Player::onClick() {
 	//Disparo
 	//juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
 
-
 	if (balas > 0){
 		//static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
 		juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
@@ -233,8 +225,9 @@ void Player::gestorVida()
 	}
 
 	if (vida <= 0){
+
 		//Se le posiciona en el checkpoint con la vida y las balas restauradas
-		if (static_cast <Checkpoint*>(juego->arrayObjetos[1])){
+		if (static_cast <Checkpoint*>(juego->arrayObjetos[1])->getCogido()){
 			SDL_Rect aux;
 			aux = juego->arrayObjetos[1]->getRect();
 			rect.x = aux.x;
@@ -242,12 +235,8 @@ void Player::gestorVida()
 			rectCollision.x = aux.x;
 			rectCollision.y = aux.y;
 			vida = 4;
-			balas = 20;
-		}
-
-		else
-		{
-			//aux = juego->arrayObjetos[1]->getRect();
+			balas = 20;		
+		} else {
 			rect.x = 200;
 			rect.y = 200;
 			vida = 4;

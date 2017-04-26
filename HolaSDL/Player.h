@@ -8,7 +8,6 @@ public:
 	Player(Juego* ptr, int px, int py);
 	~Player();
 
-
 	void update(int delta);
 	bool onClick();
 	void getPos(int& x, int& y);
@@ -25,11 +24,11 @@ public:
 	void gestorVida();
 
 private:
-	void respawn();
 	int velX, velY;
 
 	int vida;
 	int balas;
+	int maximoBalas;
 
 	bool inmunidad; //Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
 	int contadorInmunidad; //Contador del tiempo de inmunidad
@@ -42,6 +41,5 @@ private:
 	void proceso();
 	int contador; //Para los frames
 	int contador2; //Para recargar arma
-	int maximoBalas;
 };
 

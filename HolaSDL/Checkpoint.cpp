@@ -1,7 +1,7 @@
 #include "Checkpoint.h"
 
 
-Checkpoint::Checkpoint(Juego* ptr, int px, int py, Player* p) : Objeto(ptr, px, py)
+Checkpoint::Checkpoint(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TCheck);
 	tipo = CHECK;
@@ -13,7 +13,6 @@ Checkpoint::Checkpoint(Juego* ptr, int px, int py, Player* p) : Objeto(ptr, px, 
 	rectAnim.y = 0;
 	rectCollision = rect;
 	contador = 0;
-	jugador = p;
 }
 
 
@@ -47,8 +46,6 @@ void Checkpoint::animar(){
 		if (rectAnim.x >= 832 && rectAnim.y == 64){ //
 			rectAnim.x = 832;
 			rectAnim.y = 64;
-		//	cout << "CHECKPOINT FALSE\n";
-			cogido = false;
 		}
 		else {
 			rectAnim.x += 64;
@@ -60,13 +57,7 @@ void Checkpoint::onCollision(){
 	//cuando haya colision:
 	if (!cogido){
 		cogido = true;
-		setPosition(rect.x, rect.y);
-		cout << "Checkpoint cogido\n";
+		cout << "Checkpoint cogido: "<< cogido <<"\n";
 	}
 	
-}
-
-void Checkpoint::setPosition(int x, int y){
-	jugador->posIniX = x;
-	jugador->posIniY = y;
 }
