@@ -28,6 +28,5 @@ protected:
 
 	Textura* barraVida;
 	SDL_Rect rectVida;
-	SDL_Rect rectVidaAux;
 };
 

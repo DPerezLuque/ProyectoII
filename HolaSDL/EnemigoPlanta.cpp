@@ -4,10 +4,9 @@
 EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TEnemyPlanta); //TODO: cambiar a la textura de la planta
-	vida = 5;
+	vida = 4;
 	rectAnim = { 0, 0, 32, 32 };
 	contador = 0;
-
 	rectCollision = rect;
 }
 
@@ -26,8 +25,14 @@ EnemigoPlanta::~EnemigoPlanta()
 
 void EnemigoPlanta::draw() const {
 	textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
+	barraVida->draw(pRenderer, rectVida.x - juego->camera.x, rectVida.y - juego->camera.y, rectVida);
 }
 void EnemigoPlanta::update(int delta){
+	//Barra de vida
+	rectVida.x = rect.x - 35;
+	rectVida.y = rect.y - 20;
+	rectVida.w = 32 * vida;
+
 	contador += delta;
 	if (contador >= 4){ //Paso de imagenes mas lento
 		animacionBasica();
@@ -74,6 +79,6 @@ void EnemigoPlanta::gestorVida()
 		cout << "Enemy Dead! \n";
 		dead = true;
 		//RANDOM AQUÍ
-		juego->creaAlmas(rect.x, rect.y, "Menos mal que realmente ¡NO MORIMOS¡");
+		juego->creaAlmas(rect.x, rect.y, "Menos mal que ¡NO MORIMOS¡");
 	}
 }

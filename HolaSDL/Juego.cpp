@@ -246,7 +246,7 @@ bool Juego::initMedia()
 	}
 
 	//Load tile texture
-	if (!gTileTexture.loadFromFile(pRenderer, "..\\bmps\\sheet2.png"))
+	if (!gTileTexture.loadFromFile(pRenderer, "..\\bmps\\sheet3.png"))
 	{
 		printf("Failed to load tile set texture!\n");
 		success = false;
