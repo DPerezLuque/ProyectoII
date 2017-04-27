@@ -246,6 +246,11 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\BarraVida.png");
 	texturas.push_back("..\\bmps\\Humo.png");
 	texturas.push_back("..\\bmps\\Botiquin1.png");
+	//Decorativos
+	texturas.push_back("..\\bmps\\papelera1.png");
+	texturas.push_back("..\\bmps\\papelera2.png");
+	texturas.push_back("..\\bmps\\papelera3.png");
+	texturas.push_back("..\\bmps\\mesaeasteregg.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
@@ -478,6 +483,10 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		if (b->getType() == PJ)
 			colisiona = true;
 		break;
+	case DECORATIVO:
+		if (b->getType() == PJ || b->getType() == ENEMY){
+			//
+		}
 	}
 
 	if (!colisiona)

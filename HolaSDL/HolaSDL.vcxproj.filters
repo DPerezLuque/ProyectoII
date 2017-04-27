@@ -32,6 +32,7 @@
     <ClCompile Include="Aura.cpp" />
     <ClCompile Include="Humo.cpp" />
     <ClCompile Include="Botiquin.cpp" />
+    <ClCompile Include="objetoDecorativo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -68,5 +69,6 @@
     <ClInclude Include="Aura.h" />
     <ClInclude Include="Humo.h" />
     <ClInclude Include="Botiquin.h" />
+    <ClInclude Include="objetoDecorativo.h" />
   </ItemGroup>
 </Project>

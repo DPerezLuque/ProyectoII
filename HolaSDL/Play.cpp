@@ -1,5 +1,6 @@
 #include "Play.h"
 #include "ObjetoJuego.h"
+#include "objetoDecorativo.h"
 #include "GameOver.h"
 #include "Player.h"
 #include "BalaPlayer.h"
@@ -58,6 +59,14 @@ void Play::init() {
 
 	//Los push_back deberian hacerse en un metodo onRightClick de player (?)
 	//arrayDialogos.push_back(new Dialogo(juego, 350, 300, 250, 45, "Hola soy Grant")); //x,y,ancho y alto
+	
+	///// OBJETOS DECORATIVOS  /////
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 200, "papelera1"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 300, 200, "papelera2"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 400, 200, "papelera3"));
+
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
+
 
 	//FUENTE DE BALAS
 	fuenteCargador = new Texto(juego->getTexto(0), 28);

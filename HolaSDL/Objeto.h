@@ -24,8 +24,10 @@ public:
 	bool isDead() {
 		return dead;
 	}
-protected:
+
 	void Oscilar(int delta);
+
+protected:
 	Juego* juego;
 	Textura* textura;
 	SDL_Renderer* pRenderer;
