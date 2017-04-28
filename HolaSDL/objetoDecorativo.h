@@ -7,7 +7,14 @@ public:
 	~objetoDecorativo();
 	
 	void setObjectFromString(std::string);		//Factoría de objetos decorat
-	virtual void update(int delta){}						//En principio, no usamos el update pero será útil si el objeto tiene animación
-	
+	void draw() const;
+	void update(int delta);
+private:
+	void animacionBasica();
+	SDL_Rect rectAnim;
+	string tipo; //estatico y animado
+	string tipoAnim;
+	int contador = 0; //Paso de frames
+
 };
 

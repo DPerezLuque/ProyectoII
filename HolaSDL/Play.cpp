@@ -17,7 +17,6 @@
 #include "EnemigoPlanta.h"
 #include "Dialogo.h"
 #include "Aura.h"
-#include "Humo.h"
 #include "Botiquin.h"
 
 using namespace std;
@@ -32,12 +31,11 @@ Play::~Play()
 }
 
 void Play::init() {
-	juego->arrayObjetos.push_back(new Player(juego, 200, 200));
+	juego->arrayObjetos.push_back(new Player(juego, 200, 300));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
-	juego->arrayObjetos.push_back(new Humo(juego, 150, 200));	
 	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
-	juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
+	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
 	//ENEMIGOS PLANTA
@@ -56,16 +54,15 @@ void Play::init() {
 	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
 	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
 	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
-
-	//Los push_back deberian hacerse en un metodo onRightClick de player (?)
-	//arrayDialogos.push_back(new Dialogo(juego, 350, 300, 250, 45, "Hola soy Grant")); //x,y,ancho y alto
 	
 	///// OBJETOS DECORATIVOS  /////
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 200, "papelera1"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 300, 200, "papelera2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 400, 200, "papelera3"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 300, 200, "papelera2"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 400, 200, "papelera3"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 800, 80, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 
 
 	//FUENTE DE BALAS

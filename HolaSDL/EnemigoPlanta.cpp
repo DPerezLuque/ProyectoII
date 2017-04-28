@@ -1,6 +1,5 @@
 #include "EnemigoPlanta.h"
 
-
 EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TEnemyPlanta); //TODO: cambiar a la textura de la planta
