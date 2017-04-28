@@ -6,7 +6,7 @@ public:
 	Humo(Juego* ptr, int px, int py);
 	~Humo();
 
-	void onCollision(){}
+	void onCollision(collision){}
 	void update(int delta);
 	void draw() const;
 private:

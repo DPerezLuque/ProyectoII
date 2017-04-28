@@ -21,6 +21,7 @@
 #include "Botiquin.h"
 
 using namespace std;
+typedef unsigned int uint;
 
 Play::Play(Juego* ptr) : Estado(ptr)
 {
@@ -32,11 +33,13 @@ Play::~Play()
 }
 
 void Play::init() {
+
+	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));
 	juego->arrayObjetos.push_back(new Player(juego, 200, 200));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	juego->arrayObjetos.push_back(new Humo(juego, 150, 200));	
-	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
+	
 	juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
@@ -79,7 +82,7 @@ void Play::init() {
 void Play::update(int delta) {
 
 	//COLISIONES CON OBJETOS
-
+	/*
 	//PERSONAJE CON ENEMIGOS
 	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
 		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayObjetos[i])){
@@ -105,37 +108,23 @@ void Play::update(int delta) {
 			}
 		}
 	}
-
-	/*
-	//ARREGLAR
-	for (int j = 0; j < juego->arrayBalas.size(); ++j) {
-	if (!juego->arrayBalas[j]->isDead()) {
-	if (juego->touchesWall(juego->arrayBalas[j]))
-	juego->arrayBalas[j]->onCollision();
-	else {
-	for (int j2 = 1; j2 < juego->arrayObjetos.size(); ++j2) {
-	if (juego->checkCollision(juego->arrayBalas[j], juego->arrayObjetos[j2])) {
-	juego->arrayBalas[j]->onCollision();
-	juego->arrayObjetos[j2]->onCollision();
-	}
-	}
-	}
-
-	}
-	}
-
-
-	juego->arrayObjetos[0]->onCollision(juego->arrayObjetos[i]);
-	}
-	}
-
-	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
-	if (!juego->arrayObjetos[j]->isDead() && juego->arrayObjetos[j]->getType() == WEAPON) {
-	juego->arrayObjetos[j]->onCollision();
-	}
-	}
-
 	*/
+	//// ACTUALIZACIÓN DE LOS VECTORES DE CADA UNO DE LOS OBJETOS  ////
+	//uint porque el .size() es un uint y puede haber perdidas de memoria
+	/*for (uint i = 0; i < juego->arrayObjetos.size(); i++){
+
+		//Hay que separa entre los dinámicos y los que solamente se actualizan una vez en todo el juego (ej, boss)
+		if ((juego->arrayObjetos[i]->getType() == PJ && juego->arrayObjetos[i]->getType() == ENEMY 
+			/*|| juego->arrayObjetos[i]->getType() == LO QUE QUIERAS QUE SE ACTUALIZE )){
+
+
+		juego->arrayObjetos[i]->actualizaVectCols();
+
+
+		}
+}*/
+
+	//// COMPROBACIÓN DE SI ESTÁ MUERTO Y LIMPIEZA DE OBJETOS  ////
 	if (juego->arrayObjetos[0]->isDead()){
 		for (int i = 0; i < juego->stats.size(); i++) {
 			juego->stats[i] = 0;

@@ -2,6 +2,8 @@
 #include "Objeto.h"
 #include "BalaPlayer.h"
 
+#include <vector>
+
 class Player : public Objeto 
 {
 public:
@@ -15,7 +17,7 @@ public:
 	void setCamera(SDL_Rect &camera);
 	//void drawPlayer();
 	void draw() const;
-	void onCollision();
+	void onCollision(collision);
 
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }
@@ -23,7 +25,13 @@ public:
 	int posIniX, posIniY;
 	void gestorVida();
 
+	virtual void actualizaVectCols();
+
 private:
+
+	//Vector de colisiones de player
+	//std::vector <ObjetoJuego*> vectColsPJ;
+
 	int velX, velY;
 
 	int vida;

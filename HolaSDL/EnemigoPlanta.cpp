@@ -62,8 +62,8 @@ void EnemigoPlanta::update(int delta){
 	}
 }
 
-void EnemigoPlanta::onCollision() { //onCollision de gestor de vida
-
+void EnemigoPlanta::onCollision(collision seUsaCreoPeroNoSe) { //onCollision de gestor de vida
+	
 	gestorVida();
 }
 

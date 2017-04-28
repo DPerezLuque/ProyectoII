@@ -8,7 +8,7 @@ public:
 	Dialogo(Juego* ptr, int px, int py, int ancho, int alto, std::string texto);
 	~Dialogo();
 	void draw() const;
-	void onCollision(){}
+	void onCollision(collision){}
 	void update(int delta){}
 private:
 	Texto* escrito;

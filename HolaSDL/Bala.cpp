@@ -40,11 +40,11 @@ void Bala::update(int delta) {
 	rectCollision.y = rect.y;//(rect.y + rect.h / 4) * delta;
 
 	if (juego->touchesWall(this))
-		onCollision();
+		onCollision(this->getType());
 }
 
 
-void Bala::onCollision(){
+void Bala::onCollision(collision noSeUsa){
 
 		dead = true;
 

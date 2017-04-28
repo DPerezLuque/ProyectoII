@@ -23,7 +23,9 @@ public:
 
 	virtual void gestorVida() = 0;
 
-	virtual void onCollision() = 0;
+	virtual void onCollision(collision) = 0;		//Hay que meterle el tipo, o el objeto directamente
+
+	virtual void actualizaVectCols() = 0;
 
 	virtual bool isDead() = 0;
 

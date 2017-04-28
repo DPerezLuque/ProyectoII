@@ -12,7 +12,8 @@ public:
 	enum Estaditos{PARADO,ACELERON,NORMAL};
 	Estaditos humuluhumulu = Estaditos::NORMAL;
 	void sma();
-
+	void onCollision(collision){};					//Aquí se regula que si ha colisionado con las mierdas de barriles, le quite vida
+													//ENVIROMENT =/= DECORATIVOS
 
 private:
 	int contParado = 0;

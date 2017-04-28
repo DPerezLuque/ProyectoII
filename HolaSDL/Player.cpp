@@ -2,6 +2,7 @@
 #include "Checkpoint.h"
 #include <iostream>
 
+typedef unsigned int uint;
 
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
@@ -20,6 +21,8 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	posIniX = rect.x; //Lo inicializamos al valor que le pasan por parametro
 	posIniY = rect.y;
+
+	actualizaVectCols(); // Se va a llamar en play, en un for
 
 	tipo = PJ;
 	vida = 4;
@@ -82,16 +85,31 @@ void Player::animacionBasica(){ //Para el paso de frames
 	}	
 }
 
-int aux = 0;
+void Player::actualizaVectCols(){
+	
+	//uint porque el .size() es un uint y puede haber perdidas de memoria
+	for (uint i = 0; i < juego->arrayObjetos.size(); i++){
+		if (juego->arrayObjetos[i]->getType() != PJ && juego->arrayObjetos[i]->getType() != PJ_WEAPON){
+			vectColsPropiasObjeto.push_back(juego->arrayObjetos[i]); // Asignamos el puntero J a que apunte al puntero de i.
+		}
+	}
 
+}
 void Player::update(int delta) {
 	//rect.x = rect.x - juego->camera.x;
 	//rect.y = rect.y - juego->camera.y;
 
 	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
-	//juego->checkCollision()
-	/*for (int i = 0; i < 10; ++i){
-		juego->checkCollision(this->rect, juego->topEstado()->)
+	//
+	/*for (int i = 0; i < arrayObjetos.size(); ++i){
+		if (juego->checkCollision(this, arrayObjetos[i]){
+
+		onCollision(arrayObjetos[i]->GetType();    <--- EL DE PLAYER, le pasas el TIPO de lo que se ha colisionado
+		arrayObjetos[i]-> onCollision (this);	 <---- this == Player
+
+		}
+		
+		
 	}*/	
 
 	rect.x += juego->getVelX() * delta / 1.5f;
@@ -112,6 +130,16 @@ void Player::update(int delta) {
 	}
 
 	setCamera(juego->camera);
+
+	/// COMPROBAMOS LAS COLISIONES DEL JUGADOR CON SU VECTOR  ///
+	for (int i = 0; i < juego->arrayObjetos.size(); ++i){
+		if (juego->checkCollision(this, juego->arrayObjetos[i])){
+
+			onCollision(juego->arrayObjetos[i]->getType());    //<-- - EL DE PLAYER, le pasas el TIPO de lo que se ha colisionado
+			juego->arrayObjetos[i]->onCollision(this->getType());		   //<---- this == Player
+
+		}
+	}
 
 	if (inmunidad) {
 		if (contadorInmunidad < 100) contadorInmunidad++;
@@ -247,8 +275,8 @@ void Player::gestorVida()
 	}
 }
 
-void Player::onCollision(){
-
+void Player::onCollision(collision infoCol){
+	//En función del infoCol, de su tipo, el jugador hará unas cosas u otras que se definirán aquí. Se usa.
 		gestorVida();
 
 }

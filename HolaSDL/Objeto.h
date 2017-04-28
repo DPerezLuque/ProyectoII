@@ -15,7 +15,8 @@ public:
 	SDL_Rect getRect();
 
 	void gestorVida() {};
-	void onCollision() {};
+	void onCollision(collision) {};
+	virtual void actualizaVectCols() {};
 
 	collision getType() {
 		return tipo;
@@ -45,5 +46,10 @@ protected:
 	int cont;
 	int cont2;
 	bool arriba = true;
+
+	std::vector <ObjetoJuego*> vectColsPropiasObjeto;	//Vector con todos los objetos con los que el objeto que lo porta PUEDE colisionar
+														
+	//Cada objeto tiene una instancia de este vector, pero no necesariamente dos instancias tienen que ser iguales.
+	//No todos los objetos van a usar este vector, pero es para automatizar un poco.
 };
 

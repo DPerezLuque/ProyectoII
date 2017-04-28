@@ -13,7 +13,7 @@ public:
 	void shoot(int x, int y);
 	void draw() const;
 
-	void onCollision();
+	void onCollision(collision);
 	void gestorVida();
 
 protected:

@@ -122,8 +122,8 @@ void enemy::shoot(int targetX, int targetY){
 	juego->arrayEnemigas.push_back(new BalaEnemigo(juego, rect.x, rect.y, vX, vY));
 }
 
-void enemy::onCollision(){ //onCollision de gestor de vida
-
+void enemy::onCollision(collision seUsa){ //onCollision de gestor de vida
+	//Se usa para que el enemigo no atravise los objetos decorativos tambien, ni las paredes ni nada
 		gestorVida();
 }
 

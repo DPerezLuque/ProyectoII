@@ -10,7 +10,7 @@ public:
 	void update(int delta);
 	void animacionBasica();
 
-	void onCollision();
+	void onCollision(collision);
 	void gestorVida();
 
 private:

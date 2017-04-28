@@ -20,6 +20,6 @@ void Botiquin::update(int delta){
 	Oscilar(delta);
 }
 
-void Botiquin::onCollision(){
-	//Aqui farta
+void Botiquin::onCollision(collision noSeUsa){
+	//Aqui falta que se quite, la vida la sube el jugador
 }

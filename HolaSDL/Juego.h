@@ -62,10 +62,14 @@ public:
 	EstadoJuego* topEstado();
 
 	//GLOBAL ARRAYS
-	std::vector<ObjetoJuego*> arrayObjetos;	//PERSONAJE [0] + ENEMIGOS
-	std::vector<ObjetoJuego*> arrayBalas;	//BALAS PERSONAJE
+	std::vector<ObjetoJuego*> arrayObjetos;		//VECTOR DE T O D O S LOS OBJETOS DEL JUEGO. Todos. Sirve para el dibujado, entre otros
+
+	//useless vectors
+	std::vector<ObjetoJuego*> arrayBalas;		//BALAS PERSONAJE
 	std::vector<ObjetoJuego*> arrayEnemigas;	//BALAS ENEMIGOS ese nombre es una puta basura ☻
 	std::vector<ObjetoJuego*> arrayMenu;
+	//
+
 	std::vector<int> stats;
 
 	//PLAYER

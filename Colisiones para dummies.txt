@@ -1,0 +1,63 @@
+
+*********	COLISIONES PARA DUMMIES       ***********
+
+
+
+
+¿Qué necesitamos para hacer las colisiones?
+
+- Necesitamos un vector de <ObjetoJuego*> con T O D O S los objetos del juego, independientemente del tipo que sean. Esto se hace para el dibujado y para controlar qué objetos existen en el juego en ese momento.
+Tened en cuenta que igual influye el orden en el que se crean, o entán en el vector, para el dibujado (CREO) 
+Os juro que si poneis al jugador en la posición 0 a propósito para las colisiones os comeis la mesa.
+
+
+- Al margen de eso, necesitamos que cada uno de los objetos (que quieras que colisione con cosas) tenga un vector de punteros al vector anterior (Sí, los punteros a punteros existen) y en estos vectores estarán todos los objetos con los que se puede colisionar el objeto que los porta. Es decir, el jugador contendrá así como todo mientras que los enemigos un par de cosas, como las balas del jugador o los objetos decorativos (para que no los atraviesen)
+
+IMPORTANTE: Es el jugador el que se choca con los objetos y no al revés. Por ejemplo, el botiquín no necesita saber EN CADA TICK si se ha colisionado con el jugador. Es más lógico que sea el jugador el que lo compruebe ya que es su vida la que se va a modificar.
+
+
+
+
+
+¿Y como hacemos que esto funcione?
+
+- Recorremos el vector de TODOS llamando al update. Lógicamente. Entonces en el update cada objeto comprobará si se ha colisionado con algún objeto de su lista (su vector, claro) llamando al método 
+CheckCollision pasandole el this y la posición i-ésima que se quiera comprobar. 
+
+Ahora, una vez el jugador ha determinado que se ha chocado con un ALGO con lo que debería colisionarse, es hora de que identifique qué ha sido y como reaccionar ante ello. Para esto, si el método CheckCollision devuelve true el jugador va a tomar mediante el vector de TODOS el TIPO de la componente i-ésima. Esto sería la parte de IDENTIFICACIóN. 
+Una vez identificado, se procede en el propio jugador a hacer un switch para determinar cómo reaccionar ante el tipo de lo que se ha chocado: El enemigo le restará vida, los objetos decorativos restarán su movimiento como en las paredes, los botiquines le curan, etc...
+
+Y una vez el jugador haya REACCIONADO ante el objeto, llamará al OnCollision() del objeto i-ésimo porque claro, por cada acción tiene que hacer una reacción. Pero esto se llama desde el objeto colisionado, no desde Play. 
+y te preguntarás, ¿Puedes hacer eso? Pues claro, porque puedes acceder al ObjetoJuego* de la componente i-ésima y llamar a sus métodos. 
+
+El polimorfismo es la polla.
+
+
+  
+*********                                      ********** 
+KNOWN BUGS:
+
+-Los enemigos van como el culo, por lo que parece se movian hacia el objeto en la posicion 0, en vez de hacia el jugador. Creo que necesito un puntero desde los enemigos hacia el jugador. Imagino que no es el único lugar donde sucede esto.
+
+
+
+
+---
+
+// esta sintaxis vale para "iterables"
++	/*for (auto de : juego->arrayObjetos) {
++		for (auto desde : juego->arrayObjetos) {
++			//if (!enemigo->isDead() && juego->checkCollision(enemigo, juego->arrayObjetos[i])){
+				
++			}
++	}*/
+
+----
+
+
+inline std::pair<int, int> getPosition() const {
++		return std::make_pair<int, int>(3, 3);
++	}
+--
+
+inline int getVida() const { return vida; };

@@ -28,7 +28,7 @@ void Checkpoint::update(int delta) {
 	}
 
 	if (juego->checkCollision(this, juego->arrayObjetos[0]))
-		onCollision();
+		onCollision(this->getType());
 	//rectCollision.x = (rect.x + rect.w / 2) * delta; //Esto requiere que vaya en el update?
 	//rectCollision.y = (rect.y + rect.h / 2) * delta;
 }
@@ -53,7 +53,7 @@ void Checkpoint::animar(){
 	}
 }
 
-void Checkpoint::onCollision(){
+void Checkpoint::onCollision(collision noSeUsaCreo){
 	//cuando haya colision:
 	if (!cogido){
 		cogido = true;
