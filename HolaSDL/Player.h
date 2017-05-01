@@ -41,5 +41,6 @@ private:
 	void proceso();
 	int contador; //Para los frames
 	int contador2; //Para recargar arma
+	int contDashing;
 };
 

@@ -100,6 +100,8 @@ public:
 	int getWidth() const;
 	int getVelX();
 	int getVelY();
+	bool getDash();
+	void setDash();
 
 	//CREA COSAS
 	void creaAlmas(int, int, std::string);
@@ -126,5 +128,8 @@ private:
 	vector <Musica*> musicFiles;
 
 	Texto textoAux;
+
+	bool dashing = false;
+	int contDash;
 };
 

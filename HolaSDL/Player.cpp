@@ -28,6 +28,7 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	inmunidad = false;
 	contadorInmunidad = 0;
+	contDashing = 0;
 }
 
 
@@ -85,30 +86,39 @@ void Player::animacionBasica(){ //Para el paso de frames
 int aux = 0;
 
 void Player::update(int delta) {
-	//rect.x = rect.x - juego->camera.x;
-	//rect.y = rect.y - juego->camera.y;
-
-	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
-	//juego->checkCollision()
-	/*for (int i = 0; i < 10; ++i){
-		juego->checkCollision(this->rect, juego->topEstado()->)
-	}*/	
-
-	rect.x += juego->getVelX() * delta / 1.5f;
-	rect.y += juego->getVelY() * delta / 1.5f;
+		
+	if (juego->getDash()){
+			rect.x += juego->getVelX() * 4 * delta / 1.5f;
+			rect.y += juego->getVelY() * 4 * delta / 1.5f;
+			++contDashing;
+			if (contDashing >= 6){
+				contDashing = 0;
+				juego->setDash();
+			}				
+	}
+	else{
+		rect.x += juego->getVelX() * delta / 1.5f;
+		rect.y += juego->getVelY() * delta / 1.5f;
+	}
 	
-	rectCollision.x = (rect.x + rect.w / 3) * delta;
-	rectCollision.y = (rect.y + rect.h / 3) * delta;
-
-	if (juego->touchesWall(this)){		
 		//IDEA: Hacer un "rectangulo" delante del jugador y comprobar si ese rectangulo, y no el del jugador es el que se está colisionando
 		//Porque si la condicion se mueve arriba entonces si está en contacto con la pared el jugador no se mueve.
 		//Tendría el mismo principio que un raycast en Unity, para lo cual necesitariamos un enum de direcciones y en funcion de la 
 		//direccion del jugador se gira el "ray" para que siempre esté en frente suya. El enum estaba hecho en el dash primigenio, no sé si en el dash dos está.
 
+	rectCollision.x = (rect.x + rect.w / 3) * delta;
+	rectCollision.y = (rect.y + rect.h / 3) * delta;
+
+	if (juego->touchesWall(this)) {
 		//printf("Wall touched!\n");
-		rect.x -= juego->getVelX() * delta;
-		rect.y -= juego->getVelY() * delta;
+		if (juego->getDash()) {
+			rect.x -= juego->getVelX() * 4 * delta / 1.5f;
+			rect.y -= juego->getVelY() * 4 * delta / 1.5f;
+		}
+		else {
+			rect.x -= juego->getVelX() * delta;
+			rect.y -= juego->getVelY() * delta;
+		}
 	}
 
 	setCamera(juego->camera);

@@ -67,7 +67,7 @@ Juego::Juego()
 	}
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
-
+	contDash = 200;
 }
 
 Juego::~Juego()
@@ -118,6 +118,8 @@ void Juego::run()
 		//cout << delta << "\n";
 		estado->draw();
 		handle_events();
+		++contDash; 
+		//std::cout << contDash << "\n";
 	}
 
 	if (exit) cout << "EXIT \n";
@@ -355,12 +357,21 @@ void Juego::handle_events()
 			// else if(...)    
 		}
 		updateDirection();
-
+		//std::cout << contDash << "\n";
+		if (contDash >= 200){ //Timer del Dash
+			if (e.type == SDL_KEYDOWN) {
+				if (e.key.keysym.sym == SDLK_SPACE) {
+					contDash = 0;
+					dashing = true;
+				}
+			}	
+		}
 		if (e.type == SDL_KEYUP) {
 			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
 				pushState(new Pausa(this));
 			}
 		}
+
 
 	}
 }
@@ -427,7 +438,8 @@ int Juego::getWidth() const
 
 int Juego::getVelX() { return mVelX; }
 int Juego::getVelY() { return mVelY; }
-
+bool Juego::getDash() { return dashing; }
+void Juego::setDash() { dashing = false; }
 ////////////////// PILA ///////////////////////////
 void Juego::changeState(EstadoJuego* newSt)
 {
