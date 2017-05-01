@@ -108,7 +108,7 @@ void Juego::run()
 		//cout << delta << "\n";
 		estado->draw();
 		handle_events();
-		++contDash; //PRUEBA
+		++contDash; 
 		//std::cout << contDash << "\n";
 	}
 
@@ -316,7 +316,7 @@ void Juego::handle_events()
 		}
 		updateDirection();
 		//std::cout << contDash << "\n";
-		if (contDash >= 400){
+		if (contDash >= 200){ //Timer del Dash
 			if (e.type == SDL_KEYDOWN) {
 				if (e.key.keysym.sym == SDLK_SPACE) {
 					contDash = 0;

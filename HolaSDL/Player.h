@@ -44,8 +44,6 @@ private:
 	int contador; //Para los frames
 	int contador2; //Para recargar arma
 	int maximoBalas;
-	int contDash;
 	int contDashing;
-	bool canDash;
 };
 

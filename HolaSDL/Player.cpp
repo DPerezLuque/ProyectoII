@@ -27,8 +27,7 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	inmunidad = false;
 	contadorInmunidad = 0;
-	contDash = 0;
-	canDash = true;
+	contDashing = 0;
 }
 
 
@@ -93,27 +92,14 @@ int aux = 0;
 
 void Player::update(int delta) {
 	respawn();
-	//rect.x = rect.x - juego->camera.x;
-	//rect.y = rect.y - juego->camera.y;
 
-	//COMPROBAR AQUÍ LA COLISIÓN DEL JUGADOR CON TODO > LLAMAR CON UN FOR A CADA OBJETO DEL ARRAY
-	//juego->checkCollision()
-	/*for (int i = 0; i < 10; ++i){
-		juego->checkCollision(this->rect, juego->topEstado()->)
-	}*/	
-	//++contDash;
-	//std::cout << contDash << "\n";
-	//if (contDash >= 100) canDash = true; // tiempo de enfriamineto del dash
-	//if (canDash){
 		if (juego->getDash()){
-			canDash = false;
 
 				rect.x += juego->getVelX() * 4 * delta / 1.5f;
 				rect.y += juego->getVelY() * 4 * delta / 1.5f;
 				++contDashing;
 				if (contDashing >= 6){
 					contDashing = 0;
-					contDash = 0;
 					juego->setDash();
 				}				
 		}
@@ -125,11 +111,17 @@ void Player::update(int delta) {
 		rectCollision.x = (rect.x + rect.w / 3) * delta;
 		rectCollision.y = (rect.y + rect.h / 3) * delta;
 
-	if (juego->touchesWall(this)){
-		//printf("Wall touched!\n");
-		rect.x -= juego->getVelX() * delta;
-		rect.y -= juego->getVelY() * delta;
-	}
+		if (juego->touchesWall(this)) {
+			//printf("Wall touched!\n");
+			if (juego->getDash()) {
+				rect.x -= juego->getVelX() * 4 * delta / 1.5f;
+				rect.y -= juego->getVelY() * 4 * delta / 1.5f;
+			}
+			else {
+				rect.x -= juego->getVelX() * delta;
+				rect.y -= juego->getVelY() * delta;
+			}
+		}
 
 	setCamera(juego->camera);
 
