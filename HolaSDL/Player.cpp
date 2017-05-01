@@ -85,12 +85,12 @@ void Player::animacionBasica(){ //Para el paso de frames
 	}	
 }
 
-void Player::actualizaVectCols(){
+void Player::actualizaVectCols(){		//Vector jugador contiene: Todo menos él mismo y sus balas.
 	
 	//uint porque el .size() es un uint y puede haber perdidas de memoria
 	for (uint i = 0; i < juego->arrayObjetos.size(); i++){
 		if (juego->arrayObjetos[i]->getType() != PJ && juego->arrayObjetos[i]->getType() != PJ_WEAPON){
-			vectColsPropiasObjeto.push_back(juego->arrayObjetos[i]); // Asignamos el puntero J a que apunte al puntero de i.
+			vectColsPropiasObjeto.push_back(juego->arrayObjetos[i]); // 
 		}
 	}
 
@@ -118,7 +118,7 @@ void Player::update(int delta) {
 	rectCollision.x = (rect.x + rect.w / 3) * delta;
 	rectCollision.y = (rect.y + rect.h / 3) * delta;
 
-	if (juego->touchesWall(this)){		
+	if (juego->touchesWall(this) || !puedeMoverse) {
 		//IDEA: Hacer un "rectangulo" delante del jugador y comprobar si ese rectangulo, y no el del jugador es el que se está colisionando
 		//Porque si la condicion se mueve arriba entonces si está en contacto con la pared el jugador no se mueve.
 		//Tendría el mismo principio que un raycast en Unity, para lo cual necesitariamos un enum de direcciones y en funcion de la 
@@ -127,6 +127,8 @@ void Player::update(int delta) {
 		//printf("Wall touched!\n");
 		rect.x -= juego->getVelX() * delta;
 		rect.y -= juego->getVelY() * delta;
+
+		puedeMoverse = true;					//Actualizamos para que no se mueva por los objetos decorativos
 	}
 
 	setCamera(juego->camera);
@@ -277,7 +279,38 @@ void Player::gestorVida()
 
 void Player::onCollision(collision infoCol){
 	//En función del infoCol, de su tipo, el jugador hará unas cosas u otras que se definirán aquí. Se usa.
+
+	switch (infoCol) {
+
+	case ENEMY:
 		gestorVida();
+		break;
+
+	case BOSS:
+		gestorVida();
+		break;
+
+	case ENEMY_WEAPON:
+		gestorVida();
+		break;
+
+	case CHECK:
+		//Podría reproducir un sonido o algo, eso estaría bastante flex
+		break;
+
+	case BOTIQUIN:
+		vida += 2;	//Por ejemplo.
+		break;
+
+	case AURA:
+		//Pues yo que sé, un sonido o algo
+		break;
+
+	case DECORATIVO:
+		puedeMoverse = false;
+		break;
+	}
+
 
 }
 

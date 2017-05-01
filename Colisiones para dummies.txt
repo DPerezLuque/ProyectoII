@@ -35,11 +35,12 @@ El polimorfismo es la polla.
 
   
 *********                                      ********** 
-KNOWN BUGS:
+KNOWN BUGS and PROBLEMS:
 
 -Los enemigos van como el culo, por lo que parece se movian hacia el objeto en la posicion 0, en vez de hacia el jugador. Creo que necesito un puntero desde los enemigos hacia el jugador. Imagino que no es el único lugar donde sucede esto.
 
-
+-Cada objeto PUEDE crear sus balas, y podría meterlas en su propio vector de colisiones personales pero NO PUEDE meterlas en los vectores de los demás.
+Esto se podría solucionar con un metodo en play que cambie una booleana, y que si está activa mande a actualizar TODOS/EL o LOS VECTORES necesarios..
 
 
 ---
@@ -61,3 +62,10 @@ inline std::pair<int, int> getPosition() const {
 --
 
 inline int getVida() const { return vida; };
+
+
+================================================
+¿Por donde voy?
+
+Estoy definiendo los onCollision de los objetos independientes. El puntero al jugador ya está hecho, y sigo teniendo el problema de las balas en el vector.
+Empiezo a pensar que este método quizá no es tan util, pero seguiré trabajando en ello.

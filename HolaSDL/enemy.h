@@ -16,15 +16,17 @@ public:
 	void onCollision(collision);
 	void gestorVida();
 
+	virtual void actualizaVectCols();
 protected:
 	int vX, vY;
-	int vel; //velocidad del monimiento
+	int vel;								//velocidad del monimiento
 	int contDis = 0;
-	int freDis; //frecuencia con la que dispara
-	int velDis; //velocidad del disparo
+	int freDis;								//frecuencia con la que dispara
+	int velDis;								//velocidad del disparo
 
-	bool inmunidad; //Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
-	int contInm; //Contador inmunidad
+	bool inmunidad;							//Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
+	
+	int contInm;							//Contador inmunidad
 
 	Textura* barraVida;
 	SDL_Rect rectVida;

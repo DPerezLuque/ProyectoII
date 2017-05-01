@@ -3,6 +3,8 @@
 
 #include <random>
 
+typedef unsigned int uint;
+
 enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TEnemy);
@@ -52,8 +54,11 @@ void enemy::update(int delta)
 	rectVida.w = 32 * vida;
 
 	SDL_Rect rectPlayer;
-	rectPlayer = juego->arrayObjetos[0]->getRect();
+	rectPlayer = juego->getPuntPJ()->getRect();			//Puntero al jugador chavalesss
 	//static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
+
+	//<<COMPROBAR LAS COLISIONES AQUí>>
+	//if (puedeMoverse), ejecutamos esto.   En el "Else", pondremos que avance hacia atrás o algo.
 
 	if (contDis < freDis - 10){ //Algo tope chungo para que se pare al disparar
 		follow(rectPlayer.x, rectPlayer.y, delta);
@@ -122,9 +127,41 @@ void enemy::shoot(int targetX, int targetY){
 	juego->arrayEnemigas.push_back(new BalaEnemigo(juego, rect.x, rect.y, vX, vY));
 }
 
-void enemy::onCollision(collision seUsa){ //onCollision de gestor de vida
-	//Se usa para que el enemigo no atravise los objetos decorativos tambien, ni las paredes ni nada
-		gestorVida();
+void enemy::actualizaVectCols() {	//Vector enemigo contiene: Jugador, bajasPJ, entorno.
+
+
+	//uint porque el .size() es un uint y puede haber perdidas de memoria
+	for (uint i = 0; i < juego->arrayObjetos.size(); i++) {
+		if (juego->arrayObjetos[i]->getType() == PJ || juego->arrayObjetos[i]->getType() == PJ_WEAPON 
+			|| juego->arrayObjetos[i]->getType() == DECORATIVO) {
+
+			vectColsPropiasObjeto.push_back(juego->arrayObjetos[i]); // 
+		}
+	}
+
+}
+
+void enemy::onCollision(collision colision) { //onCollision de gestor de vida
+										   //Se usa para que el enemigo no atravise los objetos decorativos tambien, ni las paredes ni nada
+	switch (colision){
+
+		case PJ:
+			//gestorVida();
+			//No sé jaja
+		break;
+
+		case PJ_WEAPON:
+			gestorVida();
+		break;
+
+		case DECORATIVO:
+			puedeMoverse = false;
+		break;
+
+
+
+
+	}
 }
 
 void enemy::gestorVida()

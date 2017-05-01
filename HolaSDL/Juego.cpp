@@ -294,7 +294,9 @@ bool Juego::initMedia()
 
 	return success;
 }
-
+void Juego:: setPuntPJ(ObjetoJuego* jugador) {
+	puntPJ = jugador;
+}
 void Juego::freeMedia()
 {
 	for (size_t aux = 0; aux < arrayTex.size(); ++aux) {
@@ -609,20 +611,6 @@ bool Juego::checkWallCollisions(ObjetoJuego * a, SDL_Rect b)
 }
 
 /// CREAR UNIDADES ///
-//Cuando los enemigos mueren, crean almas y/o objetos según un random. Aquí se recogen los métodos que
-//añaden cosas al juego
-
-void Juego::creaAlmas(int posEnemigoX, int posEnemigoY, string msj){
-
-	if (msj != ""){
-		//Selecciona una frase aleatoria en el vector de frases y la metes en msj.
-		//Si hay una que QUIERES que aparezca, la metes en el parámetro msj
-	}
-
-	arrayObjetos.push_back(new Aura(this, posEnemigoX, posEnemigoY, 420, 50, msj));
-
-}
-
 //Creamos un objeto dado por el id que se introduzca en la llamada a función, según el random deseado en el objeto desde el que se
 //llame a este método.
 void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){

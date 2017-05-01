@@ -22,4 +22,5 @@ void Botiquin::update(int delta){
 
 void Botiquin::onCollision(collision noSeUsa){
 	//Aqui falta que se quite, la vida la sube el jugador
+	dead = true;
 }

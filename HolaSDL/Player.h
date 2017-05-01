@@ -27,6 +27,8 @@ public:
 
 	virtual void actualizaVectCols();
 
+
+
 private:
 
 	//Vector de colisiones de player

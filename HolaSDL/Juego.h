@@ -95,6 +95,8 @@ public:
 	void freeMedia();
 	void closeSDL();
 
+	//SETTERS
+	void setPuntPJ(ObjetoJuego*);
 	//GETTERS
 	SDL_Renderer* getRender() const { return pRenderer; }
 	SDL_Rect getCamera(){ return camera; }
@@ -104,9 +106,10 @@ public:
 	int getWidth() const;
 	int getVelX();
 	int getVelY();
+	ObjetoJuego* getPuntPJ() { return puntPJ; }
 
 	//CREA COSAS
-	void creaAlmas(int, int, std::string);
+	//void creaAlmas(int, int, std::string);
 	void spawnObjetos(char, int, int, std::string);	//Identificador, posicionX, posicionY, String por si es un alma (opcional)
 
 	//MUSIC
@@ -120,15 +123,17 @@ private:
 	//ARRAYS
 	std::vector<std::string> texturas;
 	std::vector<Textura*> arrayTex;
-	///TEXT
+	//TEXT
 	std::vector<Texto> arrayFuentes;
 	std::vector<string> nombreFuentes;
 	std::vector<string> VectTextosAlma;
-	///MUSIC	
+	Texto textoAux;
+	//MUSIC	
 	vector <string> musicNames;//Vector para almacenar direcciones de canciones
 	Musica* cancion; //Auxiliar para llenar el vector de musica
 	vector <Musica*> musicFiles;
-
-	Texto textoAux;
+	//Puntero al jugador
+	ObjetoJuego* puntPJ;
+	
 };
 

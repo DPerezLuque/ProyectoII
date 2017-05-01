@@ -33,9 +33,14 @@ Play::~Play()
 }
 
 void Play::init() {
-
+	//Incluimos al jugador de forma particular
+	ObjetoJuego* player = new Player(juego, 200, 200);
+	juego->arrayObjetos.push_back(player);
+	juego->setPuntPJ(player);
+	//
+	//Incluimos el resto de objetos
 	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));
-	juego->arrayObjetos.push_back(new Player(juego, 200, 200));
+
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	juego->arrayObjetos.push_back(new Humo(juego, 150, 200));	
@@ -53,7 +58,7 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
 	juego->stats.push_back(vidaAux);
-	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
+	juego->stats.push_back(static_cast<Player*>(juego->getPuntPJ())->getVida()); // En player
 	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getBalas());
 
 	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
