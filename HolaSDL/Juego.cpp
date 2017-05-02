@@ -258,6 +258,8 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\MesaCorazon.png");
 	texturas.push_back("..\\bmps\\MesaTentaculo.png");
 	texturas.push_back("..\\bmps\\MesaDoble.png");
+	texturas.push_back("..\\bmps\\MesaRota.png");
+	texturas.push_back("..\\bmps\\MesaRota2.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {

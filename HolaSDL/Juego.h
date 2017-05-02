@@ -30,7 +30,8 @@ public:
 		TPlayer, TBulletPlayer, TBExit, TBPlay, TBMenu, TBResume,
 		TEnemy, TBulletEnemy, TVidaLlena, TVidaVacia, TDashLleno,
 		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta, TBarraVida, THumo,
-		TBotiquin, TPapelera1, TPapelera2, TPapelera3, TMesaEE, TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble,
+		TBotiquin, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
+		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
 	};
 
 	//PUBLIC VARIABLES

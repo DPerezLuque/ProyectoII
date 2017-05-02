@@ -72,8 +72,8 @@ void objetoDecorativo::setObjectFromString(std::string id){
 	else if (id == "MesaPeque"){
 		textura = juego->getTextura(Juego::TMesa);
 
-		rect.w = 64;
-		rect.h = 64;
+		rect.w = 96;
+		rect.h = 112;
 
 		rectCollision = rect;
 		tipo = "e";
@@ -89,6 +89,38 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		tipo = "a";
 		tipoAnim = "corazon";
 	}	
+	else if (id == "MesaTentaculo"){
+		textura = juego->getTextura(Juego::TMesaTentaculo);
+
+		rect.w = 96;
+		rect.h = 112;		
+		rectCollision = rect;
+		tipo = "e";
+	}
+	else if (id == "MesaDoble"){
+		textura = juego->getTextura(Juego::TMesaDoble);
+
+		rect.w = 192;
+		rect.h = 112;
+		rectCollision = rect;
+		tipo = "e";
+	}
+	else if (id == "MesaRota"){
+		textura = juego->getTextura(Juego::TMesaRota);
+
+		rect.w = 96;
+		rect.h = 112;
+		rectCollision = rect;
+		tipo = "e";
+	}
+	else if (id == "MesaRota2"){
+		textura = juego->getTextura(Juego::TMesaRota2);
+
+		rect.w = 96;
+		rect.h = 112;
+		rectCollision = rect;
+		tipo = "e";
+	}
 }
 
 void objetoDecorativo::draw() const {
