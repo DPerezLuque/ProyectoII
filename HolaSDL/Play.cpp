@@ -56,15 +56,15 @@ void Play::init() {
 	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
 	
 	///// OBJETOS DECORATIVOS  /////
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 300, 200, "papelera2"));
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 400, 200, "papelera3"));
 
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 
 
@@ -83,16 +83,16 @@ void Play::update(int delta) {
 	//PERSONAJE CON ENEMIGOS
 	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
 		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayObjetos[i])){
-			juego->arrayObjetos[0]->onCollision();
-			juego->arrayObjetos[i]->onCollision();
+			juego->arrayObjetos[0]->onCollision(juego->arrayObjetos[i]-> getType());
+			juego->arrayObjetos[i]->onCollision(juego->arrayObjetos[0]->getType());
 		}
 	}
 
 	//PERSONAJE CON BALAS ENEMIGAS
 	for (int i = 0; i < juego->arrayEnemigas.size(); ++i) {
 		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayEnemigas[i])) {
-			juego->arrayObjetos[0]->onCollision();
-			juego->arrayEnemigas[i]->onCollision();
+			juego->arrayObjetos[0]->onCollision(juego->arrayEnemigas[i]->getType());
+			juego->arrayEnemigas[i]->onCollision(juego->arrayObjetos[0]->getType());
 		}
 	}
 
@@ -100,8 +100,8 @@ void Play::update(int delta) {
 	for (int i = 0; i < juego->arrayBalas.size(); ++i) {
 		for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
 			if (!juego->arrayBalas[i]->isDead() && juego->checkCollision(juego->arrayBalas[i], juego->arrayObjetos[j])) {
-				juego->arrayBalas[i]->onCollision();
-				juego->arrayObjetos[j]->onCollision();
+				juego->arrayBalas[i]->onCollision(juego->arrayObjetos[j]->getType());
+				juego->arrayObjetos[j]->onCollision(juego->arrayBalas[i]->getType());
 			}
 		}
 	}

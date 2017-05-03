@@ -39,7 +39,7 @@ BalaEnemigo::~BalaEnemigo()
 	}
 }*/
 
-void BalaEnemigo::onCollision() {
+void BalaEnemigo::onCollision(collision type) {
 
 	cout << "Bala enemiga destruida! () \n";
 	dead = true;

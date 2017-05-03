@@ -20,7 +20,8 @@ Aura::~Aura()
 	delete mensaje;
 }
 
-void Aura::onCollision(){
+void Aura::onCollision(collision type){
+	
 	activo = true;
 }
 

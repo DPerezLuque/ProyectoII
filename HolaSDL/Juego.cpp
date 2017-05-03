@@ -478,7 +478,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	switch (a->getType()) {
 	case PJ:												//Hemos puesto la colision con el aura para que siga funcionando
 		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
-		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS || b->getType() == AURA)
+		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS || b->getType() == AURA || b->getType() == BOTIQUIN)
 			colisiona = true;
 
 		break;
@@ -654,7 +654,7 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 		while (msj == ""){
 			//Selecciona una frase aleatoria en el vector de frases y la metes en msj.
 			//Si hay una que QUIERES que aparezca, la metes en el parámetro msj al llamar a la funcion spawnObjetos.
-			int miniRnd = rand() % 4 + 0;				//Rango: [30,70]
+			int miniRnd = rand() % VectTextosAlma.size() + 0;				
 			msj = VectTextosAlma.at(miniRnd);
 		}
 

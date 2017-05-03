@@ -49,7 +49,7 @@ void BalaPlayer::update(int delta) {
 }*/
 
 
-void BalaPlayer::onCollision() {
+void BalaPlayer::onCollision(collision type) {
 	
 	/*if (juego->touchesWall(this)) {
 		printf("Bala Destruida (WALL) \n");
