@@ -20,6 +20,7 @@ void Botiquin::update(int delta){
 	Oscilar(delta);
 }
 
-void Botiquin::onCollision(){
-	//Aqui farta
+void Botiquin::onCollision(collision type){
+	
+	dead = true;
 }

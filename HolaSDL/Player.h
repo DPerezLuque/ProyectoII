@@ -15,7 +15,7 @@ public:
 	void setCamera(SDL_Rect &camera);
 	//void drawPlayer();
 	void draw() const;
-	void onCollision();
+	void onCollision(collision type);
 
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }

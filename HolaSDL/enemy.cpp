@@ -34,6 +34,8 @@ enemy::enemy(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	inmunidad = false;
 	contInm = 0;
 
+	srand(0);
+
 }
 
 
@@ -122,8 +124,9 @@ void enemy::shoot(int targetX, int targetY){
 	juego->arrayEnemigas.push_back(new BalaEnemigo(juego, rect.x, rect.y, vX, vY));
 }
 
-void enemy::onCollision(){ //onCollision de gestor de vida
-
+void enemy::onCollision(collision type){ //onCollision de gestor de vida
+	
+	if (type == PJ_WEAPON)
 		gestorVida();
 }
 
@@ -141,13 +144,15 @@ void enemy::gestorVida()
 
 
 		/* generate secret number between 1 and 10: */
-		//int rnd = 1 - 100 * (rand() % 100);
+		int rnd = 1 - 100 * (rand() % 100);
 
-		//if (rnd % 2 == 0)
+		if (rnd % 5 == 0) juego->spawnObjetos('b', rect.x, rect.y, "");  //Droppea botiquines con un 20%
+
 		//juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
 		juego->spawnObjetos('a', rect.x, rect.y, "");
 		juego->spawnObjetos('e', rect.x, rect.y, "");
 		juego->spawnObjetos('b', rect.x, rect.y, "");
+
 		
 		//Tiras un random mágico, de un 10% o asi												" "
 		//Si el random cuela --> juego -> meteAlma(posEnemigoX, posEnemigoY, Opcional: string frasePredeterminada);			mensaje random (:D)

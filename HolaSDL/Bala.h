@@ -9,7 +9,7 @@ public:
 
 	void update(int delta);
 
-	void onCollision();
+	void onCollision(collision type);
 
 };
 

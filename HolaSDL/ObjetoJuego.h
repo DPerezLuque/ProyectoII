@@ -25,6 +25,8 @@ public:
 
 	virtual void onCollision() = 0;
 
+	virtual void onCollision(collision type) = 0;
+
 	virtual bool isDead() = 0;
 
 	virtual collision getType() = 0;

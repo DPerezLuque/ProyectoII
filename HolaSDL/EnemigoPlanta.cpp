@@ -80,5 +80,6 @@ void EnemigoPlanta::gestorVida()
 		//RANDOM AQUÍ
 		juego->spawnObjetos('a', rect.x, rect.y, "");
 		juego->spawnObjetos('b', rect.x, rect.y, "");
+		juego->spawnObjetos('p', rect.x, rect.y, "");
 	}
 }

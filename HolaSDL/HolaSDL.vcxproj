@@ -15,6 +15,7 @@
     <ClCompile Include="Bala.cpp" />
     <ClCompile Include="BalaEnemigo.cpp" />
     <ClCompile Include="BalaPlayer.cpp" />
+    <ClCompile Include="Bobina.cpp" />
     <ClCompile Include="BossRino.cpp" />
     <ClCompile Include="Botiquin.cpp" />
     <ClCompile Include="Checkpoint.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="Bala.h" />
     <ClInclude Include="BalaEnemigo.h" />
     <ClInclude Include="BalaPlayer.h" />
+    <ClInclude Include="Bobina.h" />
     <ClInclude Include="BossRino.h" />
     <ClInclude Include="Botiquin.h" />
     <ClInclude Include="Checkpoint.h" />

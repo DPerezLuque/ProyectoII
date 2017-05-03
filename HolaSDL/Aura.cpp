@@ -22,7 +22,8 @@ Aura::~Aura()
 	delete this;
 }
 
-void Aura::onCollision(){
+void Aura::onCollision(collision type){
+	
 	activo = true;
 }
 

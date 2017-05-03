@@ -257,9 +257,15 @@ void Player::gestorVida()
 	}
 }
 
-void Player::onCollision(){
-
+void Player::onCollision(collision type){
+	
+	if (type == ENEMY_WEAPON || type == ENEMY)
 		gestorVida();
+	//else if (type == ENEMY) gestorVida();
+	else if (type == BOTIQUIN) {
+		if (vida <4)				//Si la vida es mayor que 4, lo ponemos a 4.
+			vida++;
+	}
 
 }
 

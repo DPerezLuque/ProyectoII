@@ -16,6 +16,7 @@ public:
 
 	void gestorVida() {};
 	void onCollision() {};
+	void onCollision(collision type) {};
 
 	collision getType() {
 		return tipo;
