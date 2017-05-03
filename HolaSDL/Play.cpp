@@ -18,6 +18,7 @@
 #include "Dialogo.h"
 #include "Aura.h"
 #include "Botiquin.h"
+#include "Bobina.h"
 
 using namespace std;
 
@@ -61,12 +62,12 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 400, 200, "papelera3"));
 
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
-	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
-	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
-	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
-	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
-
+	//juego->arrayObjetos.push_back(new Bobina(juego, 300, 300));
 
 	//FUENTE DE BALAS
 	fuenteCargador = new Texto(juego->getTexto(0), 28);
