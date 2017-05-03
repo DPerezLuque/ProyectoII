@@ -13,6 +13,7 @@
 #include "BarraVida.h"
 #include "BarraVidaVacia.h"
 #include "Cargador.h"
+#include "EnergiaDisponible.h"
 #include "Checkpoint.h"
 #include "EnemigoPlanta.h"
 #include "Dialogo.h"
@@ -35,13 +36,14 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Player(juego, 200, 300));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
-	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
+	//ENEMIGOS
+	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
 	//ENEMIGOS PLANTA
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
@@ -51,10 +53,12 @@ void Play::init() {
 	juego->stats.push_back(vidaAux);
 	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
 	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getBalas());
+	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getDash());
 
 	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
 	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
 	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
+	elemInterfaz.push_back(new EnergiaDisponible(juego, juego->camera, 32, 32, 0, 0));
 	
 	///// OBJETOS DECORATIVOS  /////
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
@@ -62,11 +66,11 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 400, 200, "papelera3"));
 
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
+	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 	//juego->arrayObjetos.push_back(new Bobina(juego, 300, 300));
 
 	//FUENTE DE BALAS
@@ -239,6 +243,9 @@ void Play::getStats(int i){
 		break;
 	case 2: //Balas
 		juego->stats[i] = static_cast<Player*>(juego->arrayObjetos[0])->getBalas();
+		break;
+	case 3:
+		juego->stats[i] = static_cast<Player*>(juego->arrayObjetos[0])->getDash();
 		break;
 	default:
 		break;

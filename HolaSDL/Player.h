@@ -19,6 +19,12 @@ public:
 
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }
+	int getDash(){
+		if (juego->getDASH()){
+			return 0; 
+		}
+		else{ return 1; }
+	}
 
 	int posIniX, posIniY;
 	void gestorVida();
@@ -28,7 +34,7 @@ private:
 
 	int vida;
 	int balas;
-	int maximoBalas;
+	int maximoBalas;	
 
 	bool inmunidad; //Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
 	int contadorInmunidad; //Contador del tiempo de inmunidad

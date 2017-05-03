@@ -32,9 +32,6 @@ using namespace std;
 //The level tiles
 Tilemap::Tile* tileSet[TOTAL_TILES];
 
-
-
-
 Juego::Juego()
 {
 
@@ -69,7 +66,7 @@ Juego::Juego()
 	}
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
-	contDash = 200;
+	contDash = 150;
 }
 
 Juego::~Juego()
@@ -120,7 +117,7 @@ void Juego::run()
 		//cout << delta << "\n";
 		estado->draw();
 		handle_events();
-		++contDash; 
+		contDash++; 
 		//std::cout << contDash << "\n";
 	}
 
@@ -363,11 +360,13 @@ void Juego::handle_events()
 		}
 		updateDirection();
 		//std::cout << contDash << "\n";
-		if (contDash >= 200){ //Timer del Dash
+		if (contDash >= 150){ //Timer del Dash
+			dashAux = true;
 			if (e.type == SDL_KEYDOWN) {
 				if (e.key.keysym.sym == SDLK_SPACE) {
 					contDash = 0;
-					dashing = true;
+					dashing = true;		
+					dashAux = false; //Para la interfaz
 				}
 			}	
 		}
@@ -431,20 +430,7 @@ void Juego::getMousePos(int & mpx, int & mpy) const
 	mpy = y;
 }
 
-int Juego::getHeight() const
-{
-	return SCREEN_HEIGHT;
-}
 
-int Juego::getWidth() const
-{
-	return SCREEN_WIDTH;
-}
-
-int Juego::getVelX() { return mVelX; }
-int Juego::getVelY() { return mVelY; }
-bool Juego::getDash() { return dashing; }
-void Juego::setDash() { dashing = false; }
 ////////////////// PILA ///////////////////////////
 void Juego::changeState(EstadoJuego* newSt)
 {

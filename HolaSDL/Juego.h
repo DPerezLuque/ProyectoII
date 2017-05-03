@@ -98,12 +98,12 @@ public:
 	SDL_Rect getCamera(){ return camera; }
 	Textura* getTextura(Texturas_t et) const { return arrayTex[et]; }
 	void getMousePos(int & mpx, int & mpy) const;
-	int getHeight() const;
-	int getWidth() const;
-	int getVelX();
-	int getVelY();
-	bool getDash();
-	void setDash();
+	int getHeight() const {return SCREEN_HEIGHT;}
+	int getWidth() const {	return SCREEN_WIDTH;}
+	int getVelX(){ return mVelX; }
+	int getVelY(){ return mVelY; }
+	bool getDash(){ return dashing; }
+	void setDash(bool dash){ dashing = dash; }
 
 	//CREA COSAS
 	void creaAlmas(int, int, std::string);
@@ -114,9 +114,11 @@ public:
 	//FONTS
 	enum Fuentes { Arial, };
 	string getTexto(int fun) { return nombreFuentes[fun]; }
-
+	bool dashing = false;
+	bool getDASH(){ return dashAux; }
+	void setDASH(bool dash){dashAux = dash;	}
 private:
-
+	bool dashAux = false;
 	//ARRAYS
 	std::vector<std::string> texturas;
 	std::vector<Textura*> arrayTex;
@@ -131,7 +133,7 @@ private:
 
 	Texto textoAux;
 
-	bool dashing = false;
+	
 	int contDash;
 };
 
