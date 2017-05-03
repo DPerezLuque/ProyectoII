@@ -20,6 +20,8 @@
 #include "MapEditor.h"
 #include "Aura.h"
 #include "Botiquin.h"
+#include "enemy.h"
+#include "EnemigoPlanta.h"
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -646,6 +648,9 @@ void Juego::creaAlmas(int posEnemigoX, int posEnemigoY, string msj){
 //llame a este método.
 void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 
+	int v2 = rand() % 70 + 30;				//Rango: [30,70]
+	int direction = 1 - 2 * (rand() % 2);	//Decide el signo del random
+
 	switch (id)
 	{
 
@@ -664,11 +669,17 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 	case 'b':	//botiquín
 
 		//Mini random aqui para que el objeto no caiga justo encima del enemigo sino ligeramente desplazado
-		int v2 = rand() % 70 + 30;				//Rango: [30,70]
-		int direction = 1 - 2 * (rand() % 2);	//Decide el signo del random
+		
 		arrayObjetos.push_back(new Botiquin(this, posEnemigoX + (30 * direction), posEnemigoY + (30 * direction)));
 		break;
 
+	case 'e':   //Spawn de enemigo que camina
 
+		arrayObjetos.push_back(new enemy(this, posEnemigoX + (30 * direction), posEnemigoY));
+		break;
+
+	case 'p':	//Spawn de enemigos de plantas
+		arrayObjetos.push_back(new EnemigoPlanta(this, posEnemigoX, posEnemigoY + (30 * direction)));
+		break;
 	}
 }

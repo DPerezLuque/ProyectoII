@@ -146,6 +146,7 @@ void enemy::gestorVida()
 		//if (rnd % 2 == 0)
 		//juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
 		juego->spawnObjetos('a', rect.x, rect.y, "");
+		juego->spawnObjetos('e', rect.x, rect.y, "");
 		juego->spawnObjetos('b', rect.x, rect.y, "");
 		
 		//Tiras un random mágico, de un 10% o asi												" "

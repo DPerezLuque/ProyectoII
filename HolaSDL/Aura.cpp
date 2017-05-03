@@ -10,6 +10,7 @@ Aura::Aura(Juego* ptr, int px, int py, int ancho, int alto, std::string texto) :
 	activo = false;
 	topeUp = rect.y + 15;
 	topeDown = rect.y - 15;
+	contDestruccion = 0;
 
 	tipo = AURA;
 }
@@ -18,6 +19,7 @@ Aura::Aura(Juego* ptr, int px, int py, int ancho, int alto, std::string texto) :
 Aura::~Aura()
 {
 	delete mensaje;
+	delete this;
 }
 
 void Aura::onCollision(){
@@ -37,4 +39,20 @@ void Aura::draw() const{
 }
 void Aura::update(int delta){
 	Oscilar(delta);
+
+	if (activo){
+		contDestruccion += delta;
+		
+		if (contDestruccion >= 200){
+			destruyeAlma();
+		}
+
+	}
+}
+
+void Aura:: destruyeAlma(){
+	activo = false;
+	dead = true;
+	delete mensaje;
+
 }
