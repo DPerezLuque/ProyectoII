@@ -2,10 +2,11 @@
 
 Aura::Aura(Juego* ptr, int px, int py, int ancho, int alto, std::string texto) : Objeto(ptr, px, py)
 {
-	textura = juego->getTextura(Juego::TCargador);
+	textura = juego->getTextura(Juego::TAura);
 	mensaje = new Dialogo(juego, rect.x, rect.y, ancho, alto, texto);
-	rect.w = 50;
-	rect.h = 50;
+
+	rect.w = 70;
+	rect.h = 70;
 	rectCollision = rect;
 	activo = false;
 	topeUp = rect.y + 15;

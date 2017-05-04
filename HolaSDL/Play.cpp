@@ -37,7 +37,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	//ENEMIGOS
-	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
+	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
