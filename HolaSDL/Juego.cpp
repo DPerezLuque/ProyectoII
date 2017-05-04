@@ -66,7 +66,7 @@ Juego::Juego()
 	}
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
-	contDash = 150;
+	contDash = 80;
 }
 
 Juego::~Juego()
@@ -360,7 +360,7 @@ void Juego::handle_events()
 		}
 		updateDirection();
 		//std::cout << contDash << "\n";
-		if (contDash >= 150){ //Timer del Dash
+		if (contDash >= 80){ //Timer del Dash
 			dashAux = true;
 			if (e.type == SDL_KEYDOWN) {
 				if (e.key.keysym.sym == SDLK_SPACE) {
@@ -399,6 +399,8 @@ void Juego::updateDirection() {
 
 		case SDLK_RIGHT: mVelX += VPLAYER; break;
 		case SDLK_d: mVelX += VPLAYER; break;
+
+		case SDLK_r: setRecargar(true); break;
 		}
 	}
 
@@ -419,6 +421,8 @@ void Juego::updateDirection() {
 
 		case SDLK_RIGHT: mVelX -= VPLAYER; break;
 		case SDLK_d: mVelX -= VPLAYER; break;
+
+		case SDLK_r: setRecargar(false); break;		
 		}
 	}
 }

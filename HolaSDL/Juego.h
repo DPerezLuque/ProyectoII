@@ -117,8 +117,11 @@ public:
 	bool dashing = false;
 	bool getDASH(){ return dashAux; }
 	void setDASH(bool dash){dashAux = dash;	}
+	void setRecargar(bool re){ recargar = re; }
+	bool getRecargar(){ return recargar; }
 private:
 	bool dashAux = false;
+	bool recargar = false;
 	//ARRAYS
 	std::vector<std::string> texturas;
 	std::vector<Textura*> arrayTex;
