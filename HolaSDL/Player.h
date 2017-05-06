@@ -48,5 +48,9 @@ private:
 	int contador; //Para los frames
 	int contador2; //Para recargar arma
 	int contDashing;
+
+	//Controlar cadencia de disparo
+	int conta = 0;
+	bool disparo = false;
 };
 

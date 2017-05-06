@@ -40,51 +40,6 @@ void Player::draw() const {
 	textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
 }
 
-void Player::animar(animacion current){ //derecha, izquierda, arriba, abajo
-	switch (current)
-	{
-		case Player::derecha:
-			rectAnim.y = 192; //Altura de la animacion		
-			break;
-		case Player::izquierda:
-			rectAnim.y = 128; 		
-			break;
-		case Player::arriba:
-			rectAnim.y = 64; 
-			break;
-		case Player::abajo:
-			rectAnim.y = 0; 
-			break;
-		case Player::dchaUp:
-			rectAnim.y = 320; 
-			break;
-		case Player::dchaDown:
-			rectAnim.y = 256; 
-			break;
-		case Player::izdaUp:
-			rectAnim.y = 384; 	
-			break;
-		case Player::izdaDown:
-			rectAnim.y = 448; 
-			break;
-		default:
-			break;
-	}
-	
-	animacionBasica();
-}
-
-void Player::animacionBasica(){ //Para el paso de frames
-	if (rectAnim.x >= 192){
-		rectAnim.x = 0;
-	}
-	else {
-		rectAnim.x += 64;
-	}	
-}
-
-int aux = 0;
-
 void Player::update(int delta) {
 		
 	if (juego->getDash()){
@@ -136,14 +91,13 @@ void Player::update(int delta) {
 	//std::cout << "CAMARA X: " << juego->camera.x << "\n";
 
 	//Para la animación:
-
 		contador += delta;
 		if (contador >= 6){
 			proceso();
 			contador = 0;				
 		}
 
-		//Recargar balas
+	//Recargar balas
 		if (balas <= 0){
 			contador2 += delta;
 			balas = 0;
@@ -153,7 +107,7 @@ void Player::update(int delta) {
 			}
 		}
 
-		//Recargar manual
+	//Recargar manual
 		if (juego->getRecargar()){			
 			contador2 += delta;
 			balas = 0;
@@ -165,39 +119,16 @@ void Player::update(int delta) {
 		}
 		//rectAnim.x = rect.x;
 		//rectAnim.y = rect.y;
-} 
-void Player::proceso(){
-	//ANIMACION
 
-	if (juego->getVelX() > 0 && juego->getVelY() == 0){
-		animar(derecha);
-	}
-	if (juego->getVelX() < 0 && juego->getVelY() == 0){
-		animar(izquierda);
-	}
-	if (juego->getVelY() < 0 && juego->getVelX() == 0){
-		animar(arriba);
-	}
-	if (juego->getVelY()  > 0 && juego->getVelX() == 0){
-		animar(abajo);
-	}
-	if (juego->getVelX()  > 0 && juego->getVelY() < 0){
-		animar(dchaUp);
-	}
-	if (juego->getVelX() > 0 && juego->getVelY() > 0){
-		animar(dchaDown);
-	}
-	if (juego->getVelX() < 0 && juego->getVelY()  < 0){
-		animar(izdaUp);
-	}
-	if (juego->getVelX()  < 0 && juego->getVelY()  > 0){
-		animar(izdaDown);
-	}
-	if (juego->getVelX() == 0 && juego->getVelY() == 0){
-		contador = 0;
-		rectAnim.x = 0;
-	}
-}
+	//Controlar cadencia de disparo
+		if (disparo){
+			conta += delta;
+			if (conta >= 10){
+				conta = 0;
+				disparo = false;
+			}
+		}
+} 
 
 bool Player::onClick() {
 	
@@ -225,7 +156,8 @@ bool Player::onClick() {
 		//Disparo
 		//juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
 
-		if (balas > 0) {
+		if (balas > 0 && conta == 0) {
+			disparo = true; //Controlar cadencia de disparo
 			ObjetoJuego * newBala = new BalaPlayer(juego, posX, posY, vX, vY);
 			juego->arrayObjetos.push_back(newBala);
 			juego->playerBullets.push_back(newBala);
@@ -317,5 +249,81 @@ void Player::setCamera(SDL_Rect& camera)
 	if (camera.y > 7360 - camera.h)
 	{
 		camera.y = 7360 - camera.h;
+	}
+}
+
+//TODO LO DE ANIMACION
+void Player::proceso(){
+
+	if (juego->getVelX() > 0 && juego->getVelY() == 0){
+		animar(derecha);
+	}
+	if (juego->getVelX() < 0 && juego->getVelY() == 0){
+		animar(izquierda);
+	}
+	if (juego->getVelY() < 0 && juego->getVelX() == 0){
+		animar(arriba);
+	}
+	if (juego->getVelY()  > 0 && juego->getVelX() == 0){
+		animar(abajo);
+	}
+	if (juego->getVelX()  > 0 && juego->getVelY() < 0){
+		animar(dchaUp);
+	}
+	if (juego->getVelX() > 0 && juego->getVelY() > 0){
+		animar(dchaDown);
+	}
+	if (juego->getVelX() < 0 && juego->getVelY()  < 0){
+		animar(izdaUp);
+	}
+	if (juego->getVelX()  < 0 && juego->getVelY()  > 0){
+		animar(izdaDown);
+	}
+	if (juego->getVelX() == 0 && juego->getVelY() == 0){
+		contador = 0;
+		rectAnim.x = 0;
+	}
+}
+
+void Player::animar(animacion current){ //derecha, izquierda, arriba, abajo
+	switch (current)
+	{
+	case Player::derecha:
+		rectAnim.y = 192; //Altura de la animacion		
+		break;
+	case Player::izquierda:
+		rectAnim.y = 128;
+		break;
+	case Player::arriba:
+		rectAnim.y = 64;
+		break;
+	case Player::abajo:
+		rectAnim.y = 0;
+		break;
+	case Player::dchaUp:
+		rectAnim.y = 320;
+		break;
+	case Player::dchaDown:
+		rectAnim.y = 256;
+		break;
+	case Player::izdaUp:
+		rectAnim.y = 384;
+		break;
+	case Player::izdaDown:
+		rectAnim.y = 448;
+		break;
+	default:
+		break;
+	}
+
+	animacionBasica();
+}
+
+void Player::animacionBasica(){ //Para el paso de frames
+	if (rectAnim.x >= 192){
+		rectAnim.x = 0;
+	}
+	else {
+		rectAnim.x += 64;
 	}
 }
