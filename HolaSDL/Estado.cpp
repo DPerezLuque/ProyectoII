@@ -67,11 +67,7 @@ void Estado::update(int delta)
 	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 		if (!juego->arrayObjetos[aux]->isDead())
 			juego->arrayObjetos[aux]->update(delta);
-	}
-		
-	for (int i = 0; i < elemInterfaz.size(); i++) {
-		dynamic_cast<Interfaz*>(elemInterfaz[i])->update(juego->camera);
-	}
+	}	
 	
 }
 

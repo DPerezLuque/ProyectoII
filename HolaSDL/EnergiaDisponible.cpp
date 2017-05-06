@@ -17,7 +17,7 @@ EnergiaDisponible::~EnergiaDisponible()
 {
 }
 
-void EnergiaDisponible::update(SDL_Rect Camera){
+void EnergiaDisponible::update(){
 	contador = player->getDash();
 
 	if (contador == 0){

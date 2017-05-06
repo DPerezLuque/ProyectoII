@@ -239,7 +239,7 @@ void Play::update(int delta) {
 		}*/
 
 		for (int i = 0; i < elemInterfaz.size(); i++){
-			elemInterfaz[i]->update(juego->camera); //
+			elemInterfaz[i]->update(); //
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}

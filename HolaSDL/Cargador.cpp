@@ -17,7 +17,7 @@ Cargador::~Cargador()
 {
 }
 
-void Cargador::update(SDL_Rect Camera){
+void Cargador::update(){
 	mensaje->loadFromText(pRenderer, to_string(player->getBalas()), *fuenteCargador, Black);	
 }
 

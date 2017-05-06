@@ -7,7 +7,7 @@ class Cargador :public Interfaz
 public:
 	Cargador(Juego* pJuego, Player* jugador, SDL_Rect Camera, int ancho, int alto, int posX, int posY);
 	virtual ~Cargador();
-	void update(SDL_Rect Camera);
+	void update();
 	void draw() const;
 private:
 	Texto* fuenteCargador;

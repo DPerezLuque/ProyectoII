@@ -9,7 +9,7 @@ class EnergiaDisponible :
 public:
 	EnergiaDisponible(Juego* pJuego, Player* jugador, SDL_Rect Camera, int ancho, int alto, int posX, int posY);
 	virtual ~EnergiaDisponible();
-	void update(SDL_Rect Camera);
+	void update();
 	void draw() const; //Cambiamos el draw, recorrerá el vector de rectangulos y dibujará todos
 
 	Textura* textura2; //DashVacio	

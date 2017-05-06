@@ -21,7 +21,7 @@ void BarraVida::draw() const{
 	textura->drawAnimacion(pRenderer, pRect, rectAnim);
 }
 
-void BarraVida::update(SDL_Rect Camera){ 
+void BarraVida::update(){ 
 	//pRect.x = Camera.x + distX;
 	//pRect.y = Camera.y + distY;
 	contador = player->getVida();
