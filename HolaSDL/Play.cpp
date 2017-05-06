@@ -41,10 +41,10 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	//ENEMIGOS
-	juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
-	/*ObjetoJuego * newEnemy = new enemy(juego, 750, 450); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
+	//juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
+	ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
 	juego->arrayObjetos.push_back(newEnemy);
-	juego->enemyArray.push_back(newEnemy);*/
+	//juego->enemyArray.push_back(newEnemy);
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
@@ -58,13 +58,6 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
-
-	/*
-	juego->stats.push_back(vidaAux);
-	juego->stats.push_back(static_cast<Player*>(juego->player)->getVida()); // En player
-	juego->stats.push_back(static_cast<Player*>(juego->player)->getBalas());
-	juego->stats.push_back(static_cast<Player*>(juego->player)->getDash());
-	*/
 
 	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->arrayObjetos[0]), 128, 32, 0, 0));
 	elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->arrayObjetos[0]), 32, 32, 0, 0));

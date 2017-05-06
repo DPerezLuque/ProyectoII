@@ -32,7 +32,7 @@ public:
 		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta, TBarraVida, THumo,
 		TBotiquin, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
-		TBobina, TAura,
+		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3,
 	};
 
 	//PUBLIC VARIABLES

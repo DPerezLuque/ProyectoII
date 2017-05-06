@@ -297,8 +297,14 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\MesaDoble.png");
 	texturas.push_back("..\\bmps\\MesaRota.png");
 	texturas.push_back("..\\bmps\\MesaRota2.png");
+
 	texturas.push_back("..\\bmps\\Bobina.png");
 	texturas.push_back("..\\bmps\\Aura.png");
+
+	//Plantas (decorativos)
+	texturas.push_back("..\\bmps\\Planta1.png");
+	texturas.push_back("..\\bmps\\Planta2.png");
+	texturas.push_back("..\\bmps\\Planta3.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
