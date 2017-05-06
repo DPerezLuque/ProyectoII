@@ -7,6 +7,10 @@ EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 	rectAnim = { 0, 0, 32, 32 };
 	contador = 0;
 	rectCollision = rect;
+
+	active = false;
+	radioDisable = 550;
+	radioEnable = 400;
 }
 
 void EnemigoPlanta::animacionBasica(){ //Para el paso de frames
@@ -27,36 +31,38 @@ void EnemigoPlanta::draw() const {
 	barraVida->draw(pRenderer, rectVida.x - juego->camera.x, rectVida.y - juego->camera.y, rectVida);
 }
 void EnemigoPlanta::update(int delta){
-	//Barra de vida
-	rectVida.x = rect.x - 35;
-	rectVida.y = rect.y - 20;
-	rectVida.w = 32 * vida;
+	if (isActive()) {
+		//Barra de vida
+		rectVida.x = rect.x - 35;
+		rectVida.y = rect.y - 20;
+		rectVida.w = 32 * vida;
 
-	contador += delta;
-	if (contador >= 4){ //Paso de imagenes mas lento
-		animacionBasica();
-		contador = 0;
-	}
+		contador += delta;
+		if (contador >= 4) { //Paso de imagenes mas lento
+			animacionBasica();
+			contador = 0;
+		}
 
-	//int x, y;
-	SDL_Rect aux_rect;
-	aux_rect = juego->arrayObjetos[0]->getRect();
-	//static_cast <Play*> (juego->topEstado())->posPlayer(x, y); << Hay que evitar los cast
-	++contDis;
-	if (contDis >= freDis){
-		shoot(aux_rect.x, aux_rect.y);
-		contDis = 0;
-	}
+		//int x, y;
+		SDL_Rect aux_rect;
+		aux_rect = juego->arrayObjetos[0]->getRect();
+		//static_cast <Play*> (juego->topEstado())->posPlayer(x, y); << Hay que evitar los cast
+		++contDis;
+		if (contDis >= freDis) {
+			shoot(aux_rect.x, aux_rect.y);
+			contDis = 0;
+		}
 
-	//rectCollision.x = (rect.x + rect.w / 3) * delta;
-	//rectCollision.y = (rect.y + rect.h / 3) * delta;
+		//rectCollision.x = (rect.x + rect.w / 3) * delta;
+		//rectCollision.y = (rect.y + rect.h / 3) * delta;
 
-	if (inmunidad) {
-		if (contInm < 50) contInm++;
-		else if (contInm == 50)
-		{
-			inmunidad = false;
-			contInm = 0;
+		if (inmunidad) {
+			if (contInm < 50) contInm++;
+			else if (contInm == 50)
+			{
+				inmunidad = false;
+				contInm = 0;
+			}
 		}
 	}
 }

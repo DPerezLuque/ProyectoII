@@ -164,3 +164,15 @@ void enemy::gestorVida()
 	}
 }
 
+bool enemy::isActive() {
+	//std::cout << active << "\n";
+	int x, y;
+	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
+	int distance = sqrt((x + 50 - rect.x + rect.w / 2)*(x + 50 - rect.x + rect.w / 2)
+		+ (y + 50 - rect.y + rect.h / 2)*(y + 50 - rect.y + rect.h / 2)); // distancia entre los centros y no las esquinas
+	//std::cout << distance << "\n";
+	if (distance <= radioEnable) active = true;
+	if (distance >= radioDisable) active = false;
+	return active;
+}
+

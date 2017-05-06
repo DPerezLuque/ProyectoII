@@ -37,12 +37,12 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	//ENEMIGOS
-	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
+	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
 	//ENEMIGOS PLANTA
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));

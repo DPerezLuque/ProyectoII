@@ -16,7 +16,10 @@ public:
 	void onCollision(collision type);
 	void gestorVida();
 
+	bool isActive();
+
 protected:
+
 	int vX, vY;
 	int vel; //velocidad del monimiento
 	int contDis = 0;
@@ -25,6 +28,9 @@ protected:
 
 	bool inmunidad; //Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
 	int contInm; //Contador inmunidad
+
+	int radioEnable, radioDisable;
+	bool active;
 
 	Textura* barraVida;
 	SDL_Rect rectVida;
