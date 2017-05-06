@@ -7,14 +7,14 @@ class EnergiaDisponible :
 	public Interfaz
 {
 public:
-	EnergiaDisponible(Juego* pJuego, SDL_Rect Camera, int alto, int ancho, int posX, int posY);
+	EnergiaDisponible(Juego* pJuego, Player* jugador, SDL_Rect Camera, int ancho, int alto, int posX, int posY);
 	virtual ~EnergiaDisponible();
-	void update(SDL_Rect Camera, int contador);
+	void update(SDL_Rect Camera);
 	void draw() const; //Cambiamos el draw, recorrerá el vector de rectangulos y dibujará todos
 
-	int cuenta = 1; //Numero inicial de energia
 	Textura* textura2; //DashVacio	
 private:
 	bool activo;
+	SDL_Rect rectAnim;
 };
 

@@ -71,7 +71,7 @@ public:
 	std::vector<ObjetoJuego*> arrayMenu;
 	std::vector<ObjetoJuego*> objVisible;
 	
-	std::vector<int> stats;
+	//std::vector<int> stats;
 
 	//PLAYER
 	ObjetoJuego * player;
@@ -128,6 +128,7 @@ public:
 	void setDASH(bool dash){dashAux = dash;	}
 	void setRecargar(bool re){ recargar = re; }
 	bool getRecargar(){ return recargar; }
+
 private:
 	bool dashAux = false;
 	bool recargar = false;

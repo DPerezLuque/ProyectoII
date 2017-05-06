@@ -70,7 +70,7 @@ void Estado::update(int delta)
 	}
 		
 	for (int i = 0; i < elemInterfaz.size(); i++) {
-		dynamic_cast<Interfaz*>(elemInterfaz[i])->update(juego->camera, 8);
+		dynamic_cast<Interfaz*>(elemInterfaz[i])->update(juego->camera);
 	}
 	
 }

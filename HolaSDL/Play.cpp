@@ -41,7 +41,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	//ENEMIGOS
-	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
+	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
 	/*ObjetoJuego * newEnemy = new enemy(juego, 750, 450); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
 	juego->arrayObjetos.push_back(newEnemy);
 	juego->enemyArray.push_back(newEnemy);*/
@@ -59,15 +59,17 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
+	/*
 	juego->stats.push_back(vidaAux);
 	juego->stats.push_back(static_cast<Player*>(juego->player)->getVida()); // En player
 	juego->stats.push_back(static_cast<Player*>(juego->player)->getBalas());
 	juego->stats.push_back(static_cast<Player*>(juego->player)->getDash());
+	*/
 
-	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
-	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
-	elemInterfaz.push_back(new Cargador(juego, juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
-	elemInterfaz.push_back(new EnergiaDisponible(juego, juego->camera, 32, 32, 0, 0));
+	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->arrayObjetos[0]), juego->camera, 128, 32, 0, 0));
+	elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->arrayObjetos[0]), juego->camera, 32, 32, 0, 0));
+	elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->arrayObjetos[0]), juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
+	elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->arrayObjetos[0]), juego->camera, 32, 32, 0, 0));
 	
 	///// OBJETOS DECORATIVOS  /////
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
@@ -82,12 +84,14 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 	//juego->arrayObjetos.push_back(new Bobina(juego, 300, 300));
 
+	/*
 	//FUENTE DE BALAS
 	fuenteCargador = new Texto(juego->getTexto(0), 28);
 	mensaje = new Textura();
 	Black = { 0, 0, 0, 255 }; //RGBA	
 	Red = { 175, 20, 20, 255 }; //RGBA	
 	mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
+	*/
 }
 
 void Play::update(int delta) {
@@ -200,12 +204,8 @@ void Play::update(int delta) {
 			juego->addToScreen(i);
 	}
 
-	if (juego->player->isDead()){
-		for (int i = 0; i < juego->stats.size(); i++) {
-			juego->stats[i] = 0;
-		}
+	if (juego->player->isDead()){		
 		juego->exit = true;
-
 	}
 	else{
 		//LIMPIEZA DE VECTOR DE OBJETOS
@@ -238,15 +238,10 @@ void Play::update(int delta) {
 			juego->enemyBullets[x]->update(delta);
 		}*/
 
-
-		//Actualiza valores de la vida, las balas (Interfaz)
-		for (int i = 0; i < juego->stats.size(); i++) {
-			getStats(i);
-		}
-
 		for (int i = 0; i < elemInterfaz.size(); i++){
-			elemInterfaz[i]->update(juego->camera, juego->stats[i]); //Cada elemento del vector tiene su propio contador
+			elemInterfaz[i]->update(juego->camera); //
 		}
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 
 
@@ -273,10 +268,10 @@ void Play::draw()
 	}
 
 	//Dibuja interfaz, por encima de los objetos
-	if (!juego->player->isDead()){
-		for (int i = 0; i < elemInterfaz.size(); i++) {
-			elemInterfaz[i]->draw();
-		}
+	for (int i = 0; i < elemInterfaz.size(); i++) {
+		elemInterfaz[i]->draw();
+	}
+		/*
 		//Pintado de texto (cargador)	
 		if (juego->stats[2] > 0 && !juego->player->isDead()){
 			fuenteCargador->load(juego->getTexto(1), 18);
@@ -291,26 +286,9 @@ void Play::draw()
 			mensaje->loadFromText(pRenderer, "Recargando", *fuenteCargador, Red);
 			mensaje->render(pRenderer, ((juego->SCREEN_WIDTH / 2) - 100), ((juego->SCREEN_HEIGHT / 2) - 100));
 		}
-	}
+		*/
+	
 	SDL_RenderPresent(pRenderer);
-}
-
-void Play::getStats(int i){
-
-	switch (i)
-	{
-	case 1: //Vida
-	//	juego->stats[i] = static_cast<Player*>(juego->player)->getVida();
-		break;
-	case 2: //Balas
-	//	juego->stats[i] = static_cast<Player*>(juego->player)->getBalas();
-		break;
-	case 3:
-//		juego->stats[i] = static_cast<Player*>(juego->player)->getDash();
-		break;
-	default:
-		break;
-	}
 }
 
 void Play::onClick() {
@@ -358,3 +336,23 @@ void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int
 	//Disparo
 	juego->enemyBullets.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));
 }
+
+/*
+void Play::getStats(int i){
+
+switch (i)
+{
+case 1: //Vida
+//	juego->stats[i] = static_cast<Player*>(juego->player)->getVida();
+break;
+case 2: //Balas
+//	juego->stats[i] = static_cast<Player*>(juego->player)->getBalas();
+break;
+case 3:
+//		juego->stats[i] = static_cast<Player*>(juego->player)->getDash();
+break;
+default:
+break;
+}
+}
+*/

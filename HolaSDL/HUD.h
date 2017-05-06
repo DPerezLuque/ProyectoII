@@ -9,7 +9,7 @@ public:
 
 	virtual void draw() const = 0;
 
-	virtual void update(SDL_Rect Camera, int contador) = 0;
+	virtual void update(SDL_Rect Camera) = 0;
 
 };
 

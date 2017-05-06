@@ -1,10 +1,17 @@
 #pragma once
 #include "Interfaz.h"
+#include "Texto.h"
+
 class Cargador :public Interfaz
 {
 public:
-	Cargador(Juego* pJuego, SDL_Rect Camera, int alto, int ancho, int posX, int posY);
+	Cargador(Juego* pJuego, Player* jugador, SDL_Rect Camera, int ancho, int alto, int posX, int posY);
 	virtual ~Cargador();
-	void update(SDL_Rect Camera, int contador);
+	void update(SDL_Rect Camera);
+private:
+	Texto* fuenteCargador;
+	Textura* mensaje;
+	SDL_Color Black;
+	SDL_Color Red;
 };
 

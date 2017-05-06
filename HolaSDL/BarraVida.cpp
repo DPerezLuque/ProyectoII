@@ -1,7 +1,7 @@
 #include "BarraVida.h"
 
 
-BarraVida::BarraVida(Juego* pJuego, SDL_Rect Camera, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, Camera, ancho, alto, posX, posY)
+BarraVida::BarraVida(Juego* pJuego, Player* jugador, SDL_Rect Camera, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, Camera, ancho, alto, posX, posY)
 {
 	//Misma constructora que interfaz
 	textura = pJuego->getTextura(Juego::TVidaLlena);
@@ -9,6 +9,8 @@ BarraVida::BarraVida(Juego* pJuego, SDL_Rect Camera, int ancho, int alto, int po
 	distY = 15;	
 	rectAnim = { 0, 0, 128, 32 };
 	pRect = rectAnim;
+
+	contador = player->getVida();
 }
 
 
@@ -19,10 +21,10 @@ void BarraVida::draw() const{
 	textura->drawAnimacion(pRenderer, pRect, rectAnim);
 }
 
-void BarraVida::update(SDL_Rect Camera, int contador){ //Hay que pasarle la camara y el numero de vidas
-	
+void BarraVida::update(SDL_Rect Camera){ 
 	//pRect.x = Camera.x + distX;
 	//pRect.y = Camera.y + distY;
+	contador = player->getVida();
 
 	if (contador > 0){ //4 vidas máx
 		rectAnim.w = 32*contador;
