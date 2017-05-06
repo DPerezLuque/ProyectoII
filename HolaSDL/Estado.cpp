@@ -54,11 +54,12 @@ void Estado::draw()
 		//Muestra la ventana
 	}
 
-	//Dibuja interfaz, por encima de los objetos	
+	/*
+	//Dibuja interfaz, por encima de los objetos //Solo hará falta en Play.cpp	
 	for (int i = 0; i < elemInterfaz.size(); i++) {
 		elemInterfaz[i]->draw();
 	}
-
+	*/
 	SDL_RenderPresent(pRenderer);
 };
 
@@ -68,7 +69,6 @@ void Estado::update(int delta)
 		if (!juego->arrayObjetos[aux]->isDead())
 			juego->arrayObjetos[aux]->update(delta);
 	}	
-	
 }
 
 void Estado::onClick() //VAMOS A CAMBIARLO O ELIMINARLO 

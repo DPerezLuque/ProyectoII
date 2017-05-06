@@ -41,7 +41,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	//ENEMIGOS
-	juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
+	juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
 	/*ObjetoJuego * newEnemy = new enemy(juego, 750, 450); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
 	juego->arrayObjetos.push_back(newEnemy);
 	juego->enemyArray.push_back(newEnemy);*/
@@ -66,10 +66,10 @@ void Play::init() {
 	juego->stats.push_back(static_cast<Player*>(juego->player)->getDash());
 	*/
 
-	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->arrayObjetos[0]), juego->camera, 128, 32, 0, 0));
-	elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->arrayObjetos[0]), juego->camera, 32, 32, 0, 0));
-	elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->arrayObjetos[0]), juego->camera, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
-	elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->arrayObjetos[0]), juego->camera, 32, 32, 0, 0));
+	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->arrayObjetos[0]), 128, 32, 0, 0));
+	elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->arrayObjetos[0]), 32, 32, 0, 0));
+	elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->arrayObjetos[0]), 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
+	elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->arrayObjetos[0]), 32, 32, 0, 0));
 	
 	///// OBJETOS DECORATIVOS  /////
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));

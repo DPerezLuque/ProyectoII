@@ -1,7 +1,7 @@
 #include "Cargador.h"
 
 
-Cargador::Cargador(Juego* pJuego, Player* jugador, SDL_Rect Camera, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, Camera, ancho, alto, posX, posY)
+Cargador::Cargador(Juego* pJuego, Player* jugador, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, ancho, alto, posX, posY)
 {
 	textura = pJuego->getTextura(Juego::TCargador);
 

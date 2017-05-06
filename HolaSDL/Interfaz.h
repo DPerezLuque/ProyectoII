@@ -8,7 +8,7 @@
 class Interfaz : public HUD
 {
 public:
-	Interfaz(Juego* pJuego, Player* jugador, SDL_Rect Camera, int ancho, int alto, int posX, int posY);
+	Interfaz(Juego* pJuego, Player* jugador, int ancho, int alto, int posX, int posY);
 	virtual ~Interfaz();
 
 	void draw() const;

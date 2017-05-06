@@ -1,7 +1,7 @@
 #include "EnergiaDisponible.h"
 
 
-EnergiaDisponible::EnergiaDisponible(Juego* pJuego, Player* jugador, SDL_Rect Camera, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, Camera, ancho, alto, posX, posY)
+EnergiaDisponible::EnergiaDisponible(Juego* pJuego, Player* jugador, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, ancho, alto, posX, posY)
 {
 	//Misma constructora que interfaz
 	textura = pJuego->getTextura(Juego::TDashLleno); 
