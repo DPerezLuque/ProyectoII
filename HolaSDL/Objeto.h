@@ -28,6 +28,9 @@ public:
 
 	void Oscilar(int delta);
 
+	bool isInside() { return inside; };
+
+	void putInside() { inside = true; };
 protected:
 	Juego* juego;
 	Textura* textura;
@@ -38,6 +41,7 @@ protected:
 
 	collision tipo;
 	bool dead = false;
+	bool inside = false;
 	bool inmunidad;
 	int velX, velY;	//Velocidad del objeto
 	//int h, w; // tamaño (ya va en el rect)

@@ -108,7 +108,7 @@ void Player::update(int delta) {
 	rectCollision.x = (rect.x + rect.w / 3) * delta;
 	rectCollision.y = (rect.y + rect.h / 3) * delta;
 
-	if (juego->touchesWall(this)) {
+	if (juego->touchesWall(getRect())) {
 		//printf("Wall touched!\n");
 		if (juego->getDash()) {
 			rect.x -= juego->getVelX() * 4 * delta / 1.5f;
@@ -193,7 +193,6 @@ void Player::proceso(){
 	if (juego->getVelX()  < 0 && juego->getVelY()  > 0){
 		animar(izdaDown);
 	}
-
 	if (juego->getVelX() == 0 && juego->getVelY() == 0){
 		contador = 0;
 		rectAnim.x = 0;
@@ -201,31 +200,41 @@ void Player::proceso(){
 }
 
 bool Player::onClick() {
-
-
+	
 	//Posiciones del ratón
 	int mX, mY, posX, posY;
 	juego->getMousePos(mX, mY);
 
-	posX = rect.x + rect.w / 2;
-	posY = rect.y + rect.h / 2;
+	SDL_Rect aux;
+	aux.x = mX;
+	aux.y = mY;
+	aux.h = 1;
+	aux.w = 1;
 
-	int distance = sqrt((mX - posX)*(mX - posX) + (mY - posY)*(mY - posY));
+	//Comprobamos primero que el click se ha hecho sobre terreno clickeable 
+	if (!juego->touchesWall(aux)) {
 
-	int vX = 75 * (mX - posX) / distance;
-	int vY = 75 * (mY - posY) / distance;
+		posX = rect.x + rect.w / 2;
+		posY = rect.y + rect.h / 2;
 
-	//Disparo
-	//juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
+		int distance = sqrt((mX - posX)*(mX - posX) + (mY - posY)*(mY - posY));
 
-	if (balas > 0){
-		//static_cast <Play*> (juego->topEstado())->newDisparo(this, rect.x + rect.w / 2, rect.y + rect.h / 2);
-		juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
-		balas--;
-		//std::cout << balas << "\n";
-		return true;
+		int vX = 75 * (mX - posX) / distance;
+		int vY = 75 * (mY - posY) / distance;
+
+		//Disparo
+		//juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
+
+		if (balas > 0) {
+			ObjetoJuego * newBala = new BalaPlayer(juego, posX, posY, vX, vY);
+			juego->arrayObjetos.push_back(newBala);
+			juego->playerBullets.push_back(newBala);
+			balas--;
+			//std::cout << balas << "\n";
+			return true;
+		}
 	}
-	else return false;
+	return false;
 	
 	
 }
@@ -269,12 +278,19 @@ void Player::gestorVida()
 
 void Player::onCollision(collision type){
 	
-	if (type == ENEMY_WEAPON || type == ENEMY)
+	switch (type) {
+	case ENEMY_WEAPON:
 		gestorVida();
-	//else if (type == ENEMY) gestorVida();
-	else if (type == BOTIQUIN) {
+		break;
+	case ENEMY:
+		gestorVida();
+		break;
+	case BOTIQUIN:
 		if (vida <4)				//Si la vida es mayor que 4, lo ponemos a 4.
 			vida++;
+		break;
+	default:
+		break;
 	}
 
 }

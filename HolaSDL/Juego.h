@@ -11,7 +11,7 @@
 
 #include "Musica.h"
 
-using namespace std;
+//using namespace std;
 
 //860 460
 class Juego
@@ -64,14 +64,18 @@ public:
 	EstadoJuego* topEstado();
 
 	//GLOBAL ARRAYS
-	std::vector<ObjetoJuego*> arrayObjetos;	//PERSONAJE [0] + ENEMIGOS
-	std::vector<ObjetoJuego*> arrayBalas;	//BALAS PERSONAJE
-	std::vector<ObjetoJuego*> arrayEnemigas;	//BALAS ENEMIGOS ese nombre es una puta basura ☻
+	std::vector<ObjetoJuego*> arrayObjetos;		//ALL OBJECTS IN THE SCENE (DYNAMIC)
+	std::vector<ObjetoJuego*> enemyArray;		//ENEMIGOS
+	std::vector<ObjetoJuego*> playerBullets;	//BALAS PERSONAJE
+	std::vector<ObjetoJuego*> enemyBullets;		//BALAS ENEMIGOS 
 	std::vector<ObjetoJuego*> arrayMenu;
+	std::vector<ObjetoJuego*> objVisible;
+	
 	std::vector<int> stats;
 
 	//PLAYER
-	//ObjetoJuego * pj;
+	ObjetoJuego * player;
+
 	//CAMERA LEVEL
 	SDL_Rect camera;
 
@@ -85,13 +89,18 @@ public:
 	void updateDirection();
 
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
-	bool touchesWall(ObjetoJuego * a);
-	bool checkWallCollisions(ObjetoJuego * a, SDL_Rect b);
+	bool touchesWall(SDL_Rect a);
+	bool checkWallCollisions(SDL_Rect a, SDL_Rect b);
 
 	//CLOSERS
 	void setSalir(){ exit = true; }
 	void freeMedia();
 	void closeSDL();
+	
+	//SETTERS
+	bool isInScreen(SDL_Rect rect);
+	void addToScreen(ObjetoJuego * obj);
+	//void addToScreen(Tilemap::Tile * t);
 
 	//GETTERS
 	SDL_Renderer* getRender() const { return pRenderer; }

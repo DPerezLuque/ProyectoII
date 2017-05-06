@@ -40,7 +40,7 @@ void EnemigoPlanta::update(int delta){
 
 	//int x, y;
 	SDL_Rect aux_rect;
-	aux_rect = juego->arrayObjetos[0]->getRect();
+	aux_rect = juego->player->getRect();
 	//static_cast <Play*> (juego->topEstado())->posPlayer(x, y); << Hay que evitar los cast
 	++contDis;
 	if (contDis >= freDis){

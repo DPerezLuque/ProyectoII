@@ -20,6 +20,9 @@ Bala::Bala(Juego* ptr, int px, int py, int vX, int vY) : Objeto(ptr, px, py)
 
 	velX = vX;
 	velY = vY;
+	
+	cont = 0;
+	autodestr = 300;
 
 	tipo = WEAPON;
 }
@@ -31,7 +34,13 @@ Bala::~Bala()
 
 void Bala::update(int delta) {
 
-	//onCollision();
+
+	cont += delta;
+
+	if (cont >= autodestr) {
+		onCollision(tipo);
+		cont = 0;
+	}
 
 	rect.x += velX * delta / 3;
 	rect.y += velY * delta / 3;
@@ -39,7 +48,7 @@ void Bala::update(int delta) {
 	rectCollision.x = rect.x;//(rect.x + rect.w / 4) * delta;
 	rectCollision.y = rect.y;//(rect.y + rect.h / 4) * delta;
 
-	if (juego->touchesWall(this))
+	if (juego->touchesWall(getRect()))
 		onCollision(tipo);
 }
 

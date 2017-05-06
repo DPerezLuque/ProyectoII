@@ -149,7 +149,7 @@ void objetoDecorativo::update(int delta) {
 	}
 	else{} //Estatico, sin animacion
 	//Colision
-	if (juego->checkCollision(this, juego->arrayObjetos[0]))
+	if (juego->checkCollision(this, juego->player))
 		onCollision();
 }
 
