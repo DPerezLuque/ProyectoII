@@ -49,26 +49,22 @@ void enemy::draw() const{
 
 void enemy::update(int delta) 
 {	
+	SDL_Rect rectPlayer;
+	rectPlayer = juego->player->getRect();
+	
 	rectVida.x = rect.x - 20;
 	rectVida.y = rect.y - 20;
 	rectVida.w = 32 * vida;
 
-	SDL_Rect rectPlayer;
-	rectPlayer = juego->arrayObjetos[0]->getRect();
-	//static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
 
-	if (contDis < freDis - 10){ //Algo tope chungo para que se pare al disparar
-		follow(rectPlayer.x, rectPlayer.y, delta);
-	}
-	//follow(x, y);
+	follow(rectPlayer.x, rectPlayer.y, delta);
+	//(contDis < freDis - 10) ){ //Algo tope chungo para que se pare al disparar << no hace falta
+	contDis += delta;
 
-	//follow(rectPlayer.x, rectPlayer.y, delta);
-	++contDis;
-	if (contDis >= freDis){
+	if (contDis >= freDis) {
 		shoot(rectPlayer.x, rectPlayer.y);
 		contDis = 0;
 	}
-	//rectCollision = rect;
 
 	rectCollision.x = rect.x;//(rect.x + rect.w / 3) * delta;
 	rectCollision.y = rect.y;//(rect.y + rect.h / 3) * delta;
@@ -100,8 +96,15 @@ void enemy::follow(int x, int y, float delta){ // posicion del objeto que vas a 
 		vX = 0;
 		vY = 0;
 	}
-	rect.x += (vX / 4) * delta;
-	rect.y += (vY / 4) * delta;
+	if (juego->touchesWall(getRect())) {
+		rect.x -= (vX / 2) * delta;
+		rect.y -= (vY / 2) * delta;
+	}
+	else {
+		rect.x += (vX / 2) * delta / 1.5f;
+		rect.y += (vY / 2) * delta / 1.5f;
+	}
+
 }
 
 void enemy::shoot(int targetX, int targetY){
@@ -121,7 +124,9 @@ void enemy::shoot(int targetX, int targetY){
 	}
 
 	//Disparo
-	juego->arrayEnemigas.push_back(new BalaEnemigo(juego, rect.x, rect.y, vX, vY));
+	ObjetoJuego * newBalaEnemy = new BalaEnemigo(juego, rect.x, rect.y, vX, vY);
+	juego->arrayObjetos.push_back(newBalaEnemy);
+	juego->enemyBullets.push_back(newBalaEnemy);
 }
 
 void enemy::onCollision(collision type){ //onCollision de gestor de vida

@@ -33,13 +33,22 @@ Play::~Play()
 }
 
 void Play::init() {
-	juego->arrayObjetos.push_back(new Player(juego, 200, 300));
+
+	juego->player = new Player(juego, 200, 300);
+
+	juego->arrayObjetos.push_back(juego->player);
+	//juego->arrayObjetos.push_back(new Player(juego, 200, 300));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	//ENEMIGOS
 	//juego->arrayObjetos.push_back(new enemy(juego, 750, 550));	
+	/*ObjetoJuego * newEnemy = new enemy(juego, 750, 450); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
+	juego->arrayObjetos.push_back(newEnemy);
+	juego->enemyArray.push_back(newEnemy);*/
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
+
+//	juego->arrayObjetos.push_back(juego->playerBullets);
 
 	//ENEMIGOS PLANTA
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
@@ -51,9 +60,9 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
 	juego->stats.push_back(vidaAux);
-	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getVida()); // En player
-	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getBalas());
-	juego->stats.push_back(static_cast<Player*>(juego->arrayObjetos[0])->getDash());
+	juego->stats.push_back(static_cast<Player*>(juego->player)->getVida()); // En player
+	juego->stats.push_back(static_cast<Player*>(juego->player)->getBalas());
+	juego->stats.push_back(static_cast<Player*>(juego->player)->getDash());
 
 	elemInterfaz.push_back(new BarraVidaVacia(juego, juego->camera, 128, 32, 0, 0));
 	elemInterfaz.push_back(new BarraVida(juego, juego->camera, 32, 32, 0, 0));
@@ -85,67 +94,118 @@ void Play::update(int delta) {
 
 	//COLISIONES CON OBJETOS
 
+	for (auto obj1 : juego->arrayObjetos) {
+		for (auto obj2 : juego->arrayObjetos) {
+			if (juego->checkCollision(obj1, obj2)) {
+				obj1->onCollision(obj2->getType());
+				obj2->onCollision(obj1->getType());
+			}
+		}
+		
+	}
+	///REVISAR
+	/*
+	for (auto obj1 : juego->arrayObjetos) {
+		for (auto obj2 : juego->arrayObjetos) {
+			if (juego->checkCollision(obj1, obj2)) {
+				obj1->onCollision(obj2->getType());
+				obj2->onCollision(obj1->getType());
+			}
+		}
+		
+	}
+
+	for (auto enemy : juego->enemyArray) {
+		if (juego->checkCollision(enemy, juego->player)) {
+			enemy->onCollision(juego->player->getType());
+			juego->player->onCollision(enemy->getType());
+		}
+		
+	}
+
+	for (auto bullet : juego->enemyBullets) {
+		if (juego->checkCollision(bullet, juego->player)) {
+			bullet->onCollision(juego->player->getType());
+			juego->player->onCollision(bullet->getType());
+		}
+		for (auto enemyb : juego->enemyBullets) {
+			if (juego->checkCollision(enemyb, bullet)) {
+				enemyb->onCollision(bullet->getType());
+				bullet->onCollision(enemyb->getType());
+			}
+
+		}
+
+	}
+
+	*/
+	/*
+	for (auto bullet : juego->playerBullets) {
+		
+		if (juego->checkCollision(juego->player, bullet)) {
+			juego->player->onCollision(bullet->getType());
+			bullet->onCollision(juego->player->getType());
+		}
+
+		for (auto enemy : juego->arrayObjetos) {
+			if (juego->checkCollision(enemy, bullet)) {
+				enemy->onCollision(bullet->getType());
+				bullet->onCollision(enemy->getType());
+			}
+		}
+	
+	
+	}
+*/
+
+
+/*
 	//PERSONAJE CON ENEMIGOS
 	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
-		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayObjetos[i])){
-			juego->arrayObjetos[0]->onCollision(juego->arrayObjetos[i]-> getType());
-			juego->arrayObjetos[i]->onCollision(juego->arrayObjetos[0]->getType());
+		if (!juego->player->isDead() && juego->checkCollision(juego->player, juego->arrayObjetos[i])){
+			juego->player->onCollision(juego->arrayObjetos[i]-> getType());
+			juego->arrayObjetos[i]->onCollision(juego->player->getType());
 		}
 	}
 
+	
+	for (auto i : juego->arrayObjetos) // access by value, the type of i is int
+		std::cout << i << ' ';
+	std::cout << '\n';
+	
+
 	//PERSONAJE CON BALAS ENEMIGAS
-	for (int i = 0; i < juego->arrayEnemigas.size(); ++i) {
-		if (!juego->arrayObjetos[0]->isDead() && juego->checkCollision(juego->arrayObjetos[0], juego->arrayEnemigas[i])) {
-			juego->arrayObjetos[0]->onCollision(juego->arrayEnemigas[i]->getType());
-			juego->arrayEnemigas[i]->onCollision(juego->arrayObjetos[0]->getType());
+	for (int i = 0; i < juego->enemyBullets.size(); ++i) {
+		if (!juego->player->isDead() && juego->checkCollision(juego->player, juego->enemyBullets[i])) {
+			juego->player->onCollision(juego->enemyBullets[i]->getType());
+			juego->enemyBullets[i]->onCollision(juego->player->getType());
 		}
 	}
 
 	//BALAS CON ENEMIGOS
-	for (int i = 0; i < juego->arrayBalas.size(); ++i) {
+	for (int i = 0; i < juego->playerBullets.size(); ++i) {
 		for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
-			if (!juego->arrayBalas[i]->isDead() && juego->checkCollision(juego->arrayBalas[i], juego->arrayObjetos[j])) {
-				juego->arrayBalas[i]->onCollision(juego->arrayObjetos[j]->getType());
-				juego->arrayObjetos[j]->onCollision(juego->arrayBalas[i]->getType());
+			if (!juego->playerBullets[i]->isDead() && juego->checkCollision(juego->playerBullets[i], juego->arrayObjetos[j])) {
+				juego->playerBullets[i]->onCollision(juego->arrayObjetos[j]->getType());
+				juego->arrayObjetos[j]->onCollision(juego->playerBullets[i]->getType());
 			}
 		}
 	}
+	
 
-	/*
-	//ARREGLAR
-	for (int j = 0; j < juego->arrayBalas.size(); ++j) {
-	if (!juego->arrayBalas[j]->isDead()) {
-	if (juego->touchesWall(juego->arrayBalas[j]))
-	juego->arrayBalas[j]->onCollision();
-	else {
-	for (int j2 = 1; j2 < juego->arrayObjetos.size(); ++j2) {
-	if (juego->checkCollision(juego->arrayBalas[j], juego->arrayObjetos[j2])) {
-	juego->arrayBalas[j]->onCollision();
-	juego->arrayObjetos[j2]->onCollision();
-	}
-	}
+*/
+
+	for (auto i : juego->arrayObjetos) {
+		if (!i->isInside())
+			juego->addToScreen(i);
 	}
 
-	}
-	}
-
-
-	juego->arrayObjetos[0]->onCollision(juego->arrayObjetos[i]);
-	}
-	}
-
-	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
-	if (!juego->arrayObjetos[j]->isDead() && juego->arrayObjetos[j]->getType() == WEAPON) {
-	juego->arrayObjetos[j]->onCollision();
-	}
-	}
-
-	*/
-	if (juego->arrayObjetos[0]->isDead()){
+	if (juego->player->isDead()){
 		for (int i = 0; i < juego->stats.size(); i++) {
 			juego->stats[i] = 0;
 		}
 		juego->exit = true;
+
 	}
 	else{
 		//LIMPIEZA DE VECTOR DE OBJETOS
@@ -153,32 +213,32 @@ void Play::update(int delta) {
 			if (juego->arrayObjetos[aux]->isDead())
 				juego->arrayObjetos.erase(juego->arrayObjetos.begin() + aux);
 		}
-		for (int aux2 = 0; aux2 < juego->arrayBalas.size(); ++aux2) {
-			if (juego->arrayBalas[aux2]->isDead())
-				juego->arrayBalas.erase(juego->arrayBalas.begin() + aux2);
+		for (int aux2 = 0; aux2 < juego->playerBullets.size(); ++aux2) {
+			if (juego->playerBullets[aux2]->isDead())
+				juego->playerBullets.erase(juego->playerBullets.begin() + aux2);
 		}
-		for (int aux3 = 0; aux3 < juego->arrayEnemigas.size(); ++aux3) {
-			if (juego->arrayEnemigas[aux3]->isDead())
-				juego->arrayEnemigas.erase(juego->arrayEnemigas.begin() + aux3);
+		for (int aux3 = 0; aux3 < juego->enemyBullets.size(); ++aux3) {
+			if (juego->enemyBullets[aux3]->isDead())
+				juego->enemyBullets.erase(juego->enemyBullets.begin() + aux3);
 		}
-
+		for (int aux4 = 0; aux4 < juego->objVisible.size(); ++aux4) {
+			if (!juego->isInScreen(juego->objVisible[aux4]->getRect())) {
+				juego->objVisible.erase(juego->objVisible.begin() + aux4);
+			}
+		}
+		
 		//UPDATE
-
 		for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
-			//if (!juego->arrayObjetos[i]->isDead())
 			juego->arrayObjetos[i]->update(delta);
 		}
-		for (int x = 0; x < juego->arrayBalas.size(); ++x) {
-			//if (!juego->arrayBalas[x]->isDead())
-			juego->arrayBalas[x]->update(delta);
+		/*for (int x = 0; x < juego->playerBullets.size(); ++x) {
+			juego->playerBullets[x]->update(delta);
 		}
-		for (int x = 0; x < juego->arrayEnemigas.size(); ++x) {
-			//if (!juego->arrayEnemigas[x]->isDead())
-			juego->arrayEnemigas[x]->update(delta);
-		}
+		for (int x = 0; x < juego->enemyBullets.size(); ++x) {
+			juego->enemyBullets[x]->update(delta);
+		}*/
 
 
-		//	if (!juego->arrayObjetos[0]->isDead()){  //Si player esta vivo
 		//Actualiza valores de la vida, las balas (Interfaz)
 		for (int i = 0; i < juego->stats.size(); i++) {
 			getStats(i);
@@ -201,23 +261,24 @@ void Play::draw()
 	SDL_SetRenderDrawColor(pRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
 	//Dibuja los objetos
+
 	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 		juego->arrayObjetos[aux]->draw();
 	}
-	for (int aux2 = 0; aux2 < juego->arrayBalas.size(); ++aux2) {
-		juego->arrayBalas[aux2]->draw();
+	for (int aux2 = 0; aux2 < juego->playerBullets.size(); ++aux2) {
+		juego->playerBullets[aux2]->draw();
 	}
-	for (int aux3 = 0; aux3 < juego->arrayEnemigas.size(); ++aux3) {
-		juego->arrayEnemigas[aux3]->draw();
+	for (int aux3 = 0; aux3 < juego->enemyBullets.size(); ++aux3) {
+		juego->enemyBullets[aux3]->draw();
 	}
 
 	//Dibuja interfaz, por encima de los objetos
-	if (!juego->arrayObjetos[0]->isDead()){
+	if (!juego->player->isDead()){
 		for (int i = 0; i < elemInterfaz.size(); i++) {
 			elemInterfaz[i]->draw();
 		}
 		//Pintado de texto (cargador)	
-		if (juego->stats[2] > 0 && !juego->arrayObjetos[0]->isDead()){
+		if (juego->stats[2] > 0 && !juego->player->isDead()){
 			fuenteCargador->load(juego->getTexto(1), 18);
 			mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
 			if (juego->stats[2] < 10){
@@ -239,13 +300,13 @@ void Play::getStats(int i){
 	switch (i)
 	{
 	case 1: //Vida
-		juego->stats[i] = static_cast<Player*>(juego->arrayObjetos[0])->getVida();
+	//	juego->stats[i] = static_cast<Player*>(juego->player)->getVida();
 		break;
 	case 2: //Balas
-		juego->stats[i] = static_cast<Player*>(juego->arrayObjetos[0])->getBalas();
+	//	juego->stats[i] = static_cast<Player*>(juego->player)->getBalas();
 		break;
 	case 3:
-		juego->stats[i] = static_cast<Player*>(juego->arrayObjetos[0])->getDash();
+//		juego->stats[i] = static_cast<Player*>(juego->player)->getDash();
 		break;
 	default:
 		break;
@@ -253,12 +314,7 @@ void Play::getStats(int i){
 }
 
 void Play::onClick() {
-
-	for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
-		if (!juego->arrayObjetos[i]->isDead())
-			juego->arrayObjetos[i]->onClick();
-	}
-
+	//...
 }
 
 void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
@@ -273,11 +329,11 @@ void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 	int vY = 75 * (mY - posY) / distance;
 
 	//Disparo
-	juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
+	juego->playerBullets.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
 }
 
 void Play::posPlayer(int& x, int& y) {
-	static_cast <Player*>(juego->arrayObjetos[0])->getPos(x, y);
+	static_cast <Player*>(juego->player)->getPos(x, y);
 }
 
 void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int velDis) {
@@ -300,5 +356,5 @@ void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int
 	//float vY = velDis * (targetY - posEy) / distance + 0.01;
 
 	//Disparo
-	juego->arrayEnemigas.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));
+	juego->enemyBullets.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));
 }

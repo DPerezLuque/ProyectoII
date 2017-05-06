@@ -31,6 +31,8 @@ using namespace std;
 
 //The level tiles
 Tilemap::Tile* tileSet[TOTAL_TILES];
+vector<Tilemap::Tile*> tileVisible;
+vector<Tilemap::Tile*> wallsArray;	//Elementos del mapa de tiles que son colisionables
 
 Juego::Juego()
 {
@@ -67,6 +69,19 @@ Juego::Juego()
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
 	contDash = 80;
+
+	for (auto i : wallsArray) {
+		if (isInScreen(i->getBox())) {
+			tileVisible.push_back(i);
+			//i->setInside();
+		}
+	}
+
+	for (auto j : arrayObjetos) {
+		addToScreen(j);
+	}
+
+
 }
 
 Juego::~Juego()
@@ -101,13 +116,23 @@ void Juego::run()
 	handle_events();
 
 	while (!exit) {
+
+		for (auto t : wallsArray) {
+			if (!t->isInside()) {
+				if (isInScreen(t->getBox())) {
+					tileVisible.push_back(t);
+					//t->setInside();
+				}
+			}
+		}
+
 		estado = topEstado();
 		//if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
 		delta = (SDL_GetTicks() - lastUpdate) / 10.0f;
 		estado->update(delta);
 		lastUpdate = SDL_GetTicks();
 		//}
-		estado = topEstado();
+		//estado = topEstado();
 		//Render level
 		for (int i = 0; i < TOTAL_TILES; ++i)
 		{
@@ -118,8 +143,21 @@ void Juego::run()
 		estado->draw();
 		handle_events();
 		contDash++; 
+		
+		cout << tileVisible.size() << "\n";
+
+
+		for (int i = 0; i < tileVisible.size(); ++i) {
+			if (isInScreen(tileVisible[i]->getBox())) {
+				tileVisible.erase(tileVisible.begin(), tileVisible.begin() + i);
+			}
+		}
+
+		//cout << objVisible.size() << "\n";
 		//std::cout << contDash << "\n";
 	}
+
+
 
 	if (exit) cout << "EXIT \n";
 	else {
@@ -283,6 +321,11 @@ bool Juego::initMedia()
 		success = false;
 	}
 
+	//Load tile colliders to new array
+	for (auto i : tileSet) {
+		if (i->isWall())
+			wallsArray.push_back(i);
+	}
 
 	ifstream file;
 	file.open("..\\bmps\\almas.txt", ios::in);
@@ -355,7 +398,8 @@ void Juego::handle_events()
 				//std::cout << "CLICK";
 				x = e.button.x + (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
 				y = e.button.y + (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
-				estado->onClick();
+				//estado->onClick();
+				player->onClick();
 			}
 			// else if(...)    
 		}
@@ -544,39 +588,52 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	return true;
 }
 
-bool Juego::touchesWall(ObjetoJuego * object)
+bool Juego::touchesWall(SDL_Rect objRect)
 {
 	//Go through the tiles
-	for (int i = 0; i < TOTAL_TILES; ++i)
+
+	for (int i = 0; i < tileVisible.size(); ++i)
 	{
-		//If the tile is a wall type tile
-		/*//(tileSet[i]->getType() >= TILE_CENTER) && (tileSet[i]->getType() <= TILE_TOPLEFT)) <<-- EXTRAÍDO DE LAZYFOO
-		if (tileSet[i]->getType() == TILE_TOPLEFT || tileSet[i]->getType() == TILE_TOP ||
-		tileSet[i]->getType() == TILE_LEFT || tileSet[i]->getType() == TILE_DOWN ||
-		tileSet[i]->getType() == TILE_RIGHT || tileSet[i]->getType() == TILE_DOWNRIGHT ||
-		tileSet[i]->getType() == TILE_DOWNLEFT)
-		{
 		//If the collision box touches the wall tile
-		if (checkWallCollisions(a, tileSet[i]->getBox()))
-		{
-		return true;
+		if (checkWallCollisions(objRect, tileVisible[i]->getBox())) {
+			return true;
 		}
-		}*/
 
-		if (tileSet[i]->isWall()) {
-			//If the collision box touches the wall tile
-			if (checkWallCollisions(object, tileSet[i]->getBox()))
-			{
-				return true;
-			}
-		}
 	}
-
 	//If no wall tiles were touched
 	return false;
+
+
+
+			//If the tile is a wall type tile
+			/*//(tileSet[i]->getType() >= TILE_CENTER) && (tileSet[i]->getType() <= TILE_TOPLEFT)) <<-- EXTRAÍDO DE LAZYFOO
+			if (tileSet[i]->getType() == TILE_TOPLEFT || tileSet[i]->getType() == TILE_TOP ||
+			tileSet[i]->getType() == TILE_LEFT || tileSet[i]->getType() == TILE_DOWN ||
+			tileSet[i]->getType() == TILE_RIGHT || tileSet[i]->getType() == TILE_DOWNRIGHT ||
+			tileSet[i]->getType() == TILE_DOWNLEFT)
+			{
+			//If the collision box touches the wall tile
+			if (checkWallCollisions(a, tileSet[i]->getBox()))
+			{
+			return true;
+			}
+			}*/
+			/*
+			if (tileSet[i]->isWall()) {
+				//If the collision box touches the wall tile
+				if (checkWallCollisions(object, tileSet[i]->getBox()))
+				{
+					return true;
+				}
+			}
+
+			*/
+
+
+	
 }
 
-bool Juego::checkWallCollisions(ObjetoJuego * a, SDL_Rect b)
+bool Juego::checkWallCollisions(SDL_Rect a, SDL_Rect b)
 {
 	//The sides of the rectangles
 	int leftA, leftB;
@@ -585,11 +642,10 @@ bool Juego::checkWallCollisions(ObjetoJuego * a, SDL_Rect b)
 	int bottomA, bottomB;
 
 	//Calculate the sides of rect A
-	leftA = a->getRect().x;
-	rightA = a->getRect().x + a->getRect().w;
-	topA = a->getRect().y;
-	bottomA = a->getRect().y + a->getRect().h;
-
+	leftA = a.x;
+	rightA = a.x + a.w;
+	topA = a.y;
+	bottomA = a.y + a.h;
 	//Calculate the sides of rect B
 	leftB = b.x;
 	rightB = b.x + b.w;
@@ -674,4 +730,31 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 		arrayObjetos.push_back(new EnemigoPlanta(this, posEnemigoX, posEnemigoY + (30 * direction)));
 		break;
 	}
+}
+
+
+/*
+void Juego::addToScreen(Tilemap::Tile * t) { //ONLY ARRAY OF WALLS
+	if (isInScreen(t->getBox())) {
+		tileVisible.push_back(t);
+	}
+}
+*/
+void Juego::addToScreen(ObjetoJuego * obj) {
+	if (isInScreen(obj->getRect())) {
+		objVisible.push_back(obj);
+		obj->putInside();
+	}
+}
+bool Juego::isInScreen(SDL_Rect rect) {
+
+	//SDL_Rect * pantalla;	//CAMERA
+
+	if (rect.x < camera.w + camera.x && rect.y < camera.h + camera.y) {
+		if (rect.x > camera.x && rect.y > camera.y) {
+			//objVisible.push_back = obj;
+			return true;
+		}
+	}	
+	return false;
 }

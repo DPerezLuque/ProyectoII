@@ -46,8 +46,8 @@ void BalaEnemigo::onCollision(collision type) {
 	/*//BALAS
 	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
 		if (juego->arrayObjetos[j]->getType() == WEAPON) {
-			if (juego->checkCollision(juego->arrayObjetos[j], juego->arrayObjetos[0])) {
-				juego->arrayObjetos[j]->onCollision(juego->arrayObjetos[0]);
+			if (juego->checkCollision(juego->arrayObjetos[j], juego->player)) {
+				juego->arrayObjetos[j]->onCollision(juego->player);
 			}
 		}
 	}*/

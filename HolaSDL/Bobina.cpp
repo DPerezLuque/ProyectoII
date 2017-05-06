@@ -25,7 +25,7 @@ void Bobina::update(int delta) {
 		contador = 0;
 	}
 
-	if (juego->checkCollision(this, juego->arrayObjetos[0]))
+	if (juego->checkCollision(this, juego->player))
 		onCollision();
 }
 

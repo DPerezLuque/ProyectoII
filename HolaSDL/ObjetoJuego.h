@@ -30,5 +30,9 @@ public:
 	virtual bool isDead() = 0;
 
 	virtual collision getType() = 0;
+
+	virtual bool isInside() = 0;
+
+	virtual void putInside() = 0;
 };
 

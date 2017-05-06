@@ -142,6 +142,8 @@ public:
 		void render(SDL_Renderer* pRenderer, SDL_Rect& camera);
 
 		bool isWall();
+		bool isInside();
+		void setInside();
 		//Get the tile type
 		int getType();
 
@@ -154,6 +156,9 @@ public:
 		
 		//Switch between wall or not
 		bool wall;
+
+		//Tells if the tile is inside the camera window
+		bool inside = false;
 
 		//The tile type
 		int mType;
@@ -405,6 +410,12 @@ void Tilemap::Tile::render(SDL_Renderer* pRenderer ,SDL_Rect& camera)
 bool Tilemap::Tile::isWall() {
 	return wall;
 }
+
+bool Tilemap::Tile::isInside() {
+	return inside;
+}
+
+void Tilemap::Tile::setInside() { inside = true; };
 
 int Tilemap::Tile::getType()
 {
