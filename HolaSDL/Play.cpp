@@ -25,6 +25,8 @@ using namespace std;
 
 Play::Play(Juego* ptr) : Estado(ptr)
 {
+	type = NIVEL_1;
+
 	init();
 }
 

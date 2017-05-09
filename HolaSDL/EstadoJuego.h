@@ -4,7 +4,7 @@
 #include "SDL.h"
 #include <vector>
 
-using namespace std;
+enum GAME_STATES {MENU_PRINCIPAL, NIVEL_1, GAME_OVER};
 
 class EstadoJuego
 {
@@ -17,9 +17,16 @@ public:
 
 	virtual void update(int delta) = 0;
 
+	virtual void update() = 0;
+
 	virtual void onClick() = 0;
 
+	virtual GAME_STATES getCurrentState() = 0;
+
+	virtual void changeCurrentState(GAME_STATES newType) = 0;
+
 	virtual ObjetoJuego* getObjeto(int i) const = 0;
+
 	virtual int getSizeArray() const = 0;
 };
 

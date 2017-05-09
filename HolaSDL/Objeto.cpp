@@ -34,12 +34,12 @@ bool Objeto::dentro(int x, int y)const
 
 bool Objeto::onClick()
 {
-	//printf("onclick objeto \n");
+/*	//printf("onclick objeto \n");
 	int x, y;
 	juego->getMousePos(x, y);
 	if (dentro(x, y)) {
 		return true;
-	}
+	}*/
 	return false;
 }
 

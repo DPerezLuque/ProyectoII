@@ -6,13 +6,12 @@ class Boton : public Objeto
 public:
 	
 	typedef void CallBack_t(Juego* jg);
-	Boton(Juego* ptr, int px, int py, CallBack_t * cb, Juego::Texturas_t tex);
+	Boton(Juego* ptr, int px, int py, Juego::Texturas_t tex, collision type);
 	virtual ~Boton();
 
-	bool onClick();
-	void update();
+//	void update(int delta) {};
 
 private:
-	CallBack_t * cbOnClick;
+	//CallBack_t * cbOnClick;
 };
 

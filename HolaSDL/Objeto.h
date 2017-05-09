@@ -9,7 +9,9 @@ public:
 	Objeto(Juego* ptr, int px, int py);
 	virtual ~Objeto();
 
-	bool dentro(int x, int y) const; //(A LO MEJOR ES NECESARIO)
+	void update() {};
+	void update(int delta) {};
+	bool dentro(int x, int y) const; 
 	void draw() const;
 	bool onClick();
 	SDL_Rect getRect();

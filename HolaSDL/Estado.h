@@ -13,8 +13,11 @@ public:
 
 	void draw();
 	void update(int delta);
+	void update() {};
 	void onClick();
 
+	GAME_STATES getCurrentState() { return type; };
+	void changeCurrentState(GAME_STATES newType) { type = newType; };
 	ObjetoJuego* getObjeto(int i) const { return juego->arrayObjetos[i]; }; //Getter del objeto i del array
 	int getSizeArray() const { return juego->arrayObjetos.size(); }; //Getter del tamaño del array
 
@@ -27,6 +30,7 @@ protected:
 	vector <HUD*> elemInterfaz; //Estarán todos los elementos de la interfaz
 	//SDL_Rect camera_; //Utilizado por interfaz
 	
+	GAME_STATES type;
 
 	int height, width;
 };

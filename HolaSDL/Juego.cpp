@@ -63,7 +63,8 @@ Juego::Juego()
 	else
 	{
 		//camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-		changeState(new Play(this));
+		changeState(new MenuPrincipal(this));
+
 		estado = topEstado(); //primer estado: MENU
 	}
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
@@ -96,75 +97,100 @@ Juego::~Juego()
 
 void Juego::run()
 {
-	//Uint32 MSxUpdate = 25;
-	cout << "PLAY \n";
-	Uint32 lastUpdate = SDL_GetTicks();
-
-	//Clear screen	
-	SDL_RenderClear(pRenderer);
-
-	//Render level
-	for (int i = 0; i < TOTAL_TILES; ++i)
-	{
-		tileSet[i]->render(pRenderer, camera);
-	}
-
-	//Update screen
-	SDL_RenderPresent(pRenderer);
-
-	estado->draw();
-	handle_events();
-
 	while (!exit) {
 
-		for (auto t : wallsArray) {
-			if (!t->isInside()) {
-				if (isInScreen(t->getBox())) {
-					tileVisible.push_back(t);
-					//t->setInside();
+		switch (estado->getCurrentState()) {
+		case MENU_PRINCIPAL:
+
+		//	cout << "MENU PRINCIPAL \n";
+			//Render menu
+			estado->draw();
+
+			//while (estado->getCurrentState() == MENU_PRINCIPAL) {
+				estado->update();
+			//}
+
+			break;
+
+		case NIVEL_1:
+			changeState(new Play(this));
+			estado = topEstado(); 
+
+			cout << "NIVEL 1 (PLAY) \n";
+			Uint32 lastUpdate = SDL_GetTicks();
+
+			//Clear screen	
+			SDL_RenderClear(pRenderer);
+
+			//Render level
+			for (int i = 0; i < TOTAL_TILES; ++i)
+			{
+				tileSet[i]->render(pRenderer, camera);
+			}
+
+			//Update screen
+			SDL_RenderPresent(pRenderer);
+
+			estado->draw();
+			handle_events();
+
+			while (!exit) {
+
+				for (auto t : wallsArray) {
+					if (!t->isInside()) {
+						if (isInScreen(t->getBox())) {
+							tileVisible.push_back(t);
+							//t->setInside();
+						}
+					}
 				}
+
+				estado = topEstado();
+				//if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
+				delta = (SDL_GetTicks() - lastUpdate) / 10.0f;
+				estado->update(delta);
+				lastUpdate = SDL_GetTicks();
+				//}
+				//estado = topEstado();
+				//Render level
+				for (int i = 0; i < TOTAL_TILES; ++i)
+				{
+					tileSet[i]->render(pRenderer, camera);
+				}
+
+				//cout << delta << "\n";
+				estado->draw();
+				handle_events();
+				contDash++;
+				cout << arrayObjetos.size() << "\n";
+
+				//cout << tileVisible.size() << "\n";
+
+
+				for (int i = 0; i < tileVisible.size(); ++i) {
+					if (isInScreen(tileVisible[i]->getBox())) {
+						tileVisible.erase(tileVisible.begin(), tileVisible.begin() + i);
+					}
+				}
+
+				//cout << objVisible.size() << "\n";
+				//std::cout << contDash << "\n";
+
 			}
-		}
 
-		estado = topEstado();
-		//if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
-		delta = (SDL_GetTicks() - lastUpdate) / 10.0f;
-		estado->update(delta);
-		lastUpdate = SDL_GetTicks();
-		//}
-		//estado = topEstado();
-		//Render level
-		for (int i = 0; i < TOTAL_TILES; ++i)
-		{
-			tileSet[i]->render(pRenderer, camera);
-		}
-
-		//cout << delta << "\n";
-		estado->draw();
-		handle_events();
-		contDash++; 
-		cout << arrayObjetos.size() << "\n";
-
-		//cout << tileVisible.size() << "\n";
-
-
-		for (int i = 0; i < tileVisible.size(); ++i) {
-			if (isInScreen(tileVisible[i]->getBox())) {
-				tileVisible.erase(tileVisible.begin(), tileVisible.begin() + i);
+			if (exit) cout << "EXIT \n";
+			else {
+				estado->draw();
 			}
+			break;
+			/*	case GAME_OVER:
+					break;
+				default:
+					break;*/
 		}
 
-		//cout << objVisible.size() << "\n";
-		//std::cout << contDash << "\n";
 	}
-
-
-
-	if (exit) cout << "EXIT \n";
-	else {
-		estado->draw();
-	}
-	SDL_Delay(1000); //cin.get();
+	SDL_Delay(500); //cin.get();
 }
 /*
 
@@ -425,11 +451,11 @@ void Juego::handle_events()
 				}
 			}	
 		}
-		if (e.type == SDL_KEYUP) {
+		/*if (e.type == SDL_KEYUP) {
 			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
 				pushState(new Pausa(this));
 			}
-		}
+		}*/
 
 
 	}
