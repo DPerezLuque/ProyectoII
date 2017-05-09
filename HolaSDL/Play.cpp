@@ -91,7 +91,16 @@ void Play::init() {
 void Play::update(int delta) {
 
 	//COLISIONES CON OBJETOS
+	for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
+		for (int j = 0; j < juego->arrayObjetos.size(); ++j) {
+			if (juego->checkCollision(juego->arrayObjetos[i], juego->arrayObjetos[j])) {
+				juego->arrayObjetos[i]->onCollision(juego->arrayObjetos[j]->getType());
+				juego->arrayObjetos[j]->onCollision(juego->arrayObjetos[i]->getType());
+			}
+		}
+	}
 
+	/*
 	for (auto obj1 : juego->arrayObjetos) {
 		for (auto obj2 : juego->arrayObjetos) {
 			if (juego->checkCollision(obj1, obj2)) {
@@ -101,6 +110,7 @@ void Play::update(int delta) {
 		}
 		
 	}
+	*/
 	///REVISAR
 	/*
 	for (auto obj1 : juego->arrayObjetos) {
@@ -201,7 +211,7 @@ void Play::update(int delta) {
 	if (juego->player->isDead()){		
 		juego->exit = true;
 	}
-	else{
+	//else{
 		//LIMPIEZA DE VECTOR DE OBJETOS
 		for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 			if (juego->arrayObjetos[aux]->isDead())
@@ -236,7 +246,7 @@ void Play::update(int delta) {
 			elemInterfaz[i]->update(); //
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	}
+	//}
 
 
 }

@@ -143,8 +143,9 @@ void Juego::run()
 		estado->draw();
 		handle_events();
 		contDash++; 
-		
-		cout << tileVisible.size() << "\n";
+		cout << arrayObjetos.size() << "\n";
+
+		//cout << tileVisible.size() << "\n";
 
 
 		for (int i = 0; i < tileVisible.size(); ++i) {
