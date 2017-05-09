@@ -27,7 +27,7 @@ public:
 
 	//TEXTURE TYPES
 	enum Texturas_t {
-		TPlayer, TBulletPlayer, TBExit, TBPlay, TBMenu, TBResume,
+		TPlayer, TBulletPlayer, TBPlayE, TBPlayA, TBOptionsE, TBOptionsA, TBExitE, TBExitA, TFondo,
 		TEnemy, TBulletEnemy, TVidaLlena, TVidaVacia, TDashLleno,
 		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta, TBarraVida, THumo,
 		TBotiquin, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 

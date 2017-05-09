@@ -27,12 +27,12 @@ void Checkpoint::update(int delta) {
 		contador = 0;
 	}
 
-	/*if (juego->checkCollision(this, juego->player))
+	if (juego->checkCollision(this, juego->player))
 		onCollision();
 		
 	//rectCollision.x = (rect.x + rect.w / 2) * delta; //Esto requiere que vaya en el update?
 	//rectCollision.y = (rect.y + rect.h / 2) * delta;
-	*/
+	
 }
 
 void Checkpoint::draw() const {

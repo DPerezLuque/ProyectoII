@@ -264,10 +264,13 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\personaje.png");
 	texturas.push_back("..\\bmps\\bala.png");
 
-	texturas.push_back("..\\bmps\\menu_salir.png");
-	texturas.push_back("..\\bmps\\menu_play.png");
-	texturas.push_back("..\\bmps\\menu_menu.png");
-	texturas.push_back("..\\bmps\\menu_resume.png");
+	texturas.push_back("..\\bmps\\BotonPlayE.png");
+	texturas.push_back("..\\bmps\\BotonPlayA.png");
+	texturas.push_back("..\\bmps\\BotonOptionsE.png");
+	texturas.push_back("..\\bmps\\BotonOptionsA.png");
+	texturas.push_back("..\\bmps\\BotonExitE.png");
+	texturas.push_back("..\\bmps\\BotonExitA.png");
+	texturas.push_back("..\\bmps\\Fondo.png");
 
 	texturas.push_back("..\\bmps\\enemy.png");
 	texturas.push_back("..\\bmps\\balaEnemigo.png");
