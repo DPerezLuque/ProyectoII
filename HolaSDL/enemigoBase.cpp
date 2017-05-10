@@ -1,11 +1,114 @@
 #include "enemigoBase.h"
+#include "BalaEnemigo.h"
 
 
 enemigoBase::enemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
+	barraVida = juego->getTextura(Juego::TBarraVida);
+
+	vel = 6;
+	freDis = 100;
+	velDis = 20;
+	contInm = 0;
+
+	rect.x = px;
+	rect.y = py;
+	rect.w = 50;
+	rect.h = 50;
+
+	rectCollision.x = rect.x;
+	rectCollision.y = rect.y;
+	rectCollision.w = rect.w / 2;
+	rectCollision.h = rect.h / 2;
+
+	rectVida.x = px - 20;
+	rectVida.y = py + 50;
+	rectVida.w = 128;
+	rectVida.h = 10;
+
+
+	tipo = ENEMY;
+
+	inmunidad = false;
+	active = false;
+
+	srand(0);
 }
 
 
 enemigoBase::~enemigoBase()
 {
+}
+
+void enemigoBase::draw() const{
+	if (animado){
+	textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
+	}
+	else textura->draw(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect);
+
+	barraVida->draw(pRenderer, rectVida.x - juego->camera.x, rectVida.y - juego->camera.y, rectVida);
+	
+}
+
+void enemigoBase::onCollision(collision type){
+	if (type == PJ_WEAPON)
+		gestorVida();
+}
+void enemigoBase::shoot(int targetX, int targetY){
+
+	//static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
+
+	int distance = sqrt((targetX - rect.x)*(targetX - rect.x) + (targetY - rect.y)*(targetY - rect.y));
+
+	if (distance == 0) //He puesto esto para que no salga la excepción de que divide entre 0
+		distance = 5;
+
+	int vX = velDis * (targetX - rect.x) / distance;
+	int vY = velDis * (targetY - rect.y) / distance;
+
+	if (vX == 0 && vY == 0) { // Para que con lo de antes no se quede la bala flotando
+		vX = vY = 10; // Si se hace lo de que al tocar al jugador haga daño y te empuje un poco igual no hace falta
+	}
+
+	//Disparo
+	ObjetoJuego * newBalaEnemy = new BalaEnemigo(juego, rect.x, rect.y, vX, vY);
+	juego->arrayObjetos.push_back(newBalaEnemy);
+	juego->enemyBullets.push_back(newBalaEnemy);
+}
+
+
+void enemigoBase::gestorVida(){
+	if (!inmunidad){
+		vida--;
+		cout << "Vida enemigo: " << vida << "\n";
+		inmunidad = true;
+	}
+
+	if (vida <= 0){
+		cout << "Enemy Dead! \n";
+		dead = true;
+
+
+		/* generate secret number between 1 and 10: */
+		int rnd = 1 - 100 * (rand() % 100);
+
+		if (rnd % 5 == 0) juego->spawnObjetos('b', rect.x, rect.y, "");  //Droppea botiquines con un 20%
+
+		//juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
+		juego->spawnObjetos('a', rect.x, rect.y, "");
+		juego->spawnObjetos('e', rect.x, rect.y, "");
+		juego->spawnObjetos('b', rect.x, rect.y, "");
+	}
+}
+
+bool enemigoBase::isActive(){
+	//std::cout << active << "\n";
+	int x, y;
+	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
+	int distance = sqrt((x + 50 - rect.x + rect.w / 2)*(x + 50 - rect.x + rect.w / 2)
+		+ (y + 50 - rect.y + rect.h / 2)*(y + 50 - rect.y + rect.h / 2)); // distancia entre los centros y no las esquinas
+	//std::cout << distance << "\n";
+	if (distance <= radioEnable) active = true;
+	if (distance >= radioDisable) active = false;
+	return active;
 }

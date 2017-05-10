@@ -1,7 +1,8 @@
+/*
 #include "BossRino.h"
 
 
-BossRino::BossRino(Juego* ptr, int px, int py) : enemy(ptr, px, py)
+BossRino::BossRino(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TBulletEnemy);
 
@@ -37,6 +38,8 @@ void BossRino::follow(int x, int y){
 			vX = 2*vel * (x - rect.x) / distance;
 			vY = 2*vel * (y - rect.x) / distance;
 		}*/
+/*		
+
 		//else {
 			vX = vel * (x - rect.x) / distance;
 			vY = vel * (y - rect.y) / distance;
@@ -51,10 +54,10 @@ void BossRino::follow(int x, int y){
 		rect.y += vY*3;
 	}
 	else{*/
-		rect.x += vX;
-		rect.y += vY;
+		//rect.x += vX;
+		//rect.y += vY;
 	//}
-	
+/*
 }
 void BossRino::follow2(int x, int y){
 	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
@@ -72,10 +75,10 @@ void BossRino::follow2(int x, int y){
 	rect.y += vY*3;
 	}
 	else{*/
-	rect.x += vX;
-	rect.y += vY;
+	//rect.x += vX;
+	//rect.y += vY;
 	//}
-
+/*
 }
 
 void BossRino::update(int delta){
@@ -88,6 +91,8 @@ void BossRino::update(int delta){
 	else if (contDis < freDis){
 		follow2(x, y);
 	}*/
+
+/*
 	switch (humuluhumulu){
 	case Estaditos::NORMAL:
 		contAceleron = 0;
@@ -119,4 +124,4 @@ void BossRino::sma(){
 	
 	static_cast <Play*> (juego->topEstado())->posPlayer(posx, posy);
 }
-
+*/

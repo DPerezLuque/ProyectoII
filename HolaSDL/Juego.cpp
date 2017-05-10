@@ -20,7 +20,7 @@
 #include "MapEditor.h"
 #include "Aura.h"
 #include "Botiquin.h"
-#include "enemy.h"
+#include "enemigoGuardia.h"
 #include "EnemigoPlanta.h"
 
 #include <SDL_mixer.h>
@@ -758,7 +758,7 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 
 	case 'e':   //Spawn de enemigo que camina
 
-		arrayObjetos.push_back(new enemy(this, posEnemigoX + (30 * direction), posEnemigoY));
+		arrayObjetos.push_back(new enemigoGuardia(this, posEnemigoX + (30 * direction), posEnemigoY));
 		break;
 
 	case 'p':	//Spawn de enemigos de plantas

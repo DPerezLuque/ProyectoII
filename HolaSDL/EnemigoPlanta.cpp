@@ -1,14 +1,13 @@
 #include "EnemigoPlanta.h"
 
-EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemy(ptr, px, py)
+EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TEnemyPlanta); //TO DO: cambiar a la textura de la planta
 	vida = 4;
 	rectAnim = { 0, 0, 32, 32 };
-	contador = 0;
-	rectCollision = rect;
+	contadorFrames = 0;
+	animado = true;
 
-	active = false;
 	radioDisable = 550;
 	radioEnable = 400;
 }
@@ -26,10 +25,6 @@ EnemigoPlanta::~EnemigoPlanta()
 {
 }
 
-void EnemigoPlanta::draw() const {
-	textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
-	barraVida->draw(pRenderer, rectVida.x - juego->camera.x, rectVida.y - juego->camera.y, rectVida);
-}
 void EnemigoPlanta::update(int delta){
 	if (isActive()) {
 		//Barra de vida
@@ -37,10 +32,10 @@ void EnemigoPlanta::update(int delta){
 		rectVida.y = rect.y - 20;
 		rectVida.w = 32 * vida;
 
-		contador += delta;
-		if (contador >= 4) { //Paso de imagenes mas lento
+		contadorFrames += delta;
+		if (contadorFrames >= 4) { //Paso de imagenes mas lento
 			animacionBasica();
-			contador = 0;
+			contadorFrames = 0;
 		}
 
 		//int x, y;
@@ -67,25 +62,3 @@ void EnemigoPlanta::update(int delta){
 	}
 }
 
-void EnemigoPlanta::onCollision() { //onCollision de gestor de vida
-
-	gestorVida();
-}
-
-void EnemigoPlanta::gestorVida()
-{
-	if (!inmunidad) {
-		vida--;
-		cout << "Vida enemigo: " << vida << "\n";
-		inmunidad = true;
-	}
-
-	if (vida <= 0) {
-		cout << "Enemy Dead! \n";
-		dead = true;
-		//RANDOM AQUÍ
-		juego->spawnObjetos('a', rect.x, rect.y, "");
-		juego->spawnObjetos('b', rect.x, rect.y, "");
-		juego->spawnObjetos('p', rect.x, rect.y, "");
-	}
-}

@@ -27,7 +27,7 @@
     <ClCompile Include="Boton.cpp" />
     <ClCompile Include="Cargador.cpp" />
     <ClCompile Include="Efecto.cpp" />
-    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="enemigoGuardia.cpp" />
     <ClCompile Include="EnergiaDisponible.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Estado.cpp" />
@@ -62,7 +62,7 @@
     <ClInclude Include="Boton.h" />
     <ClInclude Include="Cargador.h" />
     <ClInclude Include="Efecto.h" />
-    <ClInclude Include="enemy.h" />
+    <ClInclude Include="enemigoGuardia.h" />
     <ClInclude Include="EnergiaDisponible.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="EstadoJuego.h" />

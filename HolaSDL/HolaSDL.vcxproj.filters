@@ -11,7 +11,6 @@
     <ClCompile Include="Boton.cpp" />
     <ClCompile Include="Cargador.cpp" />
     <ClCompile Include="Efecto.cpp" />
-    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="EnergiaDisponible.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Estado.cpp" />
@@ -34,6 +33,7 @@
     <ClCompile Include="objetoDecorativo.cpp" />
     <ClCompile Include="Bobina.cpp" />
     <ClCompile Include="enemigoBase.cpp" />
+    <ClCompile Include="enemigoGuardia.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -46,7 +46,6 @@
     <ClInclude Include="Boton.h" />
     <ClInclude Include="Cargador.h" />
     <ClInclude Include="Efecto.h" />
-    <ClInclude Include="enemy.h" />
     <ClInclude Include="EnergiaDisponible.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="EstadoJuego.h" />
@@ -72,5 +71,6 @@
     <ClInclude Include="objetoDecorativo.h" />
     <ClInclude Include="Bobina.h" />
     <ClInclude Include="enemigoBase.h" />
+    <ClInclude Include="enemigoGuardia.h" />
   </ItemGroup>
 </Project>
