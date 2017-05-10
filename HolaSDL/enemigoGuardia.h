@@ -8,7 +8,7 @@ public:
 	~enemigoGuardia();
 
 	void update(int delta);
-	virtual void follow(int x, int y, float delta);
+	virtual void animacionBasica(){}
 
 };
 

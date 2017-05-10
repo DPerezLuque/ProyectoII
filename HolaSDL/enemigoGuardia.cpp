@@ -49,32 +49,7 @@ void enemigoGuardia::update(int delta)
 
 }
 
-void enemigoGuardia::follow(int x, int y, float delta){ // posicion del objeto que vas a seguir 
-	
-	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
 
-
-	if (distance > vel / 2) { //este numero es un margen de error que tendra que ir acorde con la velocidad del enemigo (vel)
-
-	//if (distance > vel / 2) { //este numero es un margen de error que tendra que ir a corde con la velocidad del enemigo (vel)
-
-		vX = vel * (x - rect.x) / distance;
-		vY = vel * (y - rect.y) / distance;
-	}
-	else {
-		vX = 0;
-		vY = 0;
-	}
-	if (juego->touchesWall(getRect())) {
-		rect.x -= (vX / 2) * delta;
-		rect.y -= (vY / 2) * delta;
-	}
-	else {
-		rect.x += (vX / 2) * delta / 1.5f;
-		rect.y += (vY / 2) * delta / 1.5f;
-	}
-
-}
 
 
 

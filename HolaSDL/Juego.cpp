@@ -339,6 +339,11 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\VitrinaLibreria.png");
 	texturas.push_back("..\\bmps\\VitrinaFeto.png");
 
+	//enemigoBomba y su bala
+	texturas.push_back("..\\bmps\\enemigoBomba.png");
+	texturas.push_back("..\\bmps\\balaBomba.png");
+	texturas.push_back("..\\bmps\\explosionBalaBomba.png");
+
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
 		pTexture = new Textura;

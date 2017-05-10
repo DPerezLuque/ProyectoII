@@ -6,6 +6,7 @@
 #include "BalaPlayer.h"
 #include "BalaEnemigo.h"
 #include "enemigoGuardia.h"
+#include "EnemigoBomba.h"
 //#include "BossRino.h"
 #include "EnemigoPlanta.h"
 #include <iostream>
@@ -50,9 +51,10 @@ void Play::init() {
 	juego->arrayObjetos.push_back(juego->player);
 	//juego->arrayObjetos.push_back(new Player(juego, 200, 300));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
+	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 300));
 
 	///		ENEMIGOS	///
-	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));	
+	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));	
 	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                          AQUI TUVE EL PROBLEMA CON EL COMMIT vale crack pero por qué no metes el puntero directamente
 	//juego->arrayObjetos.push_back(newEnemy);
 	//juego->enemyArray.push_back(newEnemy);

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="Aura.cpp" />
     <ClCompile Include="Bala.cpp" />
+    <ClCompile Include="balaBomba.cpp" />
     <ClCompile Include="BalaEnemigo.cpp" />
     <ClCompile Include="BalaPlayer.cpp" />
     <ClCompile Include="Bobina.cpp" />
@@ -21,6 +22,7 @@
     <ClCompile Include="Checkpoint.cpp" />
     <ClCompile Include="Dialogo.cpp" />
     <ClCompile Include="enemigoBase.cpp" />
+    <ClCompile Include="EnemigoBomba.cpp" />
     <ClCompile Include="EnemigoPlanta.cpp" />
     <ClCompile Include="BarraVida.cpp" />
     <ClCompile Include="BarraVidaVacia.cpp" />
@@ -48,6 +50,7 @@
   <ItemGroup>
     <ClInclude Include="Aura.h" />
     <ClInclude Include="Bala.h" />
+    <ClInclude Include="balaBomba.h" />
     <ClInclude Include="BalaEnemigo.h" />
     <ClInclude Include="BalaPlayer.h" />
     <ClInclude Include="Bobina.h" />
@@ -56,6 +59,7 @@
     <ClInclude Include="Checkpoint.h" />
     <ClInclude Include="Dialogo.h" />
     <ClInclude Include="enemigoBase.h" />
+    <ClInclude Include="EnemigoBomba.h" />
     <ClInclude Include="EnemigoPlanta.h" />
     <ClInclude Include="BarraVida.h" />
     <ClInclude Include="BarraVidaVacia.h" />
