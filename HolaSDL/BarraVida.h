@@ -4,7 +4,7 @@
 class BarraVida : public Interfaz
 {
 public:
-	BarraVida(Juego* pJuego, Player* jugador, int ancho, int alto, int posX, int posY);
+	BarraVida(Juego* pJuego, ObjetoJuego* jugador, int ancho, int alto, int posX, int posY);
 	virtual ~BarraVida();
 	void update();	
 	void draw() const;

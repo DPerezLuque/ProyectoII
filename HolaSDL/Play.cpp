@@ -33,21 +33,6 @@ Play::Play(Juego* ptr) : Estado(ptr)
 Play::~Play()
 {
 
-	for (int i = 0; i < juego->arrayObjetos.size(); ++i)
-		juego->arrayObjetos.erase(juego->arrayObjetos.begin() + i);	
-
-	for (int j = 0; j < juego->elemInterfaz.size(); ++j)
-		juego->elemInterfaz.erase(juego->elemInterfaz.begin() + j);
-	
-	for (int aux2 = 0; aux2 < juego->playerBullets.size(); ++aux2) 
-		juego->playerBullets.erase(juego->playerBullets.begin() + aux2);
-	
-	for (int aux3 = 0; aux3 < juego->enemyBullets.size(); ++aux3) 
-			juego->enemyBullets.erase(juego->enemyBullets.begin() + aux3);
-	
-	for (int aux4 = 0; aux4 < juego->objVisible.size(); ++aux4) 
-			juego->objVisible.erase(juego->objVisible.begin() + aux4);
-	
 }
 
 void Play::init() {
@@ -60,8 +45,8 @@ void Play::init() {
 
 	//ENEMIGOS
 	//juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
-	ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
-	juego->arrayObjetos.push_back(newEnemy);
+	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 750, 300));
 	//juego->enemyArray.push_back(newEnemy);
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
@@ -129,61 +114,6 @@ void Play::update(int delta) {
 		
 	}
 	*/
-	///REVISAR
-	/*
-	for (auto obj1 : juego->arrayObjetos) {
-		for (auto obj2 : juego->arrayObjetos) {
-			if (juego->checkCollision(obj1, obj2)) {
-				obj1->onCollision(obj2->getType());
-				obj2->onCollision(obj1->getType());
-			}
-		}
-		
-	}
-
-	for (auto enemy : juego->enemyArray) {
-		if (juego->checkCollision(enemy, juego->player)) {
-			enemy->onCollision(juego->player->getType());
-			juego->player->onCollision(enemy->getType());
-		}
-		
-	}
-
-	for (auto bullet : juego->enemyBullets) {
-		if (juego->checkCollision(bullet, juego->player)) {
-			bullet->onCollision(juego->player->getType());
-			juego->player->onCollision(bullet->getType());
-		}
-		for (auto enemyb : juego->enemyBullets) {
-			if (juego->checkCollision(enemyb, bullet)) {
-				enemyb->onCollision(bullet->getType());
-				bullet->onCollision(enemyb->getType());
-			}
-
-		}
-
-	}
-
-	*/
-	/*
-	for (auto bullet : juego->playerBullets) {
-		
-		if (juego->checkCollision(juego->player, bullet)) {
-			juego->player->onCollision(bullet->getType());
-			bullet->onCollision(juego->player->getType());
-		}
-
-		for (auto enemy : juego->arrayObjetos) {
-			if (juego->checkCollision(enemy, bullet)) {
-				enemy->onCollision(bullet->getType());
-				bullet->onCollision(enemy->getType());
-			}
-		}
-	
-	
-	}
-*/
-
 
 /*
 	//PERSONAJE CON ENEMIGOS
@@ -229,7 +159,7 @@ void Play::update(int delta) {
 	if (juego->player->isDead()){		
 		juego->setGameOver();
 	}
-	//else{
+	else{
 		//LIMPIEZA DE VECTOR DE OBJETOS
 		for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 			if (juego->arrayObjetos[aux]->isDead())
@@ -264,7 +194,7 @@ void Play::update(int delta) {
 			juego->elemInterfaz[i]->update(); //
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//}
+	}
 
 
 }

@@ -3,7 +3,7 @@
 #include "SDL.h"
 #include "Textura.h"
 #include "Play.h"
-#include "Player.h"
+
 
 class Interfaz : public HUD
 {
@@ -21,7 +21,12 @@ protected:
 	SDL_Rect pRect; //Donde se dibujará el elemento
 	SDL_Renderer* pRenderer;
 	Textura* textura;
-	int contador;
+	
+	//PLAYER STATS
+	int contador;	//Dash
+	int vida;
+	int balas;
+
 	int distX, distY; //Distancia respecto la cámara
 
 };

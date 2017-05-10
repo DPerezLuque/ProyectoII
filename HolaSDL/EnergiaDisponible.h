@@ -7,7 +7,7 @@ class EnergiaDisponible :
 	public Interfaz
 {
 public:
-	EnergiaDisponible(Juego* pJuego, Player* jugador, int ancho, int alto, int posX, int posY);
+	EnergiaDisponible(Juego* pJuego, ObjetoJuego* jugador, int ancho, int alto, int posX, int posY);
 	virtual ~EnergiaDisponible();
 	void update();
 	void draw() const; //Cambiamos el draw, recorrerá el vector de rectangulos y dibujará todos

@@ -20,12 +20,12 @@ Estado::~Estado()
 		juego->arrayMenu[aux] = nullptr;
 	}
 	//Interfaz
-	for (int i = 0; i < elemInterfaz.size(); i++){
-		delete elemInterfaz[i]; 
-		elemInterfaz[i] = nullptr;
+	for (int i = 0; i < juego->elemInterfaz.size(); i++){
+		delete juego->elemInterfaz[i]; 
+		juego->elemInterfaz[i] = nullptr;
 	}
-
-	juego = nullptr;
+	
+	/*juego = nullptr;
 	textura = nullptr;
 	pRenderer = nullptr;*/
 }
@@ -62,6 +62,11 @@ void Estado::update(){
 	bool clicked = false;
 	while (!clicked){
 
+		//Dibuja los objetos
+		for (int aux = 0; aux < juego->arrayMenu.size(); ++aux) {
+			juego->arrayMenu[aux]->update();
+		}
+
 		if (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {
 				salir();
@@ -78,6 +83,8 @@ void Estado::update(){
 				// else if(...)    
 			}
 		}
+
+		draw();
 	}
 }
 

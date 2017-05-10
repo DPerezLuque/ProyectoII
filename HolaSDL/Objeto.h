@@ -33,6 +33,7 @@ public:
 	bool isInside() { return inside; };
 
 	void putInside() { inside = true; };
+
 protected:
 	Juego* juego;
 	Textura* textura;

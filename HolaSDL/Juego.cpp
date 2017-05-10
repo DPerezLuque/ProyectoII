@@ -94,10 +94,44 @@ Juego::~Juego()
 	closeSDL();
 }
 
+void Juego::cleanArrays() {
 
+	for (int i = 0; i < arrayObjetos.size(); ++i)
+		arrayObjetos.erase(arrayObjetos.begin() + i);
+
+	for (int j = 0; j < elemInterfaz.size(); ++j)
+		elemInterfaz.erase(elemInterfaz.begin() + j);
+	
+	for (int aux1 = 0; aux1 < enemyArray.size(); ++aux1)
+		enemyArray.erase(enemyArray.begin() + aux1);
+	
+	for (int aux2 = 0; aux2 < playerBullets.size(); ++aux2)
+		playerBullets.erase(playerBullets.begin() + aux2);
+
+	for (int aux3 = 0; aux3 < enemyBullets.size(); ++aux3)
+		enemyBullets.erase(enemyBullets.begin() + aux3);
+
+	for (int aux4 = 0; aux4 < objVisible.size(); ++aux4)
+		objVisible.erase(objVisible.begin() + aux4);
+
+	if(arrayObjetos.size() > 0)
+		arrayObjetos.erase(arrayObjetos.begin());
+	if (enemyArray.size() > 0)
+		enemyArray.erase(enemyArray.begin());
+	if (elemInterfaz.size() > 0)
+		elemInterfaz.erase(elemInterfaz.begin());
+	if (playerBullets.size() > 0)
+		playerBullets.erase(playerBullets.begin());
+	if (enemyBullets.size() > 0)
+		enemyBullets.erase(enemyBullets.begin());
+	if (objVisible.size() > 0)
+		objVisible.erase(objVisible.begin());
+
+	delete player;
+
+}
 void Juego::run()
 {
-	
 	Uint32 lastUpdate;
 
 	while (!exit) {
@@ -106,14 +140,13 @@ void Juego::run()
 		case MENU_PRINCIPAL:
 			
 			changeState(new MenuPrincipal(this));
-			estado = topEstado(); //primer estado: MENU
+			estado = topEstado(); 
 				
 			//Render menu
 			estado->draw();
-
-			//while (estado->getCurrentState() == MENU_PRINCIPAL) {
+			//Update menu
 			estado->update();
-			//}
+
 			break;
 
 		case NIVEL_1:
@@ -165,35 +198,25 @@ void Juego::run()
 					tileSet[i]->render(pRenderer, camera);
 				}
 
-				//cout << delta << "\n";
-				estado->draw();
-				handle_events();
-				contDash++;
-				cout << arrayObjetos.size() << "\n";
-
-				//cout << tileVisible.size() << "\n";
-
-
 				for (int i = 0; i < tileVisible.size(); ++i) {
 					if (isInScreen(tileVisible[i]->getBox())) {
 						tileVisible.erase(tileVisible.begin(), tileVisible.begin() + i);
 					}
 				}
-
-				//cout << objVisible.size() << "\n";
-				//std::cout << contDash << "\n";
-
+				//cout << delta << "\n";
+				estado->draw();
+				handle_events();
+				contDash++;
 			}
 
-		/*	if (exit) cout << "EXIT \n";
-			else {
-				estado->draw();
-			}*/
+			cleanArrays();
 			break;
 			
 		case GAME_OVER:
 			changeState(new GameOver(this));
 			estado = topEstado();
+
+			camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
 			estado->draw();
 			estado->update();

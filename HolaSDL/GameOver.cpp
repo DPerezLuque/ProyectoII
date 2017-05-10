@@ -16,8 +16,8 @@ GameOver::~GameOver() {
 
 void GameOver::init()
 {
-	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 300, Juego::TBPlayA, BOTON_MENU));
-	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBExitA, BOTON_EXIT));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 300, Juego::TBPlayA, Juego::TBPlayE, BOTON_MENU));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBExitA, Juego::TBExitE, BOTON_EXIT));
 }
 /*
 void GameOver::update(){

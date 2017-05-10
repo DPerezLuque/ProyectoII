@@ -70,8 +70,6 @@ public:
 	std::vector<ObjetoJuego*> arrayMenu;		//OBJETOS DEL MENU
 	std::vector<ObjetoJuego*> objVisible;		//OBJETOS VISIBLES EN PANTALLA
 	std::vector <HUD*> elemInterfaz;			//ELEMENTOS INTERFAZ
-	
-	//std::vector<int> stats;
 
 	//PLAYER
 	ObjetoJuego * player;
@@ -93,12 +91,13 @@ public:
 	bool checkWallCollisions(SDL_Rect a, SDL_Rect b);
 
 	//CLOSERS
-	void setSalir(){ exit = true; }
-	void setGameOver() { GO = true; }
+	void cleanArrays();
 	void freeMedia();
 	void closeSDL();
 	
 	//SETTERS
+	void setSalir() { exit = true; GO = true; }
+	void setGameOver() { GO = true; }
 	bool isInScreen(SDL_Rect rect);
 	void addToScreen(ObjetoJuego * obj);
 	//void addToScreen(Tilemap::Tile * t);
