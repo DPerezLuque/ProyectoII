@@ -14,6 +14,7 @@
 
 #include "Play.h"
 #include "MenuPrincipal.h"
+#include "GameOver.h"
 #include "Pausa.h"
 #include <exception>
 #include "Error.h"
@@ -51,7 +52,7 @@ Juego::Juego()
 	pcolor = { 0, 0, 0 }; //Color del fondo negro;
 
 	exit = false;
-
+	GO = false;
 	if (!initSDL())
 	{
 		printf("Failed to initialize!\n");
@@ -64,7 +65,6 @@ Juego::Juego()
 	{
 		//camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 		changeState(new MenuPrincipal(this));
-
 		estado = topEstado(); //primer estado: MENU
 	}
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
@@ -97,31 +97,38 @@ Juego::~Juego()
 
 void Juego::run()
 {
+	
+	Uint32 lastUpdate;
+
 	while (!exit) {
 
 		switch (estado->getCurrentState()) {
 		case MENU_PRINCIPAL:
-
-		//	cout << "MENU PRINCIPAL \n";
+			
+			changeState(new MenuPrincipal(this));
+			estado = topEstado(); //primer estado: MENU
+				
 			//Render menu
 			estado->draw();
 
 			//while (estado->getCurrentState() == MENU_PRINCIPAL) {
-				estado->update();
+			estado->update();
 			//}
-
 			break;
 
 		case NIVEL_1:
+
+			GO = false;
+
 			changeState(new Play(this));
 			estado = topEstado(); 
 
 			cout << "NIVEL 1 (PLAY) \n";
-			Uint32 lastUpdate = SDL_GetTicks();
-
+			
 			//Clear screen	
 			SDL_RenderClear(pRenderer);
 
+			lastUpdate = SDL_GetTicks();
 			//Render level
 			for (int i = 0; i < TOTAL_TILES; ++i)
 			{
@@ -134,7 +141,7 @@ void Juego::run()
 			estado->draw();
 			handle_events();
 
-			while (!exit) {
+			while (!GO) {
 
 				for (auto t : wallsArray) {
 					if (!t->isInside()) {
@@ -178,15 +185,20 @@ void Juego::run()
 
 			}
 
-			if (exit) cout << "EXIT \n";
+		/*	if (exit) cout << "EXIT \n";
 			else {
 				estado->draw();
-			}
+			}*/
 			break;
-			/*	case GAME_OVER:
-					break;
-				default:
-					break;*/
+			
+		case GAME_OVER:
+			changeState(new GameOver(this));
+			estado = topEstado();
+
+			estado->draw();
+			estado->update();
+			break;
+
 		}
 
 	}
@@ -389,6 +401,21 @@ bool Juego::initMedia()
 
 void Juego::freeMedia()
 {
+	//Objetos
+	for (size_t aux = 0; aux < arrayMenu.size(); ++aux) {
+		delete arrayMenu[aux];
+		arrayMenu[aux] = nullptr;
+	}
+	//Interfaz
+	for (int i = 0; i < elemInterfaz.size(); i++){
+		delete elemInterfaz[i];
+		elemInterfaz[i] = nullptr;
+	}
+
+	//juego = nullptr;
+	//textura = nullptr;
+	pRenderer = nullptr;
+
 	for (size_t aux = 0; aux < arrayTex.size(); ++aux) {
 		delete arrayTex[aux];
 		//arrayTex[aux] = nullptr;

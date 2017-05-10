@@ -8,7 +8,7 @@
 class Interfaz : public HUD
 {
 public:
-	Interfaz(Juego* pJuego, Player* jugador, int ancho, int alto, int posX, int posY);
+	Interfaz(Juego* pJuego, ObjetoJuego* jugador, int ancho, int alto, int posX, int posY);
 	virtual ~Interfaz();
 
 	void draw() const;
@@ -16,7 +16,8 @@ public:
 
 protected:
 	Juego* pJuego;
-	Player* player;
+	//ObjetoJuego * player;
+	ObjetoJuego* player;
 	SDL_Rect pRect; //Donde se dibujará el elemento
 	SDL_Renderer* pRenderer;
 	Textura* textura;

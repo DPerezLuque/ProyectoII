@@ -9,6 +9,7 @@
 #include "EstadoJuego.h"
 #include "ObjetoJuego.h"
 
+#include "HUD.h"
 #include "Musica.h"
 
 //using namespace std;
@@ -43,8 +44,6 @@ public:
 	SDL_Event e;
 
 	int x, y;
-	bool exit;
-
 
 	//GAME TIME (GLOBAL)
 	float delta;
@@ -68,8 +67,9 @@ public:
 	std::vector<ObjetoJuego*> enemyArray;		//ENEMIGOS
 	std::vector<ObjetoJuego*> playerBullets;	//BALAS PERSONAJE
 	std::vector<ObjetoJuego*> enemyBullets;		//BALAS ENEMIGOS 
-	std::vector<ObjetoJuego*> arrayMenu;
-	std::vector<ObjetoJuego*> objVisible;
+	std::vector<ObjetoJuego*> arrayMenu;		//OBJETOS DEL MENU
+	std::vector<ObjetoJuego*> objVisible;		//OBJETOS VISIBLES EN PANTALLA
+	std::vector <HUD*> elemInterfaz;			//ELEMENTOS INTERFAZ
 	
 	//std::vector<int> stats;
 
@@ -94,6 +94,7 @@ public:
 
 	//CLOSERS
 	void setSalir(){ exit = true; }
+	void setGameOver() { GO = true; }
 	void freeMedia();
 	void closeSDL();
 	
@@ -130,6 +131,9 @@ public:
 	bool getRecargar(){ return recargar; }
 
 private:
+
+	bool exit, GO;
+
 	bool dashAux = false;
 	bool recargar = false;
 	//ARRAYS

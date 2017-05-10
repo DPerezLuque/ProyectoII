@@ -4,10 +4,11 @@
 class GameOver : public Estado
 {
 public:
-	GameOver(Juego* ptr, int p);
+	GameOver(Juego* ptr);
 	virtual ~GameOver();
 
 	void init();
-	static void menu(Juego * ptr);
+	void onClick();
+	void menu();
 };
 

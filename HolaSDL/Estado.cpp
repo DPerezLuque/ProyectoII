@@ -14,7 +14,7 @@ Estado::Estado(Juego* ptr)
 
 Estado::~Estado() 
 {
-	//Objetos
+	/*//Objetos
 	for (size_t aux = 0; aux < juego->arrayMenu.size(); ++aux) {
 		delete juego->arrayMenu[aux];
 		juego->arrayMenu[aux] = nullptr;
@@ -27,7 +27,7 @@ Estado::~Estado()
 
 	juego = nullptr;
 	textura = nullptr;
-	pRenderer = nullptr;
+	pRenderer = nullptr;*/
 }
 
 void Estado::draw()
@@ -49,28 +49,42 @@ void Estado::draw()
 
 	//Dibuja los objetos
 	for (int aux = 0; aux < juego->arrayMenu.size(); ++aux) {
-		if (!juego->arrayMenu[aux]->isDead())
 			juego->arrayMenu[aux]->draw();
-		//Muestra la ventana
+		
 	}
 
-	/*
-	//Dibuja interfaz, por encima de los objetos //Solo hará falta en Play.cpp	
-	for (int i = 0; i < elemInterfaz.size(); i++) {
-		elemInterfaz[i]->draw();
-	}
-	*/
 	SDL_RenderPresent(pRenderer);
 };
 
-void Estado::update(int delta)
-{
-	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
-		if (!juego->arrayObjetos[aux]->isDead())
-			juego->arrayObjetos[aux]->update(delta);
-	}	
+
+void Estado::update(){
+
+	bool clicked = false;
+	while (!clicked){
+
+		if (SDL_PollEvent(&e)) {
+			if (e.type == SDL_QUIT) {
+				salir();
+				clicked = true;
+			}
+			else if (e.type == SDL_MOUSEBUTTONUP) {
+				if (e.button.button == SDL_BUTTON_LEFT) {
+					std::cout << "CLICK";
+					clicked = true;
+					mouse_x = e.button.x; //+ (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
+					mouse_y = e.button.y; //+ (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
+					onClick();
+				}
+				// else if(...)    
+			}
+		}
+	}
 }
 
+
+void Estado::salir(){
+	juego->setSalir();
+}
 
 void Estado::onClick() //VAMOS A CAMBIARLO O ELIMINARLO 
 {	

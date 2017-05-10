@@ -32,6 +32,22 @@ Play::Play(Juego* ptr) : Estado(ptr)
 
 Play::~Play()
 {
+
+	for (int i = 0; i < juego->arrayObjetos.size(); ++i)
+		juego->arrayObjetos.erase(juego->arrayObjetos.begin() + i);	
+
+	for (int j = 0; j < juego->elemInterfaz.size(); ++j)
+		juego->elemInterfaz.erase(juego->elemInterfaz.begin() + j);
+	
+	for (int aux2 = 0; aux2 < juego->playerBullets.size(); ++aux2) 
+		juego->playerBullets.erase(juego->playerBullets.begin() + aux2);
+	
+	for (int aux3 = 0; aux3 < juego->enemyBullets.size(); ++aux3) 
+			juego->enemyBullets.erase(juego->enemyBullets.begin() + aux3);
+	
+	for (int aux4 = 0; aux4 < juego->objVisible.size(); ++aux4) 
+			juego->objVisible.erase(juego->objVisible.begin() + aux4);
+	
 }
 
 void Play::init() {
@@ -40,7 +56,7 @@ void Play::init() {
 
 	juego->arrayObjetos.push_back(juego->player);
 	//juego->arrayObjetos.push_back(new Player(juego, 200, 300));
-	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
+	//juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	//ENEMIGOS
 	//juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
@@ -53,7 +69,7 @@ void Play::init() {
 //	juego->arrayObjetos.push_back(juego->playerBullets);
 
 	//ENEMIGOS PLANTA
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
@@ -61,10 +77,10 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
-	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->arrayObjetos[0]), 128, 32, 0, 0));
-	elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->arrayObjetos[0]), 32, 32, 0, 0));
-	elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->arrayObjetos[0]), 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
-	elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->arrayObjetos[0]), 32, 32, 0, 0));
+	juego->elemInterfaz.push_back(new BarraVidaVacia(juego, juego->player, 128, 32, 0, 0));
+	juego->elemInterfaz.push_back(new BarraVida(juego, juego->player, 32, 32, 0, 0));
+	juego->elemInterfaz.push_back(new Cargador(juego, juego->player, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
+	juego->elemInterfaz.push_back(new EnergiaDisponible(juego, juego->player, 32, 32, 0, 0));
 	
 	///// OBJETOS DECORATIVOS  /////
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
@@ -73,11 +89,11 @@ void Play::init() {
 
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 	//juego->arrayObjetos.push_back(new Bobina(juego, 300, 300));
 
 	/*
@@ -211,7 +227,7 @@ void Play::update(int delta) {
 	}
 
 	if (juego->player->isDead()){		
-		juego->exit = true;
+		juego->setGameOver();
 	}
 	//else{
 		//LIMPIEZA DE VECTOR DE OBJETOS
@@ -244,8 +260,8 @@ void Play::update(int delta) {
 			juego->enemyBullets[x]->update(delta);
 		}*/
 
-		for (int i = 0; i < elemInterfaz.size(); i++){
-			elemInterfaz[i]->update(); //
+		for (int i = 0; i < juego->elemInterfaz.size(); i++){
+			juego->elemInterfaz[i]->update(); //
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//}
@@ -274,8 +290,8 @@ void Play::draw()
 	}
 
 	//Dibuja interfaz, por encima de los objetos
-	for (int i = 0; i < elemInterfaz.size(); i++) {
-		elemInterfaz[i]->draw();
+	for (int i = 0; i < juego->elemInterfaz.size(); i++) {
+		juego->elemInterfaz[i]->draw();
 	}
 		/*
 		//Pintado de texto (cargador)	

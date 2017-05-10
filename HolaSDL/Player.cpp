@@ -22,19 +22,27 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	posIniY = rect.y;
 
 	tipo = PJ;
-	vida = 4;
+	vida = 2;
 	balas = 20;
 	maximoBalas = 20;
 
 	inmunidad = false;
 	contadorInmunidad = 0;
 	contDashing = 0;
+
 }
 
 
 Player::~Player()
 {
 }
+
+void Player::getStats(int &life, int &bullets, int &dash) {
+	life = vida;
+	bullets = balas;
+	dash = getDash();
+}
+
 
 void Player::draw() const {
 	textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
@@ -187,7 +195,11 @@ void Player::gestorVida()
 
 	if (vida <= 0){
 
-		//Se le posiciona en el checkpoint con la vida y las balas restauradas
+		dead = true;
+		
+		juego->estado->changeCurrentState(GAME_OVER);
+		/*//Se le posiciona en el checkpoint con la vida y las balas restauradas
+		
 		if (static_cast <Checkpoint*>(juego->arrayObjetos[1])->getCogido()){
 			SDL_Rect aux;
 			aux = juego->arrayObjetos[1]->getRect();
@@ -202,7 +214,7 @@ void Player::gestorVida()
 			rect.y = 200;
 			vida = 4;
 			balas = 20;
-		}
+		}*/
 
 		//dead = true; << PARA PROBAR EL CHECKPOINT 
 	}

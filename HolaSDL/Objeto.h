@@ -46,11 +46,13 @@ protected:
 	bool inside = false;
 	bool inmunidad;
 	int velX, velY;	//Velocidad del objeto
-	//int h, w; // tamaño (ya va en el rect)
+	
 	int vida;
 	//Para oscilar
 	int cont;
 	int cont2;
 	bool arriba = true;
+
+	void getStats(int &life, int &bullets, int &dash) {};
 };
 

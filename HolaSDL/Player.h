@@ -17,6 +17,7 @@ public:
 	void draw() const;
 	void onCollision(collision type);
 
+	void getStats(int &life, int &bullets, int &dash);
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }
 	int getDash(){
@@ -32,6 +33,7 @@ public:
 private:
 	int velX, velY;
 
+	
 	int vida;
 	int balas;
 	int maximoBalas;	

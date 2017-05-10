@@ -3,7 +3,8 @@
 
 //Collision Manager
 enum collision { PJ = 1, ENEMY = 2, WEAPON = 3, ENVIROMENT = 4, CHECK = 5 , BOSS = 6,
-	PJ_WEAPON = 7, ENEMY_WEAPON = 8, AURA = 9, BOTIQUIN = 10, DECORATIVO = 11, BOTON_PLAY = 12, BOTON_EXIT = 13};
+	PJ_WEAPON = 7, ENEMY_WEAPON = 8, AURA = 9, BOTIQUIN = 10, DECORATIVO = 11, BOTON_PLAY = 12,
+	BOTON_EXIT = 13, BOTON_MENU = 14};
 
 
 class ObjetoJuego
@@ -35,5 +36,7 @@ public:
 	virtual bool isInside() = 0;
 
 	virtual void putInside() = 0;
+
+	virtual void getStats(int &life, int &bullets, int &dash) = 0;
 };
 

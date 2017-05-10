@@ -9,14 +9,26 @@ MenuPrincipal::MenuPrincipal(Juego* ptr) : Estado(ptr)
 }
 
 
-MenuPrincipal::~MenuPrincipal() {}
+MenuPrincipal::~MenuPrincipal() {
+
+
+	/*for (int aux = 0; aux < juego->arrayMenu.size(); ++aux) {
+			juego->arrayMenu.erase(juego->arrayMenu.begin() + aux);
+	}
+	/*for (size_t aux = 0; aux < juego->arrayMenu.size(); ++aux) {
+		delete juego->arrayMenu[aux];
+		juego->arrayMenu[aux] = nullptr;
+	}*/
+
+}
 
 void MenuPrincipal::init()
 {
+	juego->camera = { 0, 0, juego->SCREEN_WIDTH, juego->SCREEN_HEIGHT };
 	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 300, Juego::TBPlayA, BOTON_PLAY));
 	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBExitA, BOTON_EXIT));
 }
-
+/*
 void MenuPrincipal::update() {
 	
 	if (SDL_PollEvent(&e)) {
@@ -31,12 +43,9 @@ void MenuPrincipal::update() {
 			// else if(...)    
 		}
 	}
-}
+}*/
 
 void MenuPrincipal::onClick() {
-	//printf("onclick objeto \n");
-	//int x, y;
-	//juego->getMousePos(x, y);
 
 	int aux = 0;
 	bool flag = false;
@@ -63,11 +72,11 @@ void MenuPrincipal::onClick() {
 
 }
 
-
+/*
 void MenuPrincipal::salir(){
 	juego->setSalir();
 }
-
+*/
 void MenuPrincipal::play(){
 	//juego->changeState(new Play(juego));
 	juego->estado->changeCurrentState(NIVEL_1);

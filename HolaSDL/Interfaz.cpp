@@ -1,6 +1,6 @@
 #include "Interfaz.h"
 
-Interfaz::Interfaz(Juego* juego, Player* jugador, int ancho, int alto, int posX, int posY)
+Interfaz::Interfaz(Juego* juego, ObjetoJuego* jugador, int ancho, int alto, int posX, int posY)
 {
 	pJuego = juego;
 	player = jugador;
