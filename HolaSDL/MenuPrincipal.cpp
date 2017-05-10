@@ -13,8 +13,8 @@ MenuPrincipal::~MenuPrincipal() {}
 
 void MenuPrincipal::init()
 {
-	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 80, 200, Juego::TBPlayA, BOTON_PLAY));
-	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 80, 500, Juego::TBExitA, BOTON_EXIT));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 300, Juego::TBPlayA, BOTON_PLAY));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBExitA, BOTON_EXIT));
 }
 
 void MenuPrincipal::update() {

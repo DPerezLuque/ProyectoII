@@ -7,8 +7,8 @@ Boton::Boton(Juego* ptr, int px, int py, Juego::Texturas_t tex, collision type) 
 	textura = juego->getTextura(tex);
 	//visible = true;
 
-	rect.w = 150;
-	rect.h = 70;
+	rect.w = 300;
+	rect.h = 33;
 
 	rectCollision = rect;
 }
