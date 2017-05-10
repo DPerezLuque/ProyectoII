@@ -115,7 +115,7 @@ public:
 	void setDash(bool dash){ dashing = dash; }
 
 	//CREA COSAS
-	void creaAlmas(int, int, std::string);
+	void creaAlmas(int, int, std::string);//<--------- OBSOLETO
 	void spawnObjetos(char, int, int, std::string);	//Identificador, posicionX, posicionY, String por si es un alma (opcional)
 
 	//MUSIC

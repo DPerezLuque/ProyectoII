@@ -20,6 +20,7 @@
     <ClCompile Include="Botiquin.cpp" />
     <ClCompile Include="Checkpoint.cpp" />
     <ClCompile Include="Dialogo.cpp" />
+    <ClCompile Include="enemigoBase.cpp" />
     <ClCompile Include="EnemigoPlanta.cpp" />
     <ClCompile Include="BarraVida.cpp" />
     <ClCompile Include="BarraVidaVacia.cpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="Botiquin.h" />
     <ClInclude Include="Checkpoint.h" />
     <ClInclude Include="Dialogo.h" />
+    <ClInclude Include="enemigoBase.h" />
     <ClInclude Include="EnemigoPlanta.h" />
     <ClInclude Include="BarraVida.h" />
     <ClInclude Include="BarraVidaVacia.h" />
@@ -91,7 +93,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

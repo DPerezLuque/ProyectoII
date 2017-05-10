@@ -3,9 +3,12 @@
 
 objetoDecorativo::objetoDecorativo(Juego* ptr, int px, int py, std::string objectID) : Objeto(ptr, px, py)
 {
+	animado = false;					//Establecemos que el objeto NO está animado a no ser que se especifique en su zona (cambie a true)
+	tipo = DECORATIVO;					//Valor por defecto, se actualiza si algún objeto precisa de otro
 	setObjectFromString(objectID);		//Creamos el objeto deseado.
 										//Dentro de cada espacio de creación independiente™ (Los else if)
 										//Se pueden modificar las condiciones del objeto.
+	
 }
 
 
@@ -26,7 +29,6 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.h = 50;
 
 		rectCollision = rect;
-		tipo = "e";
 	}
 
 	else if (id == "papelera2"){
@@ -36,7 +38,6 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.h = 50;
 
 		rectCollision = rect;
-		tipo = "e";
 	}
 
 	else if (id == "papelera3"){
@@ -46,7 +47,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.h = 50;
 
 		rectCollision = rect;
-		tipo = "e";
+	
 	}
 
 	else if (id == "mesaEE"){
@@ -56,17 +57,18 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.h = 100;
 
 		rectCollision = rect;
-		tipo = "e";
+		
 	}
 	else if (id == "Humo"){
 		textura = juego->getTextura(Juego::THumo);
 
 		rect.w = 768;
 		rect.h = 768;
+		tipo = SIN_TIPO;			//Porque queremos que el jugador pueda atravesar el objeto 'Humo'
 
 		rectAnim = { 0, 0, 256, 256 };
 		rectCollision = { 0, 0, 0, 0 };
-		tipo = "a";
+		animado = true;
 		tipoAnim = "Humo";
 	}
 	else if (id == "MesaPeque"){
@@ -76,7 +78,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.h = 112;
 
 		rectCollision = rect;
-		tipo = "e";
+		
 	}
 	else if (id == "MesaCorazon"){
 		textura = juego->getTextura(Juego::TMesaCorazon);
@@ -86,7 +88,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rectAnim = { 0, 0, 128, 150 };
 		rectCollision = { 0, 0, 96, 90 };
-		tipo = "a";
+		animado = true;
 		tipoAnim = "corazon";
 	}	
 	else if (id == "MesaTentaculo"){
@@ -95,7 +97,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 96;
 		rect.h = 112;		
 		rectCollision = rect;
-		tipo = "e";
+	
 	}
 	else if (id == "MesaDoble"){
 		textura = juego->getTextura(Juego::TMesaDoble);
@@ -103,7 +105,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 192;
 		rect.h = 112;
 		rectCollision = rect;
-		tipo = "e";
+		
 	}
 	else if (id == "MesaRota"){
 		textura = juego->getTextura(Juego::TMesaRota);
@@ -111,7 +113,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 96;
 		rect.h = 112;
 		rectCollision = rect;
-		tipo = "e";
+		
 	}
 	else if (id == "MesaRota2"){
 		textura = juego->getTextura(Juego::TMesaRota2);
@@ -119,12 +121,12 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 96;
 		rect.h = 112;
 		rectCollision = rect;
-		tipo = "e";
+		
 	}
 }
 
 void objetoDecorativo::draw() const {
-	if (tipo == "a"){
+	if (animado){
 		textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
 	}
 	else{		
@@ -147,10 +149,7 @@ void objetoDecorativo::update(int delta) {
 			contador = 0;
 		}		
 	}
-	else{} //Estatico, sin animacion
-	//Colision
-	if (juego->checkCollision(this, juego->player))
-		onCollision();
+	else{} //Estatico, sin animacion		
 }
 
 

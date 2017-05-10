@@ -2,7 +2,7 @@
 
 EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemy(ptr, px, py)
 {
-	textura = juego->getTextura(Juego::TEnemyPlanta); //TODO: cambiar a la textura de la planta
+	textura = juego->getTextura(Juego::TEnemyPlanta); //TO DO: cambiar a la textura de la planta
 	vida = 4;
 	rectAnim = { 0, 0, 32, 32 };
 	contador = 0;
@@ -45,7 +45,7 @@ void EnemigoPlanta::update(int delta){
 
 		//int x, y;
 		SDL_Rect aux_rect;
-		aux_rect = juego->arrayObjetos[0]->getRect();
+		aux_rect = juego->player->getRect();
 		//static_cast <Play*> (juego->topEstado())->posPlayer(x, y); << Hay que evitar los cast
 		++contDis;
 		if (contDis >= freDis) {

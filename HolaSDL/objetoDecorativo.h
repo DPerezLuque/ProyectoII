@@ -12,9 +12,9 @@ public:
 private:
 	void animacionBasica();
 	SDL_Rect rectAnim;
-	string tipo = "e"; //estatico y animado
+	bool animado;		 //determina si el objeto está o no animado
 	string tipoAnim;
-	int contador = 0; //Paso de frames
+	int contador = 0;	 //Paso de frames
 
 };
 
