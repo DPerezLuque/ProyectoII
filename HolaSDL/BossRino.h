@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include "enemy.h"
 
@@ -20,3 +21,4 @@ private:
 	int posx, posy;
 };
 
+*/

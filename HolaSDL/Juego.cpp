@@ -20,7 +20,7 @@
 #include "MapEditor.h"
 #include "Aura.h"
 #include "Botiquin.h"
-#include "enemy.h"
+#include "enemigoGuardia.h"
 #include "EnemigoPlanta.h"
 
 #include <SDL_mixer.h>
@@ -162,7 +162,7 @@ void Juego::run()
 				estado->draw();
 				handle_events();
 				contDash++;
-				cout << arrayObjetos.size() << "\n";
+				//cout << arrayObjetos.size() << "\n";
 
 				//cout << tileVisible.size() << "\n";
 
@@ -555,7 +555,9 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	switch (a->getType()) {
 	case PJ:												//Hemos puesto la colision con el aura para que siga funcionando
 		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
-		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS || b->getType() == AURA || b->getType() == BOTIQUIN)
+		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS 
+			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType () == DECORATIVO)
+
 			colisiona = true;
 
 		break;
@@ -579,10 +581,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		if (b->getType() == PJ)
 			colisiona = true;
 		break;
-	case DECORATIVO:
-		if (b->getType() == PJ || b->getType() == ENEMY){
-			//
-		}
+
 	}
 
 	if (!colisiona)
@@ -762,7 +761,7 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 
 	case 'e':   //Spawn de enemigo que camina
 
-		arrayObjetos.push_back(new enemy(this, posEnemigoX + (30 * direction), posEnemigoY));
+		arrayObjetos.push_back(new enemigoGuardia(this, posEnemigoX + (30 * direction), posEnemigoY));
 		break;
 
 	case 'p':	//Spawn de enemigos de plantas

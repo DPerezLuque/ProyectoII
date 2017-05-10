@@ -5,8 +5,8 @@
 #include "Player.h"
 #include "BalaPlayer.h"
 #include "BalaEnemigo.h"
-#include "enemy.h"
-#include "BossRino.h"
+#include "enemigoGuardia.h"
+//#include "BossRino.h"
 #include "EnemigoPlanta.h"
 #include <iostream>
 
@@ -36,16 +36,25 @@ Play::~Play()
 
 void Play::init() {
 
-	juego->player = new Player(juego, 200, 300);
+	///		PUSH DE OBJETOS DECORATIVOS		///
+	//Los pusheamos antes para que el jugador pase por delante de los objetos
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
+
+	///		*PLAYER		///
+ 	juego->player = new Player(juego, 200, 300);
 
 	juego->arrayObjetos.push_back(juego->player);
 	//juego->arrayObjetos.push_back(new Player(juego, 200, 300));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
-	//ENEMIGOS
-	//juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
-	ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
-	juego->arrayObjetos.push_back(newEnemy);
+	///		ENEMIGOS	///
+	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));	
+	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                          AQUI TUVE EL PROBLEMA CON EL COMMIT vale crack pero por qué no metes el puntero directamente
+	//juego->arrayObjetos.push_back(newEnemy);
 	//juego->enemyArray.push_back(newEnemy);
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
@@ -61,23 +70,19 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
-	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->arrayObjetos[0]), 128, 32, 0, 0));
-	elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->arrayObjetos[0]), 32, 32, 0, 0));
-	elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->arrayObjetos[0]), 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
-	elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->arrayObjetos[0]), 32, 32, 0, 0));
+	///		INTERFAZ		///	
+	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->player), 128, 32, 0, 0));
+	elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
+	elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->player), 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
+	elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
 	
-	///// OBJETOS DECORATIVOS  /////
+	///// OBJETOS DECORATIVOS POR SITUAR  /////
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 300, 200, "papelera2"));
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 400, 200, "papelera3"));
 
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 	//juego->arrayObjetos.push_back(new Bobina(juego, 300, 300));
 
 	/*

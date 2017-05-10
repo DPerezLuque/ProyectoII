@@ -26,7 +26,7 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	balas = 20;
 	maximoBalas = 20;
 
-	inmunidad = false;
+	inmunidad = colisionDecorativo = false;
 	contadorInmunidad = 0;
 	contDashing = 0;
 }
@@ -63,7 +63,7 @@ void Player::update(int delta) {
 	rectCollision.x = (rect.x + rect.w / 3) * delta;
 	rectCollision.y = (rect.y + rect.h / 3) * delta;
 
-	if (juego->touchesWall(getRect())) {
+	if (juego->touchesWall(getRect()) || colisionDecorativo) {
 		//printf("Wall touched!\n");
 		if (juego->getDash()) {
 			rect.x -= juego->getVelX() * 4 * delta / 1.5f;
@@ -73,6 +73,7 @@ void Player::update(int delta) {
 			rect.x -= juego->getVelX() * delta;
 			rect.y -= juego->getVelY() * delta;
 		}
+		colisionDecorativo = false;						//Devolvemos el valor a false para que el jugador pueda salir de la colision
 	}
 
 	setCamera(juego->camera);
@@ -220,6 +221,10 @@ void Player::onCollision(collision type){
 	case BOTIQUIN:
 		if (vida <4)				//Si la vida es mayor que 4, lo ponemos a 4.
 			vida++;
+		break;
+
+	case DECORATIVO:
+		colisionDecorativo = true;
 		break;
 	default:
 		break;
