@@ -39,7 +39,7 @@ protected:
 	Textura* textura;
 	SDL_Renderer* pRenderer;
 
-	SDL_Rect rect; //Cuadrado en el que se va a dibujar el objeto
+	SDL_Rect rect;	 //Cuadrado en el que se va a dibujar el objeto
 	SDL_Rect rectCollision;
 
 	collision tipo;

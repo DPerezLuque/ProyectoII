@@ -9,10 +9,13 @@ Boton::Boton(Juego* ptr, int px, int py, Juego::Texturas_t tex1, Juego::Texturas
 	
 	textura = textura1;
 	//visible = true;
-
+	//Position
+	rect.x = px;
+	rect.y = py;
 	rect.w = 300;
 	rect.h = 33;
 
+	//auxText = rect;
 	rectCollision = rect;
 }
 
@@ -31,6 +34,23 @@ void Boton::update() {
 
 }
 
+void Boton::draw() const {
+
+	//rect.x = (juego->camera.w + juego->camera.x) / 2;
+	//rect.y = (juego->camera.h + juego->camera.y) / 2;
+	//textura->draw(pRenderer, rect.x, rect.y, rect);
+	SDL_Rect auxText;
+
+	//juego->resetCamera();
+	auxText.x = juego->camera.w + juego->camera.x;
+	auxText.y = juego->camera.h + juego->camera.y;
+	auxText.w = rect.w;
+	auxText.h = rect.h;
+	
+	//cout << rect.x << " " << rect.y << " " << auxText.x << " " << auxText.y << "\n";
+	
+	textura->draw(pRenderer, rect.x, rect.y, rect);
+}
 
 
 

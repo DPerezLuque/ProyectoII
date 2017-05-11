@@ -197,7 +197,8 @@ void Player::gestorVida()
 
 		dead = true;
 		
-		juego->estado->changeCurrentState(GAME_OVER);
+		//juego->estado->changeCurrentState(GAME_OVER);
+
 		/*//Se le posiciona en el checkpoint con la vida y las balas restauradas
 		
 		if (static_cast <Checkpoint*>(juego->arrayObjetos[1])->getCogido()){

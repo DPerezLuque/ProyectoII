@@ -11,7 +11,7 @@
 #include <string>
 #include <fstream>
 
-
+#include "MenuPausa.h"
 #include "Play.h"
 #include "MenuPrincipal.h"
 #include "GameOver.h"
@@ -114,6 +114,9 @@ void Juego::cleanArrays() {
 	for (int aux4 = 0; aux4 < objVisible.size(); ++aux4)
 		objVisible.erase(objVisible.begin() + aux4);
 
+	for (int aux5 = 0; aux5 < arrayMenu.size(); ++aux5)
+		arrayMenu.erase(arrayMenu.begin() + aux5);
+
 	if(arrayObjetos.size() > 0)
 		arrayObjetos.erase(arrayObjetos.begin());
 	if (enemyArray.size() > 0)
@@ -126,8 +129,8 @@ void Juego::cleanArrays() {
 		enemyBullets.erase(enemyBullets.begin());
 	if (objVisible.size() > 0)
 		objVisible.erase(objVisible.begin());
-
-	delete player;
+	while (arrayMenu.size() > 0)
+		arrayMenu.erase(arrayMenu.begin());
 
 }
 void Juego::run()
@@ -147,15 +150,17 @@ void Juego::run()
 			//Update menu
 			estado->update();
 
+			cleanArrays();
 			break;
 
 		case NIVEL_1:
 
-			GO = false;
+			//GO = false;
 
 			changeState(new Play(this));
 			estado = topEstado(); 
 
+			pause = new MenuPausa(this);
 			cout << "NIVEL 1 (PLAY) \n";
 			
 			//Clear screen	
@@ -174,7 +179,7 @@ void Juego::run()
 			estado->draw();
 			handle_events();
 
-			while (!GO) {
+			while (estado->getCurrentState() == NIVEL_1) {
 
 				for (auto t : wallsArray) {
 					if (!t->isInside()) {
@@ -210,9 +215,11 @@ void Juego::run()
 			}
 
 			cleanArrays();
+			delete player;
 			break;
 			
 		case GAME_OVER:
+
 			changeState(new GameOver(this));
 			estado = topEstado();
 
@@ -326,6 +333,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\personaje.png");
 	texturas.push_back("..\\bmps\\bala.png");
 
+	//Elementos del menu
 	texturas.push_back("..\\bmps\\BotonPlayE.png");
 	texturas.push_back("..\\bmps\\BotonPlayA.png");
 	texturas.push_back("..\\bmps\\BotonOptionsE.png");
@@ -490,8 +498,16 @@ void Juego::handle_events()
 				//estado->onClick();
 				player->onClick();
 			}
-			// else if(...)    
+			else if (e.button.button == SDL_BUTTON_RIGHT) {
+				pause->draw();
+				pause->update();
+			 }
 		}
+		/*else if (e.type == SDLK_ESCAPE) {
+			//pause->active = true;
+			pause->draw();
+			pause->update();
+		}*/
 		updateDirection();
 		//std::cout << contDash << "\n";
 		if (contDash >= 80){ //Timer del Dash

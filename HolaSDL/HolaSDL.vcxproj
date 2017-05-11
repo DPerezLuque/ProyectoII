@@ -34,6 +34,7 @@
     <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuPausa.cpp" />
     <ClCompile Include="MenuPrincipal.cpp" />
     <ClCompile Include="Musica.cpp" />
     <ClCompile Include="Objeto.cpp" />
@@ -70,6 +71,7 @@
     <ClInclude Include="Interfaz.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="MapEditor.h" />
+    <ClInclude Include="MenuPausa.h" />
     <ClInclude Include="MenuPrincipal.h" />
     <ClInclude Include="Musica.h" />
     <ClInclude Include="objetoDecorativo.h" />

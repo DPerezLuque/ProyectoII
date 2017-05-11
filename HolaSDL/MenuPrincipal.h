@@ -10,7 +10,7 @@ public:
 
 	void init();
 	//void update();
-	void onClick();
+	//void onClick();
 
 protected:
 	//void salir();

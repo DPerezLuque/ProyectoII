@@ -55,6 +55,7 @@ public:
 	//STATE MANAGER
 	EstadoJuego* estado;
 	std::stack<EstadoJuego*> states;
+	EstadoJuego * pause;
 
 	//STACK
 	void changeState(EstadoJuego* newSt);
@@ -85,6 +86,7 @@ public:
 	void run();
 	void handle_events();
 	void updateDirection();
+	void resetCamera() { camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT }; };
 
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	bool touchesWall(SDL_Rect a);
@@ -96,8 +98,8 @@ public:
 	void closeSDL();
 	
 	//SETTERS
-	void setSalir() { exit = true; GO = true; }
-	void setGameOver() { GO = true; }
+	void setSalir() { exit = true;}
+//	void setGameOver() { GO = true; }
 	bool isInScreen(SDL_Rect rect);
 	void addToScreen(ObjetoJuego * obj);
 	//void addToScreen(Tilemap::Tile * t);

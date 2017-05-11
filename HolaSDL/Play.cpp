@@ -157,7 +157,7 @@ void Play::update(int delta) {
 	}
 
 	if (juego->player->isDead()){		
-		juego->setGameOver();
+		juego->estado->changeCurrentState(GAME_OVER);
 	}
 	else{
 		//LIMPIEZA DE VECTOR DE OBJETOS
@@ -243,9 +243,6 @@ void Play::draw()
 	SDL_RenderPresent(pRenderer);
 }
 
-void Play::onClick() {
-	//...
-}
 
 void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 

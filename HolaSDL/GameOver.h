@@ -8,7 +8,7 @@ public:
 	virtual ~GameOver();
 
 	void init();
-	void onClick();
-	void menu();
+	//void onClick();
+	//void menu();
 };
 

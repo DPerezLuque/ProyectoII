@@ -14,8 +14,12 @@ public:
 	void draw();
 	void update(int delta) {};
 	void update();
+	bool onClick();
+	
+	//STATE CHANGER
+	void play();
+	void menu();
 	void salir();
-	void onClick();
 
 	GAME_STATES getCurrentState() { return type; };
 	void changeCurrentState(GAME_STATES newType) { type = newType; };
@@ -30,8 +34,7 @@ protected:
 	SDL_Renderer* pRenderer;
 	Textura* textura;
 	
-	
-	//SDL_Rect camera_; //Utilizado por interfaz
+	void resetCamera();
 	
 	GAME_STATES type;
 

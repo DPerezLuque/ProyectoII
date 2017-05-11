@@ -4,7 +4,7 @@
 #include "SDL.h"
 #include <vector>
 
-enum GAME_STATES {MENU_PRINCIPAL, NIVEL_1, GAME_OVER};
+enum GAME_STATES {MENU_PRINCIPAL, NIVEL_1, GAME_OVER, PAUSE};
 
 class EstadoJuego
 {
@@ -19,7 +19,7 @@ public:
 
 	virtual void update() = 0;
 
-	virtual void onClick() = 0;
+	virtual bool onClick() = 0;
 
 	virtual GAME_STATES getCurrentState() = 0;
 

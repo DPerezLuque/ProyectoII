@@ -9,7 +9,6 @@ public:
 	virtual ~Play();
 
 	void init();
-	void onClick();
 
 	//void update();
 	void update(int delta);
