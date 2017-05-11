@@ -5,13 +5,13 @@ class balaBomba : public Bala
 public:
 	balaBomba(Juego* ptr, int px, int py, int vX, int vY);
 	~balaBomba();
-	
+	//Método de Bala
 	virtual void update(int delta);
-
+	//Metodos propios
 	void explosionBala();
+	void animacionBasica();
 
 private:
-	SDL_Rect rectAnim;		//Rectangulo para la animación, si hubiera
 	int contadorFrames;		//Para el paso de frames de la animación
 };
 

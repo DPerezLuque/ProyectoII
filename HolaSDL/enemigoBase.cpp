@@ -1,5 +1,6 @@
 #include "enemigoBase.h"
 #include "BalaEnemigo.h"
+#include "balaBomba.h"
 
 
 enemigoBase::enemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
@@ -80,7 +81,7 @@ void enemigoBase::onCollision(collision type){
 	if (type == PJ_WEAPON)
 		gestorVida();
 }
-void enemigoBase::shoot(int targetX, int targetY){
+void enemigoBase::shoot(int targetX, int targetY, char bulletType){
 
 	//static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
 
@@ -96,13 +97,24 @@ void enemigoBase::shoot(int targetX, int targetY){
 		vX = vY = 10; // Si se hace lo de que al tocar al jugador haga daño y te empuje un poco igual no hace falta
 	}
 
+	
 	//Disparo
-	ObjetoJuego * newBalaEnemy = new BalaEnemigo(juego, rect.x, rect.y, vX, vY);
-	juego->arrayObjetos.push_back(newBalaEnemy);
-	juego->enemyBullets.push_back(newBalaEnemy);
+	ObjetoJuego* nuevaBala;						//Creamos una "bala vacia" que definiremos en función del tipo de disparo que prefiramos.
+	switch (bulletType){
+		case 'n':	
+			nuevaBala = new BalaEnemigo(juego, rect.x, rect.y, vX, vY);				//Balas normales
+		break;
+
+		case 'b':
+			nuevaBala = new balaBomba(juego, rect.x, rect.y, vX, vY);				//Balas explosivas
+		break;
+	}
+	//Incluimos la bala creada en el juego
+	juego->arrayObjetos.push_back(nuevaBala);
+	juego->enemyBullets.push_back(nuevaBala);
 }
 
-
+//Controla la vida del enemigo y lo elimina si ha muerto.
 void enemigoBase::gestorVida(){
 	if (!inmunidad){
 		vida--;

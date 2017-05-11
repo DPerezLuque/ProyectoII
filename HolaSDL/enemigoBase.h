@@ -9,7 +9,7 @@ public:
 	//	Métodos virtuales de objeto que usan todos los enemigos	//
 	virtual void onCollision(collision);
 	virtual void draw() const;
-	virtual void shoot(int targetX, int targetY);
+	virtual void shoot(int targetX, int targetY, char bulletType);		//bulletType: 'n' -> Bala enemiga    'b' -> Bala explosiva
 	virtual void follow(int x, int y, float delta);
 	virtual void gestorVida();
 	virtual bool isActive();

@@ -9,5 +9,6 @@ public:
 	
 	virtual void animacionBasica();
 	virtual void update(int delta);
+	
 };
 

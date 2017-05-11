@@ -61,7 +61,7 @@ void EnemigoBomba::update(int delta){
 		
 		++contDis;
 		if (contDis >= freDis) {
-			shoot(aux_rect.x, aux_rect.y);
+			shoot(aux_rect.x, aux_rect.y, 'b');
 			contDis = 0;
 		}
 

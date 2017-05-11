@@ -14,5 +14,13 @@ public:
 
 	void onCollision(collision type);
 
+	//Redefinimos el draw porque tenemos balas animadas
+	virtual void draw() const ;
+
+protected:
+	bool balaAnimada;		//Determina si se dibuja estática o con animación
+
+	SDL_Rect rectAnim;		//Rectangulo para la animación, si la necesitamos
+
 };
 

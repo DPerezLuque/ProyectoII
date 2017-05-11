@@ -58,3 +58,11 @@ void Bala::onCollision(collision type){
 		dead = true;
 
 }
+
+void Bala::draw() const {
+	if (balaAnimada){
+		textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
+	}
+	else textura->draw(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect);
+
+}

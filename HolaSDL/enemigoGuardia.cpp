@@ -31,7 +31,7 @@ void enemigoGuardia::update(int delta)
 	contDis += delta;
 
 	if (contDis >= freDis) {
-		shoot(rectPlayer.x, rectPlayer.y);
+		shoot(rectPlayer.x, rectPlayer.y, 'n');
 		contDis = 0;
 	}
 

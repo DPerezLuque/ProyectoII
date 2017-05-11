@@ -44,7 +44,7 @@ void EnemigoPlanta::update(int delta){
 		//static_cast <Play*> (juego->topEstado())->posPlayer(x, y); << Hay que evitar los cast
 		++contDis;
 		if (contDis >= freDis) {
-			shoot(aux_rect.x, aux_rect.y);
+			shoot(aux_rect.x, aux_rect.y, 'n');
 			contDis = 0;
 		}
 
