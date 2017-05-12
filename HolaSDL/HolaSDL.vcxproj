@@ -33,7 +33,7 @@
     <ClCompile Include="EnergiaDisponible.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Estado.cpp" />
-    <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="ExplosionEnemigoB.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="Juego.cpp" />
@@ -72,7 +72,7 @@
     <ClInclude Include="Error.h" />
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="Estado.h" />
-    <ClInclude Include="Explosion.h" />
+    <ClInclude Include="ExplosionEnemigoB.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Interfaz.h" />

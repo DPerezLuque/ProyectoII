@@ -46,6 +46,7 @@ protected:
 	bool dead = false;
 	bool inside = false;
 	bool inmunidad;
+	bool animado =false;
 	int velX, velY;	//Velocidad del objeto
 	int vida;
 	int contadorFrames;

@@ -1,5 +1,5 @@
 #include "balaBomba.h"
-#include "Explosion.h"
+#include "ExplosionEnemigoB.h"
 
 
 balaBomba::balaBomba(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px, py, vX, vY)
@@ -64,12 +64,5 @@ void balaBomba::animacionBasica(){ //Para el paso de frames
 
 //Método que genera una nueva explosión y la guarda en los vectores de juego
 void balaBomba::explosionBala(){
-
-	ObjetoJuego* nuevaExplosion;
-
-	nuevaExplosion = new Explosion(juego, rect.x, rect.y);
-
-	//Se añade la explosión al vector de objetos y al de balas (o mejor a otro?)
-	juego->arrayObjetos.push_back(nuevaExplosion); 
-	juego->enemyBullets.push_back(nuevaExplosion);
+	juego->spawnObjetos('e', rect.x, rect.y," ");			//'e' = explosion
 }

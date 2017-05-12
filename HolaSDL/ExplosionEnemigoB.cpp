@@ -1,7 +1,7 @@
-#include "Explosion.h"
+#include "ExplosionEnemigoB.h"
 
 
-Explosion::Explosion(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
+ExplosionEnemigoB::ExplosionEnemigoB(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	rect.x = px;
 	rect.y = py;
@@ -17,15 +17,15 @@ Explosion::Explosion(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 
 	contAutodestr = 0;
 	autodestr = 150;
-
+	
 }
 
 
-Explosion::~Explosion()
+ExplosionEnemigoB::~ExplosionEnemigoB()
 {
 }
 
-void Explosion::update(int delta){
+void ExplosionEnemigoB::update(int delta){
 	
 	contadorFrames += delta;
 	if (contadorFrames >= 8) { //Paso de imagenes mas lento
@@ -41,11 +41,18 @@ void Explosion::update(int delta){
 	}
 }
 
-void Explosion::animacionBasica(){ //Para el paso de frames
+void ExplosionEnemigoB::animacionBasica(){ //Para el paso de frames
 	if (rectAnim.x >= 126){
 		rectAnim.x = 0;
 	}
 	else {
 		rectAnim.x += 42;
 	}
+}
+
+void ExplosionEnemigoB::compruebaColisiones() {
+	for (int i = 0; i < juego->arrayObjetos.size(); i++){
+		juego->checkCollision(this, juego->arrayObjetos[i]);
+	}
+	
 }
