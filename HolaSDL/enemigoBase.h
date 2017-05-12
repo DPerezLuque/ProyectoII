@@ -24,7 +24,7 @@ protected:
 	int freDis;				//frecuencia con la que dispara
 	int velDis;				//velocidad del disparo
 
-	bool inmunidad;			//Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
+	//bool inmunidad;			//Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
 	int contInm;			//Contador inmunidad
 
 	int radioEnable;		//Valor de activacion del area de disparo
@@ -35,8 +35,8 @@ protected:
 	Textura* barraVida;		//Textura de la barra superior de cada unidad
 	SDL_Rect rectVida;		//Rectangulo que representa la textura
 
-	SDL_Rect rectAnim;		//Rectangulo para la animación, si hubiera
-	int contadorFrames;		//Para el paso de frames de la animación
+	//SDL_Rect rectAnim;		//Rectangulo para la animación, si hubiera
+	//int contadorFrames;		//Para el paso de frames de la animación
 
 };
 

@@ -41,12 +41,12 @@ private:
 	int contadorInmunidad; //Contador del tiempo de inmunidad
 
 	//ANIMACIÓN PERSONAJE
-	SDL_Rect rectAnim;
+	//SDL_Rect rectAnim;
 	enum animacion {derecha, izquierda, arriba, abajo, dchaUp, dchaDown, izdaUp, izdaDown };
 	void animar(animacion current);
 	void animacionBasica(); //Para el paso de frames
 	void proceso();
-	int contador; //Para los frames
+	int contadorFrames; //Para los frames
 	int contador2; //Para recargar arma
 	int contDashing;
 

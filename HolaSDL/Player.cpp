@@ -92,10 +92,10 @@ void Player::update(int delta) {
 	//std::cout << "CAMARA X: " << juego->camera.x << "\n";
 
 	//Para la animación:
-		contador += delta;
-		if (contador >= 6){
+		contadorFrames += delta;
+		if (contadorFrames >= 6){
 			proceso();
-			contador = 0;				
+			contadorFrames = 0;				
 		}
 
 	//Recargar balas
@@ -218,6 +218,9 @@ void Player::onCollision(collision type){
 	case ENEMY:
 		gestorVida();
 		break;
+	case EXPLOSION:
+		gestorVida();
+		break;
 	case BOTIQUIN:
 		if (vida <4)				//Si la vida es mayor que 4, lo ponemos a 4.
 			vida++;
@@ -285,7 +288,7 @@ void Player::proceso(){
 		animar(izdaDown);
 	}
 	if (juego->getVelX() == 0 && juego->getVelY() == 0){
-		contador = 0;
+		contadorFrames = 0;
 		rectAnim.x = 0;
 	}
 }

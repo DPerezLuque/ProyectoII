@@ -36,6 +36,7 @@
     <ClCompile Include="enemigoGuardia.cpp" />
     <ClCompile Include="EnemigoBomba.cpp" />
     <ClCompile Include="balaBomba.cpp" />
+    <ClCompile Include="Explosion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -76,5 +77,6 @@
     <ClInclude Include="enemigoGuardia.h" />
     <ClInclude Include="EnemigoBomba.h" />
     <ClInclude Include="balaBomba.h" />
+    <ClInclude Include="Explosion.h" />
   </ItemGroup>
 </Project>

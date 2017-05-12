@@ -12,6 +12,9 @@ Objeto::Objeto(Juego* ptr, int px, int py)
 	cont = cont2 = 0;
 
 	inmunidad = false;
+
+	rectAnim = { 0, 0, 0, 0 };
+	contadorFrames = 0;
 }
 
 

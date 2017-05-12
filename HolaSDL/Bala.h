@@ -20,7 +20,7 @@ public:
 protected:
 	bool balaAnimada;		//Determina si se dibuja estática o con animación
 
-	SDL_Rect rectAnim;		//Rectangulo para la animación, si la necesitamos
+	//SDL_Rect rectAnim;		//Rectangulo para la animación, si la necesitamos
 
 };
 

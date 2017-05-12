@@ -1,4 +1,5 @@
 #include "balaBomba.h"
+#include "Explosion.h"
 
 
 balaBomba::balaBomba(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px, py, vX, vY)
@@ -9,11 +10,13 @@ balaBomba::balaBomba(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px,
 
 	balaAnimada = true;
 
-	rectAnim = { 0, 0, 50, 75 };
+	rectAnim = { 0, 0, 42, 35 };
 
 
-
-	//NOS HEMOS QUEDADO POR AQUI: TENEMOS QUE HACER anim de la bala y que salga la explosión al detonar
+	//   COSAS QUE NOS FALTAN
+	//-Falta que la explosión aparezca si toca al jugador y demás objetos
+	//-Ajustar medidas (las puse al azar)
+	//-Revisar que quita vida (cuanta?)
 }
 
 
@@ -34,6 +37,7 @@ void balaBomba::update(int delta){
 
 	if (cont >= autodestr) {
 		onCollision(tipo);
+		explosionBala();
 		cont = 0;
 	}
 
@@ -43,15 +47,29 @@ void balaBomba::update(int delta){
 	rectCollision.x = rect.x;//(rect.x + rect.w / 4) * delta;
 	rectCollision.y = rect.y;//(rect.y + rect.h / 4) * delta;
 
-	if (juego->touchesWall(getRect()))
+	if (juego->touchesWall(getRect())){
 		onCollision(tipo);
+		explosionBala();
+	}
 }
 
 void balaBomba::animacionBasica(){ //Para el paso de frames
-	if (rectAnim.x >= 128){
+	if (rectAnim.x >= 126){
 		rectAnim.x = 0;
 	}
 	else {
-		rectAnim.x += 32;
+		rectAnim.x += 42;
 	}
+}
+
+//Método que genera una nueva explosión y la guarda en los vectores de juego
+void balaBomba::explosionBala(){
+
+	ObjetoJuego* nuevaExplosion;
+
+	nuevaExplosion = new Explosion(juego, rect.x, rect.y);
+
+	//Se añade la explosión al vector de objetos y al de balas (o mejor a otro?)
+	juego->arrayObjetos.push_back(nuevaExplosion); 
+	juego->enemyBullets.push_back(nuevaExplosion);
 }

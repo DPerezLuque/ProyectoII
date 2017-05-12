@@ -561,7 +561,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	case PJ:												//Hemos puesto la colision con el aura para que siga funcionando
 		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
 		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS 
-			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType () == DECORATIVO)
+			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType() == DECORATIVO || b->getType() == EXPLOSION)
 
 			colisiona = true;
 

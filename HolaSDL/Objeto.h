@@ -38,7 +38,8 @@ protected:
 	Textura* textura;
 	SDL_Renderer* pRenderer;
 
-	SDL_Rect rect; //Cuadrado en el que se va a dibujar el objeto
+	SDL_Rect rectAnim;		//Rectangulo para la animación, si hubiera
+	SDL_Rect rect;			//Cuadrado en el que se va a dibujar el objeto
 	SDL_Rect rectCollision;
 
 	collision tipo;
@@ -46,8 +47,8 @@ protected:
 	bool inside = false;
 	bool inmunidad;
 	int velX, velY;	//Velocidad del objeto
-	//int h, w; // tamaño (ya va en el rect)
 	int vida;
+	int contadorFrames;
 	//Para oscilar
 	int cont;
 	int cont2;
