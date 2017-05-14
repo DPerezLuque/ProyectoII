@@ -523,10 +523,6 @@ void Juego::handle_events()
 				//estado->onClick();
 				player->onClick();
 			}
-			else if (e.button.button == SDL_BUTTON_RIGHT) {
-				pause->draw();
-				pause->update();
-			 }
 		}
 		else if (e.type == SDL_KEYUP) {
 			if (e.key.keysym.sym == SDLK_ESCAPE) {
