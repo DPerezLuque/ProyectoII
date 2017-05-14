@@ -32,6 +32,7 @@ protected:
 	int radioEnable, radioDisable;
 	bool active;
 
+	bool bloodActive; //PARA EL MENÚ OPCIONES (INACTIVO)
 	Textura* barraVida;
 	SDL_Rect rectVida;
 };

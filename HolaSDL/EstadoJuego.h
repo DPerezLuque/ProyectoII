@@ -4,7 +4,7 @@
 #include "SDL.h"
 #include <vector>
 
-enum GAME_STATES {MENU_PRINCIPAL, NIVEL_1, GAME_OVER, PAUSE};
+enum GAME_STATES {MENU_PRINCIPAL, NIVEL_1, GAME_OVER, PAUSE, MENU_OPCIONES};
 
 class EstadoJuego
 {

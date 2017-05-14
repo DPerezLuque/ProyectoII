@@ -28,12 +28,13 @@ public:
 
 	//TEXTURE TYPES
 	enum Texturas_t {
-		TPlayer, TBulletPlayer, TBPlayE, TBPlayA, TBOptionsE, TBOptionsA, TBExitE, TBExitA, TFondo,
-		TEnemy, TBulletEnemy, TVidaLlena, TVidaVacia, TDashLleno,
-		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta, TBarraVida, THumo,
-		TBotiquin, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
+		TPlayer, TEnemy, TBulletPlayer, TBulletEnemy, TCheck, TEnemyPlanta, TBarraVida, THumo,
+		TBotiquin, TBPlayA, TBPlayE , TBOptionsA, TBOptionsE, TBExitA, TBExitE, TBControlsA, TBControlsE,
+		TBMenuA, TBMenuE, TBRetryA, TBRetryE , TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
+		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
 		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
+		 
 	};
 
 	//PUBLIC VARIABLES

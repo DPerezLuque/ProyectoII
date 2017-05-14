@@ -22,7 +22,6 @@
     <ClCompile Include="MenuPrincipal.cpp" />
     <ClCompile Include="Musica.cpp" />
     <ClCompile Include="Objeto.cpp" />
-    <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Texto.cpp" />
@@ -34,6 +33,7 @@
     <ClCompile Include="objetoDecorativo.cpp" />
     <ClCompile Include="Bobina.cpp" />
     <ClCompile Include="MenuPausa.cpp" />
+    <ClCompile Include="MenuOpciones.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -60,7 +60,6 @@
     <ClInclude Include="Musica.h" />
     <ClInclude Include="ObjetoJuego.h" />
     <ClInclude Include="Objeto.h" />
-    <ClInclude Include="Pausa.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Play.h" />
     <ClInclude Include="Texto.h" />
@@ -72,5 +71,6 @@
     <ClInclude Include="objetoDecorativo.h" />
     <ClInclude Include="Bobina.h" />
     <ClInclude Include="MenuPausa.h" />
+    <ClInclude Include="MenuOpciones.h" />
   </ItemGroup>
 </Project>

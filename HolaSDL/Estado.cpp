@@ -1,5 +1,6 @@
 #include "Estado.h"
 #include "Interfaz.h"
+#include "Boton.h"
 
 Estado::Estado(Juego* ptr)
 {
@@ -113,6 +114,12 @@ bool Estado::onClick()
 		case BOTON_RESUME:
 			//Back to game (clicked = true)
 			break;
+		case BOTON_OPTIONS:
+			options();
+			break;
+		case BOTON_CONTROLS:
+			controls();
+			break;
 		default:
 			break;
 		}
@@ -131,6 +138,17 @@ void Estado::play()
 void Estado::menu()
 {
 	juego->estado->changeCurrentState(MENU_PRINCIPAL);
+}
+
+void Estado::options() {
+	juego->estado->changeCurrentState(MENU_OPCIONES);
+}
+
+void Estado::controls() {
+
+	juego->arrayMenu.push_back(new Boton(juego, 0, 0, width, height, Juego::TControles, Juego::TControles, BOTON_OPTIONS));
+	juego->estado->draw();
+	SDL_Delay(4000);
 }
 
 void Estado::salir() 

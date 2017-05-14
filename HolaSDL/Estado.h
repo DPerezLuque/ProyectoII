@@ -19,6 +19,8 @@ public:
 	//STATE CHANGER
 	void play();
 	void menu();
+	void options();
+	void controls();
 	void salir();
 
 	GAME_STATES getCurrentState() { return type; };

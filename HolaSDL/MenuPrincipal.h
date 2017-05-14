@@ -14,7 +14,7 @@ public:
 
 protected:
 	//void salir();
-	void play();
+	//void play();
 
 };
 

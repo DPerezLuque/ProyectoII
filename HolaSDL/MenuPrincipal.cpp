@@ -25,7 +25,8 @@ MenuPrincipal::~MenuPrincipal() {
 void MenuPrincipal::init()
 {
 	resetCamera();
-	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 300, Juego::TBPlayA, Juego::TBPlayE, BOTON_PLAY));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 250, Juego::TBPlayA, Juego::TBPlayE, BOTON_PLAY));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 350, Juego::TBOptionsA, Juego::TBOptionsE, BOTON_OPTIONS));
 	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBExitA, Juego::TBExitE, BOTON_EXIT));
 }
 

@@ -44,9 +44,9 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	//ENEMIGOS
-	//juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
 	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 750, 300));
+	juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 750, 300));
 	//juego->enemyArray.push_back(newEnemy);
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));

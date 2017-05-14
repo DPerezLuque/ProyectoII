@@ -14,6 +14,7 @@
 #include "MenuPausa.h"
 #include "Play.h"
 #include "MenuPrincipal.h"
+#include "MenuOpciones.h"
 #include "GameOver.h"
 #include "Pausa.h"
 #include <exception>
@@ -179,7 +180,7 @@ void Juego::run()
 			estado->draw();
 			handle_events();
 
-			while (estado->getCurrentState() == NIVEL_1) {
+			while (!exit && estado->getCurrentState() == NIVEL_1) {
 
 				for (auto t : wallsArray) {
 					if (!t->isInside()) {
@@ -227,8 +228,24 @@ void Juego::run()
 
 			estado->draw();
 			estado->update();
+			cleanArrays();
+
 			break;
 
+		case MENU_OPCIONES:
+
+			changeState(new MenuOpciones(this));
+			estado = topEstado();
+
+			camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+			//Render menu
+			estado->draw();
+			//Update menu
+			estado->update();
+
+			cleanArrays();
+			break;
 		}
 
 	}
@@ -330,20 +347,33 @@ bool Juego::initMedia()
 		arrayFuentes.push_back(textoAux);
 	}
 
+	//Objetos dinámicos
 	texturas.push_back("..\\bmps\\personaje.png");
+	texturas.push_back("..\\bmps\\enemy.png");
 	texturas.push_back("..\\bmps\\bala.png");
+	texturas.push_back("..\\bmps\\balaEnemigo.png");
+	
+	texturas.push_back("..\\bmps\\Checkpoint.png");
+	texturas.push_back("..\\bmps\\enemyPlanta.png");
+	texturas.push_back("..\\bmps\\BarraVida.png");
+	texturas.push_back("..\\bmps\\Humo.png");
+	texturas.push_back("..\\bmps\\Botiquin1.png");
 
 	//Elementos del menu
-	texturas.push_back("..\\bmps\\BotonPlayE.png");
 	texturas.push_back("..\\bmps\\BotonPlayA.png");
-	texturas.push_back("..\\bmps\\BotonOptionsE.png");
+	texturas.push_back("..\\bmps\\BotonPlayE.png");
 	texturas.push_back("..\\bmps\\BotonOptionsA.png");
-	texturas.push_back("..\\bmps\\BotonExitE.png");
+	texturas.push_back("..\\bmps\\BotonOptionsE.png");
 	texturas.push_back("..\\bmps\\BotonExitA.png");
+	texturas.push_back("..\\bmps\\BotonExitE.png");
+	texturas.push_back("..\\bmps\\BotonControlesA.png");
+	texturas.push_back("..\\bmps\\BotonControlesE.png");
+	texturas.push_back("..\\bmps\\BotonMenuA.png");
+	texturas.push_back("..\\bmps\\BotonMenuE.png");
+	texturas.push_back("..\\bmps\\BotonReintentarA.png");
+	texturas.push_back("..\\bmps\\BotonReintentarE.png");
 	texturas.push_back("..\\bmps\\Fondo.png");
-
-	texturas.push_back("..\\bmps\\enemy.png");
-	texturas.push_back("..\\bmps\\balaEnemigo.png");
+	texturas.push_back("..\\bmps\\Controles.png");
 
 	//Interfaz
 	texturas.push_back("..\\bmps\\VidaLlena.png");
@@ -352,12 +382,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\DashVacio.png");
 	texturas.push_back("..\\bmps\\Cargador.png");
 	texturas.push_back("..\\bmps\\CuadroDialogo.png");
-	//
-	texturas.push_back("..\\bmps\\Checkpoint.png");
-	texturas.push_back("..\\bmps\\enemyPlanta.png");
-	texturas.push_back("..\\bmps\\BarraVida.png");
-	texturas.push_back("..\\bmps\\Humo.png");
-	texturas.push_back("..\\bmps\\Botiquin1.png");
+
 	//Decorativos
 	texturas.push_back("..\\bmps\\papelera1.png");
 	texturas.push_back("..\\bmps\\papelera2.png");
@@ -503,11 +528,12 @@ void Juego::handle_events()
 				pause->update();
 			 }
 		}
-		/*else if (e.type == SDLK_ESCAPE) {
-			//pause->active = true;
-			pause->draw();
-			pause->update();
-		}*/
+		else if (e.type == SDL_KEYUP) {
+			if (e.key.keysym.sym == SDLK_ESCAPE) {
+				pause->draw();
+				pause->update();
+			}		
+		}
 		updateDirection();
 		//std::cout << contDash << "\n";
 		if (contDash >= 80){ //Timer del Dash

@@ -19,6 +19,24 @@ Boton::Boton(Juego* ptr, int px, int py, Juego::Texturas_t tex1, Juego::Texturas
 	rectCollision = rect;
 }
 
+Boton::Boton(Juego* ptr, int px, int py, int pw, int ph, Juego::Texturas_t tex1, Juego::Texturas_t tex2, collision type) : Objeto(ptr, px, py)
+{
+	tipo = type;
+	//cbOnClick = cb;
+	textura1 = juego->getTextura(tex1);
+	textura2 = juego->getTextura(tex2);
+
+	textura = textura1;
+	//visible = true;
+	//Position
+	rect.x = px;
+	rect.y = py;
+	rect.w = pw;
+	rect.h = ph;
+
+	//auxText = rect;
+	rectCollision = rect;
+}
 
 Boton::~Boton() {}
 
