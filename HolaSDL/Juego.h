@@ -30,7 +30,7 @@ public:
 	enum Texturas_t {
 		TPlayer, TEnemy, TBulletPlayer, TBulletEnemy, TCheck, TEnemyPlanta, TBarraVida, THumo,
 		TBotiquin, TBPlayA, TBPlayE , TBOptionsA, TBOptionsE, TBExitA, TBExitE, TBControlsA, TBControlsE,
-		TBMenuA, TBMenuE, TBRetryA, TBRetryE , TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
+		TBMenuA, TBMenuE, TBRetryA, TBRetryE, TBResumeA, TBResumeE, TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
 		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
 		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
