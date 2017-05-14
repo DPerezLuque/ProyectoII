@@ -42,10 +42,8 @@ enemigoBase::~enemigoBase()
 }
 
 void enemigoBase::draw() const{
-	if (animado){
-	textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
-	}
-	else textura->draw(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect);
+
+	Objeto::draw();				//Dibuja el objeto con animacion o no, según el bool animado de Objeto.h
 
 	barraVida->draw(pRenderer, rectVida.x - juego->camera.x, rectVida.y - juego->camera.y, rectVida);
 	

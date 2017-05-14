@@ -38,16 +38,16 @@ protected:
 	Textura* textura;
 	SDL_Renderer* pRenderer;
 
-	SDL_Rect rectAnim;		//Rectangulo para la animación, si hubiera
-	SDL_Rect rect;			//Cuadrado en el que se va a dibujar el objeto
-	SDL_Rect rectCollision;
+	SDL_Rect rectAnim;			//Rectangulo para la animación, si hubiera
+	SDL_Rect rect;				//Cuadrado en el que se va a dibujar el objeto
+	SDL_Rect rectCollision;		//Rect de la colisión.
 
 	collision tipo;
 	bool dead = false;
 	bool inside = false;
 	bool inmunidad;
-	bool animado =false;
-	int velX, velY;	//Velocidad del objeto
+	bool animado =false;		//Bool que determina si el objeto tiene animación o no
+	int velX, velY;				//Velocidad del objeto
 	int vida;
 	int contadorFrames;
 	//Para oscilar

@@ -5,6 +5,8 @@ class balaBomba : public Bala
 public:
 	balaBomba(Juego* ptr, int px, int py, int vX, int vY);
 	~balaBomba();
+	//Método de Objeto
+	virtual void onCollision(collision);
 	//Método de Bala
 	virtual void update(int delta);
 	//Metodos propios
@@ -13,5 +15,6 @@ public:
 
 private:
 	int contadorFrames;		//Para el paso de frames de la animación
+	
 };
 

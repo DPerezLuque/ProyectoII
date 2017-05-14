@@ -12,11 +12,6 @@ balaBomba::balaBomba(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px,
 
 	rectAnim = { 0, 0, 42, 35 };
 
-
-	//   COSAS QUE NOS FALTAN
-	//-Falta que la explosión aparezca si toca al jugador y demás objetos
-	//-Ajustar medidas (las puse al azar)
-	//-Revisar que quita vida (cuanta?)
 }
 
 
@@ -48,9 +43,17 @@ void balaBomba::update(int delta){
 	rectCollision.y = rect.y;//(rect.y + rect.h / 4) * delta;
 
 	if (juego->touchesWall(getRect())){
+		
 		onCollision(tipo);
-		explosionBala();
+	
 	}
+}
+
+void balaBomba::onCollision(collision noSeUsa){
+	
+	explosionBala();
+	
+	dead = true;
 }
 
 void balaBomba::animacionBasica(){ //Para el paso de frames
