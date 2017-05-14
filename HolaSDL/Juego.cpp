@@ -16,7 +16,6 @@
 #include "MenuPrincipal.h"
 #include "MenuOpciones.h"
 #include "GameOver.h"
-#include "Pausa.h"
 #include <exception>
 #include "Error.h"
 #include "MapEditor.h"
