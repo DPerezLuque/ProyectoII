@@ -100,21 +100,21 @@ void Player::update(int delta) {
 
 	//Recargar balas
 		if (balas <= 0){
-			contador2 += delta;
+			contadorRecarga += delta;
 			balas = 0;
-			if (contador2 >= 70){
+			if (contadorRecarga >= 70){
 				balas = maximoBalas;
-				contador2 = 0;
+				contadorRecarga = 0;
 			}
 		}
 
 	//Recargar manual
 		if (juego->getRecargar()){			
-			contador2 += delta;
+			contadorRecarga += delta;
 			balas = 0;
-			if (contador2 >= 70){
+			if (contadorRecarga >= 70){
 				balas = maximoBalas;
-				contador2 = 0;	
+				contadorRecarga = 0;	
 				juego->setRecargar(false);
 			}
 		}
@@ -213,7 +213,10 @@ void Player::onCollision(collision type){
 	
 	switch (type) {
 	case ENEMY_WEAPON:
+		//if (!escudo)
 		gestorVida();
+		//else escudo = false;   -> Porque implica que estaba a true y ha absorbido el golpe
+		//Y luego seria quitar la imagen de la HUD, que se podria hacer con un bool realmente
 		break;
 	case ENEMY:
 		gestorVida();
@@ -226,6 +229,12 @@ void Player::onCollision(collision type){
 			vida++;
 		break;
 
+		/*
+	case ENERGIA:
+		if (juego -> getDashCutre()) //o sea, si el dash está en cooldown
+			->>> PONER EL DASH A TRUE DE FORMA AUTOMATICA Y TODO LO QUE ELLO IMPLIQUE
+		break;
+		*/
 	case DECORATIVO:
 		colisionDecorativo = true;
 		break;

@@ -46,9 +46,9 @@ private:
 	void animar(animacion current);
 	void animacionBasica(); //Para el paso de frames
 	void proceso();
-	int contadorFrames; //Para los frames
-	int contador2; //Para recargar arma
-	int contDashing;
+	int contadorFrames;				//Para los frames
+	int contadorRecarga;			//Para recargar arma
+	int contDashing;				//Para el dash
 
 	//Controlar cadencia de disparo
 	int conta = 0;
