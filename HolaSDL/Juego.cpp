@@ -330,7 +330,7 @@ bool Juego::initMedia()
 {
 	bool success = true;
 	//MUSICA
-	musicNames.push_back("..\\Sonidos\\Musica\\Come.mp3");
+	musicNames.push_back("..\\bmps\\CityLights.mp3");
 
 	for (int j = 0; j < musicNames.size(); j++) {
 		cancion = new Musica;
@@ -338,7 +338,7 @@ bool Juego::initMedia()
 		musicFiles.push_back(cancion);
 	}
 
-	//musicFiles[Cancion1]->play();
+	musicFiles[Cancion1]->play();
 
 	//TEXTO
 	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");

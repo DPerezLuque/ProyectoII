@@ -6,7 +6,6 @@
 #include "BalaPlayer.h"
 #include "BalaEnemigo.h"
 #include "enemigoGuardia.h"
-#include "EnemigoBomba.h"
 //#include "BossRino.h"
 #include "EnemigoPlanta.h"
 #include <iostream>
@@ -21,6 +20,7 @@
 #include "Aura.h"
 #include "Botiquin.h"
 #include "Bobina.h"
+#include "EnemigoBomba.h"
 
 using namespace std;
 
@@ -40,19 +40,29 @@ void Play::init() {
 
 	///		PUSH DE OBJETOS DECORATIVOS		///
 	//Los pusheamos antes para que el jugador pase por delante de los objetos
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 450, 110, "MesaRota2"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 520, 110, "MesaRota"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 590, 110, "MesaPeque"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 660, 110, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 800, 50, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 900, 50, "VitrinaFeto"));
+
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 350, 380, "MesaRota2"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 420, 380, "MesaRota"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 490, 380, "MesaPeque"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 560, 380, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 900, 350, "Planta3"));
+
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 
 	///		*PLAYER		///
- 	juego->player = new Player(juego, 200, 300);
+	juego->player = new Player(juego, 200, 300);
 
 	juego->arrayObjetos.push_back(juego->player);
 	//juego->arrayObjetos.push_back(new Player(juego, 200, 300));
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
+
 	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 300));
 
 	///		ENEMIGOS	///
@@ -65,11 +75,12 @@ void Play::init() {
 	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
 	//juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 750, 300));
+
 	//juego->enemyArray.push_back(newEnemy);
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
-//	juego->arrayObjetos.push_back(juego->playerBullets);
+	//	juego->arrayObjetos.push_back(juego->playerBullets);
 
 	//ENEMIGOS PLANTA
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
@@ -80,8 +91,18 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
+
+
 
 	///		INTERFAZ		///	
+
 //	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->player), 128, 32, 0, 0));
 	//elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
 	//elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->player), 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
@@ -91,6 +112,7 @@ void Play::init() {
 	juego->elemInterfaz.push_back(new BarraVida(juego, juego->player, 32, 32, 0, 0));
 	juego->elemInterfaz.push_back(new Cargador(juego, juego->player, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
 	juego->elemInterfaz.push_back(new EnergiaDisponible(juego, juego->player, 32, 32, 0, 0));
+
 
 	///// OBJETOS DECORATIVOS POR SITUAR  /////
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
@@ -111,14 +133,13 @@ void Play::init() {
 	//FUENTE DE BALAS
 	fuenteCargador = new Texto(juego->getTexto(0), 28);
 	mensaje = new Textura();
-	Black = { 0, 0, 0, 255 }; //RGBA	
-	Red = { 175, 20, 20, 255 }; //RGBA	
+	Black = { 0, 0, 0, 255 }; //RGBA
+	Red = { 175, 20, 20, 255 }; //RGBA
 	mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
 	*/
 }
 
 void Play::update(int delta) {
-
 	//COLISIONES CON OBJETOS
 	for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
 		for (int j = 0; j < juego->arrayObjetos.size(); ++j) {
@@ -131,61 +152,117 @@ void Play::update(int delta) {
 
 	/*
 	for (auto obj1 : juego->arrayObjetos) {
-		for (auto obj2 : juego->arrayObjetos) {
-			if (juego->checkCollision(obj1, obj2)) {
-				obj1->onCollision(obj2->getType());
-				obj2->onCollision(obj1->getType());
-			}
-		}
-		
+	for (auto obj2 : juego->arrayObjetos) {
+	if (juego->checkCollision(obj1, obj2)) {
+	obj1->onCollision(obj2->getType());
+	obj2->onCollision(obj1->getType());
+	}
+	}
+
 	}
 	*/
 
-/*
-	//PERSONAJE CON ENEMIGOS
-	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
-		if (!juego->player->isDead() && juego->checkCollision(juego->player, juego->arrayObjetos[i])){
-			juego->player->onCollision(juego->arrayObjetos[i]-> getType());
-			juego->arrayObjetos[i]->onCollision(juego->player->getType());
-		}
+	///REVISAR
+	/*
+	for (auto obj1 : juego->arrayObjetos) {
+	for (auto obj2 : juego->arrayObjetos) {
+	if (juego->checkCollision(obj1, obj2)) {
+	obj1->onCollision(obj2->getType());
+	obj2->onCollision(obj1->getType());
+	}
 	}
 
-	
+	}
+
+	for (auto enemy : juego->enemyArray) {
+	if (juego->checkCollision(enemy, juego->player)) {
+	enemy->onCollision(juego->player->getType());
+	juego->player->onCollision(enemy->getType());
+	}
+
+	}
+
+	for (auto bullet : juego->enemyBullets) {
+	if (juego->checkCollision(bullet, juego->player)) {
+	bullet->onCollision(juego->player->getType());
+	juego->player->onCollision(bullet->getType());
+	}
+	for (auto enemyb : juego->enemyBullets) {
+	if (juego->checkCollision(enemyb, bullet)) {
+	enemyb->onCollision(bullet->getType());
+	bullet->onCollision(enemyb->getType());
+	}
+
+	}
+
+	}
+
+	*/
+	/*
+	for (auto bullet : juego->playerBullets) {
+
+	if (juego->checkCollision(juego->player, bullet)) {
+	juego->player->onCollision(bullet->getType());
+	bullet->onCollision(juego->player->getType());
+	}
+
+	for (auto enemy : juego->arrayObjetos) {
+	if (juego->checkCollision(enemy, bullet)) {
+	enemy->onCollision(bullet->getType());
+	bullet->onCollision(enemy->getType());
+	}
+	}
+
+	}
+	*/
+
+
+	/*
+	//PERSONAJE CON ENEMIGOS
+	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
+	if (!juego->player->isDead() && juego->checkCollision(juego->player, juego->arrayObjetos[i])){
+	juego->player->onCollision(juego->arrayObjetos[i]-> getType());
+	juego->arrayObjetos[i]->onCollision(juego->player->getType());
+	}
+	}
+
+
 	for (auto i : juego->arrayObjetos) // access by value, the type of i is int
-		std::cout << i << ' ';
+	std::cout << i << ' ';
 	std::cout << '\n';
-	
+
 
 	//PERSONAJE CON BALAS ENEMIGAS
 	for (int i = 0; i < juego->enemyBullets.size(); ++i) {
-		if (!juego->player->isDead() && juego->checkCollision(juego->player, juego->enemyBullets[i])) {
-			juego->player->onCollision(juego->enemyBullets[i]->getType());
-			juego->enemyBullets[i]->onCollision(juego->player->getType());
-		}
+	if (!juego->player->isDead() && juego->checkCollision(juego->player, juego->enemyBullets[i])) {
+	juego->player->onCollision(juego->enemyBullets[i]->getType());
+	juego->enemyBullets[i]->onCollision(juego->player->getType());
+	}
 	}
 
 	//BALAS CON ENEMIGOS
 	for (int i = 0; i < juego->playerBullets.size(); ++i) {
-		for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
-			if (!juego->playerBullets[i]->isDead() && juego->checkCollision(juego->playerBullets[i], juego->arrayObjetos[j])) {
-				juego->playerBullets[i]->onCollision(juego->arrayObjetos[j]->getType());
-				juego->arrayObjetos[j]->onCollision(juego->playerBullets[i]->getType());
-			}
-		}
+	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
+	if (!juego->playerBullets[i]->isDead() && juego->checkCollision(juego->playerBullets[i], juego->arrayObjetos[j])) {
+	juego->playerBullets[i]->onCollision(juego->arrayObjetos[j]->getType());
+	juego->arrayObjetos[j]->onCollision(juego->playerBullets[i]->getType());
 	}
-	
+	}
+	}
 
-*/
+
+	*/
 
 	for (auto i : juego->arrayObjetos) {
 		if (!i->isInside())
 			juego->addToScreen(i);
 	}
 
+
 	if (juego->player->isDead()){		
 		juego->estado->changeCurrentState(GAME_OVER);
 	}
-	else{
+	else {
 		//LIMPIEZA DE VECTOR DE OBJETOS
 		for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 			if (juego->arrayObjetos[aux]->isDead())
@@ -204,23 +281,37 @@ void Play::update(int delta) {
 				juego->objVisible.erase(juego->objVisible.begin() + aux4);
 			}
 		}
-		
+	}
 		//UPDATE
 		for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
 			juego->arrayObjetos[i]->update(delta);
 		}
 		/*for (int x = 0; x < juego->playerBullets.size(); ++x) {
 			juego->playerBullets[x]->update(delta);
-		}
-		for (int x = 0; x < juego->enemyBullets.size(); ++x) {
-			juego->enemyBullets[x]->update(delta);
-		}*/
 
 		for (int i = 0; i < juego->elemInterfaz.size(); i++){
 			juego->elemInterfaz[i]->update(); //
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
+
+	//UPDATE
+	for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
+		juego->arrayObjetos[i]->update(delta);
+	}
+	/*for (int x = 0; x < juego->playerBullets.size(); ++x) {
+	juego->playerBullets[x]->update(delta);
+	}
+	for (int x = 0; x < juego->enemyBullets.size(); ++x) {
+	juego->enemyBullets[x]->update(delta);
+	}*/
+
+	for (int i = 0; i < juego->elemInterfaz.size(); i++){
+		juego->elemInterfaz[i]->update(); 
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//}
+
 
 
 }
@@ -249,23 +340,23 @@ void Play::draw()
 	for (int i = 0; i < juego->elemInterfaz.size(); i++) {
 		juego->elemInterfaz[i]->draw();
 	}
-		/*
-		//Pintado de texto (cargador)	
-		if (juego->stats[2] > 0 && !juego->player->isDead()){
-			fuenteCargador->load(juego->getTexto(1), 18);
-			mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
-			if (juego->stats[2] < 10){
-				mensaje->render(pRenderer, juego->SCREEN_WIDTH - 44, juego->SCREEN_HEIGHT - 50);
-			}
-			else{ mensaje->render(pRenderer, juego->SCREEN_WIDTH - 54, juego->SCREEN_HEIGHT - 50); }
-		}
-		else{
-			fuenteCargador->load(juego->getTexto(1), 18);
-			mensaje->loadFromText(pRenderer, "Recargando", *fuenteCargador, Red);
-			mensaje->render(pRenderer, ((juego->SCREEN_WIDTH / 2) - 100), ((juego->SCREEN_HEIGHT / 2) - 100));
-		}
-		*/
-	
+	/*
+	//Pintado de texto (cargador)
+	if (juego->stats[2] > 0 && !juego->player->isDead()){
+	fuenteCargador->load(juego->getTexto(1), 18);
+	mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
+	if (juego->stats[2] < 10){
+	mensaje->render(pRenderer, juego->SCREEN_WIDTH - 44, juego->SCREEN_HEIGHT - 50);
+	}
+	else{ mensaje->render(pRenderer, juego->SCREEN_WIDTH - 54, juego->SCREEN_HEIGHT - 50); }
+	}
+	else{
+	fuenteCargador->load(juego->getTexto(1), 18);
+	mensaje->loadFromText(pRenderer, "Recargando", *fuenteCargador, Red);
+	mensaje->render(pRenderer, ((juego->SCREEN_WIDTH / 2) - 100), ((juego->SCREEN_HEIGHT / 2) - 100));
+	}
+	*/
+
 	SDL_RenderPresent(pRenderer);
 }
 
