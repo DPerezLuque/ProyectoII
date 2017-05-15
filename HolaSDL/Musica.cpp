@@ -10,7 +10,7 @@ Musica::Musica(string nombArch)
 		load(nombArch);
 		Mix_Init(27);
 		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-		Mix_VolumeMusic(80);
+		Mix_VolumeMusic(60);
 	}
 }
 
