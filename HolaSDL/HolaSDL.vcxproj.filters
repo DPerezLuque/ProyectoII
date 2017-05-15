@@ -21,7 +21,6 @@
     <ClCompile Include="MenuPrincipal.cpp" />
     <ClCompile Include="Musica.cpp" />
     <ClCompile Include="Objeto.cpp" />
-    <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Texto.cpp" />
@@ -32,11 +31,16 @@
     <ClCompile Include="Botiquin.cpp" />
     <ClCompile Include="objetoDecorativo.cpp" />
     <ClCompile Include="Bobina.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="enemigoBase.cpp" />
     <ClCompile Include="enemigoGuardia.cpp" />
     <ClCompile Include="EnemigoBomba.cpp" />
     <ClCompile Include="balaBomba.cpp" />
     <ClCompile Include="ExplosionEnemigoB.cpp" />
+=======
+    <ClCompile Include="MenuPausa.cpp" />
+    <ClCompile Include="MenuOpciones.cpp" />
+>>>>>>> MenusJuego
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -62,7 +66,6 @@
     <ClInclude Include="Musica.h" />
     <ClInclude Include="ObjetoJuego.h" />
     <ClInclude Include="Objeto.h" />
-    <ClInclude Include="Pausa.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Play.h" />
     <ClInclude Include="Texto.h" />
@@ -73,10 +76,15 @@
     <ClInclude Include="Botiquin.h" />
     <ClInclude Include="objetoDecorativo.h" />
     <ClInclude Include="Bobina.h" />
+<<<<<<< HEAD
     <ClInclude Include="enemigoBase.h" />
     <ClInclude Include="enemigoGuardia.h" />
     <ClInclude Include="EnemigoBomba.h" />
     <ClInclude Include="balaBomba.h" />
     <ClInclude Include="ExplosionEnemigoB.h" />
+=======
+    <ClInclude Include="MenuPausa.h" />
+    <ClInclude Include="MenuOpciones.h" />
+>>>>>>> MenusJuego
   </ItemGroup>
 </Project>

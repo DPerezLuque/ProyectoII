@@ -1,0 +1,17 @@
+#include "MenuOpciones.h"
+#include "Boton.h"
+
+
+MenuOpciones::MenuOpciones(Juego * ptr) : Estado(ptr)
+{
+	type = MENU_OPCIONES;
+
+	resetCamera();
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 300, Juego::TBControlsA, Juego::TBControlsE, BOTON_CONTROLS));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBMenuA, Juego::TBMenuE, BOTON_MENU));
+}
+
+
+MenuOpciones::~MenuOpciones()
+{
+}

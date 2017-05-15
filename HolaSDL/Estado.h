@@ -12,9 +12,16 @@ public:
 	virtual ~Estado();
 
 	void draw();
-	void update(int delta);
-	void update() {};
-	void onClick();
+	void update(int delta) {};
+	void update();
+	bool onClick();
+	
+	//STATE CHANGER
+	void play();
+	void menu();
+	void options();
+	void controls();
+	void salir();
 
 	GAME_STATES getCurrentState() { return type; };
 	void changeCurrentState(GAME_STATES newType) { type = newType; };
@@ -24,14 +31,16 @@ public:
 protected:
 
 	Juego* juego;
+	SDL_Event e;
+
 	SDL_Renderer* pRenderer;
 	Textura* textura;
 	
-	vector <HUD*> elemInterfaz; //Estarán todos los elementos de la interfaz
-	//SDL_Rect camera_; //Utilizado por interfaz
+	void resetCamera();
 	
 	GAME_STATES type;
 
+	int mouse_x, mouse_y;
 	int height, width;
 };
 

@@ -3,24 +3,24 @@
 #include "Boton.h"
 #include <string>
 
-GameOver::GameOver(Juego* ptr, int p) : Estado(ptr) {
-	juego->arrayMenu.resize(1); 
+GameOver::GameOver(Juego* ptr) : Estado(ptr) {
 
 	init();
 }
 
 
-GameOver::~GameOver() {}
+GameOver::~GameOver() {
+
+}
+
 
 void GameOver::init()
 {
-	//arrayObjetos[0] = new Boton(juego, width / 2 - 80, 300, menu, Juego::TBMenu);
+	resetCamera();
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 300, Juego::TBMenuA, Juego::TBMenuE, BOTON_MENU));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBExitA, Juego::TBExitE, BOTON_EXIT));
 }
 
-void GameOver::menu(Juego * juego)
-{
-	juego->changeState(new MenuPrincipal(juego));
-}
 
 //SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, "Puntos", msg.c_str(), NULL); (ESTO A LO MEJOR NOS ES UTIL EN EL FUTURO)
 

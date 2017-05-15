@@ -9,14 +9,12 @@ public:
 	virtual ~MenuPrincipal();
 
 	void init();
-	void update();
-	void onClick();
+	//void update();
+	//void onClick();
 
 protected:
-	void salir();
-	void play();
+	//void salir();
+	//void play();
 
-	SDL_Event e;
-	int mouse_x, mouse_y;
 };
 

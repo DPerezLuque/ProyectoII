@@ -33,10 +33,12 @@ public:
 	bool isInside() { return inside; };
 
 	void putInside() { inside = true; };
+
 protected:
 	Juego* juego;
 	Textura* textura;
 	SDL_Renderer* pRenderer;
+
 
 	SDL_Rect rectAnim;			//Rectangulo para la animación, si hubiera
 	SDL_Rect rect;				//Cuadrado en el que se va a dibujar el objeto
@@ -46,13 +48,17 @@ protected:
 	bool dead = false;
 	bool inside = false;
 	bool inmunidad;
+
 	bool animado =false;		//Bool que determina si el objeto tiene animación o no
 	int velX, velY;				//Velocidad del objeto
+
 	int vida;
 	int contadorFrames;
 	//Para oscilar
 	int cont;
 	int cont2;
 	bool arriba = true;
+
+	void getStats(int &life, int &bullets, int &dash) {};
 };
 

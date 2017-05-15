@@ -1,10 +1,17 @@
 #include "Interfaz.h"
 
-Interfaz::Interfaz(Juego* juego, Player* jugador, int ancho, int alto, int posX, int posY)
+Interfaz::Interfaz(Juego* juego, ObjetoJuego* jugador, int ancho, int alto, int posX, int posY)
 {
 	pJuego = juego;
 	player = jugador;
-	pRenderer = pJuego->getRender();	
+	pRenderer = pJuego->getRender();
+
+	balas = 0;
+	vida = 0;
+	contador = 0;
+	pJuego->player->getStats(vida, balas, contador);
+
+	
 
 	pRect.x = posX;
 	pRect.y = posY;

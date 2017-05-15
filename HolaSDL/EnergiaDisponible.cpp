@@ -1,8 +1,10 @@
 #include "EnergiaDisponible.h"
 
 
-EnergiaDisponible::EnergiaDisponible(Juego* pJuego, Player* jugador, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, ancho, alto, posX, posY)
+EnergiaDisponible::EnergiaDisponible(Juego* pJuego, ObjetoJuego* jugador, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, ancho, alto, posX, posY)
 {
+	pJuego->player->getStats(vida, balas, contador);
+
 	//Misma constructora que interfaz
 	textura = pJuego->getTextura(Juego::TDashLleno); 
 	textura2 = pJuego->getTextura(Juego::TDashVacio);
@@ -10,7 +12,6 @@ EnergiaDisponible::EnergiaDisponible(Juego* pJuego, Player* jugador, int ancho, 
 	distY = 40;	
 	pRect = { distX, distY, 25, 26 };
 
-	contador = player->getDash();
 }
 
 EnergiaDisponible::~EnergiaDisponible()
@@ -18,7 +19,8 @@ EnergiaDisponible::~EnergiaDisponible()
 }
 
 void EnergiaDisponible::update(){
-	contador = player->getDash();
+//	contador = player->getDash();
+	pJuego->player->getStats(vida, balas, contador);
 
 	if (contador == 0){
 		activo = true;

@@ -11,10 +11,11 @@
 #include <string>
 #include <fstream>
 
-
+#include "MenuPausa.h"
 #include "Play.h"
 #include "MenuPrincipal.h"
-#include "Pausa.h"
+#include "MenuOpciones.h"
+#include "GameOver.h"
 #include <exception>
 #include "Error.h"
 #include "MapEditor.h"
@@ -52,7 +53,7 @@ Juego::Juego()
 	pcolor = { 0, 0, 0 }; //Color del fondo negro;
 
 	exit = false;
-
+	GO = false;
 	if (!initSDL())
 	{
 		printf("Failed to initialize!\n");
@@ -65,7 +66,6 @@ Juego::Juego()
 	{
 		//camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 		changeState(new MenuPrincipal(this));
-
 		estado = topEstado(); //primer estado: MENU
 	}
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
@@ -95,34 +95,79 @@ Juego::~Juego()
 	closeSDL();
 }
 
+void Juego::cleanArrays() {
 
+	for (int i = 0; i < arrayObjetos.size(); ++i)
+		arrayObjetos.erase(arrayObjetos.begin() + i);
+
+	for (int j = 0; j < elemInterfaz.size(); ++j)
+		elemInterfaz.erase(elemInterfaz.begin() + j);
+	
+	for (int aux1 = 0; aux1 < enemyArray.size(); ++aux1)
+		enemyArray.erase(enemyArray.begin() + aux1);
+	
+	for (int aux2 = 0; aux2 < playerBullets.size(); ++aux2)
+		playerBullets.erase(playerBullets.begin() + aux2);
+
+	for (int aux3 = 0; aux3 < enemyBullets.size(); ++aux3)
+		enemyBullets.erase(enemyBullets.begin() + aux3);
+
+	for (int aux4 = 0; aux4 < objVisible.size(); ++aux4)
+		objVisible.erase(objVisible.begin() + aux4);
+
+	for (int aux5 = 0; aux5 < arrayMenu.size(); ++aux5)
+		arrayMenu.erase(arrayMenu.begin() + aux5);
+
+	if(arrayObjetos.size() > 0)
+		arrayObjetos.erase(arrayObjetos.begin());
+	if (enemyArray.size() > 0)
+		enemyArray.erase(enemyArray.begin());
+	if (elemInterfaz.size() > 0)
+		elemInterfaz.erase(elemInterfaz.begin());
+	if (playerBullets.size() > 0)
+		playerBullets.erase(playerBullets.begin());
+	if (enemyBullets.size() > 0)
+		enemyBullets.erase(enemyBullets.begin());
+	if (objVisible.size() > 0)
+		objVisible.erase(objVisible.begin());
+	while (arrayMenu.size() > 0)
+		arrayMenu.erase(arrayMenu.begin());
+
+}
 void Juego::run()
 {
+	Uint32 lastUpdate;
+
 	while (!exit) {
 
 		switch (estado->getCurrentState()) {
 		case MENU_PRINCIPAL:
-
-		//	cout << "MENU PRINCIPAL \n";
+			
+			changeState(new MenuPrincipal(this));
+			estado = topEstado(); 
+				
 			//Render menu
 			estado->draw();
+			//Update menu
+			estado->update();
 
-			//while (estado->getCurrentState() == MENU_PRINCIPAL) {
-				estado->update();
-			//}
-
+			cleanArrays();
 			break;
 
 		case NIVEL_1:
+
+			//GO = false;
+
 			changeState(new Play(this));
 			estado = topEstado(); 
 
+			pause = new MenuPausa(this);
 			cout << "NIVEL 1 (PLAY) \n";
-			Uint32 lastUpdate = SDL_GetTicks();
-
+			
 			//Clear screen	
 			SDL_RenderClear(pRenderer);
 
+			lastUpdate = SDL_GetTicks();
 			//Render level
 			for (int i = 0; i < TOTAL_TILES; ++i)
 			{
@@ -135,7 +180,7 @@ void Juego::run()
 			estado->draw();
 			handle_events();
 
-			while (!exit) {
+			while (!exit && estado->getCurrentState() == NIVEL_1) {
 
 				for (auto t : wallsArray) {
 					if (!t->isInside()) {
@@ -159,35 +204,50 @@ void Juego::run()
 					tileSet[i]->render(pRenderer, camera);
 				}
 
-				//cout << delta << "\n";
-				estado->draw();
-				handle_events();
-				contDash++;
-				//cout << arrayObjetos.size() << "\n";
-
-				//cout << tileVisible.size() << "\n";
-
-
 				for (int i = 0; i < tileVisible.size(); ++i) {
 					if (isInScreen(tileVisible[i]->getBox())) {
 						tileVisible.erase(tileVisible.begin(), tileVisible.begin() + i);
 					}
 				}
-
-				//cout << objVisible.size() << "\n";
-				//std::cout << contDash << "\n";
-
-			}
-
-			if (exit) cout << "EXIT \n";
-			else {
+				//cout << delta << "\n";
 				estado->draw();
+				handle_events();
+				contDash++;
+
 			}
+
+
+			cleanArrays();
+			delete player;
 			break;
-			/*	case GAME_OVER:
-					break;
-				default:
-					break;*/
+			
+		case GAME_OVER:
+
+			changeState(new GameOver(this));
+			estado = topEstado();
+
+			camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+			estado->draw();
+			estado->update();
+			cleanArrays();
+
+			break;
+
+		case MENU_OPCIONES:
+
+			changeState(new MenuOpciones(this));
+			estado = topEstado();
+
+			camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+			//Render menu
+			estado->draw();
+			//Update menu
+			estado->update();
+
+			cleanArrays();
+			break;
 		}
 
 	}
@@ -289,19 +349,35 @@ bool Juego::initMedia()
 		arrayFuentes.push_back(textoAux);
 	}
 
+	//Objetos dinámicos
 	texturas.push_back("..\\bmps\\personaje.png");
-	texturas.push_back("..\\bmps\\bala.png");
-
-	texturas.push_back("..\\bmps\\BotonPlayE.png");
-	texturas.push_back("..\\bmps\\BotonPlayA.png");
-	texturas.push_back("..\\bmps\\BotonOptionsE.png");
-	texturas.push_back("..\\bmps\\BotonOptionsA.png");
-	texturas.push_back("..\\bmps\\BotonExitE.png");
-	texturas.push_back("..\\bmps\\BotonExitA.png");
-	texturas.push_back("..\\bmps\\Fondo.png");
-
 	texturas.push_back("..\\bmps\\enemy.png");
+	texturas.push_back("..\\bmps\\bala.png");
 	texturas.push_back("..\\bmps\\balaEnemigo.png");
+	
+	texturas.push_back("..\\bmps\\Checkpoint.png");
+	texturas.push_back("..\\bmps\\enemyPlanta.png");
+	texturas.push_back("..\\bmps\\BarraVida.png");
+	texturas.push_back("..\\bmps\\Humo.png");
+	texturas.push_back("..\\bmps\\Botiquin1.png");
+
+	//Elementos del menu
+	texturas.push_back("..\\bmps\\BotonPlayA.png");
+	texturas.push_back("..\\bmps\\BotonPlayE.png");
+	texturas.push_back("..\\bmps\\BotonOptionsA.png");
+	texturas.push_back("..\\bmps\\BotonOptionsE.png");
+	texturas.push_back("..\\bmps\\BotonExitA.png");
+	texturas.push_back("..\\bmps\\BotonExitE.png");
+	texturas.push_back("..\\bmps\\BotonControlesA.png");
+	texturas.push_back("..\\bmps\\BotonControlesE.png");
+	texturas.push_back("..\\bmps\\BotonMenuA.png");
+	texturas.push_back("..\\bmps\\BotonMenuE.png");
+	texturas.push_back("..\\bmps\\BotonReintentarA.png");
+	texturas.push_back("..\\bmps\\BotonReintentarE.png");
+	texturas.push_back("..\\bmps\\BotonReanudarA.png");
+	texturas.push_back("..\\bmps\\BotonReanudarE.png");
+	texturas.push_back("..\\bmps\\Fondo.png");
+	texturas.push_back("..\\bmps\\Controles.png");
 
 	//Interfaz
 	texturas.push_back("..\\bmps\\VidaLlena.png");
@@ -310,12 +386,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\DashVacio.png");
 	texturas.push_back("..\\bmps\\Cargador.png");
 	texturas.push_back("..\\bmps\\CuadroDialogo.png");
-	//
-	texturas.push_back("..\\bmps\\Checkpoint.png");
-	texturas.push_back("..\\bmps\\enemyPlanta.png");
-	texturas.push_back("..\\bmps\\BarraVida.png");
-	texturas.push_back("..\\bmps\\Humo.png");
-	texturas.push_back("..\\bmps\\Botiquin1.png");
+
 	//Decorativos
 	texturas.push_back("..\\bmps\\papelera1.png");
 	texturas.push_back("..\\bmps\\papelera2.png");
@@ -395,6 +466,21 @@ bool Juego::initMedia()
 
 void Juego::freeMedia()
 {
+	//Objetos
+	for (size_t aux = 0; aux < arrayMenu.size(); ++aux) {
+		delete arrayMenu[aux];
+		arrayMenu[aux] = nullptr;
+	}
+	//Interfaz
+	for (int i = 0; i < elemInterfaz.size(); i++){
+		delete elemInterfaz[i];
+		elemInterfaz[i] = nullptr;
+	}
+
+	//juego = nullptr;
+	//textura = nullptr;
+	pRenderer = nullptr;
+
 	for (size_t aux = 0; aux < arrayTex.size(); ++aux) {
 		delete arrayTex[aux];
 		//arrayTex[aux] = nullptr;
@@ -446,7 +532,12 @@ void Juego::handle_events()
 				//estado->onClick();
 				player->onClick();
 			}
-			// else if(...)    
+		}
+		else if (e.type == SDL_KEYUP) {
+			if (e.key.keysym.sym == SDLK_ESCAPE) {
+				pause->draw();
+				pause->update();
+			}		
 		}
 		updateDirection();
 		//std::cout << contDash << "\n";

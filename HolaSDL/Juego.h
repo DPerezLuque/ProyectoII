@@ -9,6 +9,7 @@
 #include "EstadoJuego.h"
 #include "ObjetoJuego.h"
 
+#include "HUD.h"
 #include "Musica.h"
 
 //using namespace std;
@@ -27,12 +28,14 @@ public:
 
 	//TEXTURE TYPES
 	enum Texturas_t {
-		TPlayer, TBulletPlayer, TBPlayE, TBPlayA, TBOptionsE, TBOptionsA, TBExitE, TBExitA, TFondo,
-		TEnemy, TBulletEnemy, TVidaLlena, TVidaVacia, TDashLleno,
-		TDashVacio, TCargador, TDialogo, TCheck, TEnemyPlanta, TBarraVida, THumo,
-		TBotiquin, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
+		TPlayer, TEnemy, TBulletPlayer, TBulletEnemy, TCheck, TEnemyPlanta, TBarraVida, THumo,
+		TBotiquin, TBPlayA, TBPlayE , TBOptionsA, TBOptionsE, TBExitA, TBExitE, TBControlsA, TBControlsE,
+		TBMenuA, TBMenuE, TBRetryA, TBRetryE, TBResumeA, TBResumeE, TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
+		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
-		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto, TEnemigoBomba, TBalaBomba, TExplosionBomba
+		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
+		TEnemigoBomba, TBalaBomba, TExplosionBomba
+
 	};
 
 	//PUBLIC VARIABLES
@@ -43,8 +46,6 @@ public:
 	SDL_Event e;
 
 	int x, y;
-	bool exit;
-
 
 	//GAME TIME (GLOBAL)
 	float delta;
@@ -56,6 +57,7 @@ public:
 	//STATE MANAGER
 	EstadoJuego* estado;
 	std::stack<EstadoJuego*> states;
+	EstadoJuego * pause;
 
 	//STACK
 	void changeState(EstadoJuego* newSt);
@@ -68,10 +70,9 @@ public:
 	std::vector<ObjetoJuego*> enemyArray;		//ENEMIGOS
 	std::vector<ObjetoJuego*> playerBullets;	//BALAS PERSONAJE
 	std::vector<ObjetoJuego*> enemyBullets;		//BALAS ENEMIGOS 
-	std::vector<ObjetoJuego*> arrayMenu;
-	std::vector<ObjetoJuego*> objVisible;
-	
-	//std::vector<int> stats;
+	std::vector<ObjetoJuego*> arrayMenu;		//OBJETOS DEL MENU
+	std::vector<ObjetoJuego*> objVisible;		//OBJETOS VISIBLES EN PANTALLA
+	std::vector <HUD*> elemInterfaz;			//ELEMENTOS INTERFAZ
 
 	//PLAYER
 	ObjetoJuego * player;
@@ -87,17 +88,20 @@ public:
 	void run();
 	void handle_events();
 	void updateDirection();
+	void resetCamera() { camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT }; };
 
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	bool touchesWall(SDL_Rect a);
 	bool checkWallCollisions(SDL_Rect a, SDL_Rect b);
 
 	//CLOSERS
-	void setSalir(){ exit = true; }
+	void cleanArrays();
 	void freeMedia();
 	void closeSDL();
 	
 	//SETTERS
+	void setSalir() { exit = true;}
+//	void setGameOver() { GO = true; }
 	bool isInScreen(SDL_Rect rect);
 	void addToScreen(ObjetoJuego * obj);
 	//void addToScreen(Tilemap::Tile * t);
@@ -130,6 +134,9 @@ public:
 	bool getRecargar(){ return recargar; }
 
 private:
+
+	bool exit, GO;
+
 	bool dashAux = false;
 	bool recargar = false;
 	//ARRAYS

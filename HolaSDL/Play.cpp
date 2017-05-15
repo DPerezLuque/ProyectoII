@@ -33,6 +33,7 @@ Play::Play(Juego* ptr) : Estado(ptr)
 
 Play::~Play()
 {
+
 }
 
 void Play::init() {
@@ -50,6 +51,7 @@ void Play::init() {
 
 	juego->arrayObjetos.push_back(juego->player);
 	//juego->arrayObjetos.push_back(new Player(juego, 200, 300));
+
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 300));
 
@@ -57,13 +59,20 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));	
 	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                          AQUI TUVE EL PROBLEMA CON EL COMMIT vale crack pero por qué no metes el puntero directamente
 	//juego->arrayObjetos.push_back(newEnemy);
+	//juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
+
+	//ENEMIGOS
+	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
+	//juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 750, 300));
+	//juego->enemyArray.push_back(newEnemy);
 	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
 	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
 
 //	juego->arrayObjetos.push_back(juego->playerBullets);
 
 	//ENEMIGOS PLANTA
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
@@ -71,18 +80,30 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
 	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
+
 	///		INTERFAZ		///	
-	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->player), 128, 32, 0, 0));
-	elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
-	elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->player), 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
-	elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
-	
+//	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->player), 128, 32, 0, 0));
+	//elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
+	//elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->player), 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
+	//elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
+
+	juego->elemInterfaz.push_back(new BarraVidaVacia(juego, juego->player, 128, 32, 0, 0));
+	juego->elemInterfaz.push_back(new BarraVida(juego, juego->player, 32, 32, 0, 0));
+	juego->elemInterfaz.push_back(new Cargador(juego, juego->player, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
+	juego->elemInterfaz.push_back(new EnergiaDisponible(juego, juego->player, 32, 32, 0, 0));
+
 	///// OBJETOS DECORATIVOS POR SITUAR  /////
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 300, 200, "papelera2"));
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 400, 200, "papelera3"));
 
 	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
+
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
+//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 
 	//juego->arrayObjetos.push_back(new Bobina(juego, 300, 300));
 
@@ -119,61 +140,6 @@ void Play::update(int delta) {
 		
 	}
 	*/
-	///REVISAR
-	/*
-	for (auto obj1 : juego->arrayObjetos) {
-		for (auto obj2 : juego->arrayObjetos) {
-			if (juego->checkCollision(obj1, obj2)) {
-				obj1->onCollision(obj2->getType());
-				obj2->onCollision(obj1->getType());
-			}
-		}
-		
-	}
-
-	for (auto enemy : juego->enemyArray) {
-		if (juego->checkCollision(enemy, juego->player)) {
-			enemy->onCollision(juego->player->getType());
-			juego->player->onCollision(enemy->getType());
-		}
-		
-	}
-
-	for (auto bullet : juego->enemyBullets) {
-		if (juego->checkCollision(bullet, juego->player)) {
-			bullet->onCollision(juego->player->getType());
-			juego->player->onCollision(bullet->getType());
-		}
-		for (auto enemyb : juego->enemyBullets) {
-			if (juego->checkCollision(enemyb, bullet)) {
-				enemyb->onCollision(bullet->getType());
-				bullet->onCollision(enemyb->getType());
-			}
-
-		}
-
-	}
-
-	*/
-	/*
-	for (auto bullet : juego->playerBullets) {
-		
-		if (juego->checkCollision(juego->player, bullet)) {
-			juego->player->onCollision(bullet->getType());
-			bullet->onCollision(juego->player->getType());
-		}
-
-		for (auto enemy : juego->arrayObjetos) {
-			if (juego->checkCollision(enemy, bullet)) {
-				enemy->onCollision(bullet->getType());
-				bullet->onCollision(enemy->getType());
-			}
-		}
-	
-	
-	}
-*/
-
 
 /*
 	//PERSONAJE CON ENEMIGOS
@@ -217,9 +183,9 @@ void Play::update(int delta) {
 	}
 
 	if (juego->player->isDead()){		
-		juego->exit = true;
+		juego->estado->changeCurrentState(GAME_OVER);
 	}
-	//else{
+	else{
 		//LIMPIEZA DE VECTOR DE OBJETOS
 		for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
 			if (juego->arrayObjetos[aux]->isDead())
@@ -250,11 +216,11 @@ void Play::update(int delta) {
 			juego->enemyBullets[x]->update(delta);
 		}*/
 
-		for (int i = 0; i < elemInterfaz.size(); i++){
-			elemInterfaz[i]->update(); //
+		for (int i = 0; i < juego->elemInterfaz.size(); i++){
+			juego->elemInterfaz[i]->update(); //
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//}
+	}
 
 
 }
@@ -280,8 +246,8 @@ void Play::draw()
 	}
 
 	//Dibuja interfaz, por encima de los objetos
-	for (int i = 0; i < elemInterfaz.size(); i++) {
-		elemInterfaz[i]->draw();
+	for (int i = 0; i < juego->elemInterfaz.size(); i++) {
+		juego->elemInterfaz[i]->draw();
 	}
 		/*
 		//Pintado de texto (cargador)	
@@ -303,9 +269,6 @@ void Play::draw()
 	SDL_RenderPresent(pRenderer);
 }
 
-void Play::onClick() {
-	//...
-}
 
 void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 
