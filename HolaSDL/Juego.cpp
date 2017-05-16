@@ -338,7 +338,7 @@ bool Juego::initMedia()
 		musicFiles.push_back(cancion);
 	}
 
-	musicFiles[Cancion1]->play();
+	//musicFiles[Cancion1]->play();
 
 	//TEXTO
 	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");
