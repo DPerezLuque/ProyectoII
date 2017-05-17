@@ -45,10 +45,13 @@ void Boton::update() {
 	SDL_GetMouseState(&x, &y);
 	//cout << x << " " << y << "\n";
 	
-	if (dentro(x, y)) {
-		textura = textura2;
+	if (tipo != BOTON_SANGRE){
+		if (dentro(x, y)) {
+			textura = textura2;
+		}
+		else textura = textura1;
 	}
-	else textura = textura1;
+	else { changeText(); }
 
 }
 
@@ -68,6 +71,14 @@ void Boton::draw() const {
 	//cout << rect.x << " " << rect.y << " " << auxText.x << " " << auxText.y << "\n";
 	
 	textura->draw(pRenderer, rect.x, rect.y, rect);
+}
+
+void Boton::changeText(){
+
+	if (juego->getSangre())
+		textura = textura2;
+	else textura = textura1;
+
 }
 
 

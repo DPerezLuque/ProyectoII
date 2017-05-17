@@ -12,6 +12,7 @@ public:
 	
 	void update();
 	void draw() const;
+	void changeText();
 private:
 
 	

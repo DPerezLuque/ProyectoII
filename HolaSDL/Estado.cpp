@@ -120,6 +120,11 @@ bool Estado::onClick()
 		case BOTON_CONTROLS:
 			controls();
 			break;
+		case BOTON_SANGRE:
+			juego->arrayMenu[aux]->changeText();
+			juego->setSangre();
+			return false;
+			break;
 		default:
 			break;
 		}

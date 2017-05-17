@@ -29,7 +29,7 @@ public:
 	//TEXTURE TYPES
 	enum Texturas_t {
 		TPlayer, TEnemy, TBulletPlayer, TBulletEnemy, TCheck, TEnemyPlanta, TBarraVida, THumo,
-		TBotiquin, TBPlayA, TBPlayE , TBOptionsA, TBOptionsE, TBExitA, TBExitE, TBControlsA, TBControlsE,
+		TBotiquin, TBPlayA, TBPlayE , TBOptionsA, TBOptionsE, TBExitA, TBExitE, TBControlsA, TBControlsE, TBSangreA, TBSangreE,
 		TBMenuA, TBMenuE, TBRetryA, TBRetryE, TBResumeA, TBResumeE, TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
 		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
@@ -44,9 +44,9 @@ public:
 	Textura * pTexture;
 	SDL_Event e;
 
-	bool sangre = true; //Editado desde opciones, usado por los enemigos.
+	bool sangre = false; //Editado desde opciones, usado por los enemigos.
 	bool getSangre(){ return sangre; }
-	void setSangre(bool coso){ sangre = coso; }
+	void setSangre(){ sangre = !sangre; }
 
 	bool checkpoint = false;
 	bool getCheck(){ return checkpoint; }
