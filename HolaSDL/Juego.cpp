@@ -419,7 +419,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\enemigoBomba.png");
 	texturas.push_back("..\\bmps\\balaBomba.png");
 	texturas.push_back("..\\bmps\\explosionBalaBomba.png");
-	//La araña y sus littleSpiders
+	//La Spider y sus littleSpiders
 	texturas.push_back("..\\bmps\\spiderTest.png");
 	texturas.push_back("..\\bmps\\BalaRalentizadora.png");
 	//Load Assets Textures
@@ -863,16 +863,16 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 		arrayObjetos.push_back(new Botiquin(this, posEnemigoX + (30 * direction), posEnemigoY + (30 * direction)));
 		break;
 
-	case 'e':   //Spawn de enemigo que camina
+	case 'e':   //Spawn de explosiones
 
 		arrayObjetos.push_back(new ExplosionEnemigoB(this, posEnemigoX + (30 * direction), posEnemigoY));
 		break;
 
-	case 'p':	//Spawn de enemigos de plantas
+	case 'p':	//Spawn de enemigos de plantas (NO SE VA A USAR)
 		arrayObjetos.push_back(new EnemigoPlanta(this, posEnemigoX, posEnemigoY + (30 * direction)));
 		break;
 
-	case 'x':	//Spawn de enemigos de plantas
+	case 'x':	//Spawn de enemigos de arañitas
 		arrayObjetos.push_back(new littleSpider(this, posEnemigoX, posEnemigoY));
 		break;
 

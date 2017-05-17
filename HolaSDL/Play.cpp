@@ -6,7 +6,7 @@
 #include "BalaPlayer.h"
 #include "BalaEnemigo.h"
 #include "enemigoGuardia.h"
-#include "Araña.h"
+#include "Spider.h"
 //#include "littleSpider.h"
 //#include "BossRino.h"
 #include "EnemigoPlanta.h"
@@ -66,7 +66,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
 
 	//juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 300));
-	juego->arrayObjetos.push_back(new Araña(juego, 750, 300));
+	juego->arrayObjetos.push_back(new Spider(juego, 750, 300));
 
 	///		ENEMIGOS	///
 	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));	

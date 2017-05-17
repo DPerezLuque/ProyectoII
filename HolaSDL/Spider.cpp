@@ -1,7 +1,10 @@
-#include "Araña.h"
+#include "Spider.h"
 
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
-Araña::Araña(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
+Spider::Spider(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 {
 	vida = 4;
 	rectAnim = { 0, 0, 30, 36};
@@ -22,11 +25,11 @@ Araña::Araña(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 }
 
 
-Araña::~Araña()
+Spider::~Spider()
 {
 
 }
-void Araña::update(int delta)
+void Spider::update(int delta)
 {
 	if (isActive()) {
 		rectCollision = rect;
@@ -68,7 +71,7 @@ void Araña::update(int delta)
 	}
 }
 
-void Araña::animacionBasica(){ //Para el paso de frames
+void Spider::animacionBasica(){ //Para el paso de frames
 	if (rectAnim.x >= 60){
 		rectAnim.x = 0;
 	}
@@ -78,19 +81,19 @@ void Araña::animacionBasica(){ //Para el paso de frames
 }
 
 //Controla la vida del enemigo y lo elimina si ha muerto.
-void Araña::gestorVida(){
-	if (!inmunidad){
+void Spider::gestorVida(){
+	//if (!inmunidad){
 		vida--;
 		cout << "Vida enemigo: " << vida << "\n";
-		inmunidad = true;
-	}
+		//inmunidad = true;
+	//}
 
 	if (vida <= 0){
 		cout << "Enemy Dead! \n";
 		dead = true;
 
 
-		/* generate secret number between 1 and 10: */
+		
 		int rnd = 1 - 100 * (rand() % 100);
 
 		if (rnd % 5 == 0) juego->spawnObjetos('b', rect.x, rect.y, "");  //Droppea botiquines con un 20%
@@ -99,10 +102,14 @@ void Araña::gestorVida(){
 		juego->spawnObjetos('a', rect.x, rect.y, "");
 		juego->spawnObjetos('b', rect.x, rect.y, "");
 	
-		//Aquí hacemos el drop de las arañas pequeñas tambien, por eso se redefine
-		//for (int i = 0; i < 4; i++){
-			juego->spawnObjetos('x', rect.x, rect.y, "");
-		//}
-			juego->spawnObjetos('e', rect.x, rect.y, "");
+		//Aquí hacemos el drop de las Spiders pequeñas tambien, por eso se redefine
+		for (int i = 0; i < 4; i++){
+			srand(time(NULL));
+			int nuevaPosX = (rand() % 1 + 2) - 1;
+			int nuevaPosY = (rand() % 1 + 2) - 1;
+			juego->spawnObjetos('x', rect.x+(50*nuevaPosX), rect.y +(80*nuevaPosY), "");
+		}
+
+			juego->spawnObjetos('e', rect.x, rect.y, "");	//Explosión to guapa 
 	}
 }

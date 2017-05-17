@@ -38,9 +38,9 @@
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Texto.cpp" />
     <ClCompile Include="Textura.cpp" />
-    <ClCompile Include="Araña.cpp" />
     <ClCompile Include="balaRalentizadora.cpp" />
     <ClCompile Include="littleSpider.cpp" />
+    <ClCompile Include="Spider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aura.h" />
@@ -83,8 +83,8 @@
     <ClInclude Include="Play.h" />
     <ClInclude Include="Texto.h" />
     <ClInclude Include="Textura.h" />
-    <ClInclude Include="Araña.h" />
     <ClInclude Include="balaRalentizadora.h" />
     <ClInclude Include="littleSpider.h" />
+    <ClInclude Include="Spider.h" />
   </ItemGroup>
 </Project>

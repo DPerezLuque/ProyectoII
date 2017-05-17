@@ -107,7 +107,7 @@ void enemigoBase::shoot(int targetX, int targetY, char bulletType){
 		break;
 
 		case 'r':
-			nuevaBala = new balaRalentizadora(juego, rect.x, rect.y, vX, vY);				//Balas ralentizadoras
+			nuevaBala = new balaRalentizadora(juego, rect.x, rect.y, vX, vY);		//Balas ralentizadoras
 			break;
 	}
 	//Incluimos la bala creada en el juego

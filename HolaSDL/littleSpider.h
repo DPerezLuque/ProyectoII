@@ -8,7 +8,7 @@ public:
 	~littleSpider();
 
 	//Métodos heredados de EnemigoBase
-	virtual void animacionBasica();			//Animación de la araña
+	virtual void animacionBasica();			//Animación de la Spider
 	virtual void update(int delta);			//Se mueve y dispara al jugador si está a tiro
 	//Métodos propios
 	void nuevaPosicion();
