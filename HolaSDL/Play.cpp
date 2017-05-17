@@ -7,6 +7,7 @@
 #include "BalaEnemigo.h"
 #include "enemigoGuardia.h"
 #include "Araña.h"
+//#include "littleSpider.h"
 //#include "BossRino.h"
 #include "EnemigoPlanta.h"
 #include <iostream>

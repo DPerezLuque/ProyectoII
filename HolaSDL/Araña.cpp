@@ -98,7 +98,11 @@ void Araña::gestorVida(){
 		//juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
 		juego->spawnObjetos('a', rect.x, rect.y, "");
 		juego->spawnObjetos('b', rect.x, rect.y, "");
-		juego->spawnObjetos('e', rect.x, rect.y, "");
+	
 		//Aquí hacemos el drop de las arañas pequeñas tambien, por eso se redefine
+		//for (int i = 0; i < 4; i++){
+			juego->spawnObjetos('x', rect.x, rect.y, "");
+		//}
+			juego->spawnObjetos('e', rect.x, rect.y, "");
 	}
 }

@@ -27,7 +27,7 @@
 #include "enemigoGuardia.h"
 #include "EnemigoPlanta.h"
 #include "ExplosionEnemigoB.h"
-#include "Arañita.h"
+#include "littleSpider.h"
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -419,7 +419,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\enemigoBomba.png");
 	texturas.push_back("..\\bmps\\balaBomba.png");
 	texturas.push_back("..\\bmps\\explosionBalaBomba.png");
-	//La araña y sus arañitas
+	//La araña y sus littleSpiders
 	texturas.push_back("..\\bmps\\spiderTest.png");
 	texturas.push_back("..\\bmps\\BalaRalentizadora.png");
 	//Load Assets Textures
@@ -870,6 +870,10 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 
 	case 'p':	//Spawn de enemigos de plantas
 		arrayObjetos.push_back(new EnemigoPlanta(this, posEnemigoX, posEnemigoY + (30 * direction)));
+		break;
+
+	case 'x':	//Spawn de enemigos de plantas
+		arrayObjetos.push_back(new littleSpider(this, posEnemigoX, posEnemigoY));
 		break;
 
 

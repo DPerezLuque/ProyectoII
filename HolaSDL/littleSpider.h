@@ -1,21 +1,22 @@
 #pragma once
 #include "enemigoBase.h"
 
-class Arañita : public enemigoBase
+class littleSpider : public enemigoBase
 {
 public:
-	Arañita(Juego* ptr, int px, int py);
-	~Arañita();
+	littleSpider(Juego* ptr, int px, int py);
+	~littleSpider();
 
 	//Métodos heredados de EnemigoBase
 	virtual void animacionBasica();			//Animación de la araña
 	virtual void update(int delta);			//Se mueve y dispara al jugador si está a tiro
 	//Métodos propios
-	pair <int, int> nuevaPosicion();
+	void nuevaPosicion();
 private:
-	int contadorMovimiento;
+	int contadorMovimiento, contadorQuieto;
 	bool actualizaMov;
 
 	pair <int, int> pos;
+	int directionX, directionY;
 };
 

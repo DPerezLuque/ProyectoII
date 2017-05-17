@@ -40,7 +40,7 @@
     <ClCompile Include="Textura.cpp" />
     <ClCompile Include="Araña.cpp" />
     <ClCompile Include="balaRalentizadora.cpp" />
-    <ClCompile Include="Arañita.cpp" />
+    <ClCompile Include="littleSpider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aura.h" />
@@ -85,6 +85,6 @@
     <ClInclude Include="Textura.h" />
     <ClInclude Include="Araña.h" />
     <ClInclude Include="balaRalentizadora.h" />
-    <ClInclude Include="Arañita.h" />
+    <ClInclude Include="littleSpider.h" />
   </ItemGroup>
 </Project>
