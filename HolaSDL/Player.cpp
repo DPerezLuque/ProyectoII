@@ -270,6 +270,7 @@ void Player::onCollision(collision type){
 		break;
 	case BALA_RALENTIZADORA:
 		estaRalentizado = true;
+		gestorVida();
 		break;
 	default:
 		break;

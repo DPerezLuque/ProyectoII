@@ -10,6 +10,9 @@
 #include <iomanip>
 #include <string>
 #include <fstream>
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 #include "MenuPausa.h"
 #include "Play.h"
@@ -24,6 +27,7 @@
 #include "enemigoGuardia.h"
 #include "EnemigoPlanta.h"
 #include "ExplosionEnemigoB.h"
+#include "Arañita.h"
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -833,7 +837,7 @@ void Juego::creaAlmas(int posEnemigoX, int posEnemigoY, string msj){
 //Creamos un objeto dado por el id que se introduzca en la llamada a función, según el random deseado en el objeto desde el que se
 //llame a este método.
 void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
-
+	srand(time(NULL));
 	int v2 = rand() % 70 + 30;				//Rango: [30,70]
 	int direction = 1 - 2 * (rand() % 2);	//Decide el signo del random
 
@@ -867,6 +871,8 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 	case 'p':	//Spawn de enemigos de plantas
 		arrayObjetos.push_back(new EnemigoPlanta(this, posEnemigoX, posEnemigoY + (30 * direction)));
 		break;
+
+
 	}
 }
 

@@ -57,8 +57,6 @@ void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que 
 
 	if (distance > vel / 2) { //este numero es un margen de error que tendra que ir acorde con la velocidad del enemigo (vel)
 
-		//if (distance > vel / 2) { //este numero es un margen de error que tendra que ir a corde con la velocidad del enemigo (vel)
-
 		vX = vel * (x - rect.x) / distance;
 		vY = vel * (y - rect.y) / distance;
 	}
