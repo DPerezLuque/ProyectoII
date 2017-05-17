@@ -1,26 +1,21 @@
-/*
 #include "BossRino.h"
+#include <time.h>
 
 
-BossRino::BossRino(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
+BossRino::BossRino(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 {
-	textura = juego->getTextura(Juego::TBulletEnemy);
+	textura = juego->getTextura(Juego::TEnemy);
 
-	vel = 6;
-	freDis = 100;
+	contDis = 0;
 	velDis = 20;
+	vida = 4;
 
-	rect.w = 50;
-	rect.h = 50;
+	bool saved = false;
 
-	rect.x = 100;
-	rect.y = 100;
-
-	rectCollision = rect;
+	velX = 0;
+	velY = 0;
 
 	tipo = BOSS;
-	//vidaEnemigo = 4;
-
 }
 
 
@@ -28,100 +23,103 @@ BossRino::~BossRino()
 {
 }
 
-void BossRino::follow(int x, int y){
-	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
-	//int supa = rand() % 10;
-	//std::cout << supa;
-	if (distance > vel / 2) { //este numero es un margen de error que tendra que ir acorde con la velocidad del enemigo (vel)
-		
-		/*if (supa <= 1){
-			vX = 2*vel * (x - rect.x) / distance;
-			vY = 2*vel * (y - rect.x) / distance;
-		}*/
-/*		
+void BossRino::update(int delta) {
 
-		//else {
-			vX = vel * (x - rect.x) / distance;
-			vY = vel * (y - rect.y) / distance;
-		//}
-	}
-	else {
-		vX = 0;
-		vY = 0;
-	}
-	/*if (supa = 0){
-		rect.x += vX*3;
-		rect.y += vY*3;
-	}
-	else{*/
-		//rect.x += vX;
-		//rect.y += vY;
-	//}
-/*
-}
-void BossRino::follow2(int x, int y){
-	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
-	//int supa = rand() % 10;
-	if (distance > vel / 2) { //este numero es un margen de error que tendra que ir acorde con la velocidad del enemigo (vel)
-		vX = 3*vel * (x - rect.x) / distance;
-		vY = 3*vel * (y - rect.y) / distance;
-	}
-	else {
-		vX = 0;
-		vY = 0;
-	}
-	/*if (supa = 0){
-	rect.x += vX*3;
-	rect.y += vY*3;
-	}
-	else{*/
-	//rect.x += vX;
-	//rect.y += vY;
-	//}
-/*
-}
+	rectVida.x = rect.x - 20;
+	rectVida.y = rect.y - 20;
+	rectVida.w = 32 * vida;
 
-void BossRino::update(int delta){
-	int x, y;
-	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
-	++contDis;
-	/*if (contDis < freDis - 20){ //Algo tope chungo para que se pare al disparar
-		follow(x, y);
-	}
-	else if (contDis < freDis){
-		follow2(x, y);
-	}*/
+	rectCollision.x = rect.x;
+	rectCollision.y = rect.y;
+	//std::cout << rectCollision.x << rectCollision.y  << "\n";
 
-/*
-	switch (humuluhumulu){
-	case Estaditos::NORMAL:
-		contAceleron = 0;
+	int targetX, targetY;
+	juego->player->getPos(targetX, targetY);
+
+	switch (estado) {
+	case NORMAL:
+		contStun = 0;
 		++contDis;
-		follow(x, y);
-		if (contDis >= 100) humuluhumulu = Estaditos::PARADO;
+		follow(targetX, targetY, delta);
+		if (contDis >= 100) estado = PARADO;
 		break;
-	case Estaditos::ACELERON:
-		contParado = 0;
-		++contAceleron;
-		follow2(posx, posy);
-		if (contAceleron >= 30) humuluhumulu = Estaditos::NORMAL;
-		break;
-	case Estaditos::PARADO:
+	case PARADO:
 		contDis = 0;
 		contParado++;
-		if (contParado >= 50){
-			sma();
-			humuluhumulu = Estaditos::ACELERON; 
+		if (contParado >= 80) {
+			srand(time(NULL));
+			atack = rand() % 2; 
+			if (atack == 0) 
+				estado = CARGA;
+			else estado = SHOOT;
 		}
 		break;
-	}
-	
-	rectCollision = rect;
-	//onCollision(vidaEnemigo, tipo);
+	case CARGA:
+		contParado = 0;
+		if (!saved) {
+			distance = sqrt((targetX - rect.x)*(targetX - rect.x) + (targetY - rect.y)*(targetY - rect.y));
+			if (distance == 0) distance = 1;
+			saveTargetX = (targetX - rect.x) / distance;
+			saveTargetY = (targetY - rect.y) / distance;
+			saved = true;
+		}
+		carga(saveTargetX, saveTargetY);
 
+		rectCollision.x = rect.x;
+		rectCollision.y = rect.y;
+		if (juego->touchesWall(rectCollision)) {
+			//printf("Wall touched!\n");
+			saved = false;
+			estado = ESTUNEADO;
+		}
+		break;
+	case SHOOT:
+		shoot(rect.x + 1, rect.y + 1);
+		shoot(rect.x - 1, rect.y + 1);
+		shoot(rect.x - 1, rect.y - 1);
+		shoot(rect.x + 1, rect.y - 1);
+		estado = ESTUNEADO;
+		break;
+	case ESTUNEADO:
+		contStun++;
+		if (contStun >= 70) estado = NORMAL;
+	}
 }
-void BossRino::sma(){
-	
-	static_cast <Play*> (juego->topEstado())->posPlayer(posx, posy);
+
+void BossRino::carga(float x, float y) {
+
+	rect.x += 15 * x * juego->delta;
+	rect.y += 15 * y * juego->delta;
 }
-*/
+
+void BossRino::onCollision(collision type) {
+	if (type == PJ) {
+		estado = ESTUNEADO;
+		saved = false;
+	}
+
+	if (type == DECORATIVO && estado == CARGA) {
+		saved = false;
+		estado = ESTUNEADO;
+		vida -= 1;
+		std::cout << vida << "\n";
+	}
+}
+
+void BossRino::follow(int x, int y, float delta) { // posicion del objeto que vas a seguir 
+
+	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
+	//std::cout << vel << "\n";
+
+	if (distance > vel / 2) { //este numero es un margen de error que tendra que ir acorde con la velocidad del enemigo (vel)
+		vX = vel * (x - rect.x) / distance;
+		vY = vel * (y - rect.y) / distance;
+	}
+	else {
+		vX = 0;
+		vY = 0;
+	}
+
+	rect.x += (vX / 2) * delta / 1.5f;
+	rect.y += (vY / 2) * delta / 1.5f;
+}

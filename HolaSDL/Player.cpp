@@ -172,17 +172,11 @@ bool Player::onClick() {
 	
 }
 
-void Player::getPos(int& x, int& y) {
-	x = rect.x;
-	y = rect.y;
-}
-
-
 void Player::gestorVida()
 {
 	if (!inmunidad) {
 		vida--;
-		cout << vida << "\n";
+		//cout << vida << "\n";
 		inmunidad = true;
 	}
 
@@ -216,6 +210,9 @@ void Player::onCollision(collision type){
 		gestorVida();
 		break;
 	case ENEMY:
+		gestorVida();
+		break;
+	case BOSS:
 		gestorVida();
 		break;
 	case BOTIQUIN:

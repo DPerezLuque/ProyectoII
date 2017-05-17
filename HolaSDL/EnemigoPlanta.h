@@ -9,7 +9,5 @@ public:
 	
 	void update(int delta);
 	void animacionBasica();
-	virtual void follow(int x, int y, float delta){}
-
 };
 

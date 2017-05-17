@@ -128,7 +128,6 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 96;
 		rect.h = 112;
 		rectCollision = rect;
-		tipo = "e";
 	}
 	else if (id == "VitrinaFeto"){
 		textura = juego->getTextura(Juego::TMesaRota2);
@@ -136,7 +135,6 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 96;
 		rect.h = 112;
 		rectCollision = rect;
-		tipo = "e";
 	}
 }
 

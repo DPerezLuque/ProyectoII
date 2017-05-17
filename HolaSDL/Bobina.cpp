@@ -4,7 +4,7 @@
 Bobina::Bobina(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TBobina);
-	//tipo = ???
+	tipo = DECORATIVO;
 	rect.w = 96;
 	rect.h = 129;
 

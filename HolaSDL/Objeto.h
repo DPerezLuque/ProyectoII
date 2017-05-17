@@ -15,6 +15,7 @@ public:
 	void draw() const;
 	bool onClick();
 	SDL_Rect getRect();
+	void getPos(int& x, int& y);
 
 	void gestorVida() {};
 	void onCollision() {};

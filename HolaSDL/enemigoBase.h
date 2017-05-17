@@ -10,7 +10,7 @@ public:
 	virtual void onCollision(collision);
 	virtual void draw() const;
 	virtual void shoot(int targetX, int targetY);
-	virtual void follow(int x, int y, float delta) = 0;
+	virtual void follow(int x, int y, float delta);
 	virtual void gestorVida();
 	virtual bool isActive();
 	// 

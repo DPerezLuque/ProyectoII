@@ -10,7 +10,6 @@ public:
 
 	void update(int delta);
 	bool onClick();
-	void getPos(int& x, int& y);
 
 	void setCamera(SDL_Rect &camera);
 	//void drawPlayer();
