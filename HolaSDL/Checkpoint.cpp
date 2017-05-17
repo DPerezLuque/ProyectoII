@@ -61,5 +61,6 @@ void Checkpoint::onCollision(){
 		cogido = true;
 		cout << "Checkpoint cogido: "<< cogido <<"\n";
 	}
+	juego->setCheck(true);
 	
 }

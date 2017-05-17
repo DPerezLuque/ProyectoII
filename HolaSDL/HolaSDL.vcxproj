@@ -46,6 +46,7 @@
     <ClCompile Include="objetoDecorativo.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Play.cpp" />
+    <ClCompile Include="Sangre.cpp" />
     <ClCompile Include="Texto.cpp" />
     <ClCompile Include="Textura.cpp" />
   </ItemGroup>
@@ -88,6 +89,7 @@
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Play.h" />
+    <ClInclude Include="Sangre.h" />
     <ClInclude Include="Texto.h" />
     <ClInclude Include="Textura.h" />
   </ItemGroup>

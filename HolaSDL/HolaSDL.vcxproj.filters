@@ -38,6 +38,7 @@
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Texto.cpp" />
     <ClCompile Include="Textura.cpp" />
+    <ClCompile Include="Sangre.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aura.h" />
@@ -80,5 +81,6 @@
     <ClInclude Include="Play.h" />
     <ClInclude Include="Texto.h" />
     <ClInclude Include="Textura.h" />
+    <ClInclude Include="Sangre.h" />
   </ItemGroup>
 </Project>

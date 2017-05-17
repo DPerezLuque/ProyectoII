@@ -24,6 +24,7 @@
 #include "enemigoGuardia.h"
 #include "EnemigoPlanta.h"
 #include "ExplosionEnemigoB.h"
+#include "Sangre.h"
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -415,6 +416,10 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\enemigoBomba.png");
 	texturas.push_back("..\\bmps\\balaBomba.png");
 	texturas.push_back("..\\bmps\\explosionBalaBomba.png");
+	//Sangre
+	texturas.push_back("..\\bmps\\Sangre1.png");
+	texturas.push_back("..\\bmps\\Sangre2.png");
+	texturas.push_back("..\\bmps\\Sangre3.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
@@ -864,7 +869,12 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 	case 'p':	//Spawn de enemigos de plantas
 		arrayObjetos.push_back(new EnemigoPlanta(this, posEnemigoX, posEnemigoY + (30 * direction)));
 		break;
+
+	case 's': //sangre
+		arrayObjetos.push_back(new Sangre(this, posEnemigoX, posEnemigoY));
+		break;
 	}
+	
 }
 
 

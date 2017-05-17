@@ -34,8 +34,7 @@ public:
 		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
 		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
-		TEnemigoBomba, TBalaBomba, TExplosionBomba
-
+		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3,
 	};
 
 	//PUBLIC VARIABLES
@@ -44,6 +43,14 @@ public:
 	SDL_Color pcolor;
 	Textura * pTexture;
 	SDL_Event e;
+
+	bool sangre = true; //Editado desde opciones, usado por los enemigos.
+	bool getSangre(){ return sangre; }
+	void setSangre(bool coso){ sangre = coso; }
+
+	bool checkpoint = false;
+	bool getCheck(){ return checkpoint; }
+	void setCheck(bool coso){ checkpoint = coso; }
 
 	int x, y;
 

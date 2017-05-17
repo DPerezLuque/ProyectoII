@@ -38,6 +38,17 @@ Play::~Play()
 
 void Play::init() {
 
+	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
+	//PLAYER
+	if (juego->getCheck()){
+		juego->player = new Player(juego, 1100, 5650);
+		juego->arrayObjetos.push_back(juego->player);
+	}
+	else{
+		juego->player = new Player(juego, 200, 300);
+		juego->arrayObjetos.push_back(juego->player);
+	}
+
 	///		PUSH DE OBJETOS DECORATIVOS		///
 	//Los pusheamos antes para que el jugador pase por delante de los objetos
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 450, 110, "MesaRota2"));
@@ -53,15 +64,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 560, 380, "MesaCorazon"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 900, 350, "Planta3"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
-
-	///		*PLAYER		///
-	juego->player = new Player(juego, 200, 300);
-
-	juego->arrayObjetos.push_back(juego->player);
-	//juego->arrayObjetos.push_back(new Player(juego, 200, 300));
-
-	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));	
 
 	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 300));
 

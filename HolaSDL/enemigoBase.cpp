@@ -131,9 +131,13 @@ void enemigoBase::gestorVida(){
 		if (rnd % 5 == 0) juego->spawnObjetos('b', rect.x, rect.y, "");  //Droppea botiquines con un 20%
 
 		//juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
-		juego->spawnObjetos('a', rect.x, rect.y, "");
+		
 		juego->spawnObjetos('e', rect.x, rect.y, "");
 		juego->spawnObjetos('b', rect.x, rect.y, "");
+		if (juego->getSangre()){ //Sangre
+			juego->spawnObjetos('s', rect.x, rect.y, "");
+		}
+		juego->spawnObjetos('a', rect.x, rect.y, "");
 	}
 }
 
