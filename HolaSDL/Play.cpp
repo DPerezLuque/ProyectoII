@@ -6,7 +6,7 @@
 #include "BalaPlayer.h"
 #include "BalaEnemigo.h"
 #include "enemigoGuardia.h"
-//#include "BossRino.h"
+#include "BossRino.h"
 #include "EnemigoPlanta.h"
 #include <iostream>
 
@@ -67,6 +67,25 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));	
 
 	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 300));
+
+	///		*PLAYER		///
+ 	juego->player = new Player(juego, 1000, 6800);
+	juego->arrayObjetos.push_back(juego->player);
+	//juego->arrayObjetos.push_back(new Player(juego, 200, 300));
+
+	///       BOSS      ///
+	juego->arrayObjetos.push_back(new BossRino(juego, 700, 6500));
+
+
+	///      BOBINA     ///
+	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6425));
+	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6425));
+	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6975));
+	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6975));
+
+	///    CHECKPOINT   ///
+	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
+
 
 	///		ENEMIGOS	///
 	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));	
@@ -378,10 +397,10 @@ void Play::newDisparo(ObjetoJuego * po, int posX, int posY) {
 	//Disparo
 	juego->playerBullets.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
 }
-
+/*
 void Play::posPlayer(int& x, int& y) {
 	static_cast <Player*>(juego->player)->getPos(x, y);
-}
+}*/
 
 void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int velDis) {
 	//desde donde dispara //hacia donde dispara     //velocidad disparo

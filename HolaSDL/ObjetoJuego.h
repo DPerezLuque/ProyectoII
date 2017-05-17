@@ -28,6 +28,8 @@ public:
 	
 	virtual SDL_Rect getRect() = 0;
 
+	virtual void getPos(int& x, int& y) = 0;
+
 	virtual void gestorVida() = 0;
 
 	virtual void onCollision() = 0;

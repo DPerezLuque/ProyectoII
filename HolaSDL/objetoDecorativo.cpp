@@ -141,6 +141,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 85;
 		rect.h = 150;
 		rectCollision = rect;
+
 	}
 
 	else if (id == "Planta1"){

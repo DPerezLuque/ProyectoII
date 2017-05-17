@@ -8,6 +8,7 @@ public:
 	~enemigoGuardia();
 
 	void update(int delta);
+
 	virtual void animacionBasica(){}
 
 };

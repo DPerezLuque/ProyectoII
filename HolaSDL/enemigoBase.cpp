@@ -144,7 +144,7 @@ void enemigoBase::gestorVida(){
 bool enemigoBase::isActive(){
 	//std::cout << active << "\n";
 	int x, y;
-	static_cast <Play*> (juego->topEstado())->posPlayer(x, y);
+	juego->player->getPos(x, y);
 	int distance = sqrt((x + 50 - rect.x + rect.w / 2)*(x + 50 - rect.x + rect.w / 2)
 		+ (y + 50 - rect.y + rect.h / 2)*(y + 50 - rect.y + rect.h / 2)); // distancia entre los centros y no las esquinas
 	//std::cout << distance << "\n";
@@ -152,3 +152,31 @@ bool enemigoBase::isActive(){
 	if (distance >= radioDisable) active = false;
 	return active;
 }
+
+//FOLLOW ANTIGUO, BORRAR SI ES IGUAL QUE EL QUE EXISTE
+/*void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que vas a seguir 
+
+	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
+
+
+	if (distance > vel / 2) { //este numero es un margen de error que tendra que ir acorde con la velocidad del enemigo (vel)
+
+		//if (distance > vel / 2) { //este numero es un margen de error que tendra que ir a corde con la velocidad del enemigo (vel)
+
+		vX = vel * (x - rect.x) / distance;
+		vY = vel * (y - rect.y) / distance;
+	}
+	else {
+		vX = 0;
+		vY = 0;
+	}
+	if (juego->touchesWall(getRect())) {
+		rect.x -= (vX / 2) * delta;
+		rect.y -= (vY / 2) * delta;
+	}
+	else {
+		rect.x += (vX / 2) * delta / 1.5f;
+		rect.y += (vY / 2) * delta / 1.5f;
+	}
+
+}*/

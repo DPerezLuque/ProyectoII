@@ -53,6 +53,11 @@ SDL_Rect Objeto::getRect(){
 	return rectCollision;
 }
 
+void Objeto::getPos(int& x, int& y) {
+	x = rect.x;
+	y = rect.y;
+}
+
 void Objeto::Oscilar(int delta){
 	cont += delta;
 	cont2 += delta;
