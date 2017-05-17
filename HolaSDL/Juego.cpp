@@ -415,7 +415,9 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\enemigoBomba.png");
 	texturas.push_back("..\\bmps\\balaBomba.png");
 	texturas.push_back("..\\bmps\\explosionBalaBomba.png");
-
+	//La araña y sus arañitas
+	texturas.push_back("..\\bmps\\spiderTest.png");
+	texturas.push_back("..\\bmps\\BalaRalentizadora.png");
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
 		pTexture = new Textura;
@@ -653,7 +655,8 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	case PJ:												//Hemos puesto la colision con el aura para que siga funcionando
 		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
 		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS 
-			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType() == DECORATIVO || b->getType() == EXPLOSION)
+			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType() == DECORATIVO || b->getType() == EXPLOSION
+			|| b->getType() == BALA_RALENTIZADORA)
 
 			colisiona = true;
 

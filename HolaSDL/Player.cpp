@@ -26,9 +26,9 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	balas = 20;
 	maximoBalas = 20;
 
-	inmunidad = colisionDecorativo = false;
-	contadorInmunidad = 0;
-	contDashing = 0;
+	inmunidad = colisionDecorativo = estaRalentizado = false;
+	contadorInmunidad = contDashing  = contadorRalentizado= 0;
+	
 
 }
 
@@ -50,6 +50,17 @@ void Player::draw() const {
 
 void Player::update(int delta) {
 		
+	//Preguntamos si está ralentizado para saber si revertirlo o seguir
+	if (estaRalentizado){
+
+		if (contadorRalentizado >= 50){
+			estaRalentizado = false;
+			contadorRalentizado = 0;
+		}
+		else contadorRalentizado++;
+	}
+
+
 	if (juego->getDash()){
 			rect.x += juego->getVelX() * 4 * delta / 1.5f;
 			rect.y += juego->getVelY() * 4 * delta / 1.5f;
@@ -60,8 +71,14 @@ void Player::update(int delta) {
 			}				
 	}
 	else{
+		if (!estaRalentizado){
 		rect.x += juego->getVelX() * delta / 1.5f;
-		rect.y += juego->getVelY() * delta / 1.5f;		
+		rect.y += juego->getVelY() * delta / 1.5f;
+		}
+		else{
+			rect.x += ((juego->getVelX()/4) * delta / 1.5f);
+			rect.y += ((juego->getVelY()/4) * delta / 1.5f);
+		}
 	}
 		//IDEA: Hacer un "rectangulo" delante del jugador y comprobar si ese rectangulo, y no el del jugador es el que se está colisionando
 		//Porque si la condicion se mueve arriba entonces si está en contacto con la pared el jugador no se mueve.
@@ -250,6 +267,9 @@ void Player::onCollision(collision type){
 		*/
 	case DECORATIVO:
 		colisionDecorativo = true;
+		break;
+	case BALA_RALENTIZADORA:
+		estaRalentizado = true;
 		break;
 	default:
 		break;

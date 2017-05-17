@@ -1,5 +1,6 @@
 #include "enemigoBase.h"
 #include "BalaEnemigo.h"
+#include "BalaRalentizadora.h"
 #include "balaBomba.h"
 
 
@@ -106,6 +107,10 @@ void enemigoBase::shoot(int targetX, int targetY, char bulletType){
 		case 'b':
 			nuevaBala = new balaBomba(juego, rect.x, rect.y, vX, vY);				//Balas explosivas
 		break;
+
+		case 'r':
+			nuevaBala = new balaRalentizadora(juego, rect.x, rect.y, vX, vY);				//Balas ralentizadoras
+			break;
 	}
 	//Incluimos la bala creada en el juego
 	juego->arrayObjetos.push_back(nuevaBala);
@@ -132,7 +137,6 @@ void enemigoBase::gestorVida(){
 
 		//juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
 		juego->spawnObjetos('a', rect.x, rect.y, "");
-		juego->spawnObjetos('e', rect.x, rect.y, "");
 		juego->spawnObjetos('b', rect.x, rect.y, "");
 	}
 }
