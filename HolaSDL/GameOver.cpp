@@ -17,8 +17,8 @@ GameOver::~GameOver() {
 void GameOver::init()
 {
 	resetCamera();
-	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 300, Juego::TBMenuA, Juego::TBMenuE, BOTON_MENU));
-	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBExitA, Juego::TBExitE, BOTON_EXIT));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 300, Juego::TBRetryA, Juego::TBRetryE, BOTON_PLAY));
+	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBMenuA, Juego::TBMenuE, BOTON_MENU));
 }
 
 
