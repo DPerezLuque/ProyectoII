@@ -100,6 +100,7 @@ public:
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	bool touchesWall(SDL_Rect a);
 	bool checkWallCollisions(SDL_Rect a, SDL_Rect b);
+	bool debugPlayer;
 
 	//CLOSERS
 	void cleanArrays();

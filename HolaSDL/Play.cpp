@@ -39,7 +39,7 @@ Play::~Play()
 void Play::init() {
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
-	//PLAYER
+	///		*PLAYER		///
 	if (juego->getCheck()){
 		juego->player = new Player(juego, 1100, 5650);
 		juego->arrayObjetos.push_back(juego->player);
@@ -67,11 +67,6 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));	
 
 	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 300));
-
-	///		*PLAYER		///
- 	juego->player = new Player(juego, 1000, 6800);
-	juego->arrayObjetos.push_back(juego->player);
-	//juego->arrayObjetos.push_back(new Player(juego, 200, 300));
 
 	///       BOSS      ///
 	juego->arrayObjetos.push_back(new BossRino(juego, 700, 6500));

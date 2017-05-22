@@ -55,6 +55,8 @@ Juego::Juego()
 
 	exit = false;
 	GO = false;
+	debugPlayer = false;
+
 	if (!initSDL())
 	{
 		printf("Failed to initialize!\n");
@@ -544,7 +546,10 @@ void Juego::handle_events()
 			if (e.key.keysym.sym == SDLK_ESCAPE) {
 				pause->draw();
 				pause->update();
-			}		
+			}
+			else if (e.key.keysym.sym == SDLK_e) {
+				debugPlayer = true;
+			}
 		}
 		updateDirection();
 		//std::cout << contDash << "\n";
