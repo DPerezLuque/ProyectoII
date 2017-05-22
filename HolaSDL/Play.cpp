@@ -38,16 +38,7 @@ Play::~Play()
 
 void Play::init() {
 
-	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
-	///		*PLAYER		///
-	if (juego->getCheck()){
-		juego->player = new Player(juego, 1100, 5650);
-		juego->arrayObjetos.push_back(juego->player);
-	}
-	else{
-		juego->player = new Player(juego, 200, 300);
-		juego->arrayObjetos.push_back(juego->player);
-	}
+	
 
 	///		PUSH DE OBJETOS DECORATIVOS		///
 	//Los pusheamos antes para que el jugador pase por delante de los objetos
@@ -69,6 +60,17 @@ void Play::init() {
 	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));
 
 	//juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 500));
+	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
+
+	///		*PLAYER		///
+	if (juego->getCheck()){
+		juego->player = new Player(juego, 1100, 5650);
+		juego->arrayObjetos.push_back(juego->player);
+	}
+	else{
+		juego->player = new Player(juego, 200, 300);
+		juego->arrayObjetos.push_back(juego->player);
+	}
 
 	///       BOSS      ///
 	juego->arrayObjetos.push_back(new BossRino(juego, 700, 6500));
@@ -80,8 +82,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6975));
 	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6975));
 
-	///    CHECKPOINT   ///
-	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
+	
 
 
 	///		ENEMIGOS	///
@@ -102,14 +103,6 @@ void Play::init() {
 
 	//	juego->arrayObjetos.push_back(juego->playerBullets);
 
-	//ENEMIGOS PLANTA
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));

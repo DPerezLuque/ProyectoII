@@ -55,18 +55,34 @@ void Player::update(int delta) {
 		juego->setDebugBool(false);
 	}
 
+
+	SDL_Rect nextRect;
+	nextRect = rectCollision;
+		
+
 	if (juego->getDash()){
 			rect.x += juego->getVelX() * 4 * delta / 1.5f;
 			rect.y += juego->getVelY() * 4 * delta / 1.5f;
+
+		//nextRect.x += juego->getVelX() * 4 * delta / 1.5f;
+		//nextRect.y += juego->getVelY() * 4 * delta / 1.5f;
+
 			++contDashing;
-			if (contDashing >= 6){
+			if (contDashing >= 10){
 				contDashing = 0;
 				juego->setDash(false);				
 			}				
 	}
 	else{
-		rect.x += juego->getVelX() * delta / 1.5f;
-		rect.y += juego->getVelY() * delta / 1.5f;		
+		//rect.x += juego->getVelX() * delta / 1.5f;
+		//rect.y += juego->getVelY() * delta / 1.5f;		
+
+		nextRect.x += juego->getVelX() * delta / 1.5f;
+		nextRect.y += juego->getVelY() * delta / 1.5f;
+		if (!juego->touchesWall(nextRect)) {
+			rect.x += juego->getVelX() * delta / 1.5f;
+			rect.y += juego->getVelY() * delta / 1.5f;
+		}
 	}
 		//IDEA: Hacer un "rectangulo" delante del jugador y comprobar si ese rectangulo, y no el del jugador es el que se está colisionando
 		//Porque si la condicion se mueve arriba entonces si está en contacto con la pared el jugador no se mueve.
