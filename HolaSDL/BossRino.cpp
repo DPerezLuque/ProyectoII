@@ -4,11 +4,13 @@
 
 BossRino::BossRino(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 {
-	textura = juego->getTextura(Juego::TEnemy);
+	textura = juego->getTextura(Juego::TRino);
 
 	contDis = 0;
 	velDis = 20;
 	vida = 4;
+	rect.w = 96;
+	rect.h = 96;
 
 	bool saved = false;
 
@@ -16,6 +18,11 @@ BossRino::BossRino(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 	velY = 0;
 
 	tipo = BOSS;
+
+	rectAnim = { 0, 0, 96, 96 };
+	contadorFrames = 0;
+	animado = true;
+	est = animacion::ABAJO;
 }
 
 
@@ -32,6 +39,9 @@ void BossRino::update(int delta) {
 	rectCollision.x = rect.x;
 	rectCollision.y = rect.y;
 	//std::cout << rectCollision.x << rectCollision.y  << "\n";
+
+	int lastY = rect.y;			//Uso lastY y lastX para calcular en qué dirección
+	int lastX = rect.x;			//se está moviendo para cambiar la animación
 
 	int targetX, targetY;
 	juego->player->getPos(targetX, targetY);
@@ -84,6 +94,41 @@ void BossRino::update(int delta) {
 		contStun++;
 		if (contStun >= 70) estado = NORMAL;
 	}
+	//ANIMACIÓN
+	int restaY = lastY - rect.y;
+	int restaX = lastX - rect.x;
+
+	if (abs(restaY) > abs(restaX)) {
+		if (restaY < 0) {
+			//se mueve para abajo
+			est = animacion::ABAJO;
+		}
+		else {
+			//se mueve para arriba
+			est = animacion::ARRIBA;
+		}
+	}
+	else if (abs(restaY) < abs(restaX)){
+		if (restaX < 0) {
+			//se mueve hacia la derecha
+			est = animacion::DERECHA;
+		}
+		else {
+			//se mueve hacia la izquierda
+			est = animacion::IZQUIERDA;
+		}
+	}
+	else {
+		est = animacion::QUIETO;
+	}
+
+	contadorFrames += delta;
+	if (contadorFrames >= 8) { //Paso de imagenes mas lento
+		animar(est);
+		contadorFrames = 0;
+	}
+
+	//////////
 }
 
 void BossRino::carga(float x, float y) {
@@ -106,6 +151,16 @@ void BossRino::onCollision(collision type) {
 	}
 }
 
+void BossRino::animacionBasica()
+{
+	if (rectAnim.x >= 288) {
+		rectAnim.x = 0;
+	}
+	else {
+		rectAnim.x += 96;
+	}
+}
+
 void BossRino::follow(int x, int y, float delta) { // posicion del objeto que vas a seguir 
 
 	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
@@ -122,4 +177,28 @@ void BossRino::follow(int x, int y, float delta) { // posicion del objeto que va
 
 	rect.x += (vX / 2) * delta / 1.5f;
 	rect.y += (vY / 2) * delta / 1.5f;
+}
+
+void BossRino::animar(animacion current)
+{
+	switch (current)
+	{
+	case animacion::IZQUIERDA:
+		rectAnim.y = 288; //Altura de la animacion		
+		break;
+	case animacion::DERECHA:
+		rectAnim.y = 192;
+		break;
+	case animacion::ARRIBA:
+		rectAnim.y = 96;
+		break;
+	case animacion::ABAJO:
+		rectAnim.y = 0;
+		break;
+	case animacion::QUIETO:
+		break;
+	default:
+		break;
+	}
+	animacionBasica();
 }

@@ -9,7 +9,11 @@ public:
 
 	void update(int delta);
 
-	virtual void animacionBasica(){}
+	virtual void animacionBasica();
 
+private:
+	enum animacion {ABAJO, ARRIBA, DERECHA, IZQUIERDA}; //Nos dice qué animación tiene que hacer
+	animacion est;
+	void animar(animacion current);
 };
 

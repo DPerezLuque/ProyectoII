@@ -10,7 +10,7 @@ public:
 	enum Estados { NORMAL, PARADO, CARGA, SHOOT, ESTUNEADO };
 	Estados estado = NORMAL;
 	virtual void onCollision(collision type);
-	virtual void animacionBasica() {}
+	virtual void animacionBasica();
 	virtual void follow(int x, int y, float delta);
 private:
 	int contParado = 0;
@@ -20,4 +20,8 @@ private:
 	float saveTargetX, saveTargetY;
 	bool saved;
 	int atack;
+
+	enum animacion { ABAJO, ARRIBA, DERECHA, IZQUIERDA, QUIETO }; //Nos dice qué animación tiene que hacer
+	animacion est;
+	void animar(animacion current);
 };
