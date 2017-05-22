@@ -24,7 +24,7 @@ protected:
 	
 	//PLAYER STATS
 	int contador;	//Dash
-	int vida;
+	int vida;	//vida
 	int balas;
 
 	int distX, distY; //Distancia respecto la cámara

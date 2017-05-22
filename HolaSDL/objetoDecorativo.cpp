@@ -164,6 +164,13 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 55;
 		rect.h = 150;
 	}
+	else if (id == "Cafetera"){
+		textura = juego->getTextura(Juego::TCafe);
+
+		rect.w = 85;
+		rect.h = 150;
+		rectCollision = rect;
+	}
 }
 
 void objetoDecorativo::draw() const {

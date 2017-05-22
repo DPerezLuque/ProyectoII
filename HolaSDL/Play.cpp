@@ -38,7 +38,9 @@ Play::~Play()
 
 void Play::init() {
 
-	
+	//TUTORIAL
+	juego->arrayObjetos.push_back(new Aura(juego, 200, 350, 400, 50, "Para moverte, utiliza WASD"));
+	juego->arrayObjetos.push_back(new Aura(juego, 900, 300, 440, 50, "Click izquierdo para disparar"));
 
 	///		PUSH DE OBJETOS DECORATIVOS		///
 	//Los pusheamos antes para que el jugador pase por delante de los objetos
@@ -49,13 +51,14 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 800, 50, "VitrinaLib"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 900, 50, "VitrinaFeto"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 350, 380, "MesaRota2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 420, 380, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 490, 380, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 560, 380, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 350, 420, "MesaRota"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 420, 420, "MesaTentaculo"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 490, 420, "MesaPeque"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 560, 420, "MesaPeque"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 900, 350, "Planta3"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1520, 570, "Cafetera"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));	
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 
 	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));
 
@@ -82,9 +85,6 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6975));
 	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6975));
 
-	
-
-
 	///		ENEMIGOS	///
 	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1100, 6800));
 	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));
@@ -103,7 +103,7 @@ void Play::init() {
 
 	//	juego->arrayObjetos.push_back(juego->playerBullets);
 
-
+	//ENEMIGOS PLANTA
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
@@ -111,8 +111,6 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
-
-
 
 	///		INTERFAZ		///	
 

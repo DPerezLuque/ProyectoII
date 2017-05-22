@@ -9,9 +9,7 @@ Interfaz::Interfaz(Juego* juego, ObjetoJuego* jugador, int ancho, int alto, int 
 	balas = 0;
 	vida = 0;
 	contador = 0;
-	pJuego->player->getStats(vida, balas, contador);
-
-	
+	pJuego->player->getStats(vida, balas, contador);	
 
 	pRect.x = posX;
 	pRect.y = posY;

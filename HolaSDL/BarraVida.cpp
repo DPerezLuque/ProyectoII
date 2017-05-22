@@ -26,6 +26,7 @@ void BarraVida::update(){
 	//pRect.x = Camera.x + distX;
 	//pRect.y = Camera.y + distY;
 	//contador = player->getVida();
+	pJuego->player->getStats(vida, balas, contador);
 
 	if (vida > 0){ //4 vidas máx
 		rectAnim.w = 32*contador;
