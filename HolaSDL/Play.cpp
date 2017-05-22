@@ -83,7 +83,8 @@ void Play::init() {
 
 
 	///		ENEMIGOS	///
-	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));	
+	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1100, 6800));
+	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));
 	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                          AQUI TUVE EL PROBLEMA CON EL COMMIT vale crack pero por qué no metes el puntero directamente
 	//juego->arrayObjetos.push_back(newEnemy);
 	//juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	

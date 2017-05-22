@@ -354,12 +354,13 @@ bool Juego::initMedia()
 
 	//Objetos dinámicos
 	texturas.push_back("..\\bmps\\personaje.png");
-	texturas.push_back("..\\bmps\\enemy.png");
+	texturas.push_back("..\\bmps\\enemyGuardia.png");
 	texturas.push_back("..\\bmps\\bala.png");
 	texturas.push_back("..\\bmps\\balaEnemigo.png");
 	
 	texturas.push_back("..\\bmps\\Checkpoint.png");
 	texturas.push_back("..\\bmps\\enemyPlanta.png");
+	texturas.push_back("..\\bmps\\rino.png");
 	texturas.push_back("..\\bmps\\BarraVida.png");
 	texturas.push_back("..\\bmps\\Humo.png");
 	texturas.push_back("..\\bmps\\Botiquin1.png");
