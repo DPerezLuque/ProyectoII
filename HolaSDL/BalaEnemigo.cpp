@@ -41,7 +41,7 @@ BalaEnemigo::~BalaEnemigo()
 
 void BalaEnemigo::onCollision(collision type) {
 
-	cout << "Bala enemiga destruida! () \n";
+	//cout << "Bala enemiga destruida! () \n";
 	dead = true;
 	/*//BALAS
 	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {

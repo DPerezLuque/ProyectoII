@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Aura" Collapsed="true">
+    <Position X="2" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAIAAAAAAAAAAIAAAAAAAAAAABgAAAAICQMACA=</HashCode>
+      <FileName>Aura.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bala" Collapsed="true">
+    <Position X="8.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAQAQAAAAEgACAEAAQ=</HashCode>
+      <FileName>Bala.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="balaBomba" Collapsed="true">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAAgAEAAAAAAAAAAAAAAAAACBEAAA=</HashCode>
+      <FileName>balaBomba.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BalaEnemigo" Collapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAQAAAAAAAAACAAAAA=</HashCode>
+      <FileName>BalaEnemigo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BalaPlayer" Collapsed="true">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>BalaPlayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bobina" Collapsed="true">
+    <Position X="33.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAEAAIAAAAAAAAgAABAQAAAACAEAAA=</HashCode>
+      <FileName>Bobina.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossRino" Collapsed="true">
+    <Position X="26.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAACAEAAAAgAAAEAAAEBAAACEAoAADAAAQEASAGAAA=</HashCode>
+      <FileName>BossRino.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Botiquin" Collapsed="true">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAACgEAAA=</HashCode>
+      <FileName>Botiquin.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkpoint" Collapsed="true">
+    <Position X="13.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAgAEAAIAAAAAAAAgCEAAQAAAACAEAAA=</HashCode>
+      <FileName>Checkpoint.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dialogo" Collapsed="true">
+    <Position X="17.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAEAAAAAAAIAAAAABACAAAAAAIAAACAEACA=</HashCode>
+      <FileName>Dialogo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="enemigoBase" Collapsed="true">
+    <Position X="23.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAgAEAAIAAAiQACIEABAAAAAAAACAAkBAMSAAACQ=</HashCode>
+      <FileName>enemigoBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemigoBomba" Collapsed="true">
+    <Position X="20" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>EnemigoBomba.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemigoPlanta" Collapsed="true">
+    <Position X="24.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAACAAAAAAAQAEBAA=</HashCode>
+      <FileName>EnemigoPlanta.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarraVida" Collapsed="true">
+    <Position X="7.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAAQABAAAAEAAA=</HashCode>
+      <FileName>BarraVida.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BarraVidaVacia" Collapsed="true">
+    <Position X="0.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>BarraVidaVacia.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boton" Collapsed="true">
+    <Position X="15.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEgAAAAAAAQAAAAIAAAAAgAAAAAAAAAAIAAAEAAA=</HashCode>
+      <FileName>Boton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cargador" Collapsed="true">
+    <Position X="2.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAIAAAgAAAAIAAAAAAAAAAAAAAAAQAAAkACA=</HashCode>
+      <FileName>Cargador.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Efecto" Collapsed="true">
+    <Position X="40.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQEAAIAAAAAAAAAAAAAAAACAAAAAAIBAAAAAIAA=</HashCode>
+      <FileName>Efecto.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="enemigoGuardia" Collapsed="true">
+    <Position X="22.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAEAAAAAAAAEAAAAAAAgAAAAAAAEAAAEAAA=</HashCode>
+      <FileName>enemigoGuardia.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnergiaDisponible" Collapsed="true">
+    <Position X="5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAkQAAAIAAEAAA=</HashCode>
+      <FileName>EnergiaDisponible.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Error" Collapsed="true">
+    <Position X="42.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAQAAAAAACA=</HashCode>
+      <FileName>Error.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EstadoJuego" Collapsed="true">
+    <Position X="5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAIAgAAAEAAAAkACAAAIAAAEAAA=</HashCode>
+      <FileName>EstadoJuego.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Estado" Collapsed="true">
+    <Position X="5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAhgACAAIAQAQAIAAAgAgACBImACAAAICIAEAAg=</HashCode>
+      <FileName>Estado.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplosionEnemigoB" Collapsed="true">
+    <Position X="29" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAEAAEBAAgAAAAAAAAAAEAAAAEAAA=</HashCode>
+      <FileName>ExplosionEnemigoB.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameOver" Collapsed="true">
+    <Position X="5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAQAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>GameOver.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HUD" Collapsed="true">
+    <Position X="3.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>HUD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interfaz" Collapsed="true">
+    <Position X="3.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAFIAKAAoAAgAAAIAIBAEAAAAAEAAA=</HashCode>
+      <FileName>Interfaz.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Juego" Collapsed="true">
+    <Position X="44" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>a7RCCgEgG4QOPDCgAoaCE46iw4BgQEAHCCR4hOAAoAg=</HashCode>
+      <FileName>Juego.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tilemap" Collapsed="true">
+    <Position X="40.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapEditor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuOpciones" Collapsed="true">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuOpciones.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuPausa" Collapsed="true">
+    <Position X="2.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAIAAAAAA=</HashCode>
+      <FileName>MenuPausa.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuPrincipal" Collapsed="true">
+    <Position X="7.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAACAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuPrincipal.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Musica" Collapsed="true">
+    <Position X="40.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAEAAIAAAAAAAAAAAAAAAACAAAAAAIAAAAAAJAA=</HashCode>
+      <FileName>Musica.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="objetoDecorativo" Collapsed="true">
+    <Position X="38" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAEAAIEACAAAAAAgQAAQQAAAAAEAAA=</HashCode>
+      <FileName>objetoDecorativo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjetoJuego" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAACAAAAAAYAIAAAAAARAIAgCAAIAIACAGAAA=</HashCode>
+      <FileName>ObjetoJuego.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Objeto" Collapsed="true">
+    <Position X="20" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUBBAoAACAAAgIAQAIIIABAgRAYIwGIQMRoACAGAAA=</HashCode>
+      <FileName>Objeto.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="31.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACEAACIAAACAEAILACIEAIAAgMAgAgiAAEDgASAEABA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Play" Collapsed="true">
+    <Position X="9.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAAIACAAAgAAAAIAAAAEAAAAAAIBgAAQAAAEIKA=</HashCode>
+      <FileName>Play.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sangre" Collapsed="true">
+    <Position X="35.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAACAEAAg=</HashCode>
+      <FileName>Sangre.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Texto" Collapsed="true">
+    <Position X="42.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAgBIAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Texto.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Textura" Collapsed="true">
+    <Position X="44" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAQAAAAAIAhACwAQAIAAAABAAAAQAAAACAAABAQAAA=</HashCode>
+      <FileName>Textura.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="GAME_STATES" Collapsed="true">
+    <Position X="42.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAEAACAgAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EstadoJuego.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="collision" Collapsed="true">
+    <Position X="40.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAgAIAAAAIICAgABCAABAEADAAEQghAEAEAAA=</HashCode>
+      <FileName>ObjetoJuego.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -143,7 +143,7 @@ void BossRino::onCollision(collision type) {
 		saved = false;
 	}
 
-	if (type == DECORATIVO && estado == CARGA) {
+	else if (type == DECORATIVO && estado == CARGA) {
 		saved = false;
 		estado = ESTUNEADO;
 		vida -= 1;
@@ -195,8 +195,8 @@ void BossRino::animar(animacion current)
 	case animacion::ABAJO:
 		rectAnim.y = 0;
 		break;
-	case animacion::QUIETO:
-		break;
+	//case animacion::QUIETO:
+	//	break;
 	default:
 		break;
 	}

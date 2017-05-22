@@ -11,7 +11,7 @@ class Efecto
 public:
 	Efecto();
 	Efecto(string nombArch);
-	~Efecto();
+	virtual ~Efecto();
 
 	void play();
 	void pause();

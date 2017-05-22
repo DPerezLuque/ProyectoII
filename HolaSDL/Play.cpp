@@ -66,7 +66,9 @@ void Play::init() {
 
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));	
 
-	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 300));
+	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));
+
+	//juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 500));
 
 	///       BOSS      ///
 	juego->arrayObjetos.push_back(new BossRino(juego, 700, 6500));

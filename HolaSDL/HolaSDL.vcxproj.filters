@@ -83,4 +83,7 @@
     <ClInclude Include="Textura.h" />
     <ClInclude Include="Sangre.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
 </Project>

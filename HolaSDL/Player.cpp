@@ -49,7 +49,12 @@ void Player::draw() const {
 }
 
 void Player::update(int delta) {
-		
+	
+	if (juego->debugPlayer){
+		cout << rect.x << ", " << rect.y<< "\n";
+		juego->setDebugBool(false);
+	}
+
 	if (juego->getDash()){
 			rect.x += juego->getVelX() * 4 * delta / 1.5f;
 			rect.y += juego->getVelY() * 4 * delta / 1.5f;

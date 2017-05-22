@@ -51,6 +51,7 @@ public:
 	bool checkpoint = false;
 	bool getCheck(){ return checkpoint; }
 	void setCheck(bool coso){ checkpoint = coso; }
+	void setDebugBool(bool nuevoDebug){ debugPlayer = nuevoDebug; }
 
 	int x, y;
 
@@ -83,6 +84,7 @@ public:
 
 	//PLAYER
 	ObjetoJuego * player;
+	bool debugPlayer;
 
 	//CAMERA LEVEL
 	SDL_Rect camera;
@@ -100,7 +102,7 @@ public:
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	bool touchesWall(SDL_Rect a);
 	bool checkWallCollisions(SDL_Rect a, SDL_Rect b);
-	bool debugPlayer;
+	
 
 	//CLOSERS
 	void cleanArrays();

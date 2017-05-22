@@ -132,8 +132,8 @@ void enemigoBase::gestorVida(){
 
 		//juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
 		
-		juego->spawnObjetos('e', rect.x, rect.y, "");
-		juego->spawnObjetos('b', rect.x, rect.y, "");
+		//juego->spawnObjetos('e', rect.x, rect.y, "");
+		//juego->spawnObjetos('b', rect.x, rect.y, "");
 		if (juego->getSangre()){ //Sangre
 			juego->spawnObjetos('s', rect.x, rect.y, "");
 		}

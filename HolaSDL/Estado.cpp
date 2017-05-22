@@ -48,6 +48,10 @@ void Estado::draw()
 	textura->draw(pRenderer, 0, 0, rect);
 
 	//Dibuja los objetos
+	/*for (auto aux : juego->arrayMenu) {
+		aux->draw();
+	}*/
+
 	for (int aux = 0; aux < juego->arrayMenu.size(); ++aux) {
 			juego->arrayMenu[aux]->draw();
 		
