@@ -16,7 +16,6 @@ public:
 
 protected:
 	Juego* pJuego;
-	//ObjetoJuego * player;
 	ObjetoJuego* player;
 	SDL_Rect pRect; //Donde se dibujará el elemento
 	SDL_Renderer* pRenderer;

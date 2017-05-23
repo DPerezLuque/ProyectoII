@@ -133,7 +133,7 @@ void Play::init() {
 	//elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
 
 	juego->elemInterfaz.push_back(new BarraVidaVacia(juego, juego->player, 128, 32, 0, 0));
-	juego->elemInterfaz.push_back(new BarraVida(juego, juego->player, 32, 32, 0, 0));
+	juego->elemInterfaz.push_back(new BarraVida(juego, static_cast <Player*> (juego->player), 32, 32, 0, 0));
 	juego->elemInterfaz.push_back(new Cargador(juego, juego->player, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
 	juego->elemInterfaz.push_back(new EnergiaDisponible(juego, juego->player, 32, 32, 0, 0));
 
