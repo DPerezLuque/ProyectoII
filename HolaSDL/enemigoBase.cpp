@@ -137,6 +137,7 @@ void enemigoBase::gestorVida(){
 		if (juego->getSangre()){ //Sangre
 			juego->spawnObjetos('s', rect.x, rect.y, "");
 		}
+
 		juego->spawnObjetos('a', rect.x, rect.y, "");
 	}
 }

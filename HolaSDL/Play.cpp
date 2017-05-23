@@ -69,7 +69,25 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 320, "MesaDoble"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 490, "MesaDoble"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1800, 500, "Planta2"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2080, 380, "papelera3"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2100, 370, "Hojas"));
+
+	//Sala 2
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1850, 850, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1930, 850, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2010, 850, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2190, 980, "papelera3"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2000, 1060, "MesaTentaculo"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2065, 1060, "MesaPeque"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2130, 1060, "MesaRota"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1900, 1060, "Hojas"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2130, 1270, "Hojas"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2200, 900, "Hojas"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2250, 1150, "Planta1"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2290, 1210, "Planta3"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1800, 1150, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1880, 1150, "VitrinaLib"));
+
 
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 125, 2360, "VitrinaFeto"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 220, 2360, "Cafetera"));

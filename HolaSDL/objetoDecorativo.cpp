@@ -27,8 +27,6 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 50;
 		rect.h = 50;
-
-		rectCollision = rect;
 	}
 
 	else if (id == "papelera2"){
@@ -36,8 +34,6 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 50;
 		rect.h = 50;
-
-		rectCollision = rect;
 	}
 
 	else if (id == "papelera3"){
@@ -45,9 +41,6 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 50;
 		rect.h = 50;
-
-		rectCollision = rect;
-
 	}
 
 	else if (id == "mesaEE"){
