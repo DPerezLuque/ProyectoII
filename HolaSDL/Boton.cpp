@@ -25,7 +25,7 @@ Boton::Boton(Juego* ptr, int px, int py, int pw, int ph, Juego::Texturas_t tex1,
 	//cbOnClick = cb;
 	textura1 = juego->getTextura(tex1);
 	textura2 = juego->getTextura(tex2);
-	if (tipo != BOTON_SANGRE){
+	if (tipo != BOTON_SANGRE && tipo != BOTON_FILTER){
 		textura = textura1;
 	}
 	//visible = true;
@@ -46,7 +46,7 @@ void Boton::update() {
 	SDL_GetMouseState(&x, &y);
 	//cout << x << " " << y << "\n";
 	
-	if (tipo != BOTON_SANGRE){
+	if (tipo != BOTON_SANGRE &&  tipo != BOTON_FILTER){
 		if (dentro(x, y)) {
 			textura = textura2;
 		}
@@ -75,10 +75,17 @@ void Boton::draw() const {
 }
 
 void Boton::changeText(){
-
-	if (juego->getSangre())
-		textura = textura2;
-	else textura = textura1;
+	if (tipo == BOTON_SANGRE) {
+		if (juego->getSangre())
+			textura = textura2;
+		else textura = textura1;
+	}
+	else {
+		if (juego->getFiltro())
+			textura = textura2;
+		else textura = textura1;
+	}
+	
 
 }
 

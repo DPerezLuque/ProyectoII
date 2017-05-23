@@ -30,7 +30,7 @@ public:
 	enum Texturas_t {
 		TPlayer, TEnemy, TBulletPlayer, TBulletEnemy, TCheck, TEnemyPlanta, TRino, TBarraVida, THumo,
 		TBotiquin, TBPlayA, TBPlayE , TBOptionsA, TBOptionsE, TBExitA, TBExitE, TBControlsA, TBControlsE, TBSangreA, TBSangreE,
-		TBMenuA, TBMenuE, TBRetryA, TBRetryE, TBResumeA, TBResumeE, TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
+		TBFilterA, TBFilterE, TBMenuA, TBMenuE, TBRetryA, TBRetryE, TBResumeA, TBResumeE, TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
 		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
 		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
@@ -44,13 +44,15 @@ public:
 	Textura * pTexture;
 	SDL_Event e;
 
-	bool sangre = false; //Editado desde opciones, usado por los enemigos.
+	//OPTIONS MENU BUTTONS
+	bool sangre = true; //Editado desde opciones, usado por los enemigos.
 	bool getSangre(){ return sangre; }
 	void setSangre(){ sangre = !sangre; }
 
 	bool filtro = true; //Editado desde opciones
 	bool getFiltro(){ return filtro; }
 	void setFiltro(){ filtro = !filtro; }
+
 
 	bool checkpoint = false;
 	bool getCheck(){ return checkpoint; }

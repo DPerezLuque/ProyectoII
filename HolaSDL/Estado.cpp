@@ -129,6 +129,11 @@ bool Estado::onClick()
 			juego->setSangre();
 			return false;
 			break;
+		case BOTON_FILTER:
+			juego->arrayMenu[aux]->changeText();
+			juego->setFiltro();
+			return false;
+			break;
 		default:
 			break;
 		}

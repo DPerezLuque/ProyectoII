@@ -321,6 +321,8 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\BotonControlesE.png");
 	texturas.push_back("..\\bmps\\BotonSangreA.png");
 	texturas.push_back("..\\bmps\\BotonSangreE.png");
+	texturas.push_back("..\\bmps\\BotonFiltroA.png");
+	texturas.push_back("..\\bmps\\BotonFiltroE.png");
 	texturas.push_back("..\\bmps\\BotonMenuA.png");
 	texturas.push_back("..\\bmps\\BotonMenuE.png");
 	texturas.push_back("..\\bmps\\BotonReintentarA.png");
