@@ -11,10 +11,13 @@ public:
 	void init();
 	//void update();
 	//void onClick();
+	void draw();
 
 protected:
 	//void salir();
 	//void play();
-
+private:
+	Textura* logo;
+	SDL_Rect tamano;
 };
 

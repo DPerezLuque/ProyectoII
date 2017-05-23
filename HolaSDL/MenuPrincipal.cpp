@@ -5,6 +5,8 @@
 MenuPrincipal::MenuPrincipal(Juego* ptr) : Estado(ptr)
 {
 	type = MENU_PRINCIPAL;
+	tamano = {400, 100, 390, 176};
+	logo = juego->getTextura(Juego::TLogo);
 	init();
 }
 
@@ -29,5 +31,33 @@ void MenuPrincipal::init()
 	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 350, Juego::TBOptionsA, Juego::TBOptionsE, BOTON_OPTIONS));
 	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBExitA, Juego::TBExitE, BOTON_EXIT));
 }
+
+void MenuPrincipal::draw()
+{
+	//Limpia el buffer
+	SDL_RenderClear(pRenderer);
+
+	SDL_SetRenderDrawColor(pRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	//Dibuja el fondo (tendremos que cambiarlo cuando empecemos con los fondos y los niveles)
+	SDL_Rect rect;
+	rect.h = height;
+	rect.w = width;
+	rect.x = 0;
+	rect.y = 0;
+
+	textura = juego->getTextura(Juego::TFondo);
+	textura->draw(pRenderer, 0, 0, rect);
+	logo->draw(pRenderer, 300, 70, tamano);
+	//Dibuja los objetos
+	/*for (auto aux : juego->arrayMenu) {
+	aux->draw();
+	}*/
+
+	for (int aux = 0; aux < juego->arrayMenu.size(); ++aux) {
+		juego->arrayMenu[aux]->draw();
+
+	}
+	SDL_RenderPresent(pRenderer);
+};
 
 

@@ -372,6 +372,9 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Sangre3.png");
 
 	texturas.push_back("..\\bmps\\Cafetera.png");
+	texturas.push_back("..\\bmps\\Hojas.png");
+	texturas.push_back("..\\bmps\\BobinaRota.png");
+	texturas.push_back("..\\bmps\\Logo.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
