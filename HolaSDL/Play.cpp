@@ -58,6 +58,19 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 900, 350, "Planta3"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1520, 570, "Cafetera"));
 
+	//Sala 1
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1800, 130, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1880, 130, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1960, 130, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2040, 130, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2300, 180, "MesaTentaculo"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2365, 180, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 320, "MesaDoble"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 490, "MesaDoble"));
+
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 125, 2360, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 220, 2360, "Cafetera"));
+
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 
 	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));
@@ -76,7 +89,7 @@ void Play::init() {
 	}
 
 	///       BOSS      ///
-	juego->arrayObjetos.push_back(new BossRino(juego, 700, 6500));
+	//juego->arrayObjetos.push_back(new BossRino(juego, 700, 6500));
 
 
 	///      BOBINA     ///
