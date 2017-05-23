@@ -109,7 +109,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));
+	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));   //He recortado esa zona del mapa
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
 
 	///		INTERFAZ		///	
