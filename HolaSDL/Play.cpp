@@ -41,6 +41,7 @@ void Play::init() {
 	//TUTORIAL
 	juego->arrayObjetos.push_back(new Aura(juego, 200, 350, 400, 50, "Para moverte, utiliza WASD"));
 	juego->arrayObjetos.push_back(new Aura(juego, 1450, 300, 440, 50, "Click izquierdo para disparar"));
+	juego->arrayObjetos.push_back(new Aura(juego, 960, 1090, 400, 50, "SPACE para hacer dash"));
 
 	///		PUSH DE OBJETOS DECORATIVOS		///
 	//Los pusheamos antes para que el jugador pase por delante de los objetos
@@ -102,7 +103,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1260, 1750));
 	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 430, 2300));
 	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1420, 2800));
-	
+
 	//ENEMIGOS PLANTA
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));

@@ -34,7 +34,7 @@ public:
 		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
 		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
-		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3, TCafe, THojas, TBobinaRota, TLogo,
+		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3, TCafe, THojas, TBobinaRota, TLogo, TFiltro
 	};
 
 	//PUBLIC VARIABLES
@@ -47,6 +47,10 @@ public:
 	bool sangre = false; //Editado desde opciones, usado por los enemigos.
 	bool getSangre(){ return sangre; }
 	void setSangre(){ sangre = !sangre; }
+
+	bool filtro = true; //Editado desde opciones
+	bool getFiltro(){ return filtro; }
+	void setFiltro(){ filtro = !filtro; }
 
 	bool checkpoint = false;
 	bool getCheck(){ return checkpoint; }

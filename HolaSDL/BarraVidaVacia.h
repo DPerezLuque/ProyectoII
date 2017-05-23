@@ -7,5 +7,9 @@ public:
 	BarraVidaVacia(Juego* pJuego, ObjetoJuego* jugador, int ancho, int alto, int posX, int posY);
 	virtual ~BarraVidaVacia();
 	void update(){}
+	void draw() const;
+private:
+	Textura* filtro;
+	SDL_Rect rectangulo;
 };
 

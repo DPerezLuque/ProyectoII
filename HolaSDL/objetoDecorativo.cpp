@@ -98,7 +98,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 69;
 		rect.h = 80;
 		rectCollision = rect;
-		rectCollision.w = rectCollision.h - 15;
+		rectCollision.h = rectCollision.h - 15;
 
 	}
 	else if (id == "MesaDoble"){
@@ -107,7 +107,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 172;
 		rect.h = 100;
 		rectCollision = rect;
-		rectCollision.w = rectCollision.h - 35;
+		rectCollision.h = rectCollision.h - 20;
 
 	}
 	else if (id == "MesaRota"){
@@ -116,7 +116,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 69;
 		rect.h = 80;
 		rectCollision = rect;
-		rectCollision.w = rectCollision.h - 35;
+		rectCollision.h = rectCollision.h - 20;
 
 	}
 	else if (id == "MesaRota2"){
@@ -125,7 +125,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 69;
 		rect.h = 80;
 		rectCollision = rect;
-		rectCollision.w = rectCollision.h - 35;
+		rectCollision.h = rectCollision.h - 20;
 
 	}
 	else if (id == "VitrinaLib"){
@@ -174,7 +174,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		textura = juego->getTextura(Juego::THojas);
 
 		rect.w = 128;
-		rect.h = 128;		
+		rect.h = 128;
 	}
 }
 
