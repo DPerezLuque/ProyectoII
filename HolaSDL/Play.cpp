@@ -40,7 +40,7 @@ void Play::init() {
 
 	//TUTORIAL
 	juego->arrayObjetos.push_back(new Aura(juego, 200, 350, 400, 50, "Para moverte, utiliza WASD"));
-	juego->arrayObjetos.push_back(new Aura(juego, 900, 300, 440, 50, "Click izquierdo para disparar"));
+	juego->arrayObjetos.push_back(new Aura(juego, 1450, 300, 440, 50, "Click izquierdo para disparar"));
 
 	///		PUSH DE OBJETOS DECORATIVOS		///
 	//Los pusheamos antes para que el jugador pase por delante de los objetos
@@ -68,7 +68,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 320, "MesaDoble"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 490, "MesaDoble"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1800, 500, "Planta2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2050, 400, "Hojas"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2100, 370, "Hojas"));
 
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 125, 2360, "VitrinaFeto"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 220, 2360, "Cafetera"));
