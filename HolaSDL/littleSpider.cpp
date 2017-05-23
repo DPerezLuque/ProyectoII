@@ -105,6 +105,7 @@ void littleSpider::nuevaPosicion(){
 		directionX = (rand() % 1 +2 )-1;		//Decide el signo del random, de ambos por separado
 		directionY = (rand() % 1 + 2) - 1;
 	}
+
 	int velocidadX = rectPlayer.x;				//Rango: [1,10] para la velocidad
 	int velocidadY = rectPlayer.y;				//Rango: [1,10] para la velocidad
 

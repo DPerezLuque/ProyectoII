@@ -92,8 +92,8 @@ void Spider::gestorVida(){
 		cout << "Enemy Dead! \n";
 		dead = true;
 
-
 		
+
 		int rnd = 1 - 100 * (rand() % 100);
 
 		if (rnd % 5 == 0) juego->spawnObjetos('b', rect.x, rect.y, "");  //Droppea botiquines con un 20%
@@ -103,11 +103,10 @@ void Spider::gestorVida(){
 		juego->spawnObjetos('b', rect.x, rect.y, "");
 	
 		//Aquí hacemos el drop de las Spiders pequeñas tambien, por eso se redefine
+		int modificador = 2;
 		for (int i = 0; i < 4; i++){
-			srand(time(NULL));
-			int nuevaPosX = (rand() % 1 + 2) - 1;
-			int nuevaPosY = (rand() % 1 + 2) - 1;
-			juego->spawnObjetos('x', rect.x+(50*nuevaPosX), rect.y +(80*nuevaPosY), "");
+			modificador += 20;
+			juego->spawnObjetos('x', rect.x+modificador, rect.y +modificador, "");
 		}
 
 			juego->spawnObjetos('e', rect.x, rect.y, "");	//Explosión to guapa 
