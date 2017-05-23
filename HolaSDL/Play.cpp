@@ -67,15 +67,14 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2365, 180, "MesaCorazon"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 320, "MesaDoble"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 490, "MesaDoble"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1800, 500, "Planta2"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2050, 400, "Hojas"));
 
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 125, 2360, "VitrinaFeto"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 220, 2360, "Cafetera"));
 
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 
-	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));
-
-	//juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 500));
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
 
 	///		*PLAYER		///
@@ -99,68 +98,32 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6975));
 
 	///		ENEMIGOS	///
-	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1100, 6800));
-	//juego->arrayObjetos.push_back(new enemigoGuardia(juego, 750, 300));
-	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                          AQUI TUVE EL PROBLEMA CON EL COMMIT vale crack pero por qué no metes el puntero directamente
-	//juego->arrayObjetos.push_back(newEnemy);
-	//juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));	
-
-	//ENEMIGOS
-	//ObjetoJuego * newEnemy = new enemy(juego, 750, 300); //                              AQUI TUVE EL PROBLEMA CON EL COMMIT
-	//juego->arrayObjetos.push_back(new enemy(juego, 750, 300));	
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 750, 300));
-
-	//juego->enemyArray.push_back(newEnemy);
-	//juego->arrayObjetos.push_back(new enemy(juego, 650, 1150));
-	//juego->arrayObjetos.push_back(new enemy(juego, 50, 50));
-
-	//	juego->arrayObjetos.push_back(juego->playerBullets);
-
+	//ENEMIGOS GUARDIA
+	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1260, 1750));
+	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 430, 2300));
+	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1420, 2800));
+	
 	//ENEMIGOS PLANTA
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 580, 1150));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 320, 1800));
-	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2800));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1220, 2700));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 350, 3500));
-	//juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 130, 4550));   //He recortado esa zona del mapa
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 600, 5250));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1260, 1500));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 3100));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1700, 3100));
+
+	//ENEMIGOS BOMBA
+	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 2020, 6500));
 
 	///		INTERFAZ		///	
-
-//	elemInterfaz.push_back(new BarraVidaVacia(juego, static_cast<Player*>(juego->player), 128, 32, 0, 0));
-	//elemInterfaz.push_back(new BarraVida(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
-	//elemInterfaz.push_back(new Cargador(juego, static_cast<Player*>(juego->player), 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
-	//elemInterfaz.push_back(new EnergiaDisponible(juego, static_cast<Player*>(juego->player), 32, 32, 0, 0));
 
 	juego->elemInterfaz.push_back(new BarraVidaVacia(juego, juego->player, 128, 32, 0, 0));
 	juego->elemInterfaz.push_back(new BarraVida(juego, static_cast <Player*> (juego->player), 32, 32, 0, 0));
 	juego->elemInterfaz.push_back(new Cargador(juego, juego->player, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
 	juego->elemInterfaz.push_back(new EnergiaDisponible(juego, juego->player, 32, 32, 0, 0));
 
-
-	///// OBJETOS DECORATIVOS POR SITUAR  /////
-	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "papelera1"));
-	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 300, 200, "papelera2"));
-	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 400, 200, "papelera3"));
-
-	//juego->arrayObjetos.push_back(new objetoDecorativo(juego, 200, 400, "mesaEE"));
-
-//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 504, 80, "MesaRota2"));
-//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 600, 80, "MesaRota"));
-//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 696, 80, "MesaPeque"));
-//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 792, 80, "MesaCorazon"));
-//	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
-
-	//juego->arrayObjetos.push_back(new Bobina(juego, 300, 300));
-
-	/*
-	//FUENTE DE BALAS
-	fuenteCargador = new Texto(juego->getTexto(0), 28);
-	mensaje = new Textura();
-	Black = { 0, 0, 0, 255 }; //RGBA
-	Red = { 175, 20, 20, 255 }; //RGBA
-	mensaje->loadFromText(pRenderer, to_string(juego->stats[2]), *fuenteCargador, Black);
-	*/
 }
 
 void Play::update(int delta) {
@@ -335,13 +298,10 @@ void Play::update(int delta) {
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//}
-
-
-
+	
 }
 
 
-//DE MOMENTO Play tiene su propio draw
 void Play::draw()
 {
 	//Limpia el buffer
@@ -426,23 +386,3 @@ void Play::newDisparoEnemigo(int posEx, int posEy, int targetX, int targetY, int
 	//Disparo
 	juego->enemyBullets.push_back(new BalaEnemigo(juego, posEx, posEy, vX, vY));
 }
-
-/*
-void Play::getStats(int i){
-
-switch (i)
-{
-case 1: //Vida
-//	juego->stats[i] = static_cast<Player*>(juego->player)->getVida();
-break;
-case 2: //Balas
-//	juego->stats[i] = static_cast<Player*>(juego->player)->getBalas();
-break;
-case 3:
-//		juego->stats[i] = static_cast<Player*>(juego->player)->getDash();
-break;
-default:
-break;
-}
-}
-*/

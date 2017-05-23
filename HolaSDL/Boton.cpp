@@ -25,8 +25,9 @@ Boton::Boton(Juego* ptr, int px, int py, int pw, int ph, Juego::Texturas_t tex1,
 	//cbOnClick = cb;
 	textura1 = juego->getTextura(tex1);
 	textura2 = juego->getTextura(tex2);
-
-	textura = textura1;
+	if (tipo != BOTON_SANGRE){
+		textura = textura1;
+	}
 	//visible = true;
 	//Position
 	rect.x = px;

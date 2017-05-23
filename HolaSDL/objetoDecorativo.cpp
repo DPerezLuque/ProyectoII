@@ -89,7 +89,6 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rectAnim = { 0, 0, 128, 150 };
 		rectCollision = { 0, 0, 69, 80 };
-		rectCollision.w = rectCollision.h - 15;
 		animado = true;
 		tipoAnim = "corazon";
 	}
@@ -170,6 +169,12 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.w = 85;
 		rect.h = 150;
 		rectCollision = rect;
+	}
+	else if (id == "Hojas"){
+		textura = juego->getTextura(Juego::THojas);
+
+		rect.w = 128;
+		rect.h = 128;		
 	}
 }
 
