@@ -108,8 +108,8 @@ void Player::update(int delta) {
 	setCamera(juego->camera);
 
 	if (inmunidad) {
-		if (contadorInmunidad < 100) contadorInmunidad++;
-		else if (contadorInmunidad == 100)
+		if (contadorInmunidad < inmunidadMAX) contadorInmunidad++;
+		else 
 		{
 			inmunidad = false;
 			contadorInmunidad = 0;

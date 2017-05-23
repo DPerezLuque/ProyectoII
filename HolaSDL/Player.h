@@ -37,9 +37,10 @@ private:
 	int balas;
 	int maximoBalas;	
 
-	bool inmunidad; //Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
+	bool inmunidad;					//Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
 	bool colisionDecorativo;		//Bool que se activa para que el jugador no avance si va a chocar con un objeto DECORATIVO
-	int contadorInmunidad; //Contador del tiempo de inmunidad
+	int contadorInmunidad;			//Contador del tiempo de inmunidad
+	const int inmunidadMAX = 80;	//Tiempo máximo de inmunidad
 
 	//ANIMACIÓN PERSONAJE
 	//SDL_Rect rectAnim;
