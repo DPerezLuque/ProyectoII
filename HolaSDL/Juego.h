@@ -34,7 +34,8 @@ public:
 		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
 		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
-		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3, TCafe, THojas, TBobinaRota, TLogo, TFiltro
+		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3, 
+		TCafe, THojas, TBobinaRota, TLogo, TFiltro, TBancoDcho, TBancoIzdo, TBancoUp, TBancoDown,
 	};
 
 	//PUBLIC VARIABLES

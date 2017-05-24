@@ -29,7 +29,6 @@
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 
-
 using namespace std;
 
 //The level tiles
@@ -378,6 +377,12 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\BobinaRota.png");
 	texturas.push_back("..\\bmps\\Logo.png");
 	texturas.push_back("..\\bmps\\Filtro.png");
+
+	//Banco
+	texturas.push_back("..\\bmps\\BancoDcha.png");
+	texturas.push_back("..\\bmps\\BancoIzda.png");
+	texturas.push_back("..\\bmps\\BancoArriba.png");
+	texturas.push_back("..\\bmps\\BancoAbajo.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
@@ -800,6 +805,7 @@ void Juego::creaAlmas(int posEnemigoX, int posEnemigoY, string msj){
 //llame a este método.
 void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 
+	srand(time(NULL));
 	int v2 = rand() % 70 + 30;				//Rango: [30,70]
 	int direction = 1 - 2 * (rand() % 2);	//Decide el signo del random
 
@@ -815,7 +821,7 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 			msj = VectTextosAlma.at(miniRnd);
 		}
 
-		arrayObjetos.push_back(new Aura(this, posEnemigoX, posEnemigoY, 420, 50, msj));
+		arrayObjetos.push_back(new Aura(this, posEnemigoX, posEnemigoY, 500, 50, msj));
 		break;
 
 	case 'b':	//botiquín
