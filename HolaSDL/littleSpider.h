@@ -12,6 +12,7 @@ public:
 	virtual void update(int delta);			//Se mueve y dispara al jugador si está a tiro
 	//Métodos propios
 	void nuevaPosicion();
+	void miniCarga(int, int, int, int);						//carga contra el jugador a una velocidad más alta que el método "follow"
 private:
 	int contadorMovimiento, contadorQuieto;
 	bool actualizaMov;

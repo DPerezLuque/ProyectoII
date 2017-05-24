@@ -67,7 +67,7 @@ void littleSpider::update(int delta){
 				actualizaMov = true;
 			}
 			else {
-				follow(pos.first, pos.second, delta);
+				miniCarga(pos.first, pos.second, delta, 2);
 				contadorMovimiento++;
 			}
 		}
@@ -100,21 +100,40 @@ void littleSpider::nuevaPosicion(){
 	rectPlayer = juego->player->getRect();
 	directionX = directionY = 0;
 
+	directionX = (rand() % 30 + 1) - 20;		//Rango: [-30, 30] para la velocidad
+	directionY = (rand() % 30 + 1) - 20;		//Rango: [-30, 30] para la velocidad
+			
+			
 
-	while (directionX == 0 && directionY == 0){
-		directionX = (rand() % 1 +2 )-1;		//Decide el signo del random, de ambos por separado
-		directionY = (rand() % 1 + 2) - 1;
-	}
-
-	int velocidadX = rectPlayer.x;				//Rango: [1,10] para la velocidad
-	int velocidadY = rectPlayer.y;				//Rango: [1,10] para la velocidad
-
-	int nuevaX = velocidadX * directionX;
-
-	
-
-	int nuevaY = velocidadY * directionY;
+	int nuevaX = rectPlayer.x + directionX;
+	int nuevaY = rectPlayer.y + directionY;
 	pair <int, int> nuevaPos = make_pair(nuevaX, nuevaY);
 
 	pos = nuevaPos;
+}
+
+void littleSpider::miniCarga(int x, int y, int delta, int mod){
+
+	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
+
+
+	if (distance > vel / 2) { //este numero es un margen de error que tendra que ir acorde con la velocidad del enemigo (vel)
+
+		vX = vel * (x - rect.x) / distance;
+		vY = vel * (y - rect.y) / distance;
+	}
+	else {
+		vX = 0;
+		vY = 0;
+	}
+	if (juego->touchesWall(getRect())) {
+		rect.x -= mod*(vX / 2) * delta;
+		rect.y -= mod*(vY / 2) * delta;
+	}
+	else {
+		rect.x += mod*(vX / 2) * delta / 1.5f;
+		rect.y += mod*(vY / 2) * delta / 1.5f;
+	}
+
+
 }
