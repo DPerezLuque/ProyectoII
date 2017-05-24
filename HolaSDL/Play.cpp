@@ -48,8 +48,8 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Aura(juego, 960, 1090, 400, 50, "SPACE para hacer dash"));
 
 	//MUSICA//
-	musicNames.push_back("..\\bmps\\CityLights.mp3");
-	//musicNames.push_back("..\\bmps\\SyndicatesBreath.mp3");
+	musicNames.push_back("..\\bmps\\city.mp3");
+	musicNames.push_back("..\\bmps\\synd.mp3");
 	musicNames.push_back("..\\bmps\\DieHistoric.mp3");
 
 	for (int j = 0; j < musicNames.size(); j++) {
