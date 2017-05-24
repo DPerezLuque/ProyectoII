@@ -27,9 +27,7 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	maximoBalas = 20;
 
 	inmunidad = colisionDecorativo = estaRalentizado = false;
-	contadorInmunidad = contDashing  = contadorRalentizado= 0;
-	
-
+	contadorInmunidad = contDashing  = contadorRalentizado = 0;
 }
 
 

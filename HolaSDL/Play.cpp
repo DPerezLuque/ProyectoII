@@ -49,11 +49,11 @@ void Play::init() {
 
 	//MUSICA//
 	musicNames.push_back("..\\bmps\\CityLights.mp3");
-	musicNames.push_back("..\\bmps\\SyndicatesBreath.mp3");
+	//musicNames.push_back("..\\bmps\\SyndicatesBreath.mp3");
 	musicNames.push_back("..\\bmps\\DieHistoric.mp3");
 
 	for (int j = 0; j < musicNames.size(); j++) {
-		cancion = new Musica;
+		cancion = new Musica();
 		cancion->load(musicNames[j]);
 		musicFiles.push_back(cancion);
 	}
@@ -126,6 +126,11 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1000, 1560, "Hojas"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1200, 1660, "Hojas"));
 
+	//Sala 6
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 935, 2600, "Hojas"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1505, 2800, "MesaDoble"));
+	
+
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 0, 1200, "Humo"));
 
@@ -143,8 +148,6 @@ void Play::init() {
 
 	///       BOSS      ///
 	//juego->arrayObjetos.push_back(new BossRino(juego, 700, 6500));
-
-
 
 	///      BOBINA     ///
 	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6425));
@@ -178,7 +181,7 @@ void Play::init() {
 	///		INTERFAZ		///	
 
 	juego->elemInterfaz.push_back(new BarraVidaVacia(juego, juego->player, 128, 32, 0, 0));
-	juego->elemInterfaz.push_back(new BarraVida(juego, static_cast <Player*> (juego->player), 32, 32, 0, 0));
+	juego->elemInterfaz.push_back(new BarraVida(juego, juego->player, 32, 32, 0, 0));
 	juego->elemInterfaz.push_back(new Cargador(juego, juego->player, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));
 	juego->elemInterfaz.push_back(new EnergiaDisponible(juego, juego->player, 32, 32, 0, 0));
 

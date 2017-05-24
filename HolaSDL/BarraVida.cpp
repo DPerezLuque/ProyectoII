@@ -1,7 +1,7 @@
 #include "BarraVida.h"
 
 
-BarraVida::BarraVida(Juego* pJuego, Player* jugador, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, ancho, alto, posX, posY)
+BarraVida::BarraVida(Juego* pJuego, ObjetoJuego* jugador, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, ancho, alto, posX, posY)
 {
 	//pJuego->player->getStats(vida, balas, contador);
 
@@ -25,8 +25,8 @@ void BarraVida::draw() const{
 void BarraVida::update(){ 
 	//pRect.x = Camera.x + distX;
 	//pRect.y = Camera.y + distY;
-	//contador = player->getVida();
-	contador = juga->getVida();
+	contador = player->getVida();
+	//contador = juga->getVida();
 
 	if (contador > 0){ //4 vidas máx
 		rectAnim.w = 32*contador;

@@ -48,5 +48,7 @@ public:
 	virtual void getStats(int &life, int &bullets, int &dash) = 0;
 
 	virtual void changeText() = 0;
+
+	virtual int getVida() = 0;
 };
 

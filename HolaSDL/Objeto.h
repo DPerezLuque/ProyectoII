@@ -15,7 +15,7 @@ public:
 	void draw() const;
 	bool onClick();
 	SDL_Rect getRect();
-
+	int getVida(){ return 0; }
 	void changeText() {};
 
 	void getPos(int& x, int& y);
