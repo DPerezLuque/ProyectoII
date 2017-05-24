@@ -147,7 +147,7 @@ void Play::init() {
 	}
 
 	///       BOSS      ///
-	//juego->arrayObjetos.push_back(new BossRino(juego, 700, 6500));
+	juego->arrayObjetos.push_back(new BossRino(juego, 570, 6700));
 
 	///      BOBINA     ///
 	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6425));

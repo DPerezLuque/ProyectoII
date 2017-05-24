@@ -4,7 +4,8 @@
 Bobina::Bobina(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TBobina);
-	tipo = DECORATIVO;
+	textura2 = juego->getTextura(Juego::TBobinaRota);
+	tipo = BOBINA;
 	rect.w = 96;
 	rect.h = 129;
 
@@ -25,8 +26,8 @@ void Bobina::update(int delta) {
 		contador = 0;
 	}
 
-	if (juego->checkCollision(this, juego->player))
-		onCollision();
+	/*if (juego->checkCollision(this, juego->player))
+		onCollision();*/
 }
 
 void Bobina::draw() const {
@@ -42,5 +43,10 @@ void Bobina::animar(){
 	}
 }
 
-void Bobina::onCollision(){
+void Bobina::onCollision(collision type){
+	std::cout << "choca" << "\n";
+	if (type == BOSS){
+		tipo = DECORATIVO;
+		textura = juego->getTextura(Juego::TBobinaRota);
+	}
 }

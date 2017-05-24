@@ -17,8 +17,8 @@ EnemigoBomba::EnemigoBomba(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py
 	contadorFrames = 0;
 	animado = true;
 
-	radioDisable = 550;
-	radioEnable = 400;
+	radioDisable = 750;
+	radioEnable = 500;
 }
 
 

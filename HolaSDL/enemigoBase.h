@@ -7,7 +7,7 @@ public:
 	virtual ~enemigoBase();
 
 	//	Métodos virtuales de objeto que usan todos los enemigos	//
-	virtual void onCollision(collision);
+	virtual void onCollision(collision type);
 	virtual void draw() const;
 	virtual void shoot(int targetX, int targetY, char bulletType);		//bulletType: 'n' -> Bala enemiga    'b' -> Bala explosiva
 

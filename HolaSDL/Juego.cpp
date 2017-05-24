@@ -655,7 +655,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 			colisiona = true;
 		break;
 	case BOSS:
-		if (b->getType() == PJ_WEAPON || b->getType() == DECORATIVO)
+		if (b->getType() == PJ_WEAPON || b->getType() == DECORATIVO || b->getType() == BOBINA)
 			colisiona = true;
 		break;
 	}
