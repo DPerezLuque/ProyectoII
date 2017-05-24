@@ -2,7 +2,7 @@
 #include "BalaEnemigo.h"
 #include "BalaRalentizadora.h"
 #include "balaBomba.h"
-
+#include <time.h>
 
 enemigoBase::enemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
@@ -127,19 +127,22 @@ void enemigoBase::gestorVida(){
 		cout << "Enemy Dead! \n";
 		dead = true;
 
+		srand(time(NULL));
 
 		/* generate secret number between 1 and 10: */
-		int rnd = 1 - 100 * (rand() % 100);
+		int rnd = rand() % 101;
 
-		if (rnd % 5 == 0) juego->spawnObjetos('b', rect.x, rect.y, "");  //Droppea botiquines con un 20%
-
-		//juego->creaAlmas(rect.x, rect.y, "¡Por fin me muero!");
+		if (rnd % 5 == 0) {
+			juego->spawnObjetos('b', rect.x, rect.y, "");
+		}	//Droppea botiquines con un 20%		
 		
 		//juego->spawnObjetos('e', rect.x, rect.y, "");
 		//juego->spawnObjetos('b', rect.x, rect.y, "");
+
 		if (juego->getSangre()){ //Sangre
 			juego->spawnObjetos('s', rect.x, rect.y, "");
 		}
+		else {}
 
 		juego->spawnObjetos('a', rect.x, rect.y, "");
 

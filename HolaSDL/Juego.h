@@ -36,7 +36,8 @@ public:
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
 		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
 		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3, 
-		TCafe, THojas, TBobinaRota, TLogo, TFiltro, TSpider,TBalaRalentizadora
+		TCafe, THojas, TBobinaRota, TLogo, TFiltro,TSpider,TBalaRalentizadora, 
+		TBancoDcho, TBancoIzdo, TBancoUp, TBancoDown,
 
 	};
 

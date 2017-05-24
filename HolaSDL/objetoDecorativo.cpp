@@ -81,7 +81,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.h = 80;
 
 		rectAnim = { 0, 0, 128, 150 };
-		rectCollision = { 0, 0, 69, 80 };
+		rectCollision = { rect.x, rect.y, 69, 80 };
 		animado = true;
 		tipoAnim = "corazon";
 	}
@@ -141,20 +141,21 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 55;
 		rect.h = 150;
-		rectCollision = { 0, 0, 55, 70 };
+		rectCollision = { (rect.x + 15), (rect.y + 80), 20, 20 };
 	}
 	else if (id == "Planta2"){
 		textura = juego->getTextura(Juego::TPlanta2);
 
 		rect.w = 55;
 		rect.h = 150;
-		rectCollision = { 0, 0, 55, 70 };
+		rectCollision = { (rect.x + 15), (rect.y + 60), 20, 60 };
 	}
 	else if (id == "Planta3"){
 		textura = juego->getTextura(Juego::TPlanta3);
 
 		rect.w = 55;
 		rect.h = 150;
+		rectCollision = { (rect.x+15), (rect.y+50), 20, 70 };
 	}
 	else if (id == "Cafetera"){
 		textura = juego->getTextura(Juego::TCafe);
@@ -168,6 +169,33 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 128;
 		rect.h = 128;
+	}
+
+	else if (id == "BancoArriba"){
+		textura = juego->getTextura(Juego::TBancoUp);
+
+		rect.w = 128;
+		rect.h = 32;
+	}
+	else if (id == "BancoAbajo"){
+		textura = juego->getTextura(Juego::TBancoDown);
+
+		rect.w = 128;
+		rect.h = 32;
+	}
+	else if (id == "BancoIzda"){
+		textura = juego->getTextura(Juego::TBancoIzdo);
+
+		rect.w = 32;
+		rect.h = 128;
+		rectCollision = { (rect.x + 24), rect.y, 8, 128 };
+	}
+	else if (id == "BancoDcha"){
+		textura = juego->getTextura(Juego::TBancoDcho);
+
+		rect.w = 32;
+		rect.h = 128;
+		rectCollision = { rect.x, rect.y, 8, 128 };
 	}
 }
 
