@@ -861,17 +861,20 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 
 
 /*
-void Juego::addToScreen(Tilemap::Tile * t) { //ONLY ARRAY OF WALLS
+void Juego::addToScreen(Tilemap::Tile * t) { 
 	if (isInScreen(t->getBox())) {
 		tileVisible.push_back(t);
 	}
-}
-*/
+}*/
+
 void Juego::addToScreen(ObjetoJuego * obj) {
-	if (isInScreen(obj->getRect())) {
+	if (isInScreen(obj->getRect()) && !obj->isInside()) {
 		objVisible.push_back(obj);
-		obj->putInside();
+		obj->putInside(true);
 	}
+	//else if (isInScreen(obj->getRect())) {
+
+//	}
 }
 bool Juego::isInScreen(SDL_Rect rect) {
 

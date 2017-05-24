@@ -219,16 +219,26 @@ void Play::init() {
 }
 
 void Play::update(int delta) {
+	
+	
+	for (auto i : juego->arrayObjetos) {
+		if (!i->isInside())
+			juego->addToScreen(i);
+		else if (i->isInside() && !juego->isInScreen(i->getRect()))
+			i->putInside(false);
+	}
+
 	//COLISIONES CON OBJETOS
-	for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
-		for (int j = 0; j < juego->arrayObjetos.size(); ++j) {
-			if (juego->checkCollision(juego->arrayObjetos[i], juego->arrayObjetos[j])) {
-				juego->arrayObjetos[i]->onCollision(juego->arrayObjetos[j]->getType());
-				juego->arrayObjetos[j]->onCollision(juego->arrayObjetos[i]->getType());
+	for (int i = 0; i < juego->objVisible.size(); ++i) {
+		for (int j = 0; j < juego->objVisible.size(); ++j) {
+			if (juego->checkCollision(juego->objVisible[i], juego->objVisible[j])) {
+				juego->objVisible[i]->onCollision(juego->objVisible[j]->getType());
+				juego->objVisible[j]->onCollision(juego->objVisible[i]->getType());
 			}
 		}
 	}
 
+	cout << juego->objVisible.size() << "\n";
 	/*
 	for (auto obj1 : juego->arrayObjetos) {
 	for (auto obj2 : juego->arrayObjetos) {
@@ -332,15 +342,11 @@ void Play::update(int delta) {
 
 	*/
 
-	for (auto i : juego->arrayObjetos) {
-		if (!i->isInside())
-			juego->addToScreen(i);
-	}
-
 
 	if (juego->player->isDead()){		
 		juego->estado->changeCurrentState(GAME_OVER);
 	}
+
 	else {
 		//LIMPIEZA DE VECTOR DE OBJETOS
 		for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
@@ -356,9 +362,8 @@ void Play::update(int delta) {
 				juego->enemyBullets.erase(juego->enemyBullets.begin() + aux3);
 		}
 		for (int aux4 = 0; aux4 < juego->objVisible.size(); ++aux4) {
-			if (!juego->isInScreen(juego->objVisible[aux4]->getRect())) {
+			if (!juego->isInScreen(juego->objVisible[aux4]->getRect())) 
 				juego->objVisible.erase(juego->objVisible.begin() + aux4);
-			}
 		}
 	}
 		//UPDATE

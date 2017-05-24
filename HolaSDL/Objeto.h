@@ -36,7 +36,7 @@ public:
 
 	bool isInside() { return inside; };
 
-	void putInside() { inside = true; };
+	void putInside(bool in) { inside = in; };
 
 protected:
 	Juego* juego;

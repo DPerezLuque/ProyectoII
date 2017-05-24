@@ -45,7 +45,7 @@ public:
 
 	virtual bool isInside() = 0;
 
-	virtual void putInside() = 0;
+	virtual void putInside(bool put) = 0;
 
 	virtual void getStats(int &life, int &bullets, int &dash) = 0;
 
