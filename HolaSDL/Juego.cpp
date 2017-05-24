@@ -335,6 +335,7 @@ bool Juego::initMedia()
 	bool success = true;
 	//MUSICA
 	musicNames.push_back("..\\bmps\\CityLights.mp3");
+	//Podriamos hacer un random para elegir la cancíón al iniciar el nivel
 
 	for (int j = 0; j < musicNames.size(); j++) {
 		cancion = new Musica;
