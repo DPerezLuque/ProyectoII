@@ -144,8 +144,9 @@ void enemigoBase::gestorVida(){
 		}
 		else {}
 
-		juego->spawnObjetos('a', rect.x, rect.y, "");
-
+		if (spawnAura){
+			juego->spawnObjetos('a', rect.x, rect.y, "");
+		}
 	}
 }
 

@@ -31,6 +31,7 @@ protected:
 	int radioEnable;		//Valor de activacion del area de disparo
 	int radioDisable;		//Valor de desactivacion del area de disparo
 	bool active;			//Bool que determina si la unidad dispara o no
+	bool spawnAura = true;	//Bool que determina si la unidad suelta o no un alma
 
 	Textura* barraVida;		//Textura de la barra superior de cada unidad
 	SDL_Rect rectVida;		//Rectangulo que representa la textura

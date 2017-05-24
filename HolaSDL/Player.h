@@ -2,8 +2,11 @@
 #include "Objeto.h"
 #include "BalaPlayer.h"
 
+
+
 class Player : public Objeto 
 {
+	
 public:
 	Player(Juego* ptr, int px, int py);
 	~Player();
@@ -14,8 +17,8 @@ public:
 	void setCamera(SDL_Rect &camera);
 	//void drawPlayer();
 	void draw() const;
-	void onCollision(collision type);
-
+	void onCollision(collision type);	
+	
 	void getStats(int &life, int &bullets, int &dash);
 	int getVida(){ return vida; }
 	int getBalas(){ return balas; }

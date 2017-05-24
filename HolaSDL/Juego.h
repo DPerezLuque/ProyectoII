@@ -37,7 +37,7 @@ public:
 		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
 		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3, 
 		TCafe, THojas, TBobinaRota, TLogo, TFiltro,TSpider,TBalaRalentizadora, 
-		TBancoDcho, TBancoIzdo, TBancoUp, TBancoDown,
+		TBancoDcho, TBancoIzdo, TBancoUp, TBancoDown, TBloqueo, TKey,
 
 	};
 
@@ -53,10 +53,13 @@ public:
 	bool getSangre(){ return sangre; }
 	void setSangre(){ sangre = !sangre; }
 
+	bool tieneLlave = false;
+	void quitaLlave(){ tieneLlave = false; }
+	bool getLlave(){ return tieneLlave; }
+
 	bool filtro = true; //Editado desde opciones
 	bool getFiltro(){ return filtro; }
 	void setFiltro(){ filtro = !filtro; }
-
 
 	bool checkpoint = false;
 	bool getCheck(){ return checkpoint; }
