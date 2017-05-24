@@ -16,6 +16,7 @@ public:
 private:
 	int contadorMovimiento, contadorQuieto;
 	bool actualizaMov;
+	
 
 	pair <int, int> pos;
 	int directionX, directionY;

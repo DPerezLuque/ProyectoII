@@ -20,6 +20,7 @@ littleSpider::littleSpider(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py
 
 	contadorFrames = 0;
 	animado = true;
+	spawnAura = false;
 
 	contadorMovimiento = contadorQuieto= 0;
 	actualizaMov = true;

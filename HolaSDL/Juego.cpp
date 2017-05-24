@@ -30,7 +30,6 @@
 #include "Sangre.h"
 #include "littleSpider.h"
 
-
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 
@@ -375,8 +374,6 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Logo.png");
 	texturas.push_back("..\\bmps\\Filtro.png");
 
-
-
 	//La Spider y sus littleSpiders
 	texturas.push_back("..\\bmps\\spiderTest.png");
 	texturas.push_back("..\\bmps\\BalaRalentizadora.png");
@@ -386,6 +383,9 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\BancoIzda.png");
 	texturas.push_back("..\\bmps\\BancoArriba.png");
 	texturas.push_back("..\\bmps\\BancoAbajo.png");
+
+	texturas.push_back("..\\bmps\\Bloqueo.png");
+	texturas.push_back("..\\bmps\\Key.png");
 
 
 	//Load Assets Textures
@@ -629,7 +629,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
 		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS 
 			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType() == DECORATIVO || b->getType() == EXPLOSION
-			|| b->getType() == BALA_RALENTIZADORA)
+			|| b->getType() == BALA_RALENTIZADORA || b->getType() == KEY || b->getType() == PUERTA)
 
 			colisiona = true;
 

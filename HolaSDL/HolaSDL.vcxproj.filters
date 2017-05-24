@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="Spider.cpp" />
+    <ClCompile Include="littleSpider.cpp" />
     <ClCompile Include="Aura.cpp" />
     <ClCompile Include="Bala.cpp" />
     <ClCompile Include="balaBomba.cpp" />
     <ClCompile Include="BalaEnemigo.cpp" />
     <ClCompile Include="BalaPlayer.cpp" />
+    <ClCompile Include="balaRalentizadora.cpp" />
     <ClCompile Include="Bobina.cpp" />
     <ClCompile Include="BossRino.cpp" />
     <ClCompile Include="Botiquin.cpp" />
@@ -36,22 +39,21 @@
     <ClCompile Include="objetoDecorativo.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Play.cpp" />
+    <ClCompile Include="Sangre.cpp" />
     <ClCompile Include="Texto.cpp" />
     <ClCompile Include="Textura.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="Sangre.cpp" />
-=======
-    <ClCompile Include="balaRalentizadora.cpp" />
-    <ClCompile Include="littleSpider.cpp" />
-    <ClCompile Include="Spider.cpp" />
->>>>>>> posiblesEnemigos
+    <ClCompile Include="Puerta.cpp" />
+    <ClCompile Include="Key.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Spider.h" />
+    <ClInclude Include="littleSpider.h" />
     <ClInclude Include="Aura.h" />
     <ClInclude Include="Bala.h" />
     <ClInclude Include="balaBomba.h" />
     <ClInclude Include="BalaEnemigo.h" />
     <ClInclude Include="BalaPlayer.h" />
+    <ClInclude Include="balaRalentizadora.h" />
     <ClInclude Include="Bobina.h" />
     <ClInclude Include="BossRino.h" />
     <ClInclude Include="Botiquin.h" />
@@ -85,17 +87,13 @@
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Play.h" />
+    <ClInclude Include="Sangre.h" />
     <ClInclude Include="Texto.h" />
     <ClInclude Include="Textura.h" />
-<<<<<<< HEAD
-    <ClInclude Include="Sangre.h" />
+    <ClInclude Include="Puerta.h" />
+    <ClInclude Include="Key.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-=======
-    <ClInclude Include="balaRalentizadora.h" />
-    <ClInclude Include="littleSpider.h" />
-    <ClInclude Include="Spider.h" />
->>>>>>> posiblesEnemigos
   </ItemGroup>
 </Project>

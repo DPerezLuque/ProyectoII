@@ -15,6 +15,7 @@ enemigoGuardia::enemigoGuardia(Juego* ptr, int px, int py) : enemigoBase(ptr, px
 	rect.w = 64;
 	rect.h = 64;
 
+
 	radioDisable = 800;
 	radioEnable = 400;
 }
@@ -27,7 +28,9 @@ enemigoGuardia::~enemigoGuardia()
 
 void enemigoGuardia::update(int delta) 
 {	
-	if (isActive()){
+
+	if (isActive()) {
+
 		SDL_Rect rectPlayer;
 		rectPlayer = juego->player->getRect();
 

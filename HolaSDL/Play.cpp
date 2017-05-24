@@ -25,6 +25,9 @@
 #include "Bobina.h"
 #include "EnemigoBomba.h"
 
+#include "Key.h"
+#include "Puerta.h"
+
 #include <time.h>
 using namespace std;
 
@@ -48,8 +51,8 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Aura(juego, 960, 1090, 400, 50, "SPACE para hacer dash"));
 
 	//MUSICA//
-	musicNames.push_back("..\\bmps\\CityLights.mp3");
-	//musicNames.push_back("..\\bmps\\SyndicatesBreath.mp3");
+	musicNames.push_back("..\\bmps\\city.mp3");
+	musicNames.push_back("..\\bmps\\synd.mp3");
 	musicNames.push_back("..\\bmps\\DieHistoric.mp3");
 
 	for (int j = 0; j < musicNames.size(); j++) {
@@ -136,6 +139,9 @@ void Play::init() {
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
 
+	juego->arrayObjetos.push_back(new Key(juego, 400, 200));
+	juego->arrayObjetos.push_back(new Puerta(juego, 800, 400, 100, 100));
+
 	///		*PLAYER		///
 	if (juego->getCheck()){
 		juego->player = new Player(juego, 1100, 5650);
@@ -156,7 +162,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6975));
 
 	//juego->arrayObjetos.push_back(new EnemigoBomba(juego, 750, 300));
-	juego->arrayObjetos.push_back(new Spider(juego, 750, 300));
+	//juego->arrayObjetos.push_back(new Spider(juego, 750, 300));
 
 	///		ENEMIGOS	///
 	//ENEMIGOS GUARDIA
