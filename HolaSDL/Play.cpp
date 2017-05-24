@@ -25,6 +25,8 @@
 #include "Bobina.h"
 #include "EnemigoBomba.h"
 
+#include "Key.h"
+
 #include <time.h>
 using namespace std;
 
@@ -135,6 +137,8 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 0, 1200, "Humo"));
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
+
+	juego->arrayObjetos.push_back(new Key(juego, 400, 400));
 
 	///		*PLAYER		///
 	if (juego->getCheck()){

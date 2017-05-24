@@ -30,7 +30,6 @@
 #include "Sangre.h"
 #include "littleSpider.h"
 
-
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 
@@ -375,8 +374,6 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Logo.png");
 	texturas.push_back("..\\bmps\\Filtro.png");
 
-
-
 	//La Spider y sus littleSpiders
 	texturas.push_back("..\\bmps\\spiderTest.png");
 	texturas.push_back("..\\bmps\\BalaRalentizadora.png");
@@ -386,6 +383,9 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\BancoIzda.png");
 	texturas.push_back("..\\bmps\\BancoArriba.png");
 	texturas.push_back("..\\bmps\\BancoAbajo.png");
+
+	texturas.push_back("..\\bmps\\Bloqueo.png");
+	texturas.push_back("..\\bmps\\Key.png");
 
 
 	//Load Assets Textures
