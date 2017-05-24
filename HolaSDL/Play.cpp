@@ -25,6 +25,7 @@
 #include "Bobina.h"
 #include "EnemigoBomba.h"
 
+#include <time.h>
 using namespace std;
 
 Play::Play(Juego* ptr) : Estado(ptr)
@@ -45,6 +46,22 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Aura(juego, 200, 350, 400, 50, "Para moverte, utiliza WASD"));
 	juego->arrayObjetos.push_back(new Aura(juego, 1450, 300, 440, 50, "Click izquierdo para disparar"));
 	juego->arrayObjetos.push_back(new Aura(juego, 960, 1090, 400, 50, "SPACE para hacer dash"));
+
+	//MUSICA//
+	musicNames.push_back("..\\bmps\\CityLights.mp3");
+	musicNames.push_back("..\\bmps\\SyndicatesBreath.mp3");
+	musicNames.push_back("..\\bmps\\DieHistoric.mp3");
+
+	for (int j = 0; j < musicNames.size(); j++) {
+		cancion = new Musica;
+		cancion->load(musicNames[j]);
+		musicFiles.push_back(cancion);
+	}
+
+	//La cancion del nivel es aleatoria
+	srand(time(NULL));
+	int rnd = rand() % musicFiles.size();
+	musicFiles[rnd]->play();
 
 	///		PUSH DE OBJETOS DECORATIVOS		///
 	//Los pusheamos antes para que el jugador pase por delante de los objetos

@@ -27,6 +27,11 @@ private:
 	SDL_Color Black;
 	SDL_Color Red;
 
+	//Musica
+	vector <string> musicNames;//Vector para almacenar direcciones de canciones
+	Musica* cancion; //Auxiliar para llenar el vector de musica
+	vector <Musica*> musicFiles;
+
 	int vidaAux = 0;
 };
 

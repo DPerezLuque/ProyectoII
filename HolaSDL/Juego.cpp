@@ -281,17 +281,7 @@ SDL_RenderPresent(pRenderer);
 bool Juego::initMedia()
 {
 	bool success = true;
-	//MUSICA
-	musicNames.push_back("..\\bmps\\CityLights.mp3");
-	//Podriamos hacer un random para elegir la cancíón al iniciar el nivel
-
-	for (int j = 0; j < musicNames.size(); j++) {
-		cancion = new Musica;
-		cancion->load(musicNames[j]);
-		musicFiles.push_back(cancion);
-	}
-
-	//musicFiles[Cancion1]->play();
+	
 
 	//TEXTO
 	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");
@@ -390,13 +380,13 @@ bool Juego::initMedia()
 	//La Spider y sus littleSpiders
 	texturas.push_back("..\\bmps\\spiderTest.png");
 	texturas.push_back("..\\bmps\\BalaRalentizadora.png");
-=======
+
 	//Banco
 	texturas.push_back("..\\bmps\\BancoDcha.png");
 	texturas.push_back("..\\bmps\\BancoIzda.png");
 	texturas.push_back("..\\bmps\\BancoArriba.png");
 	texturas.push_back("..\\bmps\\BancoAbajo.png");
->>>>>>> 51fc3b774272df4f73a55bcf6ab49a78aeb3c2f5
+
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
