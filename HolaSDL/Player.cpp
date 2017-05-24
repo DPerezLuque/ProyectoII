@@ -50,7 +50,6 @@ void Player::update(int delta) {
 	
 	if (juego->debugPlayer){
 		cout << rect.x << ", " << rect.y<< "\n";
-		cout << juego->tieneLlave << endl;
 		juego->setDebugBool(false);
 	}
 

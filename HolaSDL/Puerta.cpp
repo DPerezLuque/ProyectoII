@@ -22,3 +22,10 @@ void Puerta::onCollision(collision type){
 		dead = true;
 	}
 }
+
+void Puerta::update(int delta){
+	if (juego->tieneLlave){
+		textura = juego->getTextura(Juego::TBloqueo2);
+	}
+	else textura = juego->getTextura(Juego::TBloqueo);
+}

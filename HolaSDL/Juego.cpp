@@ -385,6 +385,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\BancoAbajo.png");
 
 	texturas.push_back("..\\bmps\\Bloqueo.png");
+	texturas.push_back("..\\bmps\\Bloqueo2.png");
 	texturas.push_back("..\\bmps\\Key.png");
 
 
