@@ -53,10 +53,13 @@ public:
 	bool getSangre(){ return sangre; }
 	void setSangre(){ sangre = !sangre; }
 
+	bool tieneLlave = false;
+	void quitaLlave(){ tieneLlave = false; }
+	bool getLlave(){ return tieneLlave; }
+
 	bool filtro = true; //Editado desde opciones
 	bool getFiltro(){ return filtro; }
 	void setFiltro(){ filtro = !filtro; }
-
 
 	bool checkpoint = false;
 	bool getCheck(){ return checkpoint; }

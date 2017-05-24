@@ -50,6 +50,7 @@ void Player::update(int delta) {
 	
 	if (juego->debugPlayer){
 		cout << rect.x << ", " << rect.y<< "\n";
+		cout << juego->tieneLlave << endl;
 		juego->setDebugBool(false);
 	}
 
@@ -265,10 +266,18 @@ void Player::onCollision(collision type){
 		gestorVida();
 		break;
 
+	case KEY:
+		juego->tieneLlave = true;
+		break;
+
+	case PUERTA:
+		if (!juego->getLlave()){
+		colisionDecorativo = true;
+		}
+		break;
 	case EXPLOSION:
 
 	case BOSS:
-
 		gestorVida();
 		break;
 	case BOTIQUIN:

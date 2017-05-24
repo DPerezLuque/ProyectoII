@@ -17,7 +17,7 @@ Key::~Key()
 }
 
 void Key::onCollision(collision type){
-	//Destroy();
+	dead = true;
 }
 
 void Key::update(int delta){

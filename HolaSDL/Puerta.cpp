@@ -16,4 +16,9 @@ Puerta::~Puerta()
 {
 }
 
-void Puerta::onCollision(){}
+void Puerta::onCollision(collision type){
+	if (juego->tieneLlave){
+		juego->quitaLlave();
+		dead = true;
+	}
+}

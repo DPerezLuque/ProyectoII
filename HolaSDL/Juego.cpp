@@ -629,7 +629,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
 		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS 
 			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType() == DECORATIVO || b->getType() == EXPLOSION
-			|| b->getType() == BALA_RALENTIZADORA)
+			|| b->getType() == BALA_RALENTIZADORA || b->getType() == KEY || b->getType() == PUERTA)
 
 			colisiona = true;
 
