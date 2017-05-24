@@ -30,11 +30,14 @@ public:
 	enum Texturas_t {
 		TPlayer, TEnemy, TBulletPlayer, TBulletEnemy, TCheck, TEnemyPlanta, TRino, TBarraVida, THumo,
 		TBotiquin, TBPlayA, TBPlayE , TBOptionsA, TBOptionsE, TBExitA, TBExitE, TBControlsA, TBControlsE, TBSangreA, TBSangreE,
-		TBFilterA, TBFilterE, TBMenuA, TBMenuE, TBRetryA, TBRetryE, TBResumeA, TBResumeE, TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
+		TBFilterA, TBFilterE, TBMenuA, TBMenuE, TBRetryA, TBRetryE, TBResumeA, TBResumeE, 
+		TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
 		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
 		TBobina, TAura, TPlanta1, TPlanta2, TPlanta3, TVitrinaLib, TVitrinaFeto,
-		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3, TCafe, THojas, TBobinaRota, TLogo, TFiltro
+		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3, 
+		TCafe, THojas, TBobinaRota, TLogo, TFiltro, TSpider,TBalaRalentizadora
+
 	};
 
 	//PUBLIC VARIABLES

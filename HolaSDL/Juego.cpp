@@ -10,6 +10,9 @@
 #include <iomanip>
 #include <string>
 #include <fstream>
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 #include "MenuPausa.h"
 #include "Play.h"
@@ -25,6 +28,8 @@
 #include "EnemigoPlanta.h"
 #include "ExplosionEnemigoB.h"
 #include "Sangre.h"
+#include "littleSpider.h"
+
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -279,6 +284,7 @@ bool Juego::initMedia()
 	bool success = true;
 	//MUSICA
 	musicNames.push_back("..\\bmps\\CityLights.mp3");
+	//Podriamos hacer un random para elegir la cancíón al iniciar el nivel
 
 	for (int j = 0; j < musicNames.size(); j++) {
 		cancion = new Musica;
@@ -368,6 +374,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\enemigoBomba.png");
 	texturas.push_back("..\\bmps\\balaBomba.png");
 	texturas.push_back("..\\bmps\\explosionBalaBomba.png");
+
 	//Sangre
 	texturas.push_back("..\\bmps\\Sangre1.png");
 	texturas.push_back("..\\bmps\\Sangre2.png");
@@ -378,6 +385,11 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\BobinaRota.png");
 	texturas.push_back("..\\bmps\\Logo.png");
 	texturas.push_back("..\\bmps\\Filtro.png");
+
+
+	//La Spider y sus littleSpiders
+	texturas.push_back("..\\bmps\\spiderTest.png");
+	texturas.push_back("..\\bmps\\BalaRalentizadora.png");
 
 	//Load Assets Textures
 	for (int j = 0; j < texturas.size(); ++j) {
@@ -619,7 +631,8 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	case PJ:												//Hemos puesto la colision con el aura para que siga funcionando
 		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
 		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS 
-			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType() == DECORATIVO || b->getType() == EXPLOSION)
+			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType() == DECORATIVO || b->getType() == EXPLOSION
+			|| b->getType() == BALA_RALENTIZADORA)
 
 			colisiona = true;
 
@@ -733,8 +746,6 @@ bool Juego::touchesWall(SDL_Rect objRect)
 
 			*/
 
-
-	
 }
 
 bool Juego::checkWallCollisions(SDL_Rect a, SDL_Rect b)
@@ -799,7 +810,7 @@ void Juego::creaAlmas(int posEnemigoX, int posEnemigoY, string msj){
 //Creamos un objeto dado por el id que se introduzca en la llamada a función, según el random deseado en el objeto desde el que se
 //llame a este método.
 void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
-
+	srand(time(NULL));
 	int v2 = rand() % 70 + 30;				//Rango: [30,70]
 	int direction = 1 - 2 * (rand() % 2);	//Decide el signo del random
 
@@ -825,18 +836,26 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 		arrayObjetos.push_back(new Botiquin(this, posEnemigoX + (30 * direction), posEnemigoY + (30 * direction)));
 		break;
 
-	case 'e':   //Spawn de enemigo que camina
+	case 'e':   //Spawn de explosiones
 
 		arrayObjetos.push_back(new ExplosionEnemigoB(this, posEnemigoX + (30 * direction), posEnemigoY));
 		break;
 
-	case 'p':	//Spawn de enemigos de plantas
+	case 'p':	//Spawn de enemigos de plantas (NO SE VA A USAR)
 		arrayObjetos.push_back(new EnemigoPlanta(this, posEnemigoX, posEnemigoY + (30 * direction)));
 		break;
+
 
 	case 's': //sangre
 		arrayObjetos.push_back(new Sangre(this, posEnemigoX, posEnemigoY));
 		break;
+
+	case 'x':	//Spawn de enemigos de arañitas
+		arrayObjetos.push_back(new littleSpider(this, posEnemigoX, posEnemigoY));
+		break;
+
+
+
 	}
 	
 }

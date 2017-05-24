@@ -1,5 +1,6 @@
 #include "enemigoBase.h"
 #include "BalaEnemigo.h"
+#include "BalaRalentizadora.h"
 #include "balaBomba.h"
 
 
@@ -56,8 +57,6 @@ void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que 
 
 	if (distance > vel / 2) { //este numero es un margen de error que tendra que ir acorde con la velocidad del enemigo (vel)
 
-		//if (distance > vel / 2) { //este numero es un margen de error que tendra que ir a corde con la velocidad del enemigo (vel)
-
 		vX = vel * (x - rect.x) / distance;
 		vY = vel * (y - rect.y) / distance;
 	}
@@ -106,6 +105,10 @@ void enemigoBase::shoot(int targetX, int targetY, char bulletType){
 		case 'b':
 			nuevaBala = new balaBomba(juego, rect.x, rect.y, vX, vY);				//Balas explosivas
 		break;
+
+		case 'r':
+			nuevaBala = new balaRalentizadora(juego, rect.x, rect.y, vX, vY);		//Balas ralentizadoras
+			break;
 	}
 	//Incluimos la bala creada en el juego
 	juego->arrayObjetos.push_back(nuevaBala);
@@ -139,6 +142,7 @@ void enemigoBase::gestorVida(){
 		}
 
 		juego->spawnObjetos('a', rect.x, rect.y, "");
+
 	}
 }
 

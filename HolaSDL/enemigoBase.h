@@ -4,7 +4,7 @@ class enemigoBase : public Objeto
 {
 public:
 	enemigoBase(Juego* ptr, int px, int py);
-	~enemigoBase();
+	virtual ~enemigoBase();
 
 	//	Métodos virtuales de objeto que usan todos los enemigos	//
 	virtual void onCollision(collision);

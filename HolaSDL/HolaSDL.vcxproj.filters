@@ -38,7 +38,13 @@
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Texto.cpp" />
     <ClCompile Include="Textura.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Sangre.cpp" />
+=======
+    <ClCompile Include="balaRalentizadora.cpp" />
+    <ClCompile Include="littleSpider.cpp" />
+    <ClCompile Include="Spider.cpp" />
+>>>>>>> posiblesEnemigos
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aura.h" />
@@ -81,9 +87,15 @@
     <ClInclude Include="Play.h" />
     <ClInclude Include="Texto.h" />
     <ClInclude Include="Textura.h" />
+<<<<<<< HEAD
     <ClInclude Include="Sangre.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+=======
+    <ClInclude Include="balaRalentizadora.h" />
+    <ClInclude Include="littleSpider.h" />
+    <ClInclude Include="Spider.h" />
+>>>>>>> posiblesEnemigos
   </ItemGroup>
 </Project>

@@ -39,8 +39,12 @@ private:
 
 	bool inmunidad;					//Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
 	bool colisionDecorativo;		//Bool que se activa para que el jugador no avance si va a chocar con un objeto DECORATIVO
+
 	int contadorInmunidad;			//Contador del tiempo de inmunidad
 	const int inmunidadMAX = 80;	//Tiempo máximo de inmunidad
+
+	bool estaRalentizado;			//Bool para reducir la velocidad del jugador
+
 
 	//ANIMACIÓN PERSONAJE
 	//SDL_Rect rectAnim;
@@ -51,6 +55,7 @@ private:
 	int contadorFrames;				//Para los frames
 	int contadorRecarga;			//Para recargar arma
 	int contDashing;				//Para el dash
+	int contadorRalentizado;		//Para revertir el estado del bool estaRalentizado
 
 	//Controlar cadencia de disparo
 	int conta = 0;

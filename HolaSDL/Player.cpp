@@ -26,9 +26,9 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	balas = 20;
 	maximoBalas = 20;
 
-	inmunidad = colisionDecorativo = false;
-	contadorInmunidad = 0;
-	contDashing = 0;
+	inmunidad = colisionDecorativo = estaRalentizado = false;
+	contadorInmunidad = contDashing  = contadorRalentizado= 0;
+	
 
 }
 
@@ -60,6 +60,17 @@ void Player::update(int delta) {
 	nextRect = rectCollision;
 		
 
+	//Preguntamos si está ralentizado para saber si revertirlo o seguir
+	if (estaRalentizado){
+
+		if (contadorRalentizado >= 50){
+			estaRalentizado = false;
+			contadorRalentizado = 0;
+		}
+		else contadorRalentizado++;
+	}
+
+
 	if (juego->getDash()){
 			rect.x += juego->getVelX() * 4 * delta / 1.5f;
 			rect.y += juego->getVelY() * 4 * delta / 1.5f;
@@ -74,14 +85,20 @@ void Player::update(int delta) {
 			}				
 	}
 	else{
+
 		//rect.x += juego->getVelX() * delta / 1.5f;
 		//rect.y += juego->getVelY() * delta / 1.5f;		
 
 		nextRect.x += juego->getVelX() * delta / 1.5f;
 		nextRect.y += juego->getVelY() * delta / 1.5f;
-		if (!juego->touchesWall(nextRect)) {
+		if (!juego->touchesWall(nextRect) && !estaRalentizado) {
 			rect.x += juego->getVelX() * delta / 1.5f;
 			rect.y += juego->getVelY() * delta / 1.5f;
+		}
+		else{
+			rect.x += ((juego->getVelX()/4) * delta / 1.5f);
+			rect.y += ((juego->getVelY()/4) * delta / 1.5f);
+
 		}
 	}
 		//IDEA: Hacer un "rectangulo" delante del jugador y comprobar si ese rectangulo, y no el del jugador es el que se está colisionando
@@ -269,6 +286,10 @@ void Player::onCollision(collision type){
 		*/
 	case DECORATIVO:
 		colisionDecorativo = true;
+		break;
+	case BALA_RALENTIZADORA:
+		estaRalentizado = true;
+		gestorVida();
 		break;
 	default:
 		break;

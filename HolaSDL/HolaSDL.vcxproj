@@ -11,11 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Spider.cpp" />
+    <ClCompile Include="littleSpider.cpp" />
     <ClCompile Include="Aura.cpp" />
     <ClCompile Include="Bala.cpp" />
     <ClCompile Include="balaBomba.cpp" />
     <ClCompile Include="BalaEnemigo.cpp" />
     <ClCompile Include="BalaPlayer.cpp" />
+    <ClCompile Include="balaRalentizadora.cpp" />
     <ClCompile Include="Bobina.cpp" />
     <ClCompile Include="BossRino.cpp" />
     <ClCompile Include="Botiquin.cpp" />
@@ -51,11 +54,14 @@
     <ClCompile Include="Textura.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Spider.h" />
+    <ClInclude Include="littleSpider.h" />
     <ClInclude Include="Aura.h" />
     <ClInclude Include="Bala.h" />
     <ClInclude Include="balaBomba.h" />
     <ClInclude Include="BalaEnemigo.h" />
     <ClInclude Include="BalaPlayer.h" />
+    <ClInclude Include="balaRalentizadora.h" />
     <ClInclude Include="Bobina.h" />
     <ClInclude Include="BossRino.h" />
     <ClInclude Include="Botiquin.h" />
