@@ -8,6 +8,9 @@ enemigoBase::enemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	barraVida = juego->getTextura(Juego::TBarraVida);
 
+	sonido = juego->getEfecto(Juego::punch);
+	sonidoMuerte = juego->getEfecto(Juego::death);
+
 	vel = 6;
 	freDis = 100;
 	velDis = 20;
@@ -74,10 +77,14 @@ void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que 
 	}
 
 }
+
 void enemigoBase::onCollision(collision type){
-	if (type == PJ_WEAPON)
+	if (type == PJ_WEAPON){
 		gestorVida();
+		sonido->play();
+	}
 }
+
 void enemigoBase::shoot(int targetX, int targetY, char bulletType){
 
 	//static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
@@ -125,6 +132,7 @@ void enemigoBase::gestorVida(){
 
 	if (vida <= 0){
 		cout << "Enemy Dead! \n";
+		sonidoMuerte->play();
 		dead = true;
 
 		srand(time(NULL));

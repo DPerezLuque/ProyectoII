@@ -8,6 +8,7 @@ ExplosionEnemigoB::ExplosionEnemigoB(Juego* ptr, int px, int py) : Objeto(ptr, p
 	rect.w = 300;
 	rect.h = 300;
 	rectCollision = rect;
+	sonido = juego->getEfecto(Juego::explosion);
 	
 	textura = juego->getTextura(Juego::TExplosionBomba);
 
@@ -19,7 +20,8 @@ ExplosionEnemigoB::ExplosionEnemigoB(Juego* ptr, int px, int py) : Objeto(ptr, p
 	autodestr = 10;
 
 	animado = true;
-	
+
+	sonido->play();	
 }
 
 

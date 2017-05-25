@@ -22,6 +22,7 @@ Objeto::~Objeto() {
 	juego = nullptr;
 	textura = nullptr;
 	pRenderer = nullptr;
+	sonido = nullptr; //Ojo
 }
 
 void Objeto::draw() const

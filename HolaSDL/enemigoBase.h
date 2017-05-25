@@ -19,6 +19,8 @@ public:
 	// 
 
 protected:
+	Efecto* sonidoMuerte;
+
 	bool dropLlave = false;
 	int vX, vY;				//Velocidades para el método follow
 	int vel;				//velocidad del monimiento

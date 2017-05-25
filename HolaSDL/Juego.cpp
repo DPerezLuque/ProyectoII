@@ -314,6 +314,9 @@ bool Juego::initMedia()
 	effectFiles.push_back(new Efecto("..\\bmps\\Spider.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\Aliento.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\ButtonSound.wav"));
+	effectFiles.push_back(new Efecto("..\\bmps\\Death.wav"));
+	effectFiles.push_back(new Efecto("..\\bmps\\Explosion.wav"));
+	effectFiles.push_back(new Efecto("..\\bmps\\Punch.wav"));
 
 	//Objetos dinámicos
 	texturas.push_back("..\\bmps\\personaje.png");
