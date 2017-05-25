@@ -46,8 +46,8 @@ Juego::Juego()
 
 	//Música
 	Mix_Init(27);
-	//Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-	//Mix_Volume(1, MIX_MAX_VOLUME / 2);
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	Mix_Volume(1, MIX_MAX_VOLUME / 4);
 	//Texto
 	TTF_Init();
 

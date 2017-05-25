@@ -174,6 +174,8 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1385, 4800, "BancoIzda"));
 	juego->arrayObjetos.push_back(new  objetoDecorativo(juego, 570, 4140, "mesaEE"));
 	juego->arrayObjetos.push_back(new  objetoDecorativo(juego, 450, 4450, "Caja"));
+	juego->arrayObjetos.push_back(new  objetoDecorativo(juego, 1240, 3570, "Caja"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 330, 2960, "Servers"));
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
 
