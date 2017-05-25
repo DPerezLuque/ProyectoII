@@ -156,13 +156,13 @@ void Play::init() {
 	//LLAVES Y PUERTAS
 	//1
 	juego->arrayObjetos.push_back(new Key(juego, 2050, 1200));
-	//juego->arrayObjetos.push_back(new Puerta(juego, 150, 1250, 600, 200));
+	juego->arrayObjetos.push_back(new Puerta(juego, 150, 1250, 600, 200));
 	//2
-	juego->arrayObjetos.push_back(new Key(juego, 1490, 3180));
-	//juego->arrayObjetos.push_back(new Puerta(juego, 1050, 3900, 400, 200));
+	//Llave en la araña
+	juego->arrayObjetos.push_back(new Puerta(juego, 1050, 3900, 400, 200));
 	//3
 	juego->arrayObjetos.push_back(new Key(juego, 590, 4360));
-	//juego->arrayObjetos.push_back(new Puerta(juego, 700, 5360, 150, 150));
+	juego->arrayObjetos.push_back(new Puerta(juego, 700, 5360, 150, 150));
 
 	///		*PLAYER		///
 	if (juego->getCheck()){
@@ -204,7 +204,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 2020, 6500));
 
 	//ENEMIGOS ARAÑA
-	juego->arrayObjetos.push_back(new Spider(juego, 1420, 2800));
+	juego->arrayObjetos.push_back(new Spider(juego, 1420, 2800, true)); //LLAVE
 
 	///		INTERFAZ		///	
 	juego->elemInterfaz.push_back(new BarraVidaVacia(juego, juego->player, 128, 32, 0, 0));

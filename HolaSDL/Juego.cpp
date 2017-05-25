@@ -29,6 +29,7 @@
 #include "ExplosionEnemigoB.h"
 #include "Sangre.h"
 #include "littleSpider.h"
+#include "Key.h"
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -847,6 +848,10 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 
 	case 's': //sangre
 		arrayObjetos.push_back(new Sangre(this, posEnemigoX, posEnemigoY));
+		break;
+
+	case 'k': //llave
+		arrayObjetos.push_back(new Key(this, posEnemigoX, posEnemigoY));
 		break;
 
 	case 'x':	//Spawn de enemigos de arañitas
