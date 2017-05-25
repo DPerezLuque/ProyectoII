@@ -41,10 +41,14 @@ void Bala::update(int delta) {
 		onCollision(tipo);
 		cont = 0;
 	}
-
-	rect.x += velX * delta / 3;
-	rect.y += velY * delta / 3;
-
+	if (tipo == ENEMY_WEAPON) {
+		rect.x += velX * delta / 4;
+		rect.y += velY * delta / 4;
+	}
+	else {
+		rect.x += velX * delta / 3.5;
+		rect.y += velY * delta / 3.5;
+	}
 	rectCollision.x = rect.x;//(rect.x + rect.w / 4) * delta;
 	rectCollision.y = rect.y;//(rect.y + rect.h / 4) * delta;
 

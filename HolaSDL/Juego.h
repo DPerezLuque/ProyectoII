@@ -70,6 +70,7 @@ public:
 
 	//GAME TIME (GLOBAL)
 	float delta;
+	Uint32 lastUpdate;
 
 	//VELOCITY (PLAYER)
 	static const int VPLAYER = 10;

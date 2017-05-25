@@ -131,7 +131,6 @@ void Player::update(int delta) {
 		}
 	}
 
-	
 	//std::cout << "RECT X JUGADOR: " << rect.x << "\n";
 	//std::cout << "CAMARA X: " << juego->camera.x << "\n";
 
@@ -200,7 +199,7 @@ bool Player::onClick() {
 
 		//Disparo
 		//juego->arrayBalas.push_back(new BalaPlayer(juego, posX, posY, vX, vY));
-
+		//cout << conta << "\n";
 		if (balas > 0 && conta == 0) {
 			disparo = true; //Controlar cadencia de disparo
 			ObjetoJuego * newBala = new BalaPlayer(juego, posX, posY, vX, vY);

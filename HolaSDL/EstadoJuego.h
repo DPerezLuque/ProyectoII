@@ -15,7 +15,7 @@ public:
 
 	virtual void draw() = 0;
 
-	virtual void update(int delta) = 0;
+	virtual void update(double delta) = 0;
 
 	virtual void update() = 0;
 
@@ -28,5 +28,9 @@ public:
 	virtual ObjetoJuego* getObjeto(int i) const = 0;
 
 	virtual int getSizeArray() const = 0;
+
+	virtual bool isActive() = 0;
+	
+	virtual void setActive(bool act) = 0;
 };
 

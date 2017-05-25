@@ -88,6 +88,7 @@ void Estado::update(){
 
 		draw();
 	}
+	active = false;
 }
 
 

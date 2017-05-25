@@ -218,7 +218,7 @@ void Play::init() {
 
 }
 
-void Play::update(int delta) {
+void Play::update(double delta) {
 	
 	
 	for (auto i : juego->arrayObjetos) {
@@ -238,7 +238,7 @@ void Play::update(int delta) {
 		}
 	}
 
-	cout << juego->objVisible.size() << "\n";
+	//cout << juego->objVisible.size() << "\n";
 	/*
 	for (auto obj1 : juego->arrayObjetos) {
 	for (auto obj2 : juego->arrayObjetos) {

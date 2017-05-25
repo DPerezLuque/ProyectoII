@@ -11,7 +11,7 @@ public:
 	void init();
 
 	//void update();
-	void update(int delta);
+	void update(double delta);
 	void draw();
 
 	void newDisparo(ObjetoJuego*po, int posX, int posY);

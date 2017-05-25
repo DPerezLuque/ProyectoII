@@ -12,7 +12,7 @@ public:
 	virtual ~Estado();
 
 	void draw();
-	void update(int delta) {};
+	void update(double delta) {};
 	void update();
 	bool onClick();
 	
@@ -24,6 +24,8 @@ public:
 	void salir();
 
 	GAME_STATES getCurrentState() { return type; };
+	bool isActive() { return active; };
+	void setActive(bool act) { active = act; };
 	void changeCurrentState(GAME_STATES newType) { type = newType; };
 	ObjetoJuego* getObjeto(int i) const { return juego->arrayObjetos[i]; }; //Getter del objeto i del array
 	int getSizeArray() const { return juego->arrayObjetos.size(); }; //Getter del tamaño del array
@@ -39,7 +41,7 @@ protected:
 	void resetCamera();
 	
 	GAME_STATES type;
-
+	bool active;
 	int mouse_x, mouse_y;
 	int height, width;
 };

@@ -45,8 +45,8 @@ Juego::Juego()
 
 	//Música
 	Mix_Init(27);
-	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-	Mix_Volume(1, MIX_MAX_VOLUME / 2);
+	//Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+	//Mix_Volume(1, MIX_MAX_VOLUME / 2);
 	//Texto
 	TTF_Init();
 
@@ -142,9 +142,10 @@ void Juego::cleanArrays() {
 }
 void Juego::run()
 {
-	Uint32 lastUpdate;
-
 	while (!exit) {
+
+		double previous;
+		double lag;
 
 		switch (estado->getCurrentState()) {
 		case MENU_PRINCIPAL:
@@ -163,7 +164,7 @@ void Juego::run()
 		case NIVEL_1:
 
 			//GO = false;
-
+			lastUpdate = 0;
 			changeState(new Play(this));
 			estado = topEstado(); 
 
@@ -184,44 +185,62 @@ void Juego::run()
 			SDL_RenderPresent(pRenderer);
 
 			estado->draw();
-			handle_events();
+			
+			previous = SDL_GetTicks();
+			lag = 0.0;
 
 			while (!exit && estado->getCurrentState() == NIVEL_1) {
+				if (!pause->isActive()) {
 
-				for (auto t : wallsArray) {
-					if (!t->isInside()) {
-						if (isInScreen(t->getBox())) {
-							tileVisible.push_back(t);
-							//t->setInside();
+					for (auto t : wallsArray) {
+						if (!t->isInside()) {
+							if (isInScreen(t->getBox())) {
+								tileVisible.push_back(t);
+								//t->setInside();
+							}
 						}
 					}
-				}
+					estado = topEstado();
 
-				estado = topEstado();
-				//if (SDL_GetTicks() - lastUpdate >= MSxUpdate){ //while(elapsed >= MSxUpdate)
-				delta = (SDL_GetTicks() - lastUpdate) / 10.0f;
-				estado->update(delta);
-				lastUpdate = SDL_GetTicks();
-				//}
-				//estado = topEstado();
-				//Render level
-				for (int i = 0; i < TOTAL_TILES; ++i)
-				{
-					tileSet[i]->render(pRenderer, camera);
-				}
+					double current = SDL_GetTicks();
+					double elapsed = current - previous;
+				
 
-				for (int i = 0; i < tileVisible.size(); ++i) {
-					if (isInScreen(tileVisible[i]->getBox())) {
-						tileVisible.erase(tileVisible.begin(), tileVisible.begin() + i);
+					//HANDLE EVENTS
+					handle_events();
+
+					
+					//UPDATE
+					estado->update(1.5);					
+					//lastUpdate = SDL_GetTicks();
+					
+					//handle_events();
+					//cout << lastUpdate << "\n";
+					//delta = (SDL_GetTicks() - lastUpdate) / 2.0f;
+					//delta = 1.5;
+					//cout << delta << "\n";
+					//estado->update(delta);
+					
+					//Render level
+					for (int i = 0; i < TOTAL_TILES; ++i)
+					{
+						tileSet[i]->render(pRenderer, camera);
 					}
+
+					for (int i = 0; i < tileVisible.size(); ++i) {
+						if (isInScreen(tileVisible[i]->getBox())) {
+							tileVisible.erase(tileVisible.begin(), tileVisible.begin() + i);
+						}
+					}
+					//cout << delta << "\n";
+					//RENDER
+					estado->draw();
+					contDash++;
+					//handle_events();
+					//lastUpdate = SDL_GetTicks();
+					previous = current;
 				}
-				//cout << delta << "\n";
-				estado->draw();
-				handle_events();
-				contDash++;
-
 			}
-
 
 			cleanArrays();
 			delete player;
@@ -495,45 +514,52 @@ void Juego::closeSDL()
 
 void Juego::handle_events()
 {
-	if (SDL_PollEvent(&e)) {
-		if (e.type == SDL_QUIT) setSalir();
-		else if (e.type == SDL_MOUSEBUTTONDOWN) {
-				if (e.button.button == SDL_BUTTON_LEFT) {
-					//std::cout << "CLICK";
-					x = e.button.x + (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
-					y = e.button.y + (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
-					//estado->onClick();
-					player->onClick();
-				}
-		}
-		else if (e.type == SDL_KEYUP) {
+	if (SDL_PollEvent(&e) != 0) {
+		switch (e.type) {
+		case SDL_QUIT:
+			setSalir();
+			break;
+		case SDL_MOUSEBUTTONDOWN:
+			if (e.button.button == SDL_BUTTON_LEFT) {
+				//cout << "inside \n";
+				x = e.button.x + (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
+				y = e.button.y + (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
+				player->onClick();
+			}
+		break;
+		case SDL_KEYUP:
 			if (e.key.keysym.sym == SDLK_ESCAPE) {
+				pause->setActive(true);
 				pause->draw();
 				pause->update();
 			}
 			else if (e.key.keysym.sym == SDLK_e) {
 				debugPlayer = true;
 			}
+			else if (e.key.repeat == 0) {
+				updateDirection();
+			}
+			break;
+		case SDL_KEYDOWN:
+			if (e.key.repeat == 0) {
+				updateDirection();
+			}
+			
+			break;
+
 		}
-		updateDirection();
+		
 		//std::cout << contDash << "\n";
-		if (contDash >= 80){ //Timer del Dash
+		if (contDash >= 80) { //Timer del Dash
 			dashAux = true;
 			if (e.type == SDL_KEYDOWN) {
 				if (e.key.keysym.sym == SDLK_SPACE) {
 					contDash = 0;
-					dashing = true;		
+					dashing = true;
 					dashAux = false; //Para la interfaz
 				}
-			}	
-		}
-		/*if (e.type == SDL_KEYUP) {
-			if (e.key.keysym.sym == SDLK_ESCAPE && dynamic_cast<Play*>(topEstado()) != nullptr) {
-				pushState(new Pausa(this));
 			}
-		}*/
-
-
+		}
 	}
 }
 
