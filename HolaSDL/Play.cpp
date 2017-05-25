@@ -49,7 +49,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Aura(juego, 200, 350, 400, 50, "Para moverte, utiliza WASD"));
 	juego->arrayObjetos.push_back(new Aura(juego, 1450, 300, 440, 50, "Click izquierdo para disparar"));
 	juego->arrayObjetos.push_back(new Aura(juego, 450, 1090, 460, 50, "Necesitas una llave para pasar"));
-	//juego->arrayObjetos.push_back(new Aura(juego, 960, 1090, 400, 50, "SPACE para hacer dash"));
+	juego->arrayObjetos.push_back(new Aura(juego, 980, 1090, 400, 50, "SPACE para hacer dash"));
 
 	//MUSICA//
 	musicNames.push_back("..\\bmps\\city.mp3");
@@ -148,6 +148,11 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 380, 3550, "Hojas"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 380, 3750, "Planta3"));
 
+	//Sala 8
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 210, 5730, "Hojas"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 145, 5500, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 405, 5500, "VitrinaLib"));
+
 	//Humo
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 0, 1200, "Humo"));
@@ -157,7 +162,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1100, 3670, "Hojas"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 480, 3400, "VitrinaFeto"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1385, 4800, "BancoIzda"));
-	juego->arrayObjetos.push_back(new  objetoDecorativo(juego, 590, 4210, "mesaEE"));
+	juego->arrayObjetos.push_back(new  objetoDecorativo(juego, 580, 4140, "mesaEE"));
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
 
@@ -167,7 +172,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new Puerta(juego, 150, 1250, 600, 200));
 	//2
 	//Llave en la araña
-	juego->arrayObjetos.push_back(new Puerta(juego, 1050, 3900, 400, 200));
+	juego->arrayObjetos.push_back(new Puerta(juego, 1200, 2350, 150, 150));
 	//3
 	juego->arrayObjetos.push_back(new Key(juego, 590, 4360));
 	juego->arrayObjetos.push_back(new Puerta(juego, 700, 5360, 150, 150));
@@ -212,7 +217,7 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 2020, 6500));
 
 	//ENEMIGOS ARAÑA
-	juego->arrayObjetos.push_back(new Spider(juego, 1420, 2800, true)); //LLAVE
+	juego->arrayObjetos.push_back(new Spider(juego, 320, 2600, true)); //LLAVE
 
 	///		INTERFAZ		///	
 	juego->elemInterfaz.push_back(new BarraVidaVacia(juego, juego->player, 128, 32, 0, 0));

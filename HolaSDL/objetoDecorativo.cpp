@@ -46,8 +46,8 @@ void objetoDecorativo::setObjectFromString(std::string id){
 	else if (id == "mesaEE"){
 		textura = juego->getTextura(Juego::TMesaEE);
 
-		rect.w = 100;
-		rect.h = 100;
+		rect.w = 150;
+		rect.h = 150;
 
 		rectCollision = rect;
 
