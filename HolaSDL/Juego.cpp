@@ -497,14 +497,14 @@ void Juego::handle_events()
 {
 	if (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT) setSalir();
-		else if (e.type == SDL_MOUSEBUTTONUP) {
-			if (e.button.button == SDL_BUTTON_LEFT) {
-				//std::cout << "CLICK";
-				x = e.button.x + (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
-				y = e.button.y + (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
-				//estado->onClick();
-				player->onClick();
-			}
+		else if (e.type == SDL_MOUSEBUTTONDOWN) {
+				if (e.button.button == SDL_BUTTON_LEFT) {
+					//std::cout << "CLICK";
+					x = e.button.x + (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
+					y = e.button.y + (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
+					//estado->onClick();
+					player->onClick();
+				}
 		}
 		else if (e.type == SDL_KEYUP) {
 			if (e.key.keysym.sym == SDLK_ESCAPE) {

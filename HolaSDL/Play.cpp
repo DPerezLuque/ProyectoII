@@ -357,7 +357,7 @@ void Play::update(int delta) {
 				juego->enemyBullets.erase(juego->enemyBullets.begin() + aux3);
 		}
 		for (int aux4 = 0; aux4 < juego->objVisible.size(); ++aux4) {
-			if (!juego->isInScreen(juego->objVisible[aux4]->getRect())) 
+			if (!juego->isInScreen(juego->objVisible[aux4]->getRect()) || juego->objVisible[aux4]->isDead())
 				juego->objVisible.erase(juego->objVisible.begin() + aux4);
 		}
 	}
