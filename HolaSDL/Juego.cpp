@@ -299,8 +299,7 @@ SDL_RenderPresent(pRenderer);
 
 bool Juego::initMedia()
 {
-	bool success = true;
-	
+	bool success = true;	
 
 	//TEXTO
 	nombreFuentes.push_back("..\\Fuentes\\ARIAL.ttf");
@@ -407,6 +406,8 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Bloqueo.png");
 	texturas.push_back("..\\bmps\\Bloqueo2.png");
 	texturas.push_back("..\\bmps\\Key.png");
+	texturas.push_back("..\\bmps\\Caja.png");
+	texturas.push_back("..\\bmps\\Servers.png");
 
 
 	//Load Assets Textures

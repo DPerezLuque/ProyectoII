@@ -153,6 +153,16 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 145, 5500, "VitrinaFeto"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 405, 5500, "VitrinaLib"));
 
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 140, 4900, "Planta3"));
+
+	//Sala 9
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1700, 5340, "Servers"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1850, 5340, "Servers"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1950, 5560, "Hojas"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2180, 5530, "MesaRota2"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2245, 5530, "MesaRota"));
+	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1670, 5700, "Planta2"));
+
 	//Humo
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 0, 1200, "Humo"));
@@ -162,7 +172,8 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1100, 3670, "Hojas"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 480, 3400, "VitrinaFeto"));
 	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1385, 4800, "BancoIzda"));
-	juego->arrayObjetos.push_back(new  objetoDecorativo(juego, 580, 4140, "mesaEE"));
+	juego->arrayObjetos.push_back(new  objetoDecorativo(juego, 570, 4140, "mesaEE"));
+	juego->arrayObjetos.push_back(new  objetoDecorativo(juego, 450, 4450, "Caja"));
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
 
@@ -174,7 +185,7 @@ void Play::init() {
 	//Llave en la araña
 	juego->arrayObjetos.push_back(new Puerta(juego, 1200, 2350, 150, 150));
 	//3
-	juego->arrayObjetos.push_back(new Key(juego, 590, 4360));
+	juego->arrayObjetos.push_back(new Key(juego, 595, 4360));
 	juego->arrayObjetos.push_back(new Puerta(juego, 700, 5360, 150, 150));
 
 	///		*PLAYER		///
@@ -183,7 +194,7 @@ void Play::init() {
 		juego->arrayObjetos.push_back(juego->player);
 	}
 	else{
-		juego->player = new Player(juego, 200, 300);
+		juego->player = new Player(juego, 200, 5300);
 		juego->arrayObjetos.push_back(juego->player);
 	}
 

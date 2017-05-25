@@ -197,6 +197,20 @@ void objetoDecorativo::setObjectFromString(std::string id){
 		rect.h = 128;
 		rectCollision = { rect.x, rect.y, 8, 128 };
 	}
+	else if (id == "Caja"){
+		textura = juego->getTextura(Juego::TCaja);
+
+		rect.w = 128;
+		rect.h = 128;
+		rectCollision = { (rect.x+20), (rect.y+15), 88, 100 };
+	}
+	else if (id == "Servers"){
+		textura = juego->getTextura(Juego::TServers);
+
+		rect.w = 128;
+		rect.h = 120;
+		rectCollision = { rect.x, (rect.y+10), 128, 90 };
+	}
 }
 
 void objetoDecorativo::draw() const {
