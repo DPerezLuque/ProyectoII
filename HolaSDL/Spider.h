@@ -4,6 +4,7 @@ class Spider : public enemigoBase
 {
 public:
 	Spider(Juego* ptr, int px, int py);
+	Spider(Juego* ptr, int px, int py, bool drop);
 	~Spider();
 
 	//Métodos heredados de EnemigoBase

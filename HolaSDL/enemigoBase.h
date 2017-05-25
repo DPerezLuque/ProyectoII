@@ -4,6 +4,7 @@ class enemigoBase : public Objeto
 {
 public:
 	enemigoBase(Juego* ptr, int px, int py);
+
 	virtual ~enemigoBase();
 
 	//	Métodos virtuales de objeto que usan todos los enemigos	//
@@ -17,8 +18,8 @@ public:
 	virtual void animacionBasica()= 0;
 	// 
 
-
 protected:
+	bool dropLlave = false;
 	int vX, vY;				//Velocidades para el método follow
 	int vel;				//velocidad del monimiento
 	int contDis = 0;		//Contador que regula la cadencia

@@ -24,11 +24,15 @@ Spider::Spider(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 	radioEnable = 600;
 }
 
+Spider::Spider(Juego* ptr, int px, int py, bool drop) : Spider(ptr, px, py){
+	dropLlave = drop;
+}
 
 Spider::~Spider()
 {
 
 }
+
 void Spider::update(int delta)
 {
 	if (isActive()) {
@@ -90,9 +94,7 @@ void Spider::gestorVida(){
 
 	if (vida <= 0){
 		cout << "Enemy Dead! \n";
-		dead = true;
-
-		
+		dead = true;		
 
 		int rnd = 1 - 100 * (rand() % 100);
 
@@ -110,5 +112,9 @@ void Spider::gestorVida(){
 		}
 
 			juego->spawnObjetos('e', rect.x, rect.y, "");	//Explosión to guapa 
+
+		if (dropLlave){
+			juego->spawnObjetos('k', rect.x, rect.y, "");
+		}
 	}
 }

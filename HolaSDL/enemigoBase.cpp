@@ -37,10 +37,10 @@ enemigoBase::enemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	srand(0);
 }
 
-
 enemigoBase::~enemigoBase()
 {
 }
+
 
 void enemigoBase::draw() const{
 
@@ -146,6 +146,10 @@ void enemigoBase::gestorVida(){
 
 		if (spawnAura){
 			juego->spawnObjetos('a', rect.x, rect.y, "");
+		}
+
+		if (dropLlave){
+			juego->spawnObjetos('k', rect.x, rect.y, "");
 		}
 	}
 }
