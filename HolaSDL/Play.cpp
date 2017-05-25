@@ -40,7 +40,9 @@ Play::Play(Juego* ptr) : Estado(ptr)
 
 Play::~Play()
 {
-
+	for (int i = 0; i < musicFiles.size(); i++){
+		delete musicFiles[i];
+	}
 }
 
 void Play::init() {
@@ -196,7 +198,7 @@ void Play::init() {
 		juego->arrayObjetos.push_back(juego->player);
 	}
 	else{
-		juego->player = new Player(juego, 200, 5300);
+		juego->player = new Player(juego, 200, 300);
 		juego->arrayObjetos.push_back(juego->player);
 	}
 

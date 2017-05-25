@@ -8,7 +8,8 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	textura = juego->getTextura(Juego::TPlayer);
 	rect.w = 64;
 	rect.h = 64;
-
+	sonido = juego->getEfecto(Juego::disparoPlayer);
+	aliento = juego->getEfecto(Juego::aliento);
 	rectAnim = {0, 0, 64, 64};
 
 	rectCollision.w = 32; 
@@ -202,6 +203,7 @@ bool Player::onClick() {
 		//cout << conta << "\n";
 		if (balas > 0 && conta == 0) {
 			disparo = true; //Controlar cadencia de disparo
+			sonido->play();
 			ObjetoJuego * newBala = new BalaPlayer(juego, posX, posY, vX, vY);
 			juego->arrayObjetos.push_back(newBala);
 			juego->playerBullets.push_back(newBala);
@@ -221,6 +223,10 @@ void Player::gestorVida()
 		vida--;
 		//cout << vida << "\n";
 		inmunidad = true;
+	}
+
+	if (vida == 1){
+		aliento->play();
 	}
 
 	if (vida <= 0){

@@ -13,10 +13,8 @@ public:
 	void update();
 	void draw() const;
 	void changeText();
+	bool onClick();
 private:
-
-	
-
 	Textura *textura1, *textura2;
 	//CallBack_t * cbOnClick;
 };

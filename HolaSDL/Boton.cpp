@@ -6,6 +6,8 @@ Boton::Boton(Juego* ptr, int px, int py, Juego::Texturas_t tex1, Juego::Texturas
 	//cbOnClick = cb;
 	textura1 = juego->getTextura(tex1);
 	textura2 = juego->getTextura(tex2);
+
+	sonido = juego->getEfecto(Juego::button);
 	
 	textura = textura1;
 	//visible = true;
@@ -85,8 +87,12 @@ void Boton::changeText(){
 			textura = textura2;
 		else textura = textura1;
 	}
-	
+}
 
+bool Boton::onClick()
+{
+	sonido->play();
+	return false;
 }
 
 

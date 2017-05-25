@@ -2,6 +2,7 @@
 #include "ObjetoJuego.h"
 #include "SDL.h"
 #include "Play.h"
+#include "Efecto.h"
 
 class Objeto : public ObjetoJuego
 {
@@ -42,7 +43,7 @@ protected:
 	Juego* juego;
 	Textura* textura;
 	SDL_Renderer* pRenderer;
-
+	Efecto* sonido;
 
 	SDL_Rect rectAnim;			//Rectangulo para la animación, si hubiera
 	SDL_Rect rect;				//Cuadrado en el que se va a dibujar el objeto

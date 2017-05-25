@@ -11,6 +11,7 @@
 
 #include "HUD.h"
 #include "Musica.h"
+#include "Efecto.h"
 
 //using namespace std;
 
@@ -115,8 +116,7 @@ public:
 
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	bool touchesWall(SDL_Rect a);
-	bool checkWallCollisions(SDL_Rect a, SDL_Rect b);
-	
+	bool checkWallCollisions(SDL_Rect a, SDL_Rect b);	
 
 	//CLOSERS
 	void cleanArrays();
@@ -146,8 +146,14 @@ public:
 	void creaAlmas(int, int, std::string);//<--------- OBSOLETO
 	void spawnObjetos(char, int, int, std::string);	//Identificador, posicionX, posicionY, String por si es un alma (opcional)
 
-	//MUSIC
-	enum MusicIds { Cancion1, };
+	//EFECTOS
+	enum Sonidos_t { disparoPlayer, disparoSpider, aliento, button, };
+	vector <string> effectNames;//Vector para almacenar direcciones de canciones
+	Efecto* efecto; //Auxiliar para llenar el vector de efectos
+	vector <Efecto*> effectFiles;
+
+	Efecto* getEfecto(Sonidos_t eff){ return effectFiles[eff]; }
+
 	//FONTS
 	enum Fuentes { Arial, };
 	string getTexto(int fun) { return nombreFuentes[fun]; }
@@ -170,10 +176,6 @@ private:
 	std::vector<Texto> arrayFuentes;
 	std::vector<string> nombreFuentes;
 	std::vector<string> VectTextosAlma;
-	///MUSIC	
-	vector <string> musicNames;//Vector para almacenar direcciones de canciones
-	Musica* cancion; //Auxiliar para llenar el vector de musica
-	vector <Musica*> musicFiles;
 
 	Texto textoAux;
 

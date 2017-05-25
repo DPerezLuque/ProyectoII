@@ -105,6 +105,8 @@ bool Estado::onClick()
 
 	if (flag) {
 
+		juego->arrayMenu[aux]->onClick();
+
 		switch (juego->arrayMenu[aux]->getType())
 		{
 		case BOTON_PLAY:

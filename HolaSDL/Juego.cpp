@@ -310,6 +310,11 @@ bool Juego::initMedia()
 		arrayFuentes.push_back(textoAux);
 	}
 
+	effectFiles.push_back(new Efecto("..\\bmps\\Bubble.wav"));
+	effectFiles.push_back(new Efecto("..\\bmps\\Spider.wav"));
+	effectFiles.push_back(new Efecto("..\\bmps\\Aliento.wav"));
+	effectFiles.push_back(new Efecto("..\\bmps\\ButtonSound.wav"));
+
 	//Objetos dinámicos
 	texturas.push_back("..\\bmps\\personaje.png");
 	texturas.push_back("..\\bmps\\enemyGuardia.png");
@@ -482,9 +487,11 @@ void Juego::freeMedia()
 
 	//close(tileSet, pRenderer, pWindow);
 
-	for (int i = 0; i < musicFiles.size(); i++){
-		delete musicFiles[i];
+	for (int i = 0; i < effectFiles.size(); i++){
+		effectFiles[i]->close();
+		delete effectFiles[i];
 	}
+
 
 }
 

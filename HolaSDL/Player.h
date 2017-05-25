@@ -34,8 +34,8 @@ public:
 
 private:
 	int velX, velY;
+	Efecto* aliento;
 
-	
 	int vida;
 	int balas;
 	int maximoBalas;	

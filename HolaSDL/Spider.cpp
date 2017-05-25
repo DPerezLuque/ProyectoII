@@ -8,6 +8,7 @@ Spider::Spider(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 {
 	vida = 4;
 	rectAnim = { 0, 0, 30, 36};
+	sonido = juego->getEfecto(Juego::disparoSpider);
 
 	rect.x = px;
 	rect.y = py;
@@ -51,13 +52,12 @@ void Spider::update(int delta)
 		if (contadorFrames >= 10) { //Paso de imagenes mas lento
 			animacionBasica();
 			contadorFrames = 0;
-		}
-
-	
+		}	
 
 		++contDis;
 		if (contDis >= freDis) {
 			shoot(rectPlayer.x, rectPlayer.y, 'r');
+			sonido->play();
 			contDis = 0;
 		}
 

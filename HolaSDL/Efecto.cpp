@@ -28,6 +28,7 @@ bool Efecto::load(string const& nombArch){
 	pChunk = Mix_LoadWAV(nombArch.c_str()); // .wav, ogg, … 
 	return pChunk != nullptr;
 }
+
 void Efecto::close(){
 	Mix_FreeChunk(pChunk);
 }
