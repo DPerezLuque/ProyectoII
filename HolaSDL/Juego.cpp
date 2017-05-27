@@ -329,7 +329,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\rino.png");
 	texturas.push_back("..\\bmps\\BarraVida.png");
 	texturas.push_back("..\\bmps\\Humo.png");
-	texturas.push_back("..\\bmps\\Botiquin1.png");
+	texturas.push_back("..\\bmps\\Botiquin2.png");
 
 	//Elementos del menu
 	texturas.push_back("..\\bmps\\BotonPlayA.png");
@@ -668,7 +668,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
 		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS 
 			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType() == DECORATIVO || b->getType() == EXPLOSION
-			|| b->getType() == BALA_RALENTIZADORA || b->getType() == KEY || b->getType() == PUERTA)
+			|| b->getType() == BALA_RALENTIZADORA || b->getType() == KEY || b->getType() == PUERTA || b->getType() == BOSS_CARGA)
 
 			colisiona = true;
 
@@ -682,7 +682,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 			colisiona = true;
 		break;
 	case PJ_WEAPON:
-		if (b->getType() == ENEMY || b->getType() == BOSS || b->getType() == ENEMY_WEAPON)
+		if (b->getType() == ENEMY || b->getType() == BOSS || b->getType() == ENEMY_WEAPON || b->getType() == BOSS_CARGA)
 			colisiona = true;
 		break;
 	case ENEMY_WEAPON:
@@ -694,6 +694,10 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 			colisiona = true;
 		break;
 	case BOSS:
+		if (b->getType() == PJ_WEAPON || b->getType() == DECORATIVO || b->getType() == BOBINA)
+			colisiona = true;
+		break;
+	case BOSS_CARGA:
 		if (b->getType() == PJ_WEAPON || b->getType() == DECORATIVO || b->getType() == BOBINA)
 			colisiona = true;
 		break;

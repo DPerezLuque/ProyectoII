@@ -52,8 +52,8 @@ void EnemigoPlanta::update(int delta){
 		//rectCollision.y = (rect.y + rect.h / 3) * delta;
 
 		if (inmunidad) {
-			if (contInm < 50) contInm++;
-			else if (contInm == 50)
+			if (contInm < 20) contInm++;
+			else if (contInm == 20)
 			{
 				inmunidad = false;
 				contInm = 0;

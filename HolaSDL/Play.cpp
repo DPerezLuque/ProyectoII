@@ -195,6 +195,8 @@ void Play::init() {
 	///		*PLAYER		///
 	if (juego->getCheck()){
 		juego->player = new Player(juego, 1100, 5650);
+		//juego->player = new Player(juego, 570, 6700);
+
 		juego->arrayObjetos.push_back(juego->player);
 	}
 	else{
@@ -202,14 +204,14 @@ void Play::init() {
 		juego->arrayObjetos.push_back(juego->player);
 	}
 
-	///       BOSS      ///
-	juego->arrayObjetos.push_back(new BossRino(juego, 570, 6700));
-
 	///      BOBINA     ///
 	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6425));
 	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6425));
 	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6975));
 	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6975));
+
+	///       BOSS      ///
+	juego->arrayObjetos.push_back(new BossRino(juego, 570, 6700));
 
 	///		ENEMIGOS	///
 	//ENEMIGOS GUARDIA
