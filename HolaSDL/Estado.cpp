@@ -120,6 +120,9 @@ bool Estado::onClick()
 			break;
 		case BOTON_RESUME:
 			//Back to game (clicked = true)
+			//SDL_FlushEvents(1, 10000);
+			juego->mVelX = 0;
+			juego->mVelY = 0;
 			break;
 		case BOTON_OPTIONS:
 			options();

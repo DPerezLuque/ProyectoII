@@ -27,6 +27,8 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 50;
 		rect.h = 50;
+
+		rectCollision = rect;
 	}
 
 	else if (id == "papelera2"){
@@ -34,6 +36,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 50;
 		rect.h = 50;
+		rectCollision = rect;
 	}
 
 	else if (id == "papelera3"){
@@ -41,6 +44,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 50;
 		rect.h = 50;
+		rectCollision = rect;
 	}
 
 	else if (id == "mesaEE"){
@@ -169,6 +173,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 128;
 		rect.h = 128;
+		rectCollision = { rect.x, rect.y, 0, 0 };
 	}
 
 	else if (id == "BancoArriba"){
@@ -176,12 +181,14 @@ void objetoDecorativo::setObjectFromString(std::string id){
 
 		rect.w = 128;
 		rect.h = 32;
+		rectCollision = rect;
 	}
 	else if (id == "BancoAbajo"){
 		textura = juego->getTextura(Juego::TBancoDown);
 
 		rect.w = 128;
 		rect.h = 32;
+		rectCollision = rect;
 	}
 	else if (id == "BancoIzda"){
 		textura = juego->getTextura(Juego::TBancoIzdo);

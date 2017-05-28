@@ -192,7 +192,7 @@ void Juego::run()
 
 			while (!exit && estado->getCurrentState() == NIVEL_1) {
 				if (!pause->isActive()) {
-
+					
 					for (auto t : wallsArray) {
 						if (!t->isInside()) {
 							if (isInScreen(t->getBox())) {
@@ -619,6 +619,9 @@ void Juego::updateDirection() {
 
 		case SDLK_r: setRecargar(false); break;		
 		}
+	}
+	else {
+	
 	}
 }
 
