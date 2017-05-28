@@ -5,7 +5,7 @@ class BossRino : public enemigoBase
 public:
 	BossRino(Juego* ptr, int px, int py);
 	~BossRino();
-	void carga(float x, float y);
+	void carga(float x, float y, int delta);
 	void update(int delta);
 	enum Estados { NORMAL, PARADO, CARGA, SHOOT, ESTUNEADO };
 	Estados estado = NORMAL;

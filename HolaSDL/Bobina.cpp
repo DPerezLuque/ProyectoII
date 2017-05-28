@@ -45,7 +45,7 @@ void Bobina::animar(){
 
 void Bobina::onCollision(collision type){
 	std::cout << "choca" << "\n";
-	if (type == BOSS){
+	if (type == BOSS_CARGA){
 		tipo = DECORATIVO;
 		textura = juego->getTextura(Juego::TBobinaRota);
 	}

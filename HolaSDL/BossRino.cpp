@@ -52,6 +52,7 @@ void BossRino::update(int delta) {
 
 		switch (estado) {
 		case NORMAL:
+			tipo = BOSS;
 			contStun = 0;
 			++contDis;
 			follow(targetX, targetY, delta);
@@ -62,13 +63,14 @@ void BossRino::update(int delta) {
 			contParado++;
 			if (contParado >= 80) {
 				srand(time(NULL));
-				atack = rand() % 2;
+				atack = rand() % 3;
 				if (atack == 0)
-					estado = CARGA;
+					estado = SHOOT;
 				else estado = CARGA;
 			}
 			break;
 		case CARGA:
+			tipo = BOSS_CARGA;
 			contParado = 0;
 			if (!saved) {
 				distance = sqrt((targetX - rect.x)*(targetX - rect.x) + (targetY - rect.y)*(targetY - rect.y));
@@ -77,7 +79,7 @@ void BossRino::update(int delta) {
 				saveTargetY = (targetY - rect.y) / distance;
 				saved = true;
 			}
-			carga(saveTargetX, saveTargetY);
+			carga(saveTargetX, saveTargetY, delta);
 
 			rectCollision.x = rect.x;
 			rectCollision.y = rect.y;
@@ -95,6 +97,7 @@ void BossRino::update(int delta) {
 			estado = ESTUNEADO;
 			break;
 		case ESTUNEADO:
+			tipo = BOSS_CARGA;
 			contStun++;
 			if (contStun >= 70) estado = NORMAL;
 		}
@@ -135,10 +138,13 @@ void BossRino::update(int delta) {
 	//////////
 }
 
-void BossRino::carga(float x, float y) {
+void BossRino::carga(float x, float y, int delta) {
 
-	rect.x += 15 * x * juego->delta;
-	rect.y += 15 * y * juego->delta;
+	/*rect.x += 15 * x * juego->delta;
+	rect.y += 15 * y * juego->delta;*/
+
+	rect.x += 15 * x * delta;
+	rect.y += 15 * y * delta;
 }
 
 void BossRino::onCollision(collision type) {
