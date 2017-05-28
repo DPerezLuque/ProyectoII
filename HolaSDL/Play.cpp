@@ -46,7 +46,8 @@ Play::~Play()
 }
 
 void Play::init() {
-	SDL_PollEvent(NULL);
+
+
 	//TUTORIAL
 	juego->arrayObjetos.push_back(new Aura(juego, 200, 350, 400, 50, "Para moverte, utiliza WASD"));
 	juego->arrayObjetos.push_back(new Aura(juego, 1450, 300, 440, 50, "Click izquierdo para disparar"));
