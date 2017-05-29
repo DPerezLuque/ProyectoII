@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Checkpoint.h"
 #include <iostream>
-
+#include "Puerta.h"
 
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
@@ -26,6 +26,8 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	vida = 4;
 	balas = 20;
 	maximoBalas = 20;
+
+	insideRoom = false;
 
 	inmunidad = colisionDecorativo = estaRalentizado = false;
 	contadorInmunidad = contDashing  = contadorRalentizado = 0;
@@ -54,6 +56,12 @@ void Player::update(int delta) {
 		juego->setDebugBool(false);
 	}
 
+	cout << rect.x << ", " << rect.y << "\n";
+	//Comprobamos si ha entrado a la sala del boss
+	if (rect.x <= 1340 && rect.y <= 6900 && rect.y > 6650 && !insideRoom) {
+		juego->arrayObjetos.push_back(new Puerta(juego, 1520, 6720, 200, 200));
+		insideRoom = true;
+	}
 
 	SDL_Rect nextRect;
 	nextRect = rectCollision;

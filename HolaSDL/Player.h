@@ -42,6 +42,7 @@ private:
 
 	bool inmunidad;					//Booleano que se activa cuando toca un enemigo para que no reste la vida de golpe
 	bool colisionDecorativo;		//Bool que se activa para que el jugador no avance si va a chocar con un objeto DECORATIVO
+	bool insideRoom;				//Comprueba si el jugador está dentro de la sala del boss
 
 	int contadorInmunidad;			//Contador del tiempo de inmunidad
 	const int inmunidadMAX = 80;	//Tiempo máximo de inmunidad
