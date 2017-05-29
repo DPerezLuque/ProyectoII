@@ -280,6 +280,18 @@ void Juego::run()
 			break;
 
 		case CINEMATICA_FINAL:
+
+			changeState(new EscenaFinal(this));
+			estado = topEstado();
+
+			camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+			estado->draw();
+			estado->update();
+			cleanArrays();
+
+			break;
+
 		case MENU_FINAL:
 
 			changeState(new MenuFinalJuego(this));
