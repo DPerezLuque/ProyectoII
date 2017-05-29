@@ -21,6 +21,7 @@ public:
 	void menu();
 	void options();
 	void controls();
+	void cinematicaFinal();
 	void salir();
 
 	GAME_STATES getCurrentState() { return type; };

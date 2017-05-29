@@ -155,6 +155,11 @@ void Estado::play()
 	juego->estado->changeCurrentState(NIVEL_1);
 }
 
+void Estado::cinematicaFinal()
+{
+	juego->estado->changeCurrentState(CINEMATICA_FINAL);
+}
+
 void Estado::menu()
 {
 	juego->estado->changeCurrentState(MENU_PRINCIPAL);

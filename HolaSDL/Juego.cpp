@@ -449,7 +449,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Servers.png");
 	
 	//FondoFinal
-	texturas.push_back("..\\bmps\\FondoFinal.png");
+	texturas.push_back("..\\bmps\\EscenaFinal.png");
 	texturas.push_back("..\\bmps\\CientificoIzq.png");
 
 
