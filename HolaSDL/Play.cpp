@@ -200,21 +200,22 @@ void Play::init() {
 		juego->arrayObjetos.push_back(juego->player);
 	}
 	else{
-		//juego->player = new Player(juego, 200, 300);
-		juego->player = new Player(juego, 700, 6700);
+		juego->player = new Player(juego, 200, 300);
+		//juego->player = new Player(juego, 700, 6700);
 		juego->arrayObjetos.push_back(juego->player);
 	}
 
-	///      BOBINA     ///
+					///      BOBINA     ///
 	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6425));
 	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6425));
 	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6975));
 	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6975));
 
-	///       BOSS      ///
+					///       BOSS      ///
 	juego->arrayObjetos.push_back(new BossRino(juego, 570, 6700));
 
-	///		ENEMIGOS	///
+					///		ENEMIGOS	///
+	
 	//ENEMIGOS GUARDIA
 	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1260, 1750));
 	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 430, 2300));
@@ -237,7 +238,7 @@ void Play::init() {
 	//ENEMIGOS ARAÑA
 	juego->arrayObjetos.push_back(new Spider(juego, 320, 2600, true)); //LLAVE
 
-	///		INTERFAZ		///	
+					///		INTERFAZ	///	
 	juego->elemInterfaz.push_back(new BarraVidaVacia(juego, juego->player, 128, 32, 0, 0));
 	juego->elemInterfaz.push_back(new BarraVida(juego, juego->player, 32, 32, 0, 0));
 	juego->elemInterfaz.push_back(new Cargador(juego, juego->player, 75, 75, juego->SCREEN_WIDTH - 75, juego->SCREEN_HEIGHT - 85));

@@ -159,12 +159,14 @@ void Player::update(int delta) {
 
 	//Recargar manual
 		if (juego->getRecargar()){			
-			contadorRecarga += delta;
-			balas = 0;
-			if (contadorRecarga >= 70){
-				balas = maximoBalas;
-				contadorRecarga = 0;	
-				juego->setRecargar(false);
+			if (balas < 20){
+				contadorRecarga += delta;
+				balas = 0;
+				if (contadorRecarga >= 70){
+					balas = maximoBalas;
+					contadorRecarga = 0;
+					juego->setRecargar(false);
+				}
 			}
 		}
 		//rectAnim.x = rect.x;

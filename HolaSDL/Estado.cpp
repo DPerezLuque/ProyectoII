@@ -138,6 +138,23 @@ bool Estado::onClick()
 		case BOTON_FILTER:
 			juego->arrayMenu[aux]->changeText();
 			juego->setFiltro();
+		case BOTON_RESIZE:
+			
+			//panoramica = !panoramica;
+			juego->changePanoramica();
+			
+			if (juego->panoramica){
+				juego->SCREEN_WIDTH = 1366;
+				juego->SCREEN_HEIGHT = 720;
+			}
+			else{
+				juego->SCREEN_WIDTH = 1000;
+				juego->SCREEN_HEIGHT = 750;
+			}
+
+			SDL_SetWindowSize(juego->pWindow, juego->SCREEN_WIDTH, juego->SCREEN_HEIGHT);
+			resetCamera();
+
 			return false;
 			break;
 		default:

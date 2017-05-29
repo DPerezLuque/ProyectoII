@@ -600,16 +600,16 @@ void Juego::updateDirection() {
 		//Adjust the velocity
 		switch (e.key.keysym.sym)
 		{
-		case SDLK_UP: mVelY -= VPLAYER; break;
+		//case SDLK_UP: mVelY -= VPLAYER; break;
 		case SDLK_w: mVelY -= VPLAYER; break;
 
-		case SDLK_DOWN: mVelY += VPLAYER; break;
+		//case SDLK_DOWN: mVelY += VPLAYER; break;
 		case SDLK_s: mVelY += VPLAYER; break;
 
-		case SDLK_LEFT: mVelX -= VPLAYER; break;
+		//case SDLK_LEFT: mVelX -= VPLAYER; break;
 		case SDLK_a: mVelX -= VPLAYER; break;
 
-		case SDLK_RIGHT: mVelX += VPLAYER; break;
+		//case SDLK_RIGHT: mVelX += VPLAYER; break;
 		case SDLK_d: mVelX += VPLAYER; break;
 
 		case SDLK_r: setRecargar(true); break;
@@ -622,16 +622,16 @@ void Juego::updateDirection() {
 		//Adjust the velocity
 		switch (e.key.keysym.sym)
 		{
-		case SDLK_UP: mVelY += VPLAYER; break;
+		//case SDLK_UP: mVelY += VPLAYER; break;
 		case SDLK_w: mVelY += VPLAYER; break;
 
-		case SDLK_DOWN: mVelY -= VPLAYER; break;
+		//case SDLK_DOWN: mVelY -= VPLAYER; break;
 		case SDLK_s: mVelY -= VPLAYER; break;
 
-		case SDLK_LEFT: mVelX += VPLAYER; break;
+		//case SDLK_LEFT: mVelX += VPLAYER; break;
 		case SDLK_a: mVelX += VPLAYER; break;
 
-		case SDLK_RIGHT: mVelX -= VPLAYER; break;
+		//case SDLK_RIGHT: mVelX -= VPLAYER; break;
 		case SDLK_d: mVelX -= VPLAYER; break;
 
 		case SDLK_r: setRecargar(false); break;		
@@ -980,6 +980,7 @@ bool Juego::initSDL()
 		{
 			printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
 			success = false;
+			
 		}
 		else
 		{

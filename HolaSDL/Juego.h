@@ -24,9 +24,11 @@ public:
 	~Juego();
 
 	//SCREEN (WINDOW) DIMENSIONS	//680x480
-	int const SCREEN_WIDTH = 1000;
-	int const SCREEN_HEIGHT = 750;
+	int SCREEN_WIDTH = 1000;
+	int SCREEN_HEIGHT = 750;
 
+	//int const SCREEN_WIDTH = 1000;
+	//int const SCREEN_HEIGHT = 750;
 	//TEXTURE TYPES
 	enum Texturas_t {
 		TPlayer, TEnemy, TBulletPlayer, TBulletEnemy, TCheck, TEnemyPlanta, TRino, TBarraVida, THumo,
@@ -61,6 +63,10 @@ public:
 	bool filtro = true; //Editado desde opciones
 	bool getFiltro(){ return filtro; }
 	void setFiltro(){ filtro = !filtro; }
+
+	bool panoramica = false; //Editado desde opciones
+	bool getPanoramica(){ return panoramica; }
+	void changePanoramica(){ panoramica = !panoramica; }
 
 	bool checkpoint = false;
 	bool getCheck(){ return checkpoint; }
@@ -103,6 +109,7 @@ public:
 
 	//CAMERA LEVEL
 	SDL_Rect camera;
+	void resetCamera() { camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT }; };
 
 	//INITS
 	bool initSDL();
@@ -112,8 +119,6 @@ public:
 	void run();
 	void handle_events();
 	void updateDirection();
-	void resetCamera() { camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT }; };
-
 	bool checkCollision(ObjetoJuego * a, ObjetoJuego * b);
 	bool touchesWall(SDL_Rect a);
 	bool checkWallCollisions(SDL_Rect a, SDL_Rect b);	
