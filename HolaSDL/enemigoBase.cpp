@@ -31,7 +31,7 @@ enemigoBase::enemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	rectVida.w = 128;
 	rectVida.h = 10;
 
-
+	doorCollision = false;
 	tipo = ENEMY;
 
 	inmunidad = false;
@@ -67,9 +67,10 @@ void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que 
 		vX = 0;
 		vY = 0;
 	}
-	if (juego->touchesWall(getRect())) {
+	if (juego->touchesWall(getRect()) || doorCollision) {
 		rect.x -= (vX / 2) * delta;
 		rect.y -= (vY / 2) * delta;
+		doorCollision = false;
 	}
 	else {
 		rect.x += (vX / 2) * delta / 1.5f;
@@ -85,6 +86,9 @@ void enemigoBase::onCollision(collision type){
 	if (type == PJ_WEAPON){
 		gestorVida();
 		sonido->play();
+	}
+	if (type == PUERTA){
+		doorCollision = true;
 	}
 }
 

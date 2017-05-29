@@ -694,7 +694,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 
 		break;
 	case ENEMY:
-		if (b->getType() == PJ_WEAPON)
+		if (b->getType() == PJ_WEAPON || b->getType() == PUERTA)
 			colisiona = true;
 		break;
 	case CHECK:
