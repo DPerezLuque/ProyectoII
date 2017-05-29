@@ -44,6 +44,7 @@
     <ClCompile Include="Textura.cpp" />
     <ClCompile Include="Puerta.cpp" />
     <ClCompile Include="Key.cpp" />
+    <ClCompile Include="MenuFinalJuego.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Spider.h" />
@@ -92,6 +93,7 @@
     <ClInclude Include="Textura.h" />
     <ClInclude Include="Puerta.h" />
     <ClInclude Include="Key.h" />
+    <ClInclude Include="MenuFinalJuego.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

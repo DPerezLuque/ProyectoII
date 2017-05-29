@@ -19,6 +19,7 @@
 #include "MenuPrincipal.h"
 #include "MenuOpciones.h"
 #include "GameOver.h"
+#include "MenuFinalJuego.h"
 #include <exception>
 #include "Error.h"
 #include "MapEditor.h"
@@ -245,6 +246,8 @@ void Juego::run()
 
 			cleanArrays();
 			delete player;
+			mVelX = 0;
+			mVelY = 0;
 			break;
 			
 		case GAME_OVER:
@@ -274,7 +277,21 @@ void Juego::run()
 
 			cleanArrays();
 			break;
+
+		case MENU_FINAL:
+
+			changeState(new MenuFinalJuego(this));
+			estado = topEstado();
+
+			camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+			estado->draw();
+			estado->update();
+			cleanArrays();
+
+			break;
 		}
+
 
 	}
 	SDL_Delay(500); //cin.get();

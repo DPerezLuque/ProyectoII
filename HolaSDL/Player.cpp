@@ -284,8 +284,6 @@ void Player::onCollision(collision type){
 		colisionDecorativo = true;
 		}
 		break;
-	case EXPLOSION:
-
 	case BOSS:
 		gestorVida();
 		break;

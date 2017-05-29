@@ -76,6 +76,9 @@ void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que 
 		rect.y += (vY / 2) * delta / 1.5f;
 	}
 
+	rectCollision.x = rect.x;//(rect.x + rect.w / 3) * delta;
+	rectCollision.y = rect.y;//(rect.y + rect.h / 3) * delta;
+
 }
 
 void enemigoBase::onCollision(collision type){

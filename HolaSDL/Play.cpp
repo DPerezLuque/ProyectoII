@@ -200,7 +200,8 @@ void Play::init() {
 		juego->arrayObjetos.push_back(juego->player);
 	}
 	else{
-		juego->player = new Player(juego, 200, 300);
+		//juego->player = new Player(juego, 200, 300);
+		juego->player = new Player(juego, 700, 6700);
 		juego->arrayObjetos.push_back(juego->player);
 	}
 
