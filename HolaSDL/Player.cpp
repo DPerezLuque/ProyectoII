@@ -49,105 +49,107 @@ void Player::draw() const {
 
 void Player::update(int delta) {
 	
-	if (juego->debugPlayer){
-		cout << rect.x << ", " << rect.y<< "\n";
-		juego->setDebugBool(false);
-	}
+	if (!controlCinematica){
 
-
-	SDL_Rect nextRect;
-	nextRect = rectCollision;
-		
-
-	//Preguntamos si está ralentizado para saber si revertirlo o seguir
-	if (estaRalentizado){
-
-		if (contadorRalentizado >= 50){
-			estaRalentizado = false;
-			contadorRalentizado = 0;
+		if (juego->debugPlayer){
+			cout << rect.x << ", " << rect.y << "\n";
+			juego->setDebugBool(false);
 		}
-		else contadorRalentizado++;
-	}
 
 
-	if (juego->getDash()){
+		SDL_Rect nextRect;
+		nextRect = rectCollision;
+
+
+		//Preguntamos si está ralentizado para saber si revertirlo o seguir
+		if (estaRalentizado){
+
+			if (contadorRalentizado >= 50){
+				estaRalentizado = false;
+				contadorRalentizado = 0;
+			}
+			else contadorRalentizado++;
+		}
+
+
+		if (juego->getDash()){
 			rect.x += juego->getVelX() * 4 * delta / 1.5f;
 			rect.y += juego->getVelY() * 4 * delta / 1.5f;
 
-		//nextRect.x += juego->getVelX() * 4 * delta / 1.5f;
-		//nextRect.y += juego->getVelY() * 4 * delta / 1.5f;
+			//nextRect.x += juego->getVelX() * 4 * delta / 1.5f;
+			//nextRect.y += juego->getVelY() * 4 * delta / 1.5f;
 
 			++contDashing;
 			if (contDashing >= 10){
 				contDashing = 0;
-				juego->setDash(false);				
-			}				
-	}
-	else{
-
-		//rect.x += juego->getVelX() * delta / 1.5f;
-		//rect.y += juego->getVelY() * delta / 1.5f;		
-
-		nextRect.x += juego->getVelX() * delta / 1.5f;
-		nextRect.y += juego->getVelY() * delta / 1.5f;
-		if (!juego->touchesWall(nextRect) && !estaRalentizado) {
-			rect.x += juego->getVelX() * delta / 1.5f;
-			rect.y += juego->getVelY() * delta / 1.5f;
+				juego->setDash(false);
+			}
 		}
+		else{
 
-		if (estaRalentizado) {
-			rect.x += ((juego->getVelX() / 4) * delta / 1.5f);
-			rect.y += ((juego->getVelY() / 4) * delta / 1.5f);
+			//rect.x += juego->getVelX() * delta / 1.5f;
+			//rect.y += juego->getVelY() * delta / 1.5f;		
+
+			nextRect.x += juego->getVelX() * delta / 1.5f;
+			nextRect.y += juego->getVelY() * delta / 1.5f;
+			if (!juego->touchesWall(nextRect) && !estaRalentizado) {
+				rect.x += juego->getVelX() * delta / 1.5f;
+				rect.y += juego->getVelY() * delta / 1.5f;
+			}
+
+			if (estaRalentizado) {
+				rect.x += ((juego->getVelX() / 4) * delta / 1.5f);
+				rect.y += ((juego->getVelY() / 4) * delta / 1.5f);
+			}
+			/*else{
+				rect.x += ((juego->getVelX()/4) * delta / 1.5f);
+				rect.y += ((juego->getVelY()/4) * delta / 1.5f);
+
+				}*/
 		}
-		/*else{
-			rect.x += ((juego->getVelX()/4) * delta / 1.5f);
-			rect.y += ((juego->getVelY()/4) * delta / 1.5f);
-
-		}*/
-	}
 		//IDEA: Hacer un "rectangulo" delante del jugador y comprobar si ese rectangulo, y no el del jugador es el que se está colisionando
 		//Porque si la condicion se mueve arriba entonces si está en contacto con la pared el jugador no se mueve.
 		//Tendría el mismo principio que un raycast en Unity, para lo cual necesitariamos un enum de direcciones y en funcion de la 
 		//direccion del jugador se gira el "ray" para que siempre esté en frente suya. El enum estaba hecho en el dash primigenio, no sé si en el dash dos está.
 
-	rectCollision.x = (rect.x + rect.w / 3) * delta;
-	rectCollision.y = (rect.y + rect.h / 3) * delta;
+		rectCollision.x = (rect.x + rect.w / 3) * delta;
+		rectCollision.y = (rect.y + rect.h / 3) * delta;
 
-	if (juego->touchesWall(getRect()) || colisionDecorativo) {
-		//printf("Wall touched!\n");
-		if (juego->getDash()) {
-			rect.x -= juego->getVelX() * 4 * delta / 1.5f;
-			rect.y -= juego->getVelY() * 4 * delta / 1.5f;
+		if (juego->touchesWall(getRect()) || colisionDecorativo) {
+			//printf("Wall touched!\n");
+			if (juego->getDash()) {
+				rect.x -= juego->getVelX() * 4 * delta / 1.5f;
+				rect.y -= juego->getVelY() * 4 * delta / 1.5f;
+			}
+			else {
+				rect.x -= juego->getVelX() * delta;
+				rect.y -= juego->getVelY() * delta;
+			}
+			colisionDecorativo = false;						//Devolvemos el valor a false para que el jugador pueda salir de la colision
 		}
-		else {
-			rect.x -= juego->getVelX() * delta;
-			rect.y -= juego->getVelY() * delta;
+
+		setCamera(juego->camera);
+
+		if (inmunidad) {
+			if (contadorInmunidad < inmunidadMAX) contadorInmunidad++;
+			else
+			{
+				inmunidad = false;
+				contadorInmunidad = 0;
+			}
 		}
-		colisionDecorativo = false;						//Devolvemos el valor a false para que el jugador pueda salir de la colision
-	}
 
-	setCamera(juego->camera);
+		//std::cout << "RECT X JUGADOR: " << rect.x << "\n";
+		//std::cout << "CAMARA X: " << juego->camera.x << "\n";
 
-	if (inmunidad) {
-		if (contadorInmunidad < inmunidadMAX) contadorInmunidad++;
-		else 
-		{
-			inmunidad = false;
-			contadorInmunidad = 0;
-		}
-	}
-
-	//std::cout << "RECT X JUGADOR: " << rect.x << "\n";
-	//std::cout << "CAMARA X: " << juego->camera.x << "\n";
-
-	//Para la animación:
+		//Para la animación:
 		contadorFrames += delta;
 		if (contadorFrames >= 6){
 			proceso();
-			contadorFrames = 0;				
+			contadorFrames = 0;
 		}
 
-	//Recargar balas
+		//Recargar balas
 		if (balas <= 0){
 			contadorRecarga += delta;
 			balas = 0;
@@ -157,20 +159,20 @@ void Player::update(int delta) {
 			}
 		}
 
-	//Recargar manual
-		if (juego->getRecargar()){			
+		//Recargar manual
+		if (juego->getRecargar()){
 			contadorRecarga += delta;
 			balas = 0;
 			if (contadorRecarga >= 70){
 				balas = maximoBalas;
-				contadorRecarga = 0;	
+				contadorRecarga = 0;
 				juego->setRecargar(false);
 			}
 		}
 		//rectAnim.x = rect.x;
 		//rectAnim.y = rect.y;
 
-	//Controlar cadencia de disparo
+		//Controlar cadencia de disparo
 		if (disparo){
 			conta += delta;
 			if (conta >= 10){
@@ -178,6 +180,12 @@ void Player::update(int delta) {
 				disparo = false;
 			}
 		}
+	}
+	
+	//Si entra aqui, es porque estamos en la cinemática
+	else {
+		rect.x++; //Hay que ajustar las medidas pero más o menos eso: Avanza hacia la derecha
+	}
 } 
 
 bool Player::onClick() {

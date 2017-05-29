@@ -32,6 +32,11 @@ public:
 	int posIniX, posIniY;
 	void gestorVida();
 
+	//Control cinematica
+	void toogleControlCinematica(){
+		controlCinematica = !controlCinematica;
+	}
+
 private:
 	int velX, velY;
 	Efecto* aliento;
@@ -63,5 +68,10 @@ private:
 	//Controlar cadencia de disparo
 	int conta = 0;
 	bool disparo = false;
+
+	/// Control del jugador en la cinemáfica ///
+	bool controlCinematica = false;
+
+
 };
 

@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EscenaFinal.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="MenuFinalJuego.cpp" />
     <ClCompile Include="Puerta.cpp" />
@@ -57,6 +58,7 @@
     <ClCompile Include="Textura.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EscenaFinal.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="MenuFinalJuego.h" />
     <ClInclude Include="Puerta.h" />
@@ -119,7 +121,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

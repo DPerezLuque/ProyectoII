@@ -31,6 +31,7 @@
 #include "Sangre.h"
 #include "littleSpider.h"
 #include "Key.h"
+#include "EscenaFinal.h"
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -278,6 +279,7 @@ void Juego::run()
 			cleanArrays();
 			break;
 
+		case CINEMATICA_FINAL:
 		case MENU_FINAL:
 
 			changeState(new MenuFinalJuego(this));
@@ -433,6 +435,10 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Key.png");
 	texturas.push_back("..\\bmps\\Caja.png");
 	texturas.push_back("..\\bmps\\Servers.png");
+	
+	//FondoFinal
+	texturas.push_back("..\\bmps\\FondoFinal.png");
+	texturas.push_back("..\\bmps\\CientificoIzq.png");
 
 
 	//Load Assets Textures
