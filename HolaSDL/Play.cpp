@@ -206,10 +206,10 @@ void Play::init() {
 	}
 
 					///      BOBINA     ///
-	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6425));
-	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6425));
-	juego->arrayObjetos.push_back(new Bobina(juego, 570, 6975));
-	juego->arrayObjetos.push_back(new Bobina(juego, 1260, 6975));
+	juego->arrayObjetos.push_back(new Bobina(juego, 500, 6425));
+	juego->arrayObjetos.push_back(new Bobina(juego, 1320, 6425));
+	juego->arrayObjetos.push_back(new Bobina(juego, 500, 6975));
+	juego->arrayObjetos.push_back(new Bobina(juego, 1320, 6975));
 
 					///       BOSS      ///
 	juego->arrayObjetos.push_back(new BossRino(juego, 570, 6700));
