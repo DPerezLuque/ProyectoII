@@ -301,6 +301,7 @@ void Player::onCollision(collision type){
 			->>> PONER EL DASH A TRUE DE FORMA AUTOMATICA Y TODO LO QUE ELLO IMPLIQUE
 		break;
 		*/
+	case BOBINA:
 	case DECORATIVO:
 		colisionDecorativo = true;
 		break;
