@@ -9,19 +9,20 @@ class Objeto : public ObjetoJuego
 public:
 	Objeto(Juego* ptr, int px, int py);
 	virtual ~Objeto();
-
+	//Estados
 	void update() {};
+	void changeText() {};
+
 	void update(int delta) {};
 	bool dentro(int x, int y) const; 
+	void getPos(int& x, int& y);
 	void draw() const;
 	bool onClick();
 	SDL_Rect getRect();
+
 	int getVida(){ return 0; }
-	void changeText() {};
-
-	void getPos(int& x, int& y);
-
 	void gestorVida() {};
+
 	void onCollision() {};
 	void onCollision(collision type) {};
 

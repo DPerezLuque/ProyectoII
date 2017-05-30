@@ -47,7 +47,6 @@ Play::~Play()
 
 void Play::init() {
 
-
 	//TUTORIAL
 	juego->arrayObjetos.push_back(new Aura(juego, 200, 350, 400, 50, "Para moverte, utiliza WASD"));
 	juego->arrayObjetos.push_back(new Aura(juego, 1450, 300, 440, 50, "Click izquierdo para disparar"));
@@ -245,8 +244,7 @@ void Play::init() {
 
 }
 
-void Play::update(double delta) {
-	
+void Play::update(double delta) {	
 	
 	for (auto i : juego->arrayObjetos) {
 		if (!i->isInside())
