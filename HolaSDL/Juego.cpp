@@ -284,15 +284,16 @@ void Juego::run()
 
 			changeState(new EscenaFinal(this));
 			estado = topEstado();
-			//cout << estado->getCurrentState();
 
-			camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+			while (!exit && estado->getCurrentState() == CINEMATICA_FINAL) {
 
-			
-			estado->update();
-			estado->draw();
-			cleanArrays();
+				camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
+
+				estado->update();
+				estado->draw();
+				cleanArrays();
+			}
 			break;
 
 		case MENU_FINAL:
@@ -387,6 +388,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Fondo.png");
 	texturas.push_back("..\\bmps\\Controles.png");
 
+
 	//Interfaz
 	texturas.push_back("..\\bmps\\VidaLlena.png");
 	texturas.push_back("..\\bmps\\VidaVacia.png");
@@ -454,6 +456,7 @@ bool Juego::initMedia()
 	//FondoFinal
 	texturas.push_back("..\\bmps\\EscenaFinal.png");
 	texturas.push_back("..\\bmps\\CientificoIzq.png");
+	texturas.push_back("..\\bmps\\BotonFinal.png");
 
 
 	//Load Assets Textures
@@ -575,6 +578,7 @@ void Juego::handle_events()
 				x = e.button.x + (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
 				y = e.button.y + (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
 				player->onClick();
+
 			}
 		break;
 		case SDL_KEYUP:

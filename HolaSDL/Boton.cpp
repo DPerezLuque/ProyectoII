@@ -91,7 +91,7 @@ void Boton::changeText(){
 
 bool Boton::onClick()
 {
-	sonido->play();
+//	sonido->play();
 	return false;
 }
 

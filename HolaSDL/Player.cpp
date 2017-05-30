@@ -184,7 +184,14 @@ void Player::update(int delta) {
 	
 	//Si entra aqui, es porque estamos en la cinemática
 	else {
-		rect.x++; //Hay que ajustar las medidas pero más o menos eso: Avanza hacia la derecha
+		rect.x+=3; //Hay que ajustar las medidas pero más o menos eso: Avanza hacia la derecha
+		rectCollision = rect;
+		//Para la animación:
+		contadorFrames += delta;
+		if (contadorFrames >= 6){
+			animar(derecha);
+			contadorFrames = 0;
+		}
 	}
 } 
 

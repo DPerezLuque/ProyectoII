@@ -1,14 +1,19 @@
 #include "EscenaFinal.h"
 #include "Player.h"
+#include "Boton.h"
 
 EscenaFinal::EscenaFinal(Juego* ptr) : Estado(ptr)
 {
+	
 	type = CINEMATICA_FINAL;
 	fondo = juego->getTextura(Juego::TFondoFinal);
 	cientifico = juego->getTextura(Juego::TCientifico);
-	jugador = new Player(ptr, 250, 570); //Yo que sé, donde esté
-	estCinematica = Textos;
+	jugador = new Player(ptr, 100, 600); //Yo que sé, donde esté
+	estCinematica = AvanceAlDialogo;
+	jugador->changeControlCinematica(true);
 	//mensaje = new Dialogo(juego, 250, 330, 500, 150, "");
+
+	//juego->arrayMenu.push_back(new Boton(juego, 0, 0, ptr->getWidth(), ptr->getHeight(), Juego::TBotonFinal, Juego::TBotonFinal, BOTON_FINAL));
 	
 	dimensionesCientifico.h = 157;
 	dimensionesCientifico.w = 51;
@@ -18,6 +23,7 @@ EscenaFinal::EscenaFinal(Juego* ptr) : Estado(ptr)
 	dimensionesFondo.w = ptr->getWidth();
 
 	contMensajes = 0;
+	contTiempo = 0;
 	creaMensaje = true;
 	//pintaMensaje = false;
 
@@ -38,6 +44,17 @@ void EscenaFinal::update(){
 	case AvanceAlDialogo:
 		//Avanzamos al jugador DESDE LA PUERTA hasta una distancia X que sea enfrente del
 		//cientifico, y una vez esté ahí pasaremos al estado DIALOGO
+		if (jugador->getRect().x <= 250){
+			jugador->update(1);
+			cout << jugador->getRect().x << '\n';
+		}
+		else{
+			estCinematica = Textos;
+			jugador->changeControlCinematica(false);
+			
+		}
+
+
 		break;
 	case Textos:
 
@@ -53,40 +70,69 @@ void EscenaFinal::update(){
 
 			switch (contMensajes)
 			{
-				case 0:
-					mensaje = new Dialogo(juego, 250, 330, 500, 150, "Hola Pedazo de puta");
-					pintaMensaje = true;
-					creaMensaje = false;
-					break;
+			case 0:
+				mensaje = new Dialogo(juego, 250, 330, 500, 150, "Hola Pedazo de puta");
+				pintaMensaje = true;
+				creaMensaje = false;
+				break;
 
-				case 1:
-					mensaje = new Dialogo(juego, 250, 330, 500, 150, "Te odio.");
-					pintaMensaje = true;
-					creaMensaje = false;
-					break;
+			case 1:
+				mensaje = new Dialogo(juego, 250, 330, 500, 150, "Te odio.");
+				pintaMensaje = true;
+				creaMensaje = false;
+				break;
 
-				case 2:
-					mensaje = new Dialogo(juego, 250, 330, 500, 150, "Y lo sabes.");
-					pintaMensaje = true;
-					creaMensaje = false;
-					break;
+			case 2:
+				mensaje = new Dialogo(juego, 250, 330, 500, 150, "Y lo sabes.");
+				pintaMensaje = true;
+				creaMensaje = false;
+				break;
 
-				case 3:
-					mensaje = new Dialogo(juego, 250, 330, 500, 150, "Jajajajajajajaja xD");
-					pintaMensaje = true;
-					creaMensaje = false;
-					break;
+			case 3:
+				mensaje = new Dialogo(juego, 250, 330, 500, 150, "Jajajajajajajaja xD");
+				pintaMensaje = true;
+				creaMensaje = false;
+				break;
 			}
 		}
 
 
+		if (contTiempo >= 100){
 
+			contTiempo = 0;
+
+			if (contMensajes != 4){
+				creaMensaje = true;
+				contMensajes++;
+			}
+
+			else{
+				pintaMensaje = false;
+				jugador->changeControlCinematica(true);
+				estCinematica = Salida;
+			}
+
+
+		}
+
+		else contTiempo++;
 
 		break;
 
 	case Salida:
 		//El jugador avanza hacia la salida, pasando al cientifico (el cual no se mueve, si te ves con ganas de hacer que gire para 
 		//verle ir pues bueno) y una vez desaparece de la pantalla se pasa al MENU DE FINAL DE JUEGO.
+
+		if (jugador->getRect().x <= juego->getWidth()-10){
+			jugador->update(1);
+			cout << jugador->getRect().x << '\n';
+		}
+		else{
+			//fundidoEnNegroToGuapo();
+			juego->estado->changeCurrentState(MENU_FINAL);
+	}
+
+
 		break;
 	}
 }
@@ -105,3 +151,4 @@ void EscenaFinal::draw(){
 	}
 	SDL_RenderPresent(pRenderer);
 }
+

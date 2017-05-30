@@ -33,8 +33,8 @@ public:
 	void gestorVida();
 
 	//Control cinematica
-	void toogleControlCinematica(){
-		controlCinematica = !controlCinematica;
+	void changeControlCinematica(bool state){
+		controlCinematica = state;
 	}
 
 private:

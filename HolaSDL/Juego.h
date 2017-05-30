@@ -39,7 +39,7 @@ public:
 		TEnemigoBomba, TBalaBomba, TExplosionBomba, TSangre1, TSangre2, TSangre3, 
 		TCafe, THojas, TBobinaRota, TLogo, TFiltro,TSpider,TBalaRalentizadora, 
 		TBancoDcho, TBancoIzdo, TBancoUp, TBancoDown, TBloqueo, TBloqueo2, TKey, TCaja, TServers,
-		TFondoFinal, TCientifico
+		TFondoFinal, TCientifico, TBotonFinal,
 
 	};
 

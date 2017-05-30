@@ -29,10 +29,11 @@ private:
 	Dialogo* mensaje;
 
 	int contMensajes; //Cuenta en qué mensaje está
+	int contTiempo;
 	bool creaMensaje;
 	bool pintaMensaje;
 
-
+	
 };
 
 
