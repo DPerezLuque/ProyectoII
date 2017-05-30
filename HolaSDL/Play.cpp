@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "BalaPlayer.h"
 #include "BalaEnemigo.h"
-#include "enemigoGuardia.h"
+#include "EnemigoGuardia.h"
 
 #include "BossRino.h"
 #include "Spider.h"
@@ -71,113 +71,113 @@ void Play::init() {
 
 	///		PUSH DE OBJETOS DECORATIVOS		///
 	//Los pusheamos antes para que el jugador pase por delante de los objetos
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 450, 110, "MesaRota2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 520, 110, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 590, 110, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 660, 110, "MesaCorazon"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 800, 50, "VitrinaLib"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 900, 50, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 450, 110, "MesaRota2"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 520, 110, "MesaRota"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 590, 110, "MesaPeque"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 660, 110, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 800, 50, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 900, 50, "VitrinaFeto"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 350, 420, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 420, 420, "MesaTentaculo"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 490, 420, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 560, 420, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 900, 350, "Planta3"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1520, 570, "Cafetera"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 350, 420, "MesaRota"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 420, 420, "MesaTentaculo"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 490, 420, "MesaPeque"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 560, 420, "MesaPeque"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 900, 350, "Planta3"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1520, 570, "Cafetera"));
 
 	//Sala 1
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2100, 370, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1800, 130, "VitrinaLib"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1880, 130, "VitrinaLib"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1960, 130, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2040, 130, "VitrinaLib"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2300, 180, "MesaTentaculo"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2365, 180, "MesaCorazon"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 320, "MesaDoble"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2035, 490, "MesaDoble"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1800, 500, "Planta2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2080, 380, "papelera3"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2100, 370, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1800, 130, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1880, 130, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1960, 130, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2040, 130, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2300, 180, "MesaTentaculo"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2365, 180, "MesaCorazon"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2035, 320, "MesaDoble"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2035, 490, "MesaDoble"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1800, 500, "Planta2"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2080, 380, "papelera3"));
 
 	//Sala 2
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1900, 1060, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2130, 1270, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2200, 900, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1850, 850, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1930, 850, "VitrinaLib"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2010, 850, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2190, 980, "papelera3"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2000, 1060, "MesaTentaculo"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2065, 1060, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2130, 1060, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2250, 1150, "Planta1"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2290, 1210, "Planta3"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1800, 1180, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1880, 1180, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1900, 1060, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2130, 1270, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2200, 900, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1850, 850, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1930, 850, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2010, 850, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2190, 980, "papelera3"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2000, 1060, "MesaTentaculo"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2065, 1060, "MesaPeque"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2130, 1060, "MesaRota"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2250, 1150, "Planta1"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2290, 1210, "Planta3"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1800, 1180, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1880, 1180, "VitrinaLib"));
 
 	//Pasillos
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 360, 1380, "MesaPeque"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 425, 1380, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 300, 1000, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 125, 2360, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 220, 2360, "Cafetera"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 360, 1380, "MesaPeque"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 425, 1380, "MesaRota"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 300, 1000, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 125, 2360, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 220, 2360, "Cafetera"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 180, 1300, "BancoDcha"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1250, 180, "BancoArriba"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1395, 840, "BancoDcha"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 825, 3300, "BancoDcha"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 550, 2600, "BancoIzda"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 180, 1300, "BancoDcha"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1250, 180, "BancoArriba"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1395, 840, "BancoDcha"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 825, 3300, "BancoDcha"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 550, 2600, "BancoIzda"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 670, 2970, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 735, 2970, "MesaTentaculo"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 860, 3150, "Planta3"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 670, 2970, "MesaRota"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 735, 2970, "MesaTentaculo"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 860, 3150, "Planta3"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1100, 4640, "Cafetera"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1100, 4640, "Cafetera"));
 
 	//Sala 5
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1000, 1560, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1200, 1660, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 890, 1340, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 975, 1340, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1200, 1560, "Planta2"));	
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1000, 1560, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1200, 1660, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 890, 1340, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 975, 1340, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1200, 1560, "Planta2"));	
 
 	//Sala 6
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 935, 2600, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1560, 2430, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1640, 2430, "VitrinaLib"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1450, 2800, "MesaDoble"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 935, 2600, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1560, 2430, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1640, 2430, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1450, 2800, "MesaDoble"));
 
 	//Sala 7	
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 380, 3550, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 380, 3750, "Planta3"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 380, 3550, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 380, 3750, "Planta3"));
 
 	//Sala 8
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 210, 5730, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 145, 5500, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 405, 5500, "VitrinaLib"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 210, 5730, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 145, 5500, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 405, 5500, "VitrinaLib"));
 
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 140, 4900, "Planta3"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 140, 4900, "Planta3"));
 
 	//Sala 9
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1700, 5340, "Servers"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1850, 5340, "Servers"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1950, 5560, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2180, 5530, "MesaRota2"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 2245, 5530, "MesaRota"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1670, 5700, "Planta2"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1700, 5340, "Servers"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1850, 5340, "Servers"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1950, 5560, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2180, 5530, "MesaRota2"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 2245, 5530, "MesaRota"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1670, 5700, "Planta2"));
 
 	//Humo
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, -50, -200, "Humo"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 0, 1200, "Humo"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, -50, -200, "Humo"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 0, 1200, "Humo"));
 
 	//Random
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1470, 2600, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1100, 3670, "Hojas"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 480, 3400, "VitrinaFeto"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1385, 4800, "BancoIzda"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 570, 4140, "mesaEE"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 450, 4450, "Caja"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 1240, 3570, "Caja"));
-	juego->arrayObjetos.push_back(new objetoDecorativo(juego, 330, 2960, "Servers"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1470, 2600, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1100, 3670, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 480, 3400, "VitrinaFeto"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1385, 4800, "BancoIzda"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 570, 4140, "mesaEE"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 450, 4450, "Caja"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1240, 3570, "Caja"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 330, 2960, "Servers"));
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
 
@@ -214,9 +214,9 @@ void Play::init() {
 
 					///		ENEMIGOS	///	
 	//ENEMIGOS GUARDIA
-	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1260, 1750));
-	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 430, 2300));
-	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 380, 3690));
+	juego->arrayObjetos.push_back(new EnemigoGuardia(juego, 1260, 1750));
+	juego->arrayObjetos.push_back(new EnemigoGuardia(juego, 430, 2300));
+	juego->arrayObjetos.push_back(new EnemigoGuardia(juego, 380, 3690));
 
 	//ENEMIGOS PLANTA
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));

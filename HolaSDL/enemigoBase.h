@@ -1,11 +1,11 @@
 #pragma once
 #include "Objeto.h"
-class enemigoBase : public Objeto
+class EnemigoBase : public Objeto
 {
 public:
-	enemigoBase(Juego* ptr, int px, int py);
+	EnemigoBase(Juego* ptr, int px, int py);
 
-	virtual ~enemigoBase();
+	virtual ~EnemigoBase();
 
 	//	Métodos virtuales de objeto que usan todos los enemigos	//
 	virtual void onCollision(collision type);

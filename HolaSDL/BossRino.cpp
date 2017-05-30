@@ -2,7 +2,7 @@
 #include <time.h>
 
 
-BossRino::BossRino(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
+BossRino::BossRino(Juego* ptr, int px, int py) : EnemigoBase(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TRino);
 

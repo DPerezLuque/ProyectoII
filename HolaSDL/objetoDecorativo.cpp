@@ -1,7 +1,7 @@
-#include "objetoDecorativo.h"
+#include "ObjetoDecorativo.h"
 
 
-objetoDecorativo::objetoDecorativo(Juego* ptr, int px, int py, std::string objectID) : Objeto(ptr, px, py)
+ObjetoDecorativo::ObjetoDecorativo(Juego* ptr, int px, int py, std::string objectID) : Objeto(ptr, px, py)
 {
 	animado = false;					//Establecemos que el objeto NO está animado a no ser que se especifique en su zona (cambie a true)
 	tipo = DECORATIVO;					//Valor por defecto, se actualiza si algún objeto precisa de otro
@@ -12,12 +12,12 @@ objetoDecorativo::objetoDecorativo(Juego* ptr, int px, int py, std::string objec
 }
 
 
-objetoDecorativo::~objetoDecorativo()
+ObjetoDecorativo::~ObjetoDecorativo()
 {
 }
 
 //Elegimos una textura en función del tipo de objeto que quieras crear, dado por el ID
-void objetoDecorativo::setObjectFromString(std::string id){
+void ObjetoDecorativo::setObjectFromString(std::string id){
 
 	if (id == ""){
 		cout << "ERROR: un ObjetoDecorativo tiene un espacio en su parámetro ID. No quieres que eso pase. \n";
@@ -220,7 +220,7 @@ void objetoDecorativo::setObjectFromString(std::string id){
 	}
 }
 
-void objetoDecorativo::draw() const {
+void ObjetoDecorativo::draw() const {
 	if (animado){
 		textura->drawAnimacion(pRenderer, rect.x - juego->camera.x, rect.y - juego->camera.y, rect, rectAnim);
 	}
@@ -229,7 +229,7 @@ void objetoDecorativo::draw() const {
 	}
 }
 
-void objetoDecorativo::update(int delta) {
+void ObjetoDecorativo::update(int delta) {
 	if (tipoAnim == "corazon"){
 		contador += delta;
 		if (contador > 10){
@@ -248,7 +248,7 @@ void objetoDecorativo::update(int delta) {
 }
 
 
-void objetoDecorativo::animacionBasica(){ //Para el paso de frames
+void ObjetoDecorativo::animacionBasica(){ //Para el paso de frames
 	if (tipoAnim == "corazon"){
 		if (rectAnim.x >= 128){
 			rectAnim.x = 0;

@@ -1,11 +1,11 @@
 #pragma once
-#include "enemigoBase.h"
+#include "EnemigoBase.h"
 
-class enemigoGuardia : public enemigoBase
+class EnemigoGuardia : public EnemigoBase
 {
 public:
-	enemigoGuardia(Juego* ptr, int px, int py);
-	~enemigoGuardia();
+	EnemigoGuardia(Juego* ptr, int px, int py);
+	~EnemigoGuardia();
 
 	void update(int delta);
 

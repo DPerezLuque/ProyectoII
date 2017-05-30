@@ -1,7 +1,7 @@
 #include "EnemigoBomba.h"
 
 
-EnemigoBomba::EnemigoBomba(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
+EnemigoBomba::EnemigoBomba(Juego* ptr, int px, int py) : EnemigoBase(ptr, px, py)
 {
 	vida = 6;
 	rectAnim = { 0, 0, 144, 121 };

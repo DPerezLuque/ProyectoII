@@ -964,7 +964,7 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 		break;
 
 	case 'x':	//Spawn de enemigos de arañitas
-		arrayObjetos.push_back(new littleSpider(this, posEnemigoX, posEnemigoY));
+		arrayObjetos.push_back(new LittleSpider(this, posEnemigoX, posEnemigoY));
 		break;
 
 

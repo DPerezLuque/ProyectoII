@@ -105,11 +105,11 @@
       <FileName>Dialogo.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="enemigoBase" Collapsed="true">
+  <Class Name="EnemigoBase" Collapsed="true">
     <Position X="20.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAgAEAAIACAiQACIEABAAAgAAAACAAkBAMSAAAKQ=</HashCode>
-      <FileName>enemigoBase.h</FileName>
+      <FileName>EnemigoBase.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EnemigoBomba" Collapsed="true">

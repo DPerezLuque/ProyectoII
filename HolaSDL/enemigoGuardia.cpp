@@ -1,9 +1,9 @@
-#include "enemigoGuardia.h"
+#include "EnemigoGuardia.h"
 
 
 #include <random>
 
-enemigoGuardia::enemigoGuardia(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
+EnemigoGuardia::EnemigoGuardia(Juego* ptr, int px, int py) : EnemigoBase(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TEnemy);
 	vida = 3;
@@ -21,12 +21,12 @@ enemigoGuardia::enemigoGuardia(Juego* ptr, int px, int py) : enemigoBase(ptr, px
 }
 
 
-enemigoGuardia::~enemigoGuardia()
+EnemigoGuardia::~EnemigoGuardia()
 {
 }
 
 
-void enemigoGuardia::update(int delta) 
+void EnemigoGuardia::update(int delta) 
 {	
 
 	if (isActive()) {
@@ -96,7 +96,7 @@ void enemigoGuardia::update(int delta)
 	}
 }
 
-void enemigoGuardia::animacionBasica()
+void EnemigoGuardia::animacionBasica()
 {
 	if (rectAnim.x >= 192) {
 		rectAnim.x = 0;
@@ -106,7 +106,7 @@ void enemigoGuardia::animacionBasica()
 	}
 }
 
-void enemigoGuardia::animar(animacion current)
+void EnemigoGuardia::animar(animacion current)
 {
 	switch (current)
 	{

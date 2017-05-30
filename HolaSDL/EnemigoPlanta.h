@@ -1,6 +1,6 @@
 #pragma once
-#include "enemigoBase.h"
-class EnemigoPlanta : public enemigoBase
+#include "EnemigoBase.h"
+class EnemigoPlanta : public EnemigoBase
 {
 public:
 	EnemigoPlanta(Juego* ptr, int px, int py);

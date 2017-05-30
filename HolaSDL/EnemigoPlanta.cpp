@@ -1,6 +1,6 @@
 #include "EnemigoPlanta.h"
 
-EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
+EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : EnemigoBase(ptr, px, py)
 {
 	textura = juego->getTextura(Juego::TEnemyPlanta); //TO DO: cambiar a la textura de la planta
 	vida = 4;
