@@ -200,22 +200,19 @@ void Play::init() {
 		juego->arrayObjetos.push_back(juego->player);
 	}
 	else{
-		//juego->player = new Player(juego, 200, 300);
-		juego->player = new Player(juego, 2000, 6700);
+		juego->player = new Player(juego, 200, 300);
+		//juego->player = new Player(juego, 2000, 6700);
 		juego->arrayObjetos.push_back(juego->player);
 	}
 
-					///      BOBINA     ///
+					///      BOBINAS     ///
 	juego->arrayObjetos.push_back(new Bobina(juego, 500, 6425));
 	juego->arrayObjetos.push_back(new Bobina(juego, 1320, 6425));
 	juego->arrayObjetos.push_back(new Bobina(juego, 500, 6975));
 	juego->arrayObjetos.push_back(new Bobina(juego, 1320, 6975));
 
-					///       BOSS      ///
-	juego->arrayObjetos.push_back(new BossRino(juego, 570, 6700));
 
-					///		ENEMIGOS	///
-	
+					///		ENEMIGOS	///	
 	//ENEMIGOS GUARDIA
 	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 1260, 1750));
 	juego->arrayObjetos.push_back(new enemigoGuardia(juego, 430, 2300));
@@ -250,8 +247,9 @@ void Play::update(double delta) {
 	
 	
 	for (auto i : juego->arrayObjetos) {
-		if (!i->isInside())
+		if (!i->isInside()) {
 			juego->addToScreen(i);
+		}
 		else if (i->isInside() && !juego->isInScreen(i->getRect()))
 			i->putInside(false);
 	}
@@ -375,28 +373,36 @@ void Play::update(double delta) {
 	}
 
 	else {
-		//LIMPIEZA DE VECTOR DE OBJETOS
-		for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
-			if (juego->arrayObjetos[aux]->isDead())
-				juego->arrayObjetos.erase(juego->arrayObjetos.begin() + aux);
-		}
-		for (int aux2 = 0; aux2 < juego->playerBullets.size(); ++aux2) {
-			if (juego->playerBullets[aux2]->isDead())
-				juego->playerBullets.erase(juego->playerBullets.begin() + aux2);
-		}
-		for (int aux3 = 0; aux3 < juego->enemyBullets.size(); ++aux3) {
-			if (juego->enemyBullets[aux3]->isDead())
-				juego->enemyBullets.erase(juego->enemyBullets.begin() + aux3);
-		}
-		for (int aux4 = 0; aux4 < juego->objVisible.size(); ++aux4) {
-			if (!juego->isInScreen(juego->objVisible[aux4]->getRect()) || juego->objVisible[aux4]->isDead())
-				juego->objVisible.erase(juego->objVisible.begin() + aux4);
-		}
-	}
+		
 		//UPDATE
 		for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
 			juego->arrayObjetos[i]->update(delta);
 		}
+
+		for (int i = 0; i < juego->elemInterfaz.size(); i++) {
+			juego->elemInterfaz[i]->update();
+		}
+		
+	}
+	//LIMPIEZA DE VECTOR DE OBJETOS
+	for (int aux = 0; aux < juego->arrayObjetos.size(); ++aux) {
+		if (juego->arrayObjetos[aux]->isDead()) {
+			juego->arrayObjetos.erase(juego->arrayObjetos.begin() + aux);
+		}
+	}
+	for (int aux2 = 0; aux2 < juego->playerBullets.size(); ++aux2) {
+		if (juego->playerBullets[aux2]->isDead())
+			juego->playerBullets.erase(juego->playerBullets.begin() + aux2);
+	}
+	for (int aux3 = 0; aux3 < juego->enemyBullets.size(); ++aux3) {
+		if (juego->enemyBullets[aux3]->isDead())
+			juego->enemyBullets.erase(juego->enemyBullets.begin() + aux3);
+	}
+	for (int aux4 = 0; aux4 < juego->objVisible.size(); ++aux4) {
+		if (!juego->isInScreen(juego->objVisible[aux4]->getRect()) || juego->objVisible[aux4]->isDead())
+			juego->objVisible.erase(juego->objVisible.begin() + aux4);
+	}
+		
 		/*for (int x = 0; x < juego->playerBullets.size(); ++x) {
 			juego->playerBullets[x]->update(delta);
 
@@ -417,9 +423,6 @@ void Play::update(double delta) {
 	juego->enemyBullets[x]->update(delta);
 	}*/
 
-	for (int i = 0; i < juego->elemInterfaz.size(); i++){
-		juego->elemInterfaz[i]->update(); 
-	}
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//}
 	

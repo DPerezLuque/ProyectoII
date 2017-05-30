@@ -107,6 +107,9 @@ public:
 	ObjetoJuego * player;
 	bool debugPlayer;
 
+	//BOSS
+	ObjetoJuego* finalBoss;
+
 	//CAMERA LEVEL
 	SDL_Rect camera;
 	void resetCamera() { camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT }; };

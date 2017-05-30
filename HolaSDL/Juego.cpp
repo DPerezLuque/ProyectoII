@@ -49,6 +49,7 @@ Juego::Juego()
 	Mix_Init(27);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 	Mix_Volume(1, MIX_MAX_VOLUME / 4);
+
 	//Texto
 	TTF_Init();
 
@@ -90,8 +91,6 @@ Juego::Juego()
 	for (auto j : arrayObjetos) {
 		addToScreen(j);
 	}
-
-
 }
 
 Juego::~Juego()
@@ -105,41 +104,65 @@ Juego::~Juego()
 
 void Juego::cleanArrays() {
 
-	for (int i = 0; i < arrayObjetos.size(); ++i)
-		arrayObjetos.erase(arrayObjetos.begin() + i);
-
-	for (int j = 0; j < elemInterfaz.size(); ++j)
-		elemInterfaz.erase(elemInterfaz.begin() + j);
-	
-	for (int aux1 = 0; aux1 < enemyArray.size(); ++aux1)
-		enemyArray.erase(enemyArray.begin() + aux1);
-	
-	for (int aux2 = 0; aux2 < playerBullets.size(); ++aux2)
-		playerBullets.erase(playerBullets.begin() + aux2);
-
-	for (int aux3 = 0; aux3 < enemyBullets.size(); ++aux3)
-		enemyBullets.erase(enemyBullets.begin() + aux3);
-
-	for (int aux4 = 0; aux4 < objVisible.size(); ++aux4)
-		objVisible.erase(objVisible.begin() + aux4);
-
-	for (int aux5 = 0; aux5 < arrayMenu.size(); ++aux5)
-		arrayMenu.erase(arrayMenu.begin() + aux5);
-
-	if(arrayObjetos.size() > 0)
+	while (arrayObjetos.size() > 0)
 		arrayObjetos.erase(arrayObjetos.begin());
-	if (enemyArray.size() > 0)
+
+	while (enemyArray.size() > 0)
 		enemyArray.erase(enemyArray.begin());
-	if (elemInterfaz.size() > 0)
+
+	while (elemInterfaz.size() > 0)
 		elemInterfaz.erase(elemInterfaz.begin());
-	if (playerBullets.size() > 0)
+
+	while (playerBullets.size() > 0)
 		playerBullets.erase(playerBullets.begin());
-	if (enemyBullets.size() > 0)
+
+	while (enemyBullets.size() > 0)
 		enemyBullets.erase(enemyBullets.begin());
-	if (objVisible.size() > 0)
+
+	while (objVisible.size() > 0)
 		objVisible.erase(objVisible.begin());
+
 	while (arrayMenu.size() > 0)
 		arrayMenu.erase(arrayMenu.begin());
+
+	/* NEEDS TO BE CLEANED
+	
+	for (int i = 0; i < arrayObjetos.size(); ++i) {
+	arrayObjetos.erase(arrayObjetos.begin() + i);
+	}
+	for (int j = 0; j < elemInterfaz.size(); ++j)
+	elemInterfaz.erase(elemInterfaz.begin() + j);
+
+	for (int aux1 = 0; aux1 < enemyArray.size(); ++aux1) {
+	enemyArray.erase(enemyArray.begin() + aux1);
+	}
+
+	for (int aux2 = 0; aux2 < playerBullets.size(); ++aux2)
+	playerBullets.erase(playerBullets.begin() + aux2);
+
+	for (int aux3 = 0; aux3 < enemyBullets.size(); ++aux3)
+	enemyBullets.erase(enemyBullets.begin() + aux3);
+
+	for (int aux4 = 0; aux4 < objVisible.size(); ++aux4) {
+	objVisible.erase(objVisible.begin() + aux4);
+	}
+
+	for (int aux5 = 0; aux5 < arrayMenu.size(); ++aux5)
+	arrayMenu.erase(arrayMenu.begin() + aux5);
+
+	if(arrayObjetos.size() > 0)
+	arrayObjetos.erase(arrayObjetos.begin());
+	if (enemyArray.size() > 0)
+	enemyArray.erase(enemyArray.begin());
+	if (elemInterfaz.size() > 0)
+	elemInterfaz.erase(elemInterfaz.begin());
+	if (playerBullets.size() > 0)
+	playerBullets.erase(playerBullets.begin());
+	if (enemyBullets.size() > 0)
+	enemyBullets.erase(enemyBullets.begin());
+	if (objVisible.size() > 0)
+	objVisible.erase(objVisible.begin());
+	*/
 
 }
 void Juego::run()
@@ -245,7 +268,8 @@ void Juego::run()
 			}
 
 			cleanArrays();
-			delete player;
+			//delete player;
+			//delete finalBoss;
 			mVelX = 0;
 			mVelY = 0;
 			break;

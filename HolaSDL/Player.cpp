@@ -2,6 +2,7 @@
 #include "Checkpoint.h"
 #include <iostream>
 #include "Puerta.h"
+#include "BossRino.h"
 
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
@@ -61,6 +62,8 @@ void Player::update(int delta) {
 	if (rect.x <= 1340 && rect.y <= 6900 && rect.y > 6650 && !insideRoom) {
 		juego->arrayObjetos.push_back(new Puerta(juego, 1520, 6720, 200, 200));
 		insideRoom = true;
+		//Creamos el boss una vez entre a la sala
+		juego->arrayObjetos.push_back(new BossRino(juego, 570, 6700));
 	}
 
 	SDL_Rect nextRect;
