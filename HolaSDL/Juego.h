@@ -156,7 +156,7 @@ public:
 	void spawnObjetos(char, int, int, std::string);	//Identificador, posicionX, posicionY, String por si es un alma (opcional)
 
 	//EFECTOS
-	enum Sonidos_t { disparoPlayer, disparoSpider, aliento, button, death, explosion, punch };
+	enum Sonidos_t { disparoPlayer, disparoSpider, aliento, button, death, explosion, punch, bird };
 	vector <string> effectNames;//Vector para almacenar direcciones de canciones
 	Efecto* efecto; //Auxiliar para llenar el vector de efectos
 	vector <Efecto*> effectFiles;

@@ -35,6 +35,8 @@ EscenaFinal::EscenaFinal(Juego* ptr) : Estado(ptr)
 
 	musicFiles[0]->play();
 	//musicFiles[1]->play();
+	bird = juego->getEfecto(Juego::bird);
+	bird->play();
 
 }
 

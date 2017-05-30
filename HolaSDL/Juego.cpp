@@ -368,7 +368,7 @@ bool Juego::initMedia()
 		textoAux.load(nombreFuentes[j], 50); //fuente, size
 		arrayFuentes.push_back(textoAux);
 	}
-
+	//Efectos de sonido
 	effectFiles.push_back(new Efecto("..\\bmps\\Bubble.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\Spider.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\Aliento.wav"));
@@ -376,6 +376,7 @@ bool Juego::initMedia()
 	effectFiles.push_back(new Efecto("..\\bmps\\Death.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\Explosion.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\Punch.wav"));
+	effectFiles.push_back(new Efecto("..\\bmps\\Bird.wav"));
 
 	//Objetos dinámicos
 	texturas.push_back("..\\bmps\\personaje.png");

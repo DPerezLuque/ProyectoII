@@ -32,6 +32,8 @@ private:
 	Musica* cancion;
 	vector <Musica*> musicFiles;
 
+	Efecto* bird;
+
 	int contMensajes; //Cuenta en qué mensaje está
 	int contTiempo;
 	bool creaMensaje;
