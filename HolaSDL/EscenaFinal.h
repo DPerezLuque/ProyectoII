@@ -28,6 +28,10 @@ private:
 
 	Dialogo* mensaje;
 
+	vector <string> musicNames;
+	Musica* cancion;
+	vector <Musica*> musicFiles;
+
 	int contMensajes; //Cuenta en qué mensaje está
 	int contTiempo;
 	bool creaMensaje;

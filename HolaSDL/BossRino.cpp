@@ -28,7 +28,6 @@ BossRino::BossRino(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 	radioDisable = 1500;
 	radioEnable = 650;
 
-	muerte = 0;
 }
 
 
@@ -38,9 +37,6 @@ BossRino::~BossRino()
 
 void BossRino::update(int delta) {
 
-	
-	if (muerte < 4) muerte++;
-	else if (muerte == 4) vida = 0;
 	
 	if (vida <= 0) {
 		dead = true;
