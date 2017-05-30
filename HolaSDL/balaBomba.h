@@ -1,10 +1,10 @@
 #pragma once
 #include "Bala.h"
-class balaBomba : public Bala
+class BalaBomba : public Bala
 {
 public:
-	balaBomba(Juego* ptr, int px, int py, int vX, int vY);
-	~balaBomba();
+	BalaBomba(Juego* ptr, int px, int py, int vX, int vY);
+	~BalaBomba();
 	//Método de Objeto
 	virtual void onCollision(collision);
 	//Método de Bala

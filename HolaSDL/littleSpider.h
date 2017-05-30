@@ -1,11 +1,11 @@
 #pragma once
 #include "enemigoBase.h"
 
-class littleSpider : public enemigoBase
+class LittleSpider : public EnemigoBase
 {
 public:
-	littleSpider(Juego* ptr, int px, int py);
-	~littleSpider();
+	LittleSpider(Juego* ptr, int px, int py);
+	~LittleSpider();
 
 	//Métodos heredados de EnemigoBase
 	virtual void animacionBasica();			//Animación de la Spider

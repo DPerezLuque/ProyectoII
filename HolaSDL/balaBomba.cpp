@@ -1,8 +1,8 @@
-#include "balaBomba.h"
+#include "BalaBomba.h"
 #include "ExplosionEnemigoB.h"
 
 
-balaBomba::balaBomba(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px, py, vX, vY)
+BalaBomba::BalaBomba(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px, py, vX, vY)
 {
 	textura = juego->getTextura(Juego::TBalaBomba);
 
@@ -15,11 +15,11 @@ balaBomba::balaBomba(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px,
 }
 
 
-balaBomba::~balaBomba()
+BalaBomba::~BalaBomba()
 {
 }
 
-void balaBomba::update(int delta){
+void BalaBomba::update(int delta){
 
 
 	contadorFrames += delta;
@@ -49,14 +49,14 @@ void balaBomba::update(int delta){
 	}
 }
 
-void balaBomba::onCollision(collision noSeUsa){
+void BalaBomba::onCollision(collision noSeUsa){
 	
 	explosionBala();
 	
 	dead = true;
 }
 
-void balaBomba::animacionBasica(){ //Para el paso de frames
+void BalaBomba::animacionBasica(){ //Para el paso de frames
 	if (rectAnim.x >= 126){
 		rectAnim.x = 0;
 	}
@@ -66,6 +66,6 @@ void balaBomba::animacionBasica(){ //Para el paso de frames
 }
 
 //Método que genera una nueva explosión y la guarda en los vectores de juego
-void balaBomba::explosionBala(){
+void BalaBomba::explosionBala(){
 	juego->spawnObjetos('e', rect.x, rect.y," ");			//'e' = explosion
 }

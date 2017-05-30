@@ -1,7 +1,7 @@
 #pragma once
-#include "enemigoBase.h"
+#include "EnemigoBase.h"
 
-class EnemigoBomba : public enemigoBase
+class EnemigoBomba : public EnemigoBase
 {
 public:
 	EnemigoBomba(Juego* ptr, int px, int py);
