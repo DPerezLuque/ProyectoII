@@ -83,8 +83,7 @@ void enemigoGuardia::update(int delta)
 			contDis = 0;
 		}
 
-		rectCollision.x = rect.x;//(rect.x + rect.w / 3) * delta;
-		rectCollision.y = rect.y;//(rect.y + rect.h / 3) * delta;
+		
 
 		if (inmunidad) {
 			if (contInm < 20) contInm++;

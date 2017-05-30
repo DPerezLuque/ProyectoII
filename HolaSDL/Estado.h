@@ -39,7 +39,7 @@ protected:
 	Textura* textura;
 	
 	void resetCamera();
-	
+
 	GAME_STATES type;
 	bool active;
 	int mouse_x, mouse_y;

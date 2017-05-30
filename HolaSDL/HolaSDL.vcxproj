@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Key.cpp" />
+    <ClCompile Include="MenuFinalJuego.cpp" />
     <ClCompile Include="Puerta.cpp" />
     <ClCompile Include="Spider.cpp" />
     <ClCompile Include="littleSpider.cpp" />
@@ -57,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Key.h" />
+    <ClInclude Include="MenuFinalJuego.h" />
     <ClInclude Include="Puerta.h" />
     <ClInclude Include="Spider.h" />
     <ClInclude Include="littleSpider.h" />

@@ -31,7 +31,7 @@ enemigoBase::enemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	rectVida.w = 128;
 	rectVida.h = 10;
 
-
+	doorCollision = false;
 	tipo = ENEMY;
 
 	inmunidad = false;
@@ -67,14 +67,34 @@ void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que 
 		vX = 0;
 		vY = 0;
 	}
-	if (juego->touchesWall(getRect())) {
-		rect.x -= (vX / 2) * delta;
-		rect.y -= (vY / 2) * delta;
+
+	SDL_Rect nextRect;
+	nextRect = rectCollision;
+	
+	nextRect.x += (vX / 2) * delta;
+	nextRect.y += (vY / 2) * delta;
+	if (juego->touchesWall(nextRect) || doorCollision) {
+		rect.x -= (vX) * delta;
+		rect.y -= (vY) * delta;
+		doorCollision = false;
 	}
 	else {
 		rect.x += (vX / 2) * delta / 1.5f;
 		rect.y += (vY / 2) * delta / 1.5f;
 	}
+	/*
+	if (juego->touchesWall(getRect()) || doorCollision) {
+		rect.x -= (vX / 2) * delta;
+		rect.y -= (vY / 2) * delta;
+		doorCollision = false;
+	}
+	else {
+		rect.x += (vX / 2) * delta / 1.5f;
+		rect.y += (vY / 2) * delta / 1.5f;
+	}
+	*/
+	rectCollision.x = rect.x * delta;//(rect.x + rect.w / 3) * delta;
+	rectCollision.y = rect.y * delta;//(rect.y + rect.h / 3) * delta;
 
 }
 
@@ -82,6 +102,9 @@ void enemigoBase::onCollision(collision type){
 	if (type == PJ_WEAPON){
 		gestorVida();
 		sonido->play();
+	}
+	if (type == PUERTA){
+		doorCollision = true;
 	}
 }
 
@@ -163,7 +186,7 @@ void enemigoBase::gestorVida(){
 }
 
 bool enemigoBase::isActive(){
-	//std::cout << active << "\n";
+	/*//std::cout << active << "\n";
 	int x, y;
 	juego->player->getPos(x, y);
 	int distance = sqrt((x + 50 - rect.x + rect.w / 2)*(x + 50 - rect.x + rect.w / 2)
@@ -171,7 +194,11 @@ bool enemigoBase::isActive(){
 	//std::cout << distance << "\n";
 	if (distance <= radioEnable) active = true;
 	if (distance >= radioDisable) active = false;
-	return active;
+	return active;*/
+
+	if (juego->isInScreen(this->rect))
+		return true;
+	else return false;
 }
 
 //FOLLOW ANTIGUO, BORRAR SI ES IGUAL QUE EL QUE EXISTE

@@ -1,7 +1,8 @@
 #include "Player.h"
 #include "Checkpoint.h"
 #include <iostream>
-
+#include "Puerta.h"
+#include "BossRino.h"
 
 Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
@@ -26,6 +27,8 @@ Player::Player(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	vida = 4;
 	balas = 20;
 	maximoBalas = 20;
+
+	insideRoom = false;
 
 	inmunidad = colisionDecorativo = estaRalentizado = false;
 	contadorInmunidad = contDashing  = contadorRalentizado = 0;
@@ -54,6 +57,14 @@ void Player::update(int delta) {
 		juego->setDebugBool(false);
 	}
 
+	cout << rect.x << ", " << rect.y << "\n";
+	//Comprobamos si ha entrado a la sala del boss
+	if (rect.x <= 1340 && rect.y <= 6900 && rect.y > 6650 && !insideRoom) {
+		juego->arrayObjetos.push_back(new Puerta(juego, 1520, 6720, 200, 200));
+		insideRoom = true;
+		//Creamos el boss una vez entre a la sala
+		juego->arrayObjetos.push_back(new BossRino(juego, 570, 6700));
+	}
 
 	SDL_Rect nextRect;
 	nextRect = rectCollision;
@@ -159,12 +170,14 @@ void Player::update(int delta) {
 
 	//Recargar manual
 		if (juego->getRecargar()){			
-			contadorRecarga += delta;
-			balas = 0;
-			if (contadorRecarga >= 70){
-				balas = maximoBalas;
-				contadorRecarga = 0;	
-				juego->setRecargar(false);
+			if (balas < 20){
+				contadorRecarga += delta;
+				balas = 0;
+				if (contadorRecarga >= 70){
+					balas = maximoBalas;
+					contadorRecarga = 0;
+					juego->setRecargar(false);
+				}
 			}
 		}
 		//rectAnim.x = rect.x;
@@ -284,8 +297,6 @@ void Player::onCollision(collision type){
 		colisionDecorativo = true;
 		}
 		break;
-	case EXPLOSION:
-
 	case BOSS:
 		gestorVida();
 		break;
@@ -303,6 +314,7 @@ void Player::onCollision(collision type){
 			->>> PONER EL DASH A TRUE DE FORMA AUTOMATICA Y TODO LO QUE ELLO IMPLIQUE
 		break;
 		*/
+	case BOBINA:
 	case DECORATIVO:
 		colisionDecorativo = true;
 		break;

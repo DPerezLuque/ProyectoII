@@ -19,6 +19,7 @@
 #include "MenuPrincipal.h"
 #include "MenuOpciones.h"
 #include "GameOver.h"
+#include "MenuFinalJuego.h"
 #include <exception>
 #include "Error.h"
 #include "MapEditor.h"
@@ -48,6 +49,7 @@ Juego::Juego()
 	Mix_Init(27);
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 	Mix_Volume(1, MIX_MAX_VOLUME / 4);
+
 	//Texto
 	TTF_Init();
 
@@ -89,8 +91,6 @@ Juego::Juego()
 	for (auto j : arrayObjetos) {
 		addToScreen(j);
 	}
-
-
 }
 
 Juego::~Juego()
@@ -104,41 +104,65 @@ Juego::~Juego()
 
 void Juego::cleanArrays() {
 
-	for (int i = 0; i < arrayObjetos.size(); ++i)
-		arrayObjetos.erase(arrayObjetos.begin() + i);
-
-	for (int j = 0; j < elemInterfaz.size(); ++j)
-		elemInterfaz.erase(elemInterfaz.begin() + j);
-	
-	for (int aux1 = 0; aux1 < enemyArray.size(); ++aux1)
-		enemyArray.erase(enemyArray.begin() + aux1);
-	
-	for (int aux2 = 0; aux2 < playerBullets.size(); ++aux2)
-		playerBullets.erase(playerBullets.begin() + aux2);
-
-	for (int aux3 = 0; aux3 < enemyBullets.size(); ++aux3)
-		enemyBullets.erase(enemyBullets.begin() + aux3);
-
-	for (int aux4 = 0; aux4 < objVisible.size(); ++aux4)
-		objVisible.erase(objVisible.begin() + aux4);
-
-	for (int aux5 = 0; aux5 < arrayMenu.size(); ++aux5)
-		arrayMenu.erase(arrayMenu.begin() + aux5);
-
-	if(arrayObjetos.size() > 0)
+	while (arrayObjetos.size() > 0)
 		arrayObjetos.erase(arrayObjetos.begin());
-	if (enemyArray.size() > 0)
+
+	while (enemyArray.size() > 0)
 		enemyArray.erase(enemyArray.begin());
-	if (elemInterfaz.size() > 0)
+
+	while (elemInterfaz.size() > 0)
 		elemInterfaz.erase(elemInterfaz.begin());
-	if (playerBullets.size() > 0)
+
+	while (playerBullets.size() > 0)
 		playerBullets.erase(playerBullets.begin());
-	if (enemyBullets.size() > 0)
+
+	while (enemyBullets.size() > 0)
 		enemyBullets.erase(enemyBullets.begin());
-	if (objVisible.size() > 0)
+
+	while (objVisible.size() > 0)
 		objVisible.erase(objVisible.begin());
+
 	while (arrayMenu.size() > 0)
 		arrayMenu.erase(arrayMenu.begin());
+
+	/* NEEDS TO BE CLEANED
+	
+	for (int i = 0; i < arrayObjetos.size(); ++i) {
+	arrayObjetos.erase(arrayObjetos.begin() + i);
+	}
+	for (int j = 0; j < elemInterfaz.size(); ++j)
+	elemInterfaz.erase(elemInterfaz.begin() + j);
+
+	for (int aux1 = 0; aux1 < enemyArray.size(); ++aux1) {
+	enemyArray.erase(enemyArray.begin() + aux1);
+	}
+
+	for (int aux2 = 0; aux2 < playerBullets.size(); ++aux2)
+	playerBullets.erase(playerBullets.begin() + aux2);
+
+	for (int aux3 = 0; aux3 < enemyBullets.size(); ++aux3)
+	enemyBullets.erase(enemyBullets.begin() + aux3);
+
+	for (int aux4 = 0; aux4 < objVisible.size(); ++aux4) {
+	objVisible.erase(objVisible.begin() + aux4);
+	}
+
+	for (int aux5 = 0; aux5 < arrayMenu.size(); ++aux5)
+	arrayMenu.erase(arrayMenu.begin() + aux5);
+
+	if(arrayObjetos.size() > 0)
+	arrayObjetos.erase(arrayObjetos.begin());
+	if (enemyArray.size() > 0)
+	enemyArray.erase(enemyArray.begin());
+	if (elemInterfaz.size() > 0)
+	elemInterfaz.erase(elemInterfaz.begin());
+	if (playerBullets.size() > 0)
+	playerBullets.erase(playerBullets.begin());
+	if (enemyBullets.size() > 0)
+	enemyBullets.erase(enemyBullets.begin());
+	if (objVisible.size() > 0)
+	objVisible.erase(objVisible.begin());
+	*/
 
 }
 void Juego::run()
@@ -192,7 +216,7 @@ void Juego::run()
 
 			while (!exit && estado->getCurrentState() == NIVEL_1) {
 				if (!pause->isActive()) {
-
+					
 					for (auto t : wallsArray) {
 						if (!t->isInside()) {
 							if (isInScreen(t->getBox())) {
@@ -244,7 +268,10 @@ void Juego::run()
 			}
 
 			cleanArrays();
-			delete player;
+			//delete player;
+			//delete finalBoss;
+			mVelX = 0;
+			mVelY = 0;
 			break;
 			
 		case GAME_OVER:
@@ -274,7 +301,21 @@ void Juego::run()
 
 			cleanArrays();
 			break;
+
+		case MENU_FINAL:
+
+			changeState(new MenuFinalJuego(this));
+			estado = topEstado();
+
+			camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+			estado->draw();
+			estado->update();
+			cleanArrays();
+
+			break;
 		}
+
 
 	}
 	SDL_Delay(500); //cin.get();
@@ -583,16 +624,16 @@ void Juego::updateDirection() {
 		//Adjust the velocity
 		switch (e.key.keysym.sym)
 		{
-		case SDLK_UP: mVelY -= VPLAYER; break;
+		//case SDLK_UP: mVelY -= VPLAYER; break;
 		case SDLK_w: mVelY -= VPLAYER; break;
 
-		case SDLK_DOWN: mVelY += VPLAYER; break;
+		//case SDLK_DOWN: mVelY += VPLAYER; break;
 		case SDLK_s: mVelY += VPLAYER; break;
 
-		case SDLK_LEFT: mVelX -= VPLAYER; break;
+		//case SDLK_LEFT: mVelX -= VPLAYER; break;
 		case SDLK_a: mVelX -= VPLAYER; break;
 
-		case SDLK_RIGHT: mVelX += VPLAYER; break;
+		//case SDLK_RIGHT: mVelX += VPLAYER; break;
 		case SDLK_d: mVelX += VPLAYER; break;
 
 		case SDLK_r: setRecargar(true); break;
@@ -605,20 +646,23 @@ void Juego::updateDirection() {
 		//Adjust the velocity
 		switch (e.key.keysym.sym)
 		{
-		case SDLK_UP: mVelY += VPLAYER; break;
+		//case SDLK_UP: mVelY += VPLAYER; break;
 		case SDLK_w: mVelY += VPLAYER; break;
 
-		case SDLK_DOWN: mVelY -= VPLAYER; break;
+		//case SDLK_DOWN: mVelY -= VPLAYER; break;
 		case SDLK_s: mVelY -= VPLAYER; break;
 
-		case SDLK_LEFT: mVelX += VPLAYER; break;
+		//case SDLK_LEFT: mVelX += VPLAYER; break;
 		case SDLK_a: mVelX += VPLAYER; break;
 
-		case SDLK_RIGHT: mVelX -= VPLAYER; break;
+		//case SDLK_RIGHT: mVelX -= VPLAYER; break;
 		case SDLK_d: mVelX -= VPLAYER; break;
 
 		case SDLK_r: setRecargar(false); break;		
 		}
+	}
+	else {
+	
 	}
 }
 
@@ -666,7 +710,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 	switch (a->getType()) {
 	case PJ:												//Hemos puesto la colision con el aura para que siga funcionando
 		//pero hay que quitarla para que no reste vida cuando se hagan bien los arrays
-		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS 
+		if (b->getType() == ENEMY_WEAPON || b->getType() == ENEMY || b->getType() == BOSS || b->getType() == BOBINA
 			|| b->getType() == AURA || b->getType() == BOTIQUIN || b->getType() == DECORATIVO || b->getType() == EXPLOSION
 			|| b->getType() == BALA_RALENTIZADORA || b->getType() == KEY || b->getType() == PUERTA || b->getType() == BOSS_CARGA)
 
@@ -674,7 +718,7 @@ bool Juego::checkCollision(ObjetoJuego * a, ObjetoJuego * b)
 
 		break;
 	case ENEMY:
-		if (b->getType() == PJ_WEAPON)
+		if (b->getType() == PJ_WEAPON || b->getType() == PUERTA)
 			colisiona = true;
 		break;
 	case CHECK:
@@ -960,6 +1004,7 @@ bool Juego::initSDL()
 		{
 			printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
 			success = false;
+			
 		}
 		else
 		{

@@ -19,8 +19,8 @@ Aura::Aura(Juego* ptr, int px, int py, int ancho, int alto, std::string texto) :
 
 Aura::~Aura()
 {
-	delete mensaje;
-	delete this;
+	//delete mensaje;
+	//delete this;
 }
 
 void Aura::onCollision(collision type){	

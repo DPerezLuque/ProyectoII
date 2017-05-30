@@ -35,7 +35,12 @@ BossRino::~BossRino()
 }
 
 void BossRino::update(int delta) {
-	if (isActive()){
+	
+	if (vida <= 0) {
+		dead = true;
+		juego->estado->changeCurrentState(MENU_FINAL);
+	}
+	else if (isActive()){
 		rectVida.x = rect.x - 20;
 		rectVida.y = rect.y - 20;
 		rectVida.w = 32 * vida;

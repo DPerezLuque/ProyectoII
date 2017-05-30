@@ -120,6 +120,9 @@ bool Estado::onClick()
 			break;
 		case BOTON_RESUME:
 			//Back to game (clicked = true)
+			//SDL_FlushEvents(1, 10000);
+			juego->mVelX = 0;
+			juego->mVelY = 0;
 			break;
 		case BOTON_OPTIONS:
 			options();
@@ -135,6 +138,23 @@ bool Estado::onClick()
 		case BOTON_FILTER:
 			juego->arrayMenu[aux]->changeText();
 			juego->setFiltro();
+		case BOTON_RESIZE:
+			
+			//panoramica = !panoramica;
+			juego->changePanoramica();
+			
+			if (juego->panoramica){
+				juego->SCREEN_WIDTH = 1366;
+				juego->SCREEN_HEIGHT = 720;
+			}
+			else{
+				juego->SCREEN_WIDTH = 1000;
+				juego->SCREEN_HEIGHT = 750;
+			}
+
+			SDL_SetWindowSize(juego->pWindow, juego->SCREEN_WIDTH, juego->SCREEN_HEIGHT);
+			resetCamera();
+
 			return false;
 			break;
 		default:
