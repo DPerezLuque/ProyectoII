@@ -1,6 +1,7 @@
 #pragma once
 #include "Estado.h"
 #include "Player.h"
+#include "Dialogo.h"
 
 class EscenaFinal : public Estado
 {
@@ -10,12 +11,12 @@ public:
 
 	virtual void draw();
 
-	virtual void update(double delta);
+	virtual void update();
 
 
 private:
-	enum estadoCinemática {AvanceAlDialogo, Dialogo, Salida};
-	estadoCinemática estCinematica;
+	enum estadoCinematica {AvanceAlDialogo, Textos, Salida};
+	estadoCinematica estCinematica;
 
 	Textura* fondo;
 	SDL_Rect dimensionesFondo;
@@ -24,6 +25,12 @@ private:
 	SDL_Rect dimensionesCientifico;
 	
 	Player* jugador;
+
+	Dialogo* mensaje;
+
+	int contMensajes; //Cuenta en qué mensaje está
+	bool creaMensaje;
+	bool pintaMensaje;
 
 
 };

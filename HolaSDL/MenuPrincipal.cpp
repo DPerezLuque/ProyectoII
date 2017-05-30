@@ -4,7 +4,7 @@
 
 MenuPrincipal::MenuPrincipal(Juego* ptr) : Estado(ptr)
 {
-	type = MENU_PRINCIPAL;
+	//type = MENU_PRINCIPAL;
 	tamano = {400, 100, 390, 176};
 	logo = juego->getTextura(Juego::TLogo);
 	init();

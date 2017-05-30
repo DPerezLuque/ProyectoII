@@ -150,12 +150,13 @@ void Juego::run()
 		double previous;
 		double lag;
 
-		switch (estado->getCurrentState()) {
+	switch (estado->getCurrentState()) {
+		
 		case MENU_PRINCIPAL:
 			
 			changeState(new MenuPrincipal(this));
 			estado = topEstado(); 
-				
+			cout << estado->getCurrentState();
 			//Render menu
 			estado->draw();
 			//Update menu
@@ -172,8 +173,8 @@ void Juego::run()
 			estado = topEstado(); 
 
 			pause = new MenuPausa(this);
-			cout << "NIVEL 1 (PLAY) \n";
-			
+			//cout << "NIVEL 1 (PLAY) \n";
+			cout << estado->getCurrentState();
 			//Clear screen	
 			SDL_RenderClear(pRenderer);
 
@@ -283,11 +284,13 @@ void Juego::run()
 
 			changeState(new EscenaFinal(this));
 			estado = topEstado();
+			//cout << estado->getCurrentState();
 
 			camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
-			estado->draw();
+			
 			estado->update();
+			estado->draw();
 			cleanArrays();
 
 			break;

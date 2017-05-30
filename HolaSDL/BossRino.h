@@ -21,6 +21,8 @@ private:
 	bool saved;
 	int atack;
 
+	int muerte;
+
 	enum animacion { ABAJO, ARRIBA, DERECHA, IZQUIERDA, QUIETO }; //Nos dice qué animación tiene que hacer
 	animacion est;
 	void animar(animacion current);
