@@ -27,6 +27,7 @@ BossRino::BossRino(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
 
 	radioDisable = 1500;
 	radioEnable = 650;
+
 }
 
 
@@ -35,10 +36,11 @@ BossRino::~BossRino()
 }
 
 void BossRino::update(int delta) {
+
 	
 	if (vida <= 0) {
 		dead = true;
-		juego->estado->changeCurrentState(MENU_FINAL);
+		juego->estado->changeCurrentState(CINEMATICA_FINAL); //Llama a la escena final y ya desde allí se llama al menú final
 	}
 	else if (isActive()){
 		rectVida.x = rect.x - 20;

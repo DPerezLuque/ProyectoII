@@ -77,7 +77,7 @@ void Estado::update(){
 			}
 			else if (e.type == SDL_MOUSEBUTTONUP) {
 				if (e.button.button == SDL_BUTTON_LEFT) {
-					std::cout << "CLICK";
+					
 					mouse_x = e.button.x; //+ (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
 					mouse_y = e.button.y; //+ (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
 					if (onClick()) { clicked = true; }
@@ -170,6 +170,11 @@ bool Estado::onClick()
 void Estado::play()
 {
 	juego->estado->changeCurrentState(NIVEL_1);
+}
+
+void Estado::cinematicaFinal()
+{
+	juego->estado->changeCurrentState(CINEMATICA_FINAL);
 }
 
 void Estado::menu()

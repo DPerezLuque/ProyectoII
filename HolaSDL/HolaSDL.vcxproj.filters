@@ -45,6 +45,7 @@
     <ClCompile Include="Puerta.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="MenuFinalJuego.cpp" />
+    <ClCompile Include="EscenaFinal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Spider.h" />
@@ -94,6 +95,7 @@
     <ClInclude Include="Puerta.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="MenuFinalJuego.h" />
+    <ClInclude Include="EscenaFinal.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
