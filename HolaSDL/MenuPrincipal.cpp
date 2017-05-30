@@ -22,6 +22,10 @@ MenuPrincipal::~MenuPrincipal() {
 		juego->arrayMenu[aux] = nullptr;
 	}*/
 
+	for (int i = 0; i < musicFiles.size(); i++) {
+		delete musicFiles[i];
+	}
+
 }
 
 void MenuPrincipal::init()
@@ -30,6 +34,18 @@ void MenuPrincipal::init()
 	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 250, Juego::TBPlayA, Juego::TBPlayE, BOTON_PLAY));
 	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 350, Juego::TBOptionsA, Juego::TBOptionsE, BOTON_OPTIONS));
 	juego->arrayMenu.push_back(new Boton(juego, width / 2 - 150, 450, Juego::TBExitA, Juego::TBExitE, BOTON_EXIT));
+
+	musicNames.push_back("..\\bmps\\Home.mp3");
+	
+
+	for (int j = 0; j < musicNames.size(); j++) {
+		cancion = new Musica();
+		cancion->load(musicNames[j]);
+		musicFiles.push_back(cancion);
+	}
+
+	musicFiles[0]->play();
+	
 }
 
 void MenuPrincipal::draw()
