@@ -54,12 +54,11 @@ void Player::update(int delta) {
 	
 	if (!controlCinematica){
 
-		if (juego->debugPlayer){
+		if (juego->debugPlayer){	//SI LE DAS A LA 'E' TE SACA LA POSICION DEL JUGADOR
 			cout << rect.x << ", " << rect.y << "\n";
 			juego->setDebugBool(false);
 		}
 
-	cout << rect.x << ", " << rect.y << "\n";
 	//Comprobamos si ha entrado a la sala del boss
 	if (rect.x <= 1340 && rect.y <= 6900 && rect.y > 6650 && !insideRoom) {
 		juego->arrayObjetos.push_back(new Puerta(juego, 1520, 6720, 200, 200));

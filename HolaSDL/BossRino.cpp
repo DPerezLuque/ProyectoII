@@ -42,6 +42,7 @@ void BossRino::update(int delta) {
 		dead = true;
 		juego->estado->changeCurrentState(CINEMATICA_FINAL); //Llama a la escena final y ya desde allí se llama al menú final
 	}
+
 	else if (isActive()){
 		rectVida.x = rect.x - 20;
 		rectVida.y = rect.y - 20;
@@ -160,10 +161,10 @@ void BossRino::onCollision(collision type) {
 		saved = false;
 	}
 
-	else if (type == BOBINA && estado == CARGA) {
+	else if (type == BOBINA ) {
 		saved = false;
 		estado = ESTUNEADO;
-		vida -= 1;
+		vida --;
 	}
 	else if (type == DECORATIVO && estado == CARGA){
 		saved = false;

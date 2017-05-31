@@ -10,6 +10,7 @@ EnemigoPlanta::EnemigoPlanta(Juego* ptr, int px, int py) : EnemigoBase(ptr, px, 
 
 	radioDisable = 550;
 	radioEnable = 400;
+	freDis = 70;
 }
 
 void EnemigoPlanta::animacionBasica(){ //Para el paso de frames
