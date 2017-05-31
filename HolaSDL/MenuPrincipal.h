@@ -20,8 +20,5 @@ private:
 	Textura* logo;
 	SDL_Rect tamano;
 
-	vector <string> musicNames;
-	Musica* cancion;
-	vector <Musica*> musicFiles;
 };
 

@@ -1,11 +1,7 @@
+La carpeta "bmps" contiene las imágenes, texturas y otros archivos visuales que hemos utilizado para nuestro juego.
+La carpeta "Fuentes" lleva incluidas todas las fuentes utilizadas en el juego.
+La carpeta "Web" incluye los recursos de nuestra web, al completo. Dentro de la misma, existe una carpeta llamada "assets" que
+contiene todo lo necesario para que funcione correctamente. Asimismo, existe una carpeta "images" con los fondos, imágenes y 
+otros iconos utilizados en la web.
 
-Al añadir un proyecto nuevo recuerda añadir la página de propiedades ProyectosSDL.props al nuevo proyecto:
-Menú VER -> administrador de propiedades -> Agregar hoja de propiedades existente -> ProyectosSDL.props > Guardar
-
-Las librerias que se utilizan en esta solución (en el directorio bin) son las librerias de los directorios lib\x86 de SDL-2.0.4 y SDL_image-2.0.1.
-Si quieres usar las librerias de lib\x64 copialas de SDL-2.0.4 y SDL_image-2.0.1 al directorio bin de la solución.
-Abre el archivo ProyectosSDL.props y modifica la línea correspondiente a LibraryPath.
-
-Si quieres añadir una nueva libreria, copia su directorio en la solución y los bin de la libreria en el directorio bin de la solución.
-Y añade los nuevos elementos al archivo ProyectosSDL.props en las lineas: IncludePath, LibraryPath y AdditionalDependencies.
-También puedes crear otras páginas de propiedades.
+URL WEB: https://joseinside.github.io/GS-14/

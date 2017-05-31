@@ -33,7 +33,7 @@ public:
 	enum Texturas_t {
 		TPlayer, TEnemy, TBulletPlayer, TBulletEnemy, TCheck, TEnemyPlanta, TRino, TBarraVida, THumo,
 		TBotiquin, TBPlayA, TBPlayE , TBOptionsA, TBOptionsE, TBExitA, TBExitE, TBControlsA, TBControlsE, TBSangreA, TBSangreE,
-		TBFilterA, TBFilterE, TBMenuA, TBMenuE, TBRetryA, TBRetryE, TBResumeA, TBResumeE, 
+		TBFilterA, TBFilterE, TBMenuA, TBMenuE, TBRetryA, TBRetryE, TBResumeA, TBResumeE, TBResoA, TBResoE,
 		TFondo, TControles, TVidaLlena, TVidaVacia, TDashLleno,
 		TDashVacio, TCargador, TDialogo, TPapelera1, TPapelera2, TPapelera3, TMesaEE, 
 		TMesa, TMesaCorazon, TMesaTentaculo, TMesaDoble, TMesaRota, TMesaRota2,
@@ -134,10 +134,8 @@ public:
 	
 	//SETTERS
 	void setSalir() { exit = true;}
-//	void setGameOver() { GO = true; }
 	bool isInScreen(SDL_Rect rect);
 	void addToScreen(ObjetoJuego * obj);
-	//void addToScreen(Tilemap::Tile * t);
 
 	//GETTERS
 	SDL_Renderer* getRender() const { return pRenderer; }
@@ -145,23 +143,25 @@ public:
 	Textura* getTextura(Texturas_t et) const { return arrayTex[et]; }
 	void getMousePos(int & mpx, int & mpy) const;
 	int getHeight() const {return SCREEN_HEIGHT;}
-	int getWidth() const {	return SCREEN_WIDTH;}
+	int getWidth() const {return SCREEN_WIDTH;}
 	int getVelX(){ return mVelX; }
 	int getVelY(){ return mVelY; }
 	bool getDash(){ return dashing; }
 	void setDash(bool dash){ dashing = dash; }
 
-	//CREA COSAS
-	void creaAlmas(int, int, std::string);//<--------- OBSOLETO
+	//void creaAlmas(int, int, std::string);//<--------- OBSOLETO
 	void spawnObjetos(char, int, int, std::string);	//Identificador, posicionX, posicionY, String por si es un alma (opcional)
 
-	//EFECTOS
+	//SOUND EFECTS
 	enum Sonidos_t { disparoPlayer, disparoSpider, aliento, button, death, explosion, punch, bird };
 	vector <string> effectNames;//Vector para almacenar direcciones de canciones
 	Efecto* efecto; //Auxiliar para llenar el vector de efectos
 	vector <Efecto*> effectFiles;
-
 	Efecto* getEfecto(Sonidos_t eff){ return effectFiles[eff]; }
+
+	//MUSIC
+	vector <string> musicNames;
+	Musica* cancion;
 
 	//FONTS
 	enum Fuentes { Arial, };

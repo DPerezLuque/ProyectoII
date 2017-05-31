@@ -48,7 +48,7 @@ void Boton::update() {
 	SDL_GetMouseState(&x, &y);
 	//cout << x << " " << y << "\n";
 	
-	if (tipo != BOTON_SANGRE &&  tipo != BOTON_FILTER){
+	if (tipo != BOTON_SANGRE &&  tipo != BOTON_FILTER && tipo != BOTON_RESIZE){
 		if (dentro(x, y)) {
 			textura = textura2;
 		}
@@ -82,8 +82,13 @@ void Boton::changeText(){
 			textura = textura2;
 		else textura = textura1;
 	}
-	else {
+	else if (tipo == BOTON_FILTER){
 		if (juego->getFiltro())
+			textura = textura2;
+		else textura = textura1;
+	}
+	else if (tipo == BOTON_RESIZE) {
+		if (juego->getPanoramica())
 			textura = textura2;
 		else textura = textura1;
 	}

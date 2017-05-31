@@ -1,12 +1,12 @@
 #include "BarraVidaVacia.h"
-
+#include "Juego.h"
 
 BarraVidaVacia::BarraVidaVacia(Juego* pJuego, ObjetoJuego* jugador, int ancho, int alto, int posX, int posY) : Interfaz(pJuego, jugador, ancho, alto, posX, posY)
 {
 	//Misma constructora que interfaz
 	textura = pJuego->getTextura(Juego::TVidaVacia);
 	filtro = pJuego->getTextura(Juego::TFiltro);
-	rectangulo = { 0, 0, 1000, 1000 };
+	rectangulo = { 0, 0, pJuego->getWidth(), pJuego->getHeight() };
 	distX = 15;
 	distY = 15;
 }

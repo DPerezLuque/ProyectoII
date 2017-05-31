@@ -15,20 +15,6 @@ Estado::Estado(Juego* ptr)
 
 Estado::~Estado() 
 {
-	/*//Objetos
-	for (size_t aux = 0; aux < juego->arrayMenu.size(); ++aux) {
-		delete juego->arrayMenu[aux];
-		juego->arrayMenu[aux] = nullptr;
-	}
-	//Interfaz
-	for (int i = 0; i < juego->elemInterfaz.size(); i++){
-		delete juego->elemInterfaz[i]; 
-		juego->elemInterfaz[i] = nullptr;
-	}
-	
-	/*juego = nullptr;
-	textura = nullptr;
-	pRenderer = nullptr;*/
 }
 
 void Estado::draw()
@@ -46,11 +32,6 @@ void Estado::draw()
 
 	textura = juego->getTextura(Juego::TFondo);
 	textura->draw(pRenderer, 0, 0, rect);
-
-	//Dibuja los objetos
-	/*for (auto aux : juego->arrayMenu) {
-		aux->draw();
-	}*/
 
 	for (int aux = 0; aux < juego->arrayMenu.size(); ++aux) {
 			juego->arrayMenu[aux]->draw();
@@ -138,9 +119,10 @@ bool Estado::onClick()
 		case BOTON_FILTER:
 			juego->arrayMenu[aux]->changeText();
 			juego->setFiltro();
+			break;
 		case BOTON_RESIZE:
 			
-			//panoramica = !panoramica;
+			juego->arrayMenu[aux]->changeText();
 			juego->changePanoramica();
 			
 			if (juego->panoramica){

@@ -51,6 +51,10 @@ Juego::Juego()
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 	Mix_Volume(1, MIX_MAX_VOLUME / 4);
 
+	musicNames.push_back("..\\bmps\\Home.mp3");	
+	cancion = new Musica();
+	cancion->load("..\\bmps\\Home.mp3");
+
 	//Texto
 	TTF_Init();
 
@@ -79,7 +83,7 @@ Juego::Juego()
 		estado = topEstado(); //primer estado: MENU
 	}
 	camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-
+	delta = 1.5f;
 	contDash = 80;
 
 	for (auto i : wallsArray) {
@@ -126,53 +130,16 @@ void Juego::cleanArrays() {
 	while (arrayMenu.size() > 0)
 		arrayMenu.erase(arrayMenu.begin());
 
-	/* NEEDS TO BE CLEANED
-	
-	for (int i = 0; i < arrayObjetos.size(); ++i) {
-	arrayObjetos.erase(arrayObjetos.begin() + i);
-	}
-	for (int j = 0; j < elemInterfaz.size(); ++j)
-	elemInterfaz.erase(elemInterfaz.begin() + j);
-
-	for (int aux1 = 0; aux1 < enemyArray.size(); ++aux1) {
-	enemyArray.erase(enemyArray.begin() + aux1);
-	}
-
-	for (int aux2 = 0; aux2 < playerBullets.size(); ++aux2)
-	playerBullets.erase(playerBullets.begin() + aux2);
-
-	for (int aux3 = 0; aux3 < enemyBullets.size(); ++aux3)
-	enemyBullets.erase(enemyBullets.begin() + aux3);
-
-	for (int aux4 = 0; aux4 < objVisible.size(); ++aux4) {
-	objVisible.erase(objVisible.begin() + aux4);
-	}
-
-	for (int aux5 = 0; aux5 < arrayMenu.size(); ++aux5)
-	arrayMenu.erase(arrayMenu.begin() + aux5);
-
-	if(arrayObjetos.size() > 0)
-	arrayObjetos.erase(arrayObjetos.begin());
-	if (enemyArray.size() > 0)
-	enemyArray.erase(enemyArray.begin());
-	if (elemInterfaz.size() > 0)
-	elemInterfaz.erase(elemInterfaz.begin());
-	if (playerBullets.size() > 0)
-	playerBullets.erase(playerBullets.begin());
-	if (enemyBullets.size() > 0)
-	enemyBullets.erase(enemyBullets.begin());
-	if (objVisible.size() > 0)
-	objVisible.erase(objVisible.begin());
-	*/
-
 }
 void Juego::run()
 {
+	cancion->play();
+
 	while (!exit) {
 
 		double previous;
 		double lag;
-
+		
 	switch (estado->getCurrentState()) {
 		
 		case MENU_PRINCIPAL:
@@ -190,7 +157,6 @@ void Juego::run()
 
 		case NIVEL_1:
 
-			//GO = false;
 			lastUpdate = 0;
 			changeState(new Play(this));
 			estado = topEstado(); 
@@ -238,15 +204,7 @@ void Juego::run()
 
 					
 					//UPDATE
-					estado->update(1.5);					
-					//lastUpdate = SDL_GetTicks();
-					
-					//handle_events();
-					//cout << lastUpdate << "\n";
-					//delta = (SDL_GetTicks() - lastUpdate) / 2.0f;
-					//delta = 1.5;
-					//cout << delta << "\n";
-					//estado->update(delta);
+					estado->update(delta);					
 					
 					//Render level
 					for (int i = 0; i < TOTAL_TILES; ++i)
@@ -274,6 +232,7 @@ void Juego::run()
 			//delete finalBoss;
 			mVelX = 0;
 			mVelY = 0;
+			cancion->play();
 			break;
 			
 		case GAME_OVER:
@@ -286,7 +245,7 @@ void Juego::run()
 			estado->draw();
 			estado->update();
 			cleanArrays();
-
+			cancion->play();
 			break;
 
 		case MENU_OPCIONES:
@@ -330,12 +289,13 @@ void Juego::run()
 			estado->draw();
 			estado->update();
 			cleanArrays();
-
+			cancion->play();
 			break;
 		}
 
-
 	}
+	delete cancion;
+
 	SDL_Delay(500); //cin.get();
 }
 /*
@@ -389,7 +349,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\rino.png");
 	texturas.push_back("..\\bmps\\BarraVida.png");
 	texturas.push_back("..\\bmps\\Humo.png");
-	texturas.push_back("..\\bmps\\Botiquin2.png");
+	texturas.push_back("..\\bmps\\Botiquin1.png");
 
 	//Elementos del menu
 	texturas.push_back("..\\bmps\\BotonPlayA.png");
@@ -410,6 +370,8 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\BotonReintentarE.png");
 	texturas.push_back("..\\bmps\\BotonReanudarA.png");
 	texturas.push_back("..\\bmps\\BotonReanudarE.png");
+	texturas.push_back("..\\bmps\\BotonReso.png");
+	texturas.push_back("..\\bmps\\BotonReso2.png");
 	texturas.push_back("..\\bmps\\Fondo.png");
 	texturas.push_back("..\\bmps\\Controles.png");
 
@@ -904,7 +866,7 @@ bool Juego::checkWallCollisions(SDL_Rect a, SDL_Rect b)
 /// CREAR UNIDADES ///
 //Cuando los enemigos mueren, crean almas y/o objetos según un random. Aquí se recogen los métodos que
 //añaden cosas al juego
-
+/*
 void Juego::creaAlmas(int posEnemigoX, int posEnemigoY, string msj){
 
 	if (msj != ""){
@@ -914,7 +876,7 @@ void Juego::creaAlmas(int posEnemigoX, int posEnemigoY, string msj){
 
 	arrayObjetos.push_back(new Aura(this, posEnemigoX, posEnemigoY, 420, 50, msj));
 
-}
+}*/
 
 //Creamos un objeto dado por el id que se introduzca en la llamada a función, según el random deseado en el objeto desde el que se
 //llame a este método.

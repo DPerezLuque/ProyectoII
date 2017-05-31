@@ -35,6 +35,7 @@ void Musica::play(){
 
 void Musica::close(){
 	if (pMusic != nullptr){
+		//Mix_HaltMusic();
 		Mix_FreeMusic(pMusic);
 		pMusic = nullptr;
 	}
