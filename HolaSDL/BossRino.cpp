@@ -37,13 +37,12 @@ BossRino::~BossRino()
 
 void BossRino::update(int delta) {
 
-	
 	if (vida <= 0) {
 		dead = true;
 		juego->estado->changeCurrentState(CINEMATICA_FINAL); //Llama a la escena final y ya desde allí se llama al menú final
 	}
 
-	else if (isActive()){
+	else{// if (isActive()){
 		rectVida.x = rect.x - 20;
 		rectVida.y = rect.y - 20;
 		rectVida.w = 32 * vida;
