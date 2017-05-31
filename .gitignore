@@ -6,9 +6,10 @@ bin/*Practica1Debug.ilk
 bin/*Practica1Debug.pdb
 bin/*Proyect1Debug
 
-.vs/
+.vs/*
 
 #Ignorar archivos concretos
 
 *Proyecto_2.sdf
 *Proyecto_2.v12.suo
+*Proyecto_2.VC.db
