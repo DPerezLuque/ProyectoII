@@ -2,19 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Spider.cpp" />
-    <ClCompile Include="littleSpider.cpp" />
     <ClCompile Include="Aura.cpp" />
     <ClCompile Include="Bala.cpp" />
-    <ClCompile Include="balaBomba.cpp" />
     <ClCompile Include="BalaEnemigo.cpp" />
     <ClCompile Include="BalaPlayer.cpp" />
-    <ClCompile Include="balaRalentizadora.cpp" />
     <ClCompile Include="Bobina.cpp" />
     <ClCompile Include="BossRino.cpp" />
     <ClCompile Include="Botiquin.cpp" />
     <ClCompile Include="Checkpoint.cpp" />
     <ClCompile Include="Dialogo.cpp" />
-    <ClCompile Include="enemigoBase.cpp" />
     <ClCompile Include="EnemigoBomba.cpp" />
     <ClCompile Include="EnemigoPlanta.cpp" />
     <ClCompile Include="BarraVida.cpp" />
@@ -22,7 +18,6 @@
     <ClCompile Include="Boton.cpp" />
     <ClCompile Include="Cargador.cpp" />
     <ClCompile Include="Efecto.cpp" />
-    <ClCompile Include="enemigoGuardia.cpp" />
     <ClCompile Include="EnergiaDisponible.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Estado.cpp" />
@@ -30,13 +25,11 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Interfaz.cpp" />
     <ClCompile Include="Juego.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuOpciones.cpp" />
     <ClCompile Include="MenuPausa.cpp" />
     <ClCompile Include="MenuPrincipal.cpp" />
     <ClCompile Include="Musica.cpp" />
     <ClCompile Include="Objeto.cpp" />
-    <ClCompile Include="objetoDecorativo.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Sangre.cpp" />
@@ -45,22 +38,26 @@
     <ClCompile Include="Puerta.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="MenuFinalJuego.cpp" />
+    <ClCompile Include="EscenaFinal.cpp" />
+    <ClCompile Include="BalaBomba.cpp" />
+    <ClCompile Include="BalaRalentizadora.cpp" />
+    <ClCompile Include="EnemigoBase.cpp" />
+    <ClCompile Include="EnemigoGuardia.cpp" />
+    <ClCompile Include="LittleSpider.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ObjetoDecorativo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Spider.h" />
-    <ClInclude Include="littleSpider.h" />
     <ClInclude Include="Aura.h" />
     <ClInclude Include="Bala.h" />
-    <ClInclude Include="balaBomba.h" />
     <ClInclude Include="BalaEnemigo.h" />
     <ClInclude Include="BalaPlayer.h" />
-    <ClInclude Include="balaRalentizadora.h" />
     <ClInclude Include="Bobina.h" />
     <ClInclude Include="BossRino.h" />
     <ClInclude Include="Botiquin.h" />
     <ClInclude Include="Checkpoint.h" />
     <ClInclude Include="Dialogo.h" />
-    <ClInclude Include="enemigoBase.h" />
     <ClInclude Include="EnemigoBomba.h" />
     <ClInclude Include="EnemigoPlanta.h" />
     <ClInclude Include="BarraVida.h" />
@@ -68,7 +65,6 @@
     <ClInclude Include="Boton.h" />
     <ClInclude Include="Cargador.h" />
     <ClInclude Include="Efecto.h" />
-    <ClInclude Include="enemigoGuardia.h" />
     <ClInclude Include="EnergiaDisponible.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="EstadoJuego.h" />
@@ -83,7 +79,6 @@
     <ClInclude Include="MenuPausa.h" />
     <ClInclude Include="MenuPrincipal.h" />
     <ClInclude Include="Musica.h" />
-    <ClInclude Include="objetoDecorativo.h" />
     <ClInclude Include="ObjetoJuego.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="Player.h" />
@@ -94,6 +89,13 @@
     <ClInclude Include="Puerta.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="MenuFinalJuego.h" />
+    <ClInclude Include="EscenaFinal.h" />
+    <ClInclude Include="BalaBomba.h" />
+    <ClInclude Include="BalaRalentizadora.h" />
+    <ClInclude Include="EnemigoBase.h" />
+    <ClInclude Include="EnemigoGuardia.h" />
+    <ClInclude Include="LittleSpider.h" />
+    <ClInclude Include="ObjetoDecorativo.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

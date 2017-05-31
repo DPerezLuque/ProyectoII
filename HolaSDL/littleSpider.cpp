@@ -1,11 +1,11 @@
-#include "littleSpider.h"
+#include "LittleSpider.h"
 
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
 
-littleSpider::littleSpider(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
+LittleSpider::LittleSpider(Juego* ptr, int px, int py) : EnemigoBase(ptr, px, py)
 {
 	vida = 2;
 	rectAnim = { 0, 0, 30, 36 };
@@ -28,11 +28,11 @@ littleSpider::littleSpider(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py
 }
 
 
-littleSpider::~littleSpider()
+LittleSpider::~LittleSpider()
 {
 }
 
-void littleSpider::update(int delta){
+void LittleSpider::update(int delta){
 	
 		rectCollision = rect;
 		//Barra de vida
@@ -85,7 +85,7 @@ void littleSpider::update(int delta){
 		}
 }
 
-void littleSpider::animacionBasica(){ //Para el paso de frames
+void LittleSpider::animacionBasica(){ //Para el paso de frames
 	if (rectAnim.x >= 60){
 		rectAnim.x = 0;
 	}
@@ -94,7 +94,7 @@ void littleSpider::animacionBasica(){ //Para el paso de frames
 	}
 }
 
-void littleSpider::nuevaPosicion(){
+void LittleSpider::nuevaPosicion(){
 	srand(time(NULL));
 
 	SDL_Rect rectPlayer;
@@ -113,7 +113,7 @@ void littleSpider::nuevaPosicion(){
 	pos = nuevaPos;
 }
 
-void littleSpider::miniCarga(int x, int y, int delta, int mod){
+void LittleSpider::miniCarga(int x, int y, int delta, int mod){
 
 	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
 

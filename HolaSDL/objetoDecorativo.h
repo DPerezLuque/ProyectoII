@@ -1,10 +1,10 @@
 #pragma once
 #include "Objeto.h"
-class objetoDecorativo : public Objeto
+class ObjetoDecorativo : public Objeto
 {
 public:
-	objetoDecorativo(Juego* ptr, int px, int py, std::string);
-	~objetoDecorativo();
+	ObjetoDecorativo(Juego* ptr, int px, int py, std::string);
+	~ObjetoDecorativo();
 	
 	void setObjectFromString(std::string);		//Factoría de objetos decorat
 	void draw() const;

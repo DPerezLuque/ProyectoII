@@ -1,11 +1,11 @@
 #pragma once
 #include "Bala.h"
 
-class balaRalentizadora : public Bala
+class BalaRalentizadora : public Bala
 {
 public:
-	balaRalentizadora(Juego* ptr, int px, int py, int vX, int vY);
-	~balaRalentizadora();
+	BalaRalentizadora(Juego* ptr, int px, int py, int vX, int vY);
+	~BalaRalentizadora();
 	//Método de Objeto
 	//virtual void onCollision(collision);
 	//Método de Bala

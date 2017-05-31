@@ -1,7 +1,7 @@
-#include "balaRalentizadora.h"
+#include "BalaRalentizadora.h"
 
 
-balaRalentizadora::balaRalentizadora(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px, py, vX, vY)
+BalaRalentizadora::BalaRalentizadora(Juego* ptr, int px, int py, int vX, int vY) : Bala(ptr, px, py, vX, vY)
 {
 	textura = juego->getTextura(Juego::TBalaRalentizadora);
 
@@ -16,6 +16,6 @@ balaRalentizadora::balaRalentizadora(Juego* ptr, int px, int py, int vX, int vY)
 }
 
 
-balaRalentizadora::~balaRalentizadora()
+BalaRalentizadora::~BalaRalentizadora()
 {
 }

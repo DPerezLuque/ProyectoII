@@ -4,7 +4,7 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
-Spider::Spider(Juego* ptr, int px, int py) : enemigoBase(ptr, px, py)
+Spider::Spider(Juego* ptr, int px, int py) : EnemigoBase(ptr, px, py)
 {
 	vida = 4;
 	rectAnim = { 0, 0, 30, 36};

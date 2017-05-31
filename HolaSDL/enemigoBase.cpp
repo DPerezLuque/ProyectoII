@@ -1,10 +1,10 @@
-#include "enemigoBase.h"
+#include "EnemigoBase.h"
 #include "BalaEnemigo.h"
 #include "BalaRalentizadora.h"
 #include "balaBomba.h"
 #include <time.h>
 
-enemigoBase::enemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
+EnemigoBase::EnemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 {
 	barraVida = juego->getTextura(Juego::TBarraVida);
 
@@ -40,12 +40,12 @@ enemigoBase::enemigoBase(Juego* ptr, int px, int py) : Objeto(ptr, px, py)
 	srand(0);
 }
 
-enemigoBase::~enemigoBase()
+EnemigoBase::~EnemigoBase()
 {
 }
 
 
-void enemigoBase::draw() const{
+void EnemigoBase::draw() const{
 
 	Objeto::draw();				//Dibuja el objeto con animacion o no, según el bool animado de Objeto.h
 
@@ -53,7 +53,7 @@ void enemigoBase::draw() const{
 	
 }
 
-void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que vas a seguir 
+void EnemigoBase::follow(int x, int y, float delta){ // posicion del objeto que vas a seguir 
 
 	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
 
@@ -98,7 +98,7 @@ void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que 
 
 }
 
-void enemigoBase::onCollision(collision type){
+void EnemigoBase::onCollision(collision type){
 	if (type == PJ_WEAPON){
 		gestorVida();
 		sonido->play();
@@ -108,7 +108,7 @@ void enemigoBase::onCollision(collision type){
 	}
 }
 
-void enemigoBase::shoot(int targetX, int targetY, char bulletType){
+void EnemigoBase::shoot(int targetX, int targetY, char bulletType){
 
 	//static_cast <Play*> (juego->topEstado())->newDisparoEnemigo(rect.x, rect.y, targetX, targetY, velDis);
 
@@ -133,11 +133,11 @@ void enemigoBase::shoot(int targetX, int targetY, char bulletType){
 		break;
 
 		case 'b':
-			nuevaBala = new balaBomba(juego, rect.x, rect.y, vX, vY);				//Balas explosivas
+			nuevaBala = new BalaBomba(juego, rect.x, rect.y, vX, vY);				//Balas explosivas
 		break;
 
 		case 'r':
-			nuevaBala = new balaRalentizadora(juego, rect.x, rect.y, vX, vY);		//Balas ralentizadoras
+			nuevaBala = new BalaRalentizadora(juego, rect.x, rect.y, vX, vY);		//Balas ralentizadoras
 			break;
 	}
 	//Incluimos la bala creada en el juego
@@ -146,7 +146,7 @@ void enemigoBase::shoot(int targetX, int targetY, char bulletType){
 }
 
 //Controla la vida del enemigo y lo elimina si ha muerto.
-void enemigoBase::gestorVida(){
+void EnemigoBase::gestorVida(){
 	if (!inmunidad){
 		vida--;
 		cout << "Vida enemigo: " << vida << "\n";
@@ -185,7 +185,7 @@ void enemigoBase::gestorVida(){
 	}
 }
 
-bool enemigoBase::isActive(){
+bool EnemigoBase::isActive(){
 	/*//std::cout << active << "\n";
 	int x, y;
 	juego->player->getPos(x, y);
@@ -202,7 +202,7 @@ bool enemigoBase::isActive(){
 }
 
 //FOLLOW ANTIGUO, BORRAR SI ES IGUAL QUE EL QUE EXISTE
-/*void enemigoBase::follow(int x, int y, float delta){ // posicion del objeto que vas a seguir 
+/*void EnemigoBase::follow(int x, int y, float delta){ // posicion del objeto que vas a seguir 
 
 	int distance = sqrt((x - rect.x)*(x - rect.x) + (y - rect.y)*(y - rect.y));
 

@@ -31,6 +31,7 @@
 #include "Sangre.h"
 #include "littleSpider.h"
 #include "Key.h"
+#include "EscenaFinal.h"
 
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
@@ -172,12 +173,13 @@ void Juego::run()
 		double previous;
 		double lag;
 
-		switch (estado->getCurrentState()) {
+	switch (estado->getCurrentState()) {
+		
 		case MENU_PRINCIPAL:
 			
 			changeState(new MenuPrincipal(this));
 			estado = topEstado(); 
-				
+			cout << estado->getCurrentState();
 			//Render menu
 			estado->draw();
 			//Update menu
@@ -194,8 +196,8 @@ void Juego::run()
 			estado = topEstado(); 
 
 			pause = new MenuPausa(this);
-			cout << "NIVEL 1 (PLAY) \n";
-			
+			//cout << "NIVEL 1 (PLAY) \n";
+			cout << estado->getCurrentState();
 			//Clear screen	
 			SDL_RenderClear(pRenderer);
 
@@ -302,6 +304,22 @@ void Juego::run()
 			cleanArrays();
 			break;
 
+		case CINEMATICA_FINAL:
+
+			changeState(new EscenaFinal(this));
+			estado = topEstado();
+
+			while (!exit && estado->getCurrentState() == CINEMATICA_FINAL) {
+
+				camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+
+				estado->update();
+				estado->draw();
+				cleanArrays();
+			}
+			break;
+
 		case MENU_FINAL:
 
 			changeState(new MenuFinalJuego(this));
@@ -350,7 +368,7 @@ bool Juego::initMedia()
 		textoAux.load(nombreFuentes[j], 50); //fuente, size
 		arrayFuentes.push_back(textoAux);
 	}
-
+	//Efectos de sonido
 	effectFiles.push_back(new Efecto("..\\bmps\\Bubble.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\Spider.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\Aliento.wav"));
@@ -358,6 +376,7 @@ bool Juego::initMedia()
 	effectFiles.push_back(new Efecto("..\\bmps\\Death.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\Explosion.wav"));
 	effectFiles.push_back(new Efecto("..\\bmps\\Punch.wav"));
+	effectFiles.push_back(new Efecto("..\\bmps\\Bird.wav"));
 
 	//Objetos dinámicos
 	texturas.push_back("..\\bmps\\personaje.png");
@@ -393,6 +412,7 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\BotonReanudarE.png");
 	texturas.push_back("..\\bmps\\Fondo.png");
 	texturas.push_back("..\\bmps\\Controles.png");
+
 
 	//Interfaz
 	texturas.push_back("..\\bmps\\VidaLlena.png");
@@ -457,6 +477,10 @@ bool Juego::initMedia()
 	texturas.push_back("..\\bmps\\Key.png");
 	texturas.push_back("..\\bmps\\Caja.png");
 	texturas.push_back("..\\bmps\\Servers.png");
+	
+	//FondoFinal
+	texturas.push_back("..\\bmps\\EscenaFinal.png");
+	texturas.push_back("..\\bmps\\CientificoIzq.png");
 
 
 	//Load Assets Textures
@@ -578,6 +602,7 @@ void Juego::handle_events()
 				x = e.button.x + (camera.x + camera.w / 2) - SCREEN_WIDTH / 2;
 				y = e.button.y + (camera.y + camera.h / 2) - SCREEN_HEIGHT / 2;
 				player->onClick();
+
 			}
 		break;
 		case SDL_KEYUP:
@@ -940,7 +965,7 @@ void Juego::spawnObjetos(char id, int posEnemigoX, int posEnemigoY, string msj){
 		break;
 
 	case 'x':	//Spawn de enemigos de arañitas
-		arrayObjetos.push_back(new littleSpider(this, posEnemigoX, posEnemigoY));
+		arrayObjetos.push_back(new LittleSpider(this, posEnemigoX, posEnemigoY));
 		break;
 
 
