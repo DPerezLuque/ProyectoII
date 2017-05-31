@@ -177,7 +177,10 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 570, 4140, "mesaEE"));
 	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 450, 4450, "Caja"));
 	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1240, 3570, "Caja"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1840, 6227, "Caja"));
 	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 330, 2960, "Servers"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego,1980, 6459, "Hojas"));
+	juego->arrayObjetos.push_back(new ObjetoDecorativo(juego, 1895, 6819, "Hojas"));
 
 	juego->arrayObjetos.push_back(new Checkpoint(juego, 1100, 5650));
 
@@ -217,6 +220,10 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new EnemigoGuardia(juego, 1260, 1750));
 	juego->arrayObjetos.push_back(new EnemigoGuardia(juego, 430, 2300));
 	juego->arrayObjetos.push_back(new EnemigoGuardia(juego, 380, 3690));
+	//zona de la mesa con boton
+	juego->arrayObjetos.push_back(new EnemigoGuardia(juego, 753, 4484));
+	juego->arrayObjetos.push_back(new EnemigoGuardia(juego, 469, 4700));
+	juego->arrayObjetos.push_back(new EnemigoGuardia(juego, 569, 4323)); //quitar si hay muchos
 
 	//ENEMIGOS PLANTA
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 1150));
@@ -228,12 +235,19 @@ void Play::init() {
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1260, 1500));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1350, 3100));
 	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1680, 3100));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 2214, 6857));
+	juego->arrayObjetos.push_back(new EnemigoPlanta(juego, 1818, 6369));
+	//plantas de la zona del boss
+
 
 	//ENEMIGOS BOMBA
 	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 2020, 6500));
+	juego->arrayObjetos.push_back(new EnemigoBomba(juego, 2113, 5651));
 
 	//ENEMIGOS ARAÑA
 	juego->arrayObjetos.push_back(new Spider(juego, 320, 2600, true)); //LLAVE
+	juego->arrayObjetos.push_back(new Spider(juego, 1222, 3900, false));
+	juego->arrayObjetos.push_back(new Spider(juego, 271, 5973, false)); 
 
 					///		INTERFAZ	///	
 	juego->elemInterfaz.push_back(new BarraVidaVacia(juego, juego->player, 128, 32, 0, 0));
@@ -263,109 +277,6 @@ void Play::update(double delta) {
 		}
 	}
 
-	//cout << juego->objVisible.size() << "\n";
-	/*
-	for (auto obj1 : juego->arrayObjetos) {
-	for (auto obj2 : juego->arrayObjetos) {
-	if (juego->checkCollision(obj1, obj2)) {
-	obj1->onCollision(obj2->getType());
-	obj2->onCollision(obj1->getType());
-	}
-	}
-
-	}
-	*/
-
-	///REVISAR
-	/*
-	for (auto obj1 : juego->arrayObjetos) {
-	for (auto obj2 : juego->arrayObjetos) {
-	if (juego->checkCollision(obj1, obj2)) {
-	obj1->onCollision(obj2->getType());
-	obj2->onCollision(obj1->getType());
-	}
-	}
-
-	}
-
-	for (auto enemy : juego->enemyArray) {
-	if (juego->checkCollision(enemy, juego->player)) {
-	enemy->onCollision(juego->player->getType());
-	juego->player->onCollision(enemy->getType());
-	}
-
-	}
-
-	for (auto bullet : juego->enemyBullets) {
-	if (juego->checkCollision(bullet, juego->player)) {
-	bullet->onCollision(juego->player->getType());
-	juego->player->onCollision(bullet->getType());
-	}
-	for (auto enemyb : juego->enemyBullets) {
-	if (juego->checkCollision(enemyb, bullet)) {
-	enemyb->onCollision(bullet->getType());
-	bullet->onCollision(enemyb->getType());
-	}
-
-	}
-
-	}
-
-	*/
-	/*
-	for (auto bullet : juego->playerBullets) {
-
-	if (juego->checkCollision(juego->player, bullet)) {
-	juego->player->onCollision(bullet->getType());
-	bullet->onCollision(juego->player->getType());
-	}
-
-	for (auto enemy : juego->arrayObjetos) {
-	if (juego->checkCollision(enemy, bullet)) {
-	enemy->onCollision(bullet->getType());
-	bullet->onCollision(enemy->getType());
-	}
-	}
-
-	}
-	*/
-
-
-	/*
-	//PERSONAJE CON ENEMIGOS
-	for (int i = 1; i < juego->arrayObjetos.size(); ++i){
-	if (!juego->player->isDead() && juego->checkCollision(juego->player, juego->arrayObjetos[i])){
-	juego->player->onCollision(juego->arrayObjetos[i]-> getType());
-	juego->arrayObjetos[i]->onCollision(juego->player->getType());
-	}
-	}
-
-
-	for (auto i : juego->arrayObjetos) // access by value, the type of i is int
-	std::cout << i << ' ';
-	std::cout << '\n';
-
-
-	//PERSONAJE CON BALAS ENEMIGAS
-	for (int i = 0; i < juego->enemyBullets.size(); ++i) {
-	if (!juego->player->isDead() && juego->checkCollision(juego->player, juego->enemyBullets[i])) {
-	juego->player->onCollision(juego->enemyBullets[i]->getType());
-	juego->enemyBullets[i]->onCollision(juego->player->getType());
-	}
-	}
-
-	//BALAS CON ENEMIGOS
-	for (int i = 0; i < juego->playerBullets.size(); ++i) {
-	for (int j = 1; j < juego->arrayObjetos.size(); ++j) {
-	if (!juego->playerBullets[i]->isDead() && juego->checkCollision(juego->playerBullets[i], juego->arrayObjetos[j])) {
-	juego->playerBullets[i]->onCollision(juego->arrayObjetos[j]->getType());
-	juego->arrayObjetos[j]->onCollision(juego->playerBullets[i]->getType());
-	}
-	}
-	}
-
-
-	*/
 
 	if (juego->player->isDead()){		
 		juego->estado->changeCurrentState(GAME_OVER);
@@ -402,28 +313,6 @@ void Play::update(double delta) {
 			juego->objVisible.erase(juego->objVisible.begin() + aux4);
 	}
 		
-		/*for (int x = 0; x < juego->playerBullets.size(); ++x) {
-			juego->playerBullets[x]->update(delta);
-
-		for (int i = 0; i < juego->elemInterfaz.size(); i++){
-			juego->elemInterfaz[i]->update(); //
-		}
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-
-	//UPDATE
-	for (int i = 0; i < juego->arrayObjetos.size(); ++i) {
-		juego->arrayObjetos[i]->update(delta);
-	}
-	/*for (int x = 0; x < juego->playerBullets.size(); ++x) {
-	juego->playerBullets[x]->update(delta);
-	}
-	for (int x = 0; x < juego->enemyBullets.size(); ++x) {
-	juego->enemyBullets[x]->update(delta);
-	}*/
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//}
 	
 }
 
